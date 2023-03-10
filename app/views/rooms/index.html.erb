@@ -1,0 +1,107 @@
+<div class="container">
+  <div class="text-center my-3">
+    <h1>Logements proches de Toulouse</h1>
+    <p>
+      Envie de rendre votre séjour à Toulouse INOUBLIABLE et PAISIBLE ?
+      <br>→ Vous êtes à la recherche d'une maison tranquille et moins cher qu'un hôtel
+      <br>→ Vous aimeriez connaître tous les bons plans pour profiter au maximum de votre séjour
+    </p>
+    <div>
+      <p>Pour découvrir Toulouse, hors des sentiers battus, voici ce que nous vous proposons:</p>
+      <p>- Une MAISON ENTIERE privative située dans un quartier calme et verdoyant, avec jusque 8 couchages</p>
+      <p>- Une CHAMBRE privative située dans ce logement, partagé avec les propriétaires, avec 2 couchages</p>
+    </div>
+  </div>
+
+  <div id="carouselHomePhotos" class="carousel carousel-dark slide my-3" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <div class="d-flex justify-content-center gap-3">
+          <%= image_tag "maison 1.PNG", alt: "", class: "w-25" %>
+          <%= image_tag "maison 2.PNG", alt: "", class: "w-25" %>
+          <%= image_tag "maison 3.PNG", alt: "", class: "w-25" %>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <div class="d-flex justify-content-center gap-3">
+          <%= image_tag "maison 1.PNG", alt: "", class: "w-25" %>
+          <%= image_tag "maison 2.PNG", alt: "", class: "w-25" %>
+          <%= image_tag "maison 3.PNG", alt: "", class: "w-25" %>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <div class="d-flex justify-content-center gap-3">
+          <%= image_tag "maison 1.PNG", alt: "", class: "w-25" %>
+          <%= image_tag "maison 2.PNG", alt: "", class: "w-25" %>
+          <%= image_tag "maison 3.PNG", alt: "", class: "w-25" %>
+        </div>
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselHomePhotos" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselHomePhotos" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+
+  <div class="d-flex align-items-center gap-3 my-3">
+    <div class="text-center w-50">
+      <h1><%= @maison.name %></h1>
+      <p><%= @maison.description %></p>
+      <%= link_to "VOIR LA MAISON", room_path(@maison), class: "btn btn-primary" %>
+    </div>
+    <%= image_tag "maison 1.PNG", alt: "", class: "w-50" %>
+  </div>
+
+  <div class="d-flex align-items-center gap-3 my-3">
+    <%= image_tag "chambre 1.PNG", alt: "", class: "w-50" %>
+    <div class="text-center w-50">
+      <h1><%= @chambre.name %></h1>
+      <p><%= @chambre.description %></p>
+      <%= link_to "VOIR LA CHAMBRE", room_path(@chambre), class: "btn btn-primary" %>
+    </div>
+  </div>
+
+<div id="carouselHomeAvis" class="carousel carousel-dark slide" data-bs-ride="carousel">
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#carouselHomeAvis" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#carouselHomeAvis" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#carouselHomeAvis" data-bs-slide-to="2" aria-label="Slide 3"></button>
+  </div>
+  <div class="carousel-inner text-center">
+    <div class="carousel-item active">
+      <h5>Très bon séjour dans cette maison. On a trouvé la maison plus belle en vrai qu'en photos.
+          Nous y avons passé un très bon Noël en famille.
+          Maison très propre, et principe de la clé électronique très pratique.
+          Merci aussi pour la petite attention à notre arrivée.
+          À recommander pour les familles nombreuses !</h5>
+      <h6>Claude - décembre 2022</h6>
+    </div>
+    <div class="carousel-item">
+      <h5>Maison magnifique, décorée avec goût, spacieuse et à deux pas de Toulouse. Les photos ne lui rendent pas justice : elle est encore plus jolie en vrai !
+      La literie est de grande qualité, du matelas jusqu'aux coussins. Tout est super bien expliqué : le fonctionnement de la porte d'entrée, des différents éléments de la cuisine...
+      Merci pour cette belle parenthèse dans notre weekend toulousain.</h5>
+      <h6>Audrey - octobre 2022</h6>
+    </div>
+    <div class="carousel-item">
+      <h5>Le logement est fidèle a l'annonce, la communication est fluide et l'arrivée tres bien organisé.
+      Si vous souhaitez passer un séjour sur Toulouse et loger dans un quartier calme et appairant je vous recommande vivement celui-ci.
+      De plus Émilie est très réactive en cas de besoin, pour toutes questions.
+      Ce fut un très bon séjour pour nous qui étions 7 avec tout le nécessaire à disposition.</h5>
+      <h6>Elea - mai 2022</h6>
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselHomeAvis" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselHomeAvis" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+
+</div>

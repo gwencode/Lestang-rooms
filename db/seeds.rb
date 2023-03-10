@@ -55,8 +55,8 @@ puts "2 normal users created!"
 
 puts "Creating 2 rooms..."
 
-logement = Room.create(
-  name: "Logement entier",
+maison = Room.create(
+  name: "Maison entière",
   description: "Description 1",
   max_guests: 8,
   price_per_day: 75,
@@ -85,7 +85,7 @@ puts "Creating 3 bookings..."
 
 booking1 = Booking.new(
   user: coco,
-  room: logement,
+  room: maison,
   start_date: DateTime.new(2023, 5, 5, 14, 0, 0),
   end_date: DateTime.new(2023, 5, 7, 11, 0, 0),
   guests_number: 4,
