@@ -5,8 +5,8 @@ class CreateRooms < ActiveRecord::Migration[7.0]
       t.string :description
       t.integer :max_guests
       t.integer :price_per_day
-      t.time :arrival_hour
-      t.time :departure_hour
+      t.string :arrival_hour
+      t.string :departure_hour
 
       t.timestamps
     end

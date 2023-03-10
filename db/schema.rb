@@ -17,8 +17,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_10_094502) do
   create_table "bookings", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "room_id", null: false
-    t.time "start_date"
-    t.time "end_date"
+    t.datetime "start_date"
+    t.datetime "end_date"
     t.integer "guests_number"
     t.integer "booking_price"
     t.string "status"
@@ -33,13 +33,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_10_094502) do
     t.string "description"
     t.integer "max_guests"
     t.integer "price_per_day"
-    t.time "arrival_hour"
-    t.time "departure_hour"
+    t.string "arrival_hour"
+    t.string "departure_hour"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "bedrooms"
     t.integer "beds"
-    t.integer "bathooms"
+    t.integer "bathrooms"
   end
 
   create_table "users", force: :cascade do |t|

@@ -16,7 +16,7 @@ puts "Database cleaned!"
 puts "Creating 2 admin users..."
 
 User.create(
-  email: "erle22@hotmail.fr",
+  email: "erle@me.com",
   password: "password",
   first_name: "Erle",
   last_name: "Le Bris",
@@ -24,9 +24,100 @@ User.create(
 )
 
 User.create(
-  email: "emilie.aubry59@gmail.com",
+  email: "emilie@me.com",
   password: "password",
   first_name: "Emilie",
   last_name: "Aubry",
   admin: true
 )
+
+puts "2 admin users created!"
+
+puts "Creating 2 normal users..."
+
+coco = User.create(
+  email: "coco@me.com",
+  password: "password",
+  first_name: "Corentin",
+  last_name: "Le Bris",
+  admin: false
+)
+
+gwen = User.create(
+  email: "gwen@me.com",
+  password: "password",
+  first_name: "Gwendal",
+  last_name: "Le Bris",
+  admin: false
+)
+
+puts "2 normal users created!"
+
+puts "Creating 2 rooms..."
+
+logement = Room.create(
+  name: "Logement entier",
+  description: "Description 1",
+  max_guests: 8,
+  price_per_day: 75,
+  arrival_hour: "à partir de 14:00",
+  departure_hour: "avant 12:00",
+  bedrooms: 3,
+  beds: 3,
+  bathrooms: 2
+)
+
+chambre = Room.create(
+  name: "Chambre privée",
+  description: "Description 2",
+  max_guests: 2,
+  price_per_day: 25,
+  arrival_hour: "entre 18:00 et 22:00",
+  departure_hour: "avant 11:00",
+  bedrooms: 1,
+  beds: 1,
+  bathrooms: 1,
+)
+
+puts "2 rooms created!"
+
+puts "Creating 3 bookings..."
+
+booking1 = Booking.new(
+  user: coco,
+  room: logement,
+  start_date: DateTime.new(2023, 5, 5, 14, 0, 0),
+  end_date: DateTime.new(2023, 5, 7, 11, 0, 0),
+  guests_number: 4,
+  status: "pending"
+)
+booking1.booking_price = booking1.calculate_booking_price
+booking1.save
+
+booking2 = Booking.new(
+  user: coco,
+  room: chambre,
+  start_date: DateTime.new(2023, 5, 8, 14, 0, 0),
+  end_date: DateTime.new(2023, 5, 9, 11, 0, 0),
+  guests_number: 2,
+  status: "pending"
+)
+booking2.booking_price = booking2.calculate_booking_price
+booking2.save
+
+booking3 = Booking.new(
+  user: gwen,
+  room: chambre,
+  start_date: DateTime.new(2023, 5, 10, 14, 0, 0),
+  end_date: DateTime.new(2023, 5, 12, 11, 0, 0),
+  guests_number: 1,
+  status: "approved"
+)
+booking3.booking_price = booking3.calculate_booking_price
+booking3.save
+
+puts "3 bookings created!"
+
+Booking.all.each { |booking| p booking }
+
+puts "Finished!"
