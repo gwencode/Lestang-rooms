@@ -8,6 +8,14 @@ class RoomsController < ApplicationController
   end
 
   def show
+    @name = @room.name
+    @max_guests = @room.max_guests
+    @price_per_day = @room.price_per_day
+    @arrival_hour = @room.arrival_hour
+    @departure_hour = @room.departure_hour
+    @bedrooms = @room.bedrooms
+    @beds = @room.beds
+    @bathrooms = @room.bathrooms
   end
 
   private
