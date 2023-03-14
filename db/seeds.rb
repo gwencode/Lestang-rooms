@@ -56,7 +56,7 @@ puts "2 normal users created!"
 puts "Creating 2 rooms..."
 
 maison = Room.create(
-  name: "Maison entière",
+  name: "La Maison",
   description: "Description 1",
   max_guests: 8,
   price_per_day: 75,
@@ -68,7 +68,7 @@ maison = Room.create(
 )
 
 chambre = Room.create(
-  name: "Chambre privée",
+  name: "La Chambre",
   description: "Description 2",
   max_guests: 2,
   price_per_day: 25,

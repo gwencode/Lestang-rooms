@@ -17,23 +17,23 @@
     <div class="carousel-inner">
       <div class="carousel-item active" data-bs-interval="10000">
         <div class="d-flex justify-content-center gap-3">
-          <%= image_tag "maison 1.PNG", alt: "", class: "w-25" %>
-          <%= image_tag "maison 2.PNG", alt: "", class: "w-25" %>
-          <%= image_tag "maison 3.PNG", alt: "", class: "w-25" %>
+          <%= image_tag "#{@maison.name}/maison 1.PNG", alt: "", class: "w-25" %>
+          <%= image_tag "#{@maison.name}/maison 2.PNG", alt: "", class: "w-25" %>
+          <%= image_tag "#{@maison.name}/maison 3.PNG", alt: "", class: "w-25" %>
         </div>
       </div>
       <div class="carousel-item" data-bs-interval="10000">
         <div class="d-flex justify-content-center gap-3">
-          <%= image_tag "maison 1.PNG", alt: "", class: "w-25" %>
-          <%= image_tag "maison 2.PNG", alt: "", class: "w-25" %>
-          <%= image_tag "maison 3.PNG", alt: "", class: "w-25" %>
+          <%= image_tag "#{@maison.name}/maison 1.PNG", alt: "", class: "w-25" %>
+          <%= image_tag "#{@maison.name}/maison 2.PNG", alt: "", class: "w-25" %>
+          <%= image_tag "#{@maison.name}/maison 3.PNG", alt: "", class: "w-25" %>
         </div>
       </div>
       <div class="carousel-item" data-bs-interval="10000">
         <div class="d-flex justify-content-center gap-3">
-          <%= image_tag "maison 1.PNG", alt: "", class: "w-25" %>
-          <%= image_tag "maison 2.PNG", alt: "", class: "w-25" %>
-          <%= image_tag "maison 3.PNG", alt: "", class: "w-25" %>
+          <%= image_tag "#{@maison.name}/maison 1.PNG", alt: "", class: "w-25" %>
+          <%= image_tag "#{@maison.name}/maison 2.PNG", alt: "", class: "w-25" %>
+          <%= image_tag "#{@maison.name}/maison 3.PNG", alt: "", class: "w-25" %>
         </div>
       </div>
     </div>
@@ -53,11 +53,11 @@
       <p><%= @maison.description %></p>
       <%= link_to "VOIR LA MAISON", room_path(@maison), class: "btn btn-primary" %>
     </div>
-    <%= image_tag "maison 1.PNG", alt: "", class: "w-50" %>
+    <%= image_tag "#{@maison.name}/maison 1.PNG", alt: "", class: "w-50" %>
   </div>
 
   <div class="d-flex align-items-center gap-3 my-3">
-    <%= image_tag "chambre 1.PNG", alt: "", class: "w-50" %>
+    <%= image_tag "#{@chambre.name}/chambre 1.PNG", alt: "", class: "w-50" %>
     <div class="text-center w-50">
       <h1><%= @chambre.name %></h1>
       <p><%= @chambre.description %></p>

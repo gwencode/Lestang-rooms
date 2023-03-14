@@ -1,8 +1,46 @@
-<h1><%= @room.name %></h1>
-<%= @room.max_guests %> voyageurs maximum
+<div class="container">
+  <div class="my-3">
+    <h1><%= @room.name %></h1>
+    <div class="d-flex gap-3">
+      <%= @room.max_guests > 1 ? "#{@room.max_guests} voyageurs" : "1 voyageur"%> maximum -
+      <%= @room.bedrooms > 1 ? "#{@room.bedrooms} chambres" : "1 chambre"%> -
+      <%= @room.beds > 1 ? "#{@room.beds} lits" : "1 lit"%> -
+      <%= @room.bathrooms > 1 ? "#{@room.bathrooms} salles de bain" : "1 salle de bain partagée"%>
+    </div>
+  </div>
+
+  <% carousel_id = "carousel-room-#{@room.id}" %>
+
+  <div id="<%= carousel_id %>" class="carousel slide" data-bs-ride="true">
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#<%= carousel_id %>" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+    <% (0..@last_image_paths.count - 1).each do |index| %>
+      <button type="button" data-bs-target="#<%= carousel_id %>" data-bs-slide-to="<%= index + 1 %>" aria-label="Slide <%= index + 1 %>"></button>
+    <% end %>
+  </div>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <%= image_tag "#{@image_paths.first}", alt: "", class: "d-block w-100" %>
+    </div>
+    <% @last_image_paths.each do |image_path| %>
+      <div class="carousel-item">
+        <%= image_tag "#{image_path}", alt: "", class: "d-block w-100" %>
+      </div>
+    <% end %>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#<%= carousel_id %>" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#<%= carousel_id %>" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+
+
+</div>
+
 Prix par jour : <%= @room.price_per_day %>
 Arrivée <%= @room.arrival_hour %>
 Départ <%= @room.departure_hour %>
-<%= @room.bedrooms %> chambres
-<%= @room.beds %> lits
-<%= @room.bathrooms %> salles de bain

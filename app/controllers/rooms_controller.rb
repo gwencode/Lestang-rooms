@@ -8,14 +8,9 @@ class RoomsController < ApplicationController
   end
 
   def show
-    @name = @room.name
-    @max_guests = @room.max_guests
-    @price_per_day = @room.price_per_day
-    @arrival_hour = @room.arrival_hour
-    @departure_hour = @room.departure_hour
-    @bedrooms = @room.bedrooms
-    @beds = @room.beds
-    @bathrooms = @room.bathrooms
+    image_files = Dir.glob(Rails.root.join('app', 'assets', 'images', "#{@room.name}", '*.{jpg,jpeg,png,gif,PNG}'))
+    @image_paths = image_files.map { |image_path| "#{@room.name}/#{File.basename(image_path)}" }
+    @last_image_paths = @image_paths.drop(1)
   end
 
   private
