@@ -51,7 +51,7 @@
 
   <div class="my-3">
     <h3>Où vous dormirez</h3>
-    <div class="d-flex">
+    <div class="sleep">
       <% if @room.name == "La Maison" %>
         <%= render "sleep_maison", sleep_images: @sleep_image_paths %>
       <% elsif @room.name == "La Chambre" %>

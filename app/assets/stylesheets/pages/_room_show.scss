@@ -1,0 +1,30 @@
+.sleep {
+  display: flex;
+  justify-content: space-between;
+}
+
+.card-sleep {
+  overflow: hidden;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  width: 23%;
+  border-radius: 10px;
+}
+
+.card-sleep > img {
+  object-fit: cover;
+  width: 100%;
+  height: 200px;
+}
+
+.card-sleep h6 {
+  font-weight: bold;
+  margin: 0;
+}
+
+.card-sleep p {
+  margin: 0;
+}
+
+.card-sleep .card-sleep-infos {
+  padding: 12px;
+}
