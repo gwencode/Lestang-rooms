@@ -11,6 +11,9 @@ class RoomsController < ApplicationController
     image_files = Dir.glob(Rails.root.join('app', 'assets', 'images', "#{@room.name}", '*.{jpg,jpeg,png,gif,PNG}'))
     @image_paths = image_files.map { |image_path| "#{@room.name}/#{File.basename(image_path)}" }
     @last_image_paths = @image_paths.drop(1)
+
+    sleep_files = Dir.glob(Rails.root.join('app', 'assets', 'images', "#{@room.name}", 'sleep', '*.{jpg,jpeg,png,gif,PNG}'))
+    @sleep_image_paths = sleep_files.map { |image_path| "#{@room.name}/sleep/#{File.basename(image_path)}" }
   end
 
   private
