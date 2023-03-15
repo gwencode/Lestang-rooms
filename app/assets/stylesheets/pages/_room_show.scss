@@ -1,3 +1,5 @@
+// Style for sleep section
+
 .sleep {
   display: flex;
   justify-content: space-between;
@@ -27,4 +29,22 @@
 
 .card-sleep .card-sleep-infos {
   padding: 12px;
+}
+
+// Style for equipment section
+
+.equipment {
+  padding-top: 8px;
+
+  .indisponible {
+    text-decoration: line-through;
+  }
+
+  .with-comment {
+    margin: 0;
+  }
+
+  .comment {
+    font-size: 0.8em;
+  }
 }
