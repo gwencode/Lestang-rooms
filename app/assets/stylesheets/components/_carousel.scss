@@ -11,3 +11,15 @@
     padding: 16px 10vw 48px;
   }
 }
+
+.img-room-carousel {
+  width: 50vw;
+  height: 33vw;
+}
+
+@media (max-width: 1200px) {
+  .img-room-carousel {
+    width: 100vw;
+    height: 67vw;
+  }
+}
