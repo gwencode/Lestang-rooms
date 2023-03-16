@@ -1,3 +1,5 @@
+<%= render "header" %>
+
 <div class="container">
   <div class="text-center my-3">
     <h1>Logements proches de Toulouse</h1>
@@ -15,28 +17,27 @@
 
   <div id="carouselHomePhotos" class="carousel carousel-dark slide my-3" data-bs-ride="carousel">
     <div class="carousel-inner">
+
       <div class="carousel-item active" data-bs-interval="10000">
-        <div class="d-flex justify-content-center gap-3">
-          <%= image_tag "#{@maison.name}/maison 1.PNG", alt: "", class: "w-25" %>
-          <%= image_tag "#{@maison.name}/maison 2.PNG", alt: "", class: "w-25" %>
-          <%= image_tag "#{@maison.name}/maison 3.PNG", alt: "", class: "w-25" %>
+        <div class="d-flex justify-content-center gap-4">
+          <% @two_first_image_paths.each do |image_path| %>
+            <%= image_tag image_path, alt: "", class: "carousel-home-img" %>
+          <% end %>
         </div>
       </div>
-      <div class="carousel-item" data-bs-interval="10000">
-        <div class="d-flex justify-content-center gap-3">
-          <%= image_tag "#{@maison.name}/maison 1.PNG", alt: "", class: "w-25" %>
-          <%= image_tag "#{@maison.name}/maison 2.PNG", alt: "", class: "w-25" %>
-          <%= image_tag "#{@maison.name}/maison 3.PNG", alt: "", class: "w-25" %>
+
+      <% @last_two_image_paths.each do |image_paths| %>
+        <div class="carousel-item" data-bs-interval="10000">
+          <div class="d-flex justify-content-center gap-4">
+            <% image_paths.each do |image_path| %>
+              <%= image_tag image_path, alt: "", class: "carousel-home-img" %>
+            <% end %>
+          </div>
         </div>
-      </div>
-      <div class="carousel-item" data-bs-interval="10000">
-        <div class="d-flex justify-content-center gap-3">
-          <%= image_tag "#{@maison.name}/maison 1.PNG", alt: "", class: "w-25" %>
-          <%= image_tag "#{@maison.name}/maison 2.PNG", alt: "", class: "w-25" %>
-          <%= image_tag "#{@maison.name}/maison 3.PNG", alt: "", class: "w-25" %>
-        </div>
-      </div>
+      <% end %>
+
     </div>
+
     <button class="carousel-control-prev" type="button" data-bs-target="#carouselHomePhotos" data-bs-slide="prev">
       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
       <span class="visually-hidden">Previous</span>
