@@ -1,1 +1,24 @@
 // Specific CSS for your home-page
+
+.header {
+  background-image: asset-url("header.jpg");
+  background-size: cover;
+  background-position: center;
+  padding: 13vh 0;
+  width: 100%;
+  text-align: center;
+
+  // h4 {
+  //   margin: 0;
+  // }
+
+  .header-text {
+    color: white;
+    margin: 0;
+    padding: 8px 0;
+  }
+}
+
+.carousel-home-img {
+  width: 33%;
+}
