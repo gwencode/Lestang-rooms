@@ -4,6 +4,9 @@
 
 import { application } from "./application"
 
+import CarouselHeightController from "./carousel_height_controller"
+application.register("carousel-height", CarouselHeightController)
+
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
 

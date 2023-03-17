@@ -72,24 +72,23 @@
   </div>
 </div>
 
-<div class="carousel-background">
-  <div class="container">
-
-    <div id="carouselHomeAvis" class="carousel carousel-dark slide my-3 py-3" data-bs-ride="carousel">
+<div class="carousel-background mt-3">
+  <div class="container" data-controller="carousel-height">
+    <div id="carouselHomeAvis" class="carousel carousel-dark slide" data-bs-ride="carousel">
       <div class="carousel-indicators">
         <button type="button" data-bs-target="#carouselHomeAvis" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
         <button type="button" data-bs-target="#carouselHomeAvis" data-bs-slide-to="1" aria-label="Slide 2"></button>
         <button type="button" data-bs-target="#carouselHomeAvis" data-bs-slide-to="2" aria-label="Slide 3"></button>
       </div>
-      <div class="carousel-inner text-center">
-        <div class="carousel-item active" data-bs-interval="12000">
-          <h6><%= @reviews.first.content %></h6>
-          <p><%= @reviews.first.author %></p>
+      <div class="carousel-inner text-center" data-carousel-height-target="carousel">
+        <div class="carousel-item active" data-bs-interval="12000" data-carousel-height-target="item">
+          <p><%= @reviews.first.content %></p>
+          <p class="fw-light m-0"><%= @reviews.first.author %></p>
         </div>
         <% @reviews.drop(1).each do |review| %>
-          <div class="carousel-item" data-bs-interval="12000">
-            <h6><%= review.content %></h6>
-            <p><%= review.author %></p>
+          <div class="carousel-item" data-bs-interval="12000"  data-carousel-height-target="item">
+            <p><%= review.content %></p>
+            <p class="fw-light m-0"><%= review.author %></p>
           </div>
         <% end %>
       </div>

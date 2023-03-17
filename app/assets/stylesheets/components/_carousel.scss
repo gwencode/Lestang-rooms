@@ -1,4 +1,10 @@
 #carouselHomeAvis {
+  &.carousel {
+    position: unset !important;
+  }
+}
+
+#carouselHomeAvis {
   // .carousel-control-prev {
   //   left: -70px;
   // }
@@ -7,8 +13,15 @@
   //   right: -70px;
   // }
 
-  .carousel-item {
-    padding: 16px 10vw 48px;
+  .carousel-inner {
+    position: unset !important;
+    padding: 16px 10vw;
+    height: fit-content;
+  }
+
+  .carousel-indicators {
+    bottom: 8px !important;
+    margin: 0 !important;
   }
 }
 
@@ -22,4 +35,10 @@
     width: 100vw;
     height: 67vw;
   }
+}
+
+.carousel-background {
+  background-color: $beige;
+  position: relative;
+  padding: 3vmax 0;
 }
