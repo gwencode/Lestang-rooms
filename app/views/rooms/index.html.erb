@@ -55,7 +55,7 @@
       <div class="separator"></div>
       <%# <p class="p-3"><%= @maison.description</p>  %>
       <p class="p-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, varius a, semper congue, euismod non, mi. Proin porttitor</p>
-      <%= link_to "VOIR LA MAISON", room_path(@maison), class: "btn btn-primary" %>
+      <%= link_to "VOIR LA MAISON", room_path(@maison), class: "button-blue" %>
     </div>
     <%= image_tag "#{@maison.name}/maison 1.PNG", alt: "", class: "w-50" %>
   </div>
@@ -67,47 +67,40 @@
       <div class="separator"></div>
       <%# <p class="p-3"><%= @chambre.description</p>  %>
       <p class="p-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, varius a, semper congue, euismod non, mi. Proin porttitor</p>
-      <%= link_to "VOIR LA CHAMBRE", room_path(@chambre), class: "btn btn-primary" %>
+      <%= link_to "VOIR LA CHAMBRE", room_path(@chambre), class: "button-blue" %>
     </div>
   </div>
-
-<div id="carouselHomeAvis" class="carousel carousel-dark slide my-3 py-3" data-bs-ride="carousel">
-  <div class="carousel-indicators">
-    <button type="button" data-bs-target="#carouselHomeAvis" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-    <button type="button" data-bs-target="#carouselHomeAvis" data-bs-slide-to="1" aria-label="Slide 2"></button>
-    <button type="button" data-bs-target="#carouselHomeAvis" data-bs-slide-to="2" aria-label="Slide 3"></button>
-  </div>
-  <div class="carousel-inner text-center">
-    <div class="carousel-item active" data-bs-interval="12000">
-      <h5>Très bon séjour dans cette maison. On a trouvé la maison plus belle en vrai qu'en photos.
-          Nous y avons passé un très bon Noël en famille.
-          Maison très propre, et principe de la clé électronique très pratique.
-          Merci aussi pour la petite attention à notre arrivée.
-          À recommander pour les familles nombreuses !</h5>
-      <h6>Claude - décembre 2022</h6>
-    </div>
-    <div class="carousel-item" data-bs-interval="12000">
-      <h5>Maison magnifique, décorée avec goût, spacieuse et à deux pas de Toulouse. Les photos ne lui rendent pas justice : elle est encore plus jolie en vrai !
-      La literie est de grande qualité, du matelas jusqu'aux coussins. Tout est super bien expliqué : le fonctionnement de la porte d'entrée, des différents éléments de la cuisine...
-      Merci pour cette belle parenthèse dans notre weekend toulousain.</h5>
-      <h6>Audrey - octobre 2022</h6>
-    </div>
-    <div class="carousel-item" data-bs-interval="12000">
-      <h5>Le logement est fidèle a l'annonce, la communication est fluide et l'arrivée tres bien organisé.
-      Si vous souhaitez passer un séjour sur Toulouse et loger dans un quartier calme et appairant je vous recommande vivement celui-ci.
-      De plus Émilie est très réactive en cas de besoin, pour toutes questions.
-      Ce fut un très bon séjour pour nous qui étions 7 avec tout le nécessaire à disposition.</h5>
-      <h6>Elea - mai 2022</h6>
-    </div>
-  </div>
-  <button class="carousel-control-prev" type="button" data-bs-target="#carouselHomeAvis" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
-  </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#carouselHomeAvis" data-bs-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
-  </button>
 </div>
 
+<div class="carousel-background">
+  <div class="container">
+
+    <div id="carouselHomeAvis" class="carousel carousel-dark slide my-3 py-3" data-bs-ride="carousel">
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselHomeAvis" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselHomeAvis" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselHomeAvis" data-bs-slide-to="2" aria-label="Slide 3"></button>
+      </div>
+      <div class="carousel-inner text-center">
+        <div class="carousel-item active" data-bs-interval="12000">
+          <h6><%= @reviews.first.content %></h6>
+          <p><%= @reviews.first.author %></p>
+        </div>
+        <% @reviews.drop(1).each do |review| %>
+          <div class="carousel-item" data-bs-interval="12000">
+            <h6><%= review.content %></h6>
+            <p><%= review.author %></p>
+          </div>
+        <% end %>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselHomeAvis" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselHomeAvis" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+  </div>
 </div>

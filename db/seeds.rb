@@ -7,6 +7,7 @@
 #   Character.create(name: "Luke", movie: movies.first)
 
 puts "Cleaning database..."
+Review.destroy_all
 Booking.destroy_all
 Room.destroy_all
 User.destroy_all
@@ -119,5 +120,31 @@ booking3.save
 puts "3 bookings created!"
 
 Booking.all.each { |booking| p booking }
+
+puts "Creating reviews..."
+
+author1 = "Claude - décembre 2022"
+content1 = "Très bon séjour dans cette maison. On a trouvé la maison plus belle en vrai qu'en photos.
+Nous y avons passé un très bon Noël en famille.
+Maison très propre, et principe de la clé électronique très pratique.
+Merci aussi pour la petite attention à notre arrivée.
+À recommander pour les familles nombreuses !"
+Review.create(author: author1, content: content1, room_id: maison.id)
+
+author2 = "Audrey - octobre 2022"
+content2 = "Maison magnifique, décorée avec goût, spacieuse et à deux pas de Toulouse. Les photos ne lui rendent pas justice : elle est encore plus jolie en vrai !
+La literie est de grande qualité, du matelas jusqu'aux coussins. Tout est super bien expliqué : le fonctionnement de la porte d'entrée, des différents éléments de la cuisine...
+Merci pour cette belle parenthèse dans notre weekend toulousain."
+Review.create(author: author2, content: content2, room_id: maison.id)
+
+author3 = "Elea - mai 2022"
+content3 = "Le logement est fidèle à l'annonce, la communication est fluide et l'arrivée très bien organisée.
+Si vous souhaitez passer un séjour sur Toulouse et loger dans un quartier calme et appairant je vous recommande vivement celui-ci.
+De plus Émilie est très réactive en cas de besoin, pour toutes questions.
+Ce fût un très bon séjour pour nous qui étions 7 avec tout le nécessaire à disposition."
+Review.create(author: author3, content: content3, room_id: maison.id)
+
+puts "Reviews created!"
+
 
 puts "Finished!"

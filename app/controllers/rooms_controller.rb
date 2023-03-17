@@ -5,6 +5,7 @@ class RoomsController < ApplicationController
   def index
     @maison = Room.first
     @chambre = Room.last
+    @reviews = Review.all
     image_files = Dir.glob(Rails.root.join('app', 'assets', 'images', "Home", '*.{jpg,jpeg,png,gif}'))
     image_paths = image_files.map { |image_path| "Home/#{File.basename(image_path)}" }
     @two_first_image_paths = image_paths.first(2)
