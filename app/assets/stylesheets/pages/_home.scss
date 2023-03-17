@@ -4,21 +4,30 @@
   background-image: asset-url("header.jpg");
   background-size: cover;
   background-position: center;
-  padding: 13vh 0;
+  padding: 11vh 0;
   width: 100%;
   text-align: center;
-
-  // h4 {
-  //   margin: 0;
-  // }
 
   .header-text {
     color: white;
     margin: 0;
     padding: 8px 0;
+    background-color: rgba(255, 255, 255, 0.2);
+    font-weight: bold;
+    text-shadow: 1px 1px 2px black;
   }
 }
 
 .carousel-home-img {
   width: 33%;
+}
+
+h1 {
+  color: $salmon
+}
+
+.separator {
+  border-top: 1px solid $salmon;
+  border-bottom: 1px solid $salmon;
+  margin: 20px 40%;
 }

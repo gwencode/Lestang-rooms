@@ -1,8 +1,9 @@
 <%= render "header" %>
 
 <div class="container">
-  <div class="text-center my-3">
+  <div class="text-center my-3 pt-3">
     <h1>Logements proches de Toulouse</h1>
+    <div class="separator"></div>
     <p>
       Envie de rendre votre séjour à Toulouse INOUBLIABLE et PAISIBLE ?
       <br>→ Vous êtes à la recherche d'une maison tranquille et moins cher qu'un hôtel
@@ -15,7 +16,7 @@
     </div>
   </div>
 
-  <div id="carouselHomePhotos" class="carousel carousel-dark slide my-3" data-bs-ride="carousel">
+  <div id="carouselHomePhotos" class="carousel carousel-dark slide my-3 py-3" data-bs-ride="carousel">
     <div class="carousel-inner">
 
       <div class="carousel-item active" data-bs-interval="10000">
@@ -48,25 +49,29 @@
     </button>
   </div>
 
-  <div class="d-flex align-items-center gap-3 my-3">
+  <div class="d-flex align-items-center gap-3 my-3 py-3">
     <div class="text-center w-50">
       <h1><%= @maison.name %></h1>
-      <p><%= @maison.description %></p>
+      <div class="separator"></div>
+      <%# <p class="p-3"><%= @maison.description</p>  %>
+      <p class="p-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, varius a, semper congue, euismod non, mi. Proin porttitor</p>
       <%= link_to "VOIR LA MAISON", room_path(@maison), class: "btn btn-primary" %>
     </div>
     <%= image_tag "#{@maison.name}/maison 1.PNG", alt: "", class: "w-50" %>
   </div>
 
-  <div class="d-flex align-items-center gap-3 my-3">
+  <div class="d-flex align-items-center gap-3 my-3 py-3">
     <%= image_tag "#{@chambre.name}/chambre 1.PNG", alt: "", class: "w-50" %>
     <div class="text-center w-50">
       <h1><%= @chambre.name %></h1>
-      <p><%= @chambre.description %></p>
+      <div class="separator"></div>
+      <%# <p class="p-3"><%= @chambre.description</p>  %>
+      <p class="p-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, varius a, semper congue, euismod non, mi. Proin porttitor</p>
       <%= link_to "VOIR LA CHAMBRE", room_path(@chambre), class: "btn btn-primary" %>
     </div>
   </div>
 
-<div id="carouselHomeAvis" class="carousel carousel-dark slide" data-bs-ride="carousel">
+<div id="carouselHomeAvis" class="carousel carousel-dark slide my-3 py-3" data-bs-ride="carousel">
   <div class="carousel-indicators">
     <button type="button" data-bs-target="#carouselHomeAvis" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
     <button type="button" data-bs-target="#carouselHomeAvis" data-bs-slide-to="1" aria-label="Slide 2"></button>
