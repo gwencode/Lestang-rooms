@@ -7,10 +7,10 @@ class RoomsController < ApplicationController
     @chambre = Room.last
     @reviews = Review.all
     image_files = Dir.glob(Rails.root.join('app', 'assets', 'images', "Home", '*.{jpg,jpeg,png,gif}'))
-    image_paths = image_files.map { |image_path| "Home/#{File.basename(image_path)}" }
-    @two_first_image_paths = image_paths.first(2)
-    last_image_paths = image_paths.drop(2)
-    @last_two_image_paths = last_image_paths.each_slice(2).to_a
+    @home_images = image_files.map { |image_path| "Home/#{File.basename(image_path)}" }
+    @first_two_home_images = @home_images.first(2)
+    last_home_images = @home_images.drop(2)
+    @last_two_home_images = last_home_images.each_slice(2).to_a
   end
 
   def show

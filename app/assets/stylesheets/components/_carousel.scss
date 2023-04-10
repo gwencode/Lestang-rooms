@@ -1,3 +1,25 @@
+// Carousel Home Images
+
+.carousel-home-img {
+  width: 33%;
+}
+
+.carousel-home-images-little-screen {
+  display: none;
+}
+
+@media (max-width: 992px) {
+  .carousel-home-images-large-screen {
+    display: none;
+  }
+
+  .carousel-home-images-little-screen {
+    display: block;
+  }
+}
+
+// Carousel Home Avis
+
 #carouselHomeAvis {
   &.carousel {
     position: unset !important;

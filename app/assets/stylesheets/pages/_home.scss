@@ -18,16 +18,45 @@
   }
 }
 
-.carousel-home-img {
-  width: 33%;
-}
-
 h1 {
-  color: $blue
+  color: $blue;
+  margin-bottom: 0;
 }
 
 .separator {
   border-top: 1px solid $blue;
   border-bottom: 1px solid $blue;
   margin: 20px 40%;
+}
+
+.house-image-little-screen {
+  display: none;
+}
+
+.home-rooms-description {
+  padding: 1rem;
+}
+
+@media (max-width: 992px) {
+  .house-image-little-screen {
+    display: block;
+  }
+
+  .house-image-big-screen {
+    display: none;
+  }
+
+  .images-room-little-screen {
+    width: 90%;
+    margin: 0 auto;
+    margin-bottom: 16px;
+  }
+
+  .home-rooms-description {
+    padding: 0.5rem;
+  }
+
+  .separator {
+    margin: 12px 35%;
+  }
 }

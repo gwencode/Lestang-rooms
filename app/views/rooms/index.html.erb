@@ -5,68 +5,44 @@
     <h1>Logements proches de Toulouse</h1>
     <div class="separator"></div>
     <p>
-      Envie de rendre votre séjour à Toulouse INOUBLIABLE et PAISIBLE ?
+      Envie de rendre votre séjour à Toulouse <strong>inoubliable</strong> et <strong>paisible</strong> ?
       <br>→ Vous êtes à la recherche d'une maison tranquille et moins cher qu'un hôtel
       <br>→ Vous aimeriez connaître tous les bons plans pour profiter au maximum de votre séjour
     </p>
     <div>
-      <p>Pour découvrir Toulouse, hors des sentiers battus, voici ce que nous vous proposons:</p>
-      <p>- Une MAISON ENTIERE privative située dans un quartier calme et verdoyant, avec jusque 8 couchages</p>
-      <p>- Une CHAMBRE privative située dans ce logement, partagé avec les propriétaires, avec 2 couchages</p>
+      <p>Pour découvrir Toulouse, hors des sentiers battus, voici ce que nous vous proposons :</p>
+      <p>- Une <strong>maison entière</strong> privative située dans un quartier calme et verdoyant, avec jusque 8 couchages</p>
+      <p>- Une <strong>chambre</strong> privative située dans ce logement, partagé avec les propriétaires, avec 2 couchages</p>
     </div>
   </div>
 
-  <div id="carouselHomePhotos" class="carousel carousel-dark slide my-3 py-3" data-bs-ride="carousel">
-    <div class="carousel-inner">
-
-      <div class="carousel-item active" data-bs-interval="10000">
-        <div class="d-flex justify-content-center gap-4">
-          <% @two_first_image_paths.each do |image_path| %>
-            <%= image_tag image_path, alt: "", class: "carousel-home-img" %>
-          <% end %>
-        </div>
-      </div>
-
-      <% @last_two_image_paths.each do |image_paths| %>
-        <div class="carousel-item" data-bs-interval="10000">
-          <div class="d-flex justify-content-center gap-4">
-            <% image_paths.each do |image_path| %>
-              <%= image_tag image_path, alt: "", class: "carousel-home-img" %>
-            <% end %>
-          </div>
-        </div>
-      <% end %>
-
-    </div>
-
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselHomePhotos" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselHomePhotos" data-bs-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
-    </button>
+  <div class="carousel-home-images-large-screen">
+    <%= render "carousel_home_images_large_screen", first_two_home_images: @first_two_home_images, last_two_home_images: @last_two_home_images %>
   </div>
 
-  <div class="d-flex align-items-center gap-3 my-3 py-3">
-    <div class="text-center w-50">
+  <div class="carousel-home-images-little-screen">
+    <%= render "carousel_home_images_little_screen", home_images: @home_images %>
+  </div>
+
+  <div class="d-flex align-items-center my-3 py-3 row">
+    <%= image_tag "#{@maison.name}/maison 1.PNG", alt: "", class: "col-12 col-lg-6 house-image-little-screen images-room-little-screen" %>
+    <div class="text-center col-12 col-lg-6">
       <h1><%= @maison.name %></h1>
       <div class="separator"></div>
-      <%# <p class="p-3"><%= @maison.description</p>  %>
-      <p class="p-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, varius a, semper congue, euismod non, mi. Proin porttitor</p>
+      <%# <p class="home-rooms-description"><%= @maison.description</p>  %>
+      <p class="home-rooms-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, varius a, semper congue, euismod non, mi. Proin porttitor</p>
       <%= link_to "VOIR LA MAISON", room_path(@maison), class: "button-blue" %>
     </div>
-    <%= image_tag "#{@maison.name}/maison 1.PNG", alt: "", class: "w-50" %>
+    <%= image_tag "#{@maison.name}/maison 1.PNG", alt: "", class: "col-12 col-lg-6 house-image-big-screen" %>
   </div>
 
-  <div class="d-flex align-items-center gap-3 my-3 py-3">
-    <%= image_tag "#{@chambre.name}/chambre 1.PNG", alt: "", class: "w-50" %>
-    <div class="text-center w-50">
+  <div class="d-flex align-items-center my-3 py-3 row">
+    <%= image_tag "#{@chambre.name}/chambre 1.PNG", alt: "", class: "col-12 col-lg-6 images-room-little-screen" %>
+    <div class="text-center col-12 col-lg-6">
       <h1><%= @chambre.name %></h1>
       <div class="separator"></div>
-      <%# <p class="p-3"><%= @chambre.description</p>  %>
-      <p class="p-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, varius a, semper congue, euismod non, mi. Proin porttitor</p>
+      <%# <p class="home-rooms-description"><%= @chambre.description</p>  %>
+      <p class="home-rooms-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, varius a, semper congue, euismod non, mi. Proin porttitor</p>
       <%= link_to "VOIR LA CHAMBRE", room_path(@chambre), class: "button-blue" %>
     </div>
   </div>
