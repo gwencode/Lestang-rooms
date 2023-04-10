@@ -59,7 +59,12 @@
   }
 }
 
-.carousel-background {
+.carousel-background-home-images {
+  background-color: $beige;
+  padding: 4px 0;
+  }
+
+.carousel-background-reviews {
   background-color: $beige;
   position: relative;
   padding: 3vmax 0;

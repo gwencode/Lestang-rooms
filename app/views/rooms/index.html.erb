@@ -9,21 +9,33 @@
       <br>→ Vous êtes à la recherche d'une maison tranquille et moins cher qu'un hôtel
       <br>→ Vous aimeriez connaître tous les bons plans pour profiter au maximum de votre séjour
     </p>
+  </div>
+
+</div>
+
+<div class="carousel-home-images-large-screen carousel-background-home-images">
+  <div class="container">
+    <%= render "carousel_home_images_large_screen", first_two_home_images: @first_two_home_images, last_two_home_images: @last_two_home_images %>
+  </div>
+</div>
+
+<div class="carousel-home-images-little-screen">
+  <div class="container">
+    <%= render "carousel_home_images_little_screen", home_images: @home_images %>
+  </div>
+</div>
+
+<div class="container">
+  <div class="text-center my-3">
     <div>
-      <p>Pour découvrir Toulouse, hors des sentiers battus, voici ce que nous vous proposons :</p>
+      <p>Pour découvrir Toulouse, hors des sentiers battus, nous vous proposons :</p>
       <p>- Une <strong>maison entière</strong> privative située dans un quartier calme et verdoyant, avec jusque 8 couchages</p>
       <p>- Une <strong>chambre</strong> privative située dans ce logement, partagé avec les propriétaires, avec 2 couchages</p>
     </div>
   </div>
+</div>
 
-  <div class="carousel-home-images-large-screen">
-    <%= render "carousel_home_images_large_screen", first_two_home_images: @first_two_home_images, last_two_home_images: @last_two_home_images %>
-  </div>
-
-  <div class="carousel-home-images-little-screen">
-    <%= render "carousel_home_images_little_screen", home_images: @home_images %>
-  </div>
-
+<div class="container">
   <div class="d-flex align-items-center my-3 py-3 row">
     <%= image_tag "#{@maison.name}/maison 1.PNG", alt: "", class: "col-12 col-lg-6 house-image-little-screen images-room-little-screen" %>
     <div class="text-center col-12 col-lg-6">
@@ -46,6 +58,7 @@
       <%= link_to "VOIR LA CHAMBRE", room_path(@chambre), class: "button-blue" %>
     </div>
   </div>
+
 </div>
 
 <%= render "carousel_home_reviews", reviews: @reviews %>
