@@ -1,3 +1,24 @@
+// Style for room details section
+
+#room-details {
+  background-color: $blue;
+  text-align: center;
+  color: white;
+}
+
+#room-sub-details {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+@media (max-width: 576px) {
+  #room-sub-details {
+    flex-wrap: wrap;
+    gap: 0 0.5rem;
+  }
+}
+
 // Style for sleep section
 
 .sleep {

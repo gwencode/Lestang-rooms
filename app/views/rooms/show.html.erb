@@ -1,13 +1,17 @@
-<div class="container">
-  <div class="my-3">
-    <h1><%= @room.name %></h1>
-    <div class="d-flex gap-3">
-      <%= @room.max_guests > 1 ? "#{@room.max_guests} voyageurs" : "1 voyageur"%> maximum -
-      <%= @room.bedrooms > 1 ? "#{@room.bedrooms} chambres" : "1 chambre"%> -
-      <%= @room.beds > 1 ? "#{@room.beds} lits" : "1 lit"%> -
-      <%= @room.bathrooms > 1 ? "#{@room.bathrooms} salles de bain" : "1 salle de bain partagée"%>
-    </div>
+<div class="p-3" id="room-details">
+  <h1><%= @room.name %></h1>
+  <div id="room-sub-details">
+    <p class="m-0"><%= @room.max_guests > 1 ? "#{@room.max_guests} voyageurs" : "1 voyageur"%> maximum</p>
+    <p class="m-0">|</p>
+    <p class="m-0"><%= @room.bedrooms > 1 ? "#{@room.bedrooms} chambres" : "1 chambre"%></p>
+    <p class="m-0">|</p>
+    <p class="m-0"><%= @room.beds > 1 ? "#{@room.beds} lits" : "1 lit"%></p>
+    <p class="m-0">|</p>
+    <p class="m-0"><%= @room.bathrooms > 1 ? "#{@room.bathrooms} salles de bain" : "1 salle de bain partagée"%></p>
   </div>
+</div>
+
+<div class="container">
 
   <%= render "carousel_pictures", id: @room.id %>
 
