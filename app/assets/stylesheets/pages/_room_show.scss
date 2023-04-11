@@ -80,12 +80,12 @@
 
 // Style for equipment section
 
+.indisponible {
+  text-decoration: line-through;
+}
+
 .equipment {
   padding-top: 8px;
-
-  .indisponible {
-    text-decoration: line-through;
-  }
 
   .with-comment {
     margin: 0;
