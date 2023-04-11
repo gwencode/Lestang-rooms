@@ -24,6 +24,8 @@
 .sleep {
   display: flex;
   justify-content: space-between;
+  gap: 16px 0;
+  margin: 0;
 }
 
 .card-sleep {
@@ -31,6 +33,30 @@
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   width: 23%;
   border-radius: 10px;
+}
+
+@media (max-width: 992px) {
+  .card-sleep {
+    width: 31%;
+  }
+}
+
+@media (max-width: 768px) {
+  .card-sleep {
+    width: 48%;
+  }
+}
+
+@media (max-width: 576px) {
+  .card-sleep {
+    width: 59%;
+  }
+}
+
+@media (max-width: 476px) {
+  .card-sleep {
+    width: 70%;
+  }
 }
 
 .card-sleep > img {

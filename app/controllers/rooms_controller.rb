@@ -1,3 +1,5 @@
+require_relative "../services/rooms_images_legends_service"
+
 class RoomsController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[index show]
   before_action :set_room, only: [:show]
@@ -18,8 +20,8 @@ class RoomsController < ApplicationController
     @image_paths = image_files.map { |image_path| "#{@room.name}/#{File.basename(image_path)}" }
     @last_image_paths = @image_paths.drop(1)
 
-    sleep_files = Dir.glob(Rails.root.join('app', 'assets', 'images', "#{@room.name}", 'sleep', '*.{jpg,jpeg,png,gif}'))
-    @sleep_image_paths = sleep_files.map { |image_path| "#{@room.name}/sleep/#{File.basename(image_path)}" }
+    sleep_files = Dir.glob(Rails.root.join('app', 'assets', 'images', "#{@room.name}", 'sleep', '*.{jpg,jpeg,png,PNG,gif}'))
+    @sleep_images = sleep_files.map { |image_path| "#{@room.name}/sleep/#{File.basename(image_path)}" }
   end
 
   private
