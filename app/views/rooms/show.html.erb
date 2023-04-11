@@ -94,6 +94,11 @@
 
       <div class="dates my-3 col-12 col-lg-5">
         <h3 class="text-blue">Les +</h3>
+        <% if @room.name == "La Maison" %>
+          <%= render "more_maison" %>
+        <% elsif @room.name == "La Chambre" %>
+          <%= render "more_chambre" %>
+        <% end %>
       </div>
 
     </div>
