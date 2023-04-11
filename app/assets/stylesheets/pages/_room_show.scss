@@ -1,3 +1,16 @@
+// General style
+
+.indisponible {
+  text-decoration: line-through;
+}
+.with-comment {
+  margin: 0;
+}
+
+.comment {
+  font-size: 0.8em;
+}
+
 // Style for room details section
 
 #room-details {
@@ -80,18 +93,6 @@
 
 // Style for equipment section
 
-.indisponible {
-  text-decoration: line-through;
-}
-
 .equipment {
   padding-top: 8px;
-
-  .with-comment {
-    margin: 0;
-  }
-
-  .comment {
-    font-size: 0.8em;
-  }
 }

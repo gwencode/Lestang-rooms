@@ -104,6 +104,16 @@
     </div>
   </div>
 
+    <div class="my-4">
+    <h3 class="text-blue">A savoir</h3>
+    <div class="row to-know">
+      <%= render "to_know",
+        arrival_hour: @room.arrival_hour,
+        departure_hour: @room.departure_hour,
+        max_guests: @room.max_guests %>
+    </div>
+  </div>
+
 </div>
 
 <div class="d-none">
