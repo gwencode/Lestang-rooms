@@ -55,11 +55,7 @@
   <div class="my-4">
     <h3 class="text-blue">Où vous dormirez</h3>
     <div class="row sleep">
-      <% if @room.name == "La Maison" %>
-        <%= render "sleep_maison", sleep_images: @sleep_images %>
-      <% elsif @room.name == "La Chambre" %>
-        <%= render "sleep_chambre", sleep_images: @sleep_images %>
-      <% end %>
+      <%= render "sleep", sleep_images: @sleep_images %>
     </div>
   </div>
 
