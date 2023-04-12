@@ -89,6 +89,15 @@
 
 .equipment {
   padding-top: 8px;
+
+  i {
+    position: relative;
+  }
+
+  .stuff {
+    position : absolute;
+    left: 45px;
+  }
 }
 
 // Style for To Know section
