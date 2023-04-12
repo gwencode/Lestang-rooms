@@ -1,16 +1,40 @@
+<div class="p-3 header-blue">
+  <h1 class="m-3">Où nous trouver</h1>
+</div>
+
 <div class="container">
-  <div class="text-center my-3">
-    <h1>Où nous trouver</h1>
+
+  <div class="my-3">
     <div style="width: 100%; height: 80vh;"
          data-controller="map"
          data-map-markers-value="<%= @markers.to_json %>"
          data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
     </div>
-    <h3>Saint-Jean, Occitanie, France</h3>
-    <p>A proximité immédiate du Domaine de Preissac (moins de 2km en voiture et environ 15-20min à pied).</p>
-    <p>Quartier résidentiel à proximité immédiate du Lac de la Tuilerie.</p>
-    <h3>Se déplacer</h3>
-    <p>Pour vous rendre sur Toulouse, vous avez le choix entre rejoindre la ville en voiture ou en bus, le terminus de la ligne 73 se situant à 100m de la maison (de 6h à 21h).</p>
+  </div>
+
+  <div class="row">
+
+    <div class="col-12 col-md-5">
+      <h3 class="text-blue">Saint-Jean, Occitanie, France</h3>
+      <p>A proximité immédiate du Domaine de Preissac (moins de 2km en voiture et environ 15-20min à pied).</p>
+      <p>Quartier résidentiel à proximité immédiate du Lac de la Tuilerie.</p>
+    </div>
+
+    <div class="col-12 col-md-7">
+      <h3 class="text-blue">Se déplacer</h3>
+      <p>
+        Pour rejoindre le centre ville de Toulouse, vous pouvez utiliser :
+        <br>- le bus : terminus de la ligne 73 (de 6h à 21h) se situant à 100m de la maison et vous conduit au terminus de la ligne de métro B.
+        <br>
+        <span class="collapse" id="collapseText">
+          - votre voiture et la garer dans un des innombrables parking en centre ville ou dans un des parking relais d'une station de métro. L'accès parking est inclus dans le ticket de métro, il faut juste penser à le garder avec soi quand on quitte le parking. Attention, Tisseo n'accepte pas que l'on laisse sa voiture toute la nuit sur un de leurs parkings et facture la prestation.
+        </span>
+        <a class="text-black fw-bold" data-bs-toggle="collapse" href="#collapseText" role="button" aria-expanded="false" aria-controls="collapseText">
+          Lire la suite
+        </a>
+      </p>
+    </div>
+
     <h3>A proximité</h3>
     <p>Aéroport : 20min</p>
     <p>Gare TGV: 20min</p>
@@ -21,4 +45,5 @@
     <p>Cité de l'Espace : 15min</p>
     <p>Parc des Exmpositions : 20min</p>
   </div>
+
 </div>
