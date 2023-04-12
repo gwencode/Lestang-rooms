@@ -14,19 +14,13 @@
 // Style for room details section
 
 #room-details {
-  background-color: $blue;
-  text-align: center;
-  color: white;
-}
-
-#room-sub-details {
   display: flex;
   justify-content: center;
   gap: 1rem;
 }
 
 @media (max-width: 576px) {
-  #room-sub-details {
+  #room-details {
     flex-wrap: wrap;
     gap: 0 0.5rem;
   }
@@ -95,4 +89,10 @@
 
 .equipment {
   padding-top: 8px;
+}
+
+// Style for To Know section
+
+.to-know {
+  gap: 16px 0;
 }

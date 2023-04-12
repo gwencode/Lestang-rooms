@@ -1,6 +1,6 @@
-<div class="p-3" id="room-details">
+<div class="p-3 header-blue">
   <h1><%= @room.name %></h1>
-  <div id="room-sub-details">
+  <div id="room-details">
     <p class="m-0"><%= @room.max_guests > 1 ? "#{@room.max_guests} voyageurs" : "1 voyageur"%> maximum</p>
     <p class="m-0">|</p>
     <p class="m-0"><%= @room.bedrooms > 1 ? "#{@room.bedrooms} chambres" : "1 chambre"%></p>
@@ -52,45 +52,44 @@
 
   </div>
 
-  <div class="my-4">
+  <div class="my-3">
     <h3 class="text-blue">Où vous dormirez</h3>
     <div class="row sleep">
       <%= render "sleep", sleep_images: @sleep_images %>
     </div>
   </div>
 
-  <div class="my-4">
-    <div class="row">
+  <div class="row">
 
-      <div class="room-equipment col-12 col-lg-7 my-3">
-        <h3 class="text-blue">Les équipements</h3>
-        <% if @room.name == "La Maison" %>
-          <%= render "short_equipment_maison" %>
-        <% elsif @room.name == "La Chambre" %>
-          <%= render "short_equipment_chambre" %>
-        <% end %>
-        <a href="" class="button-blue" data-bs-toggle="modal" data-bs-target="#equipmentModal">Afficher tous les équipements</a>
+    <div class="room-equipment col-12 col-lg-7 my-3">
+      <h3 class="text-blue">Les équipements</h3>
+      <% if @room.name == "La Maison" %>
+        <%= render "short_equipment_maison" %>
+      <% elsif @room.name == "La Chambre" %>
+        <%= render "short_equipment_chambre" %>
+      <% end %>
+      <a href="" class="button-blue" data-bs-toggle="modal" data-bs-target="#equipmentModal">Afficher tous les équipements</a>
 
-        <!-- Modal -->
-        <div class="modal fade" id="equipmentModal" tabindex="-1" aria-labelledby="equipmentModalLabel" aria-hidden="true">
-          <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
-            <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
-              <div class="modal-body">
-                <% if @room.name == "La Maison" %>
-                  <%= render "equipment_maison" %>
-                <% elsif @room.name == "La Chambre" %>
-                  <%= render "equipment_chambre" %>
-                <% end %>
-              </div>
+      <!-- Modal -->
+      <div class="modal fade" id="equipmentModal" tabindex="-1" aria-labelledby="equipmentModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <% if @room.name == "La Maison" %>
+                <%= render "equipment_maison" %>
+              <% elsif @room.name == "La Chambre" %>
+                <%= render "equipment_chambre" %>
+              <% end %>
             </div>
           </div>
         </div>
-
-
       </div>
+
+
+    </div>
 
       <div class="dates my-3 col-12 col-lg-5">
         <h3 class="text-blue">Les +</h3>
@@ -102,10 +101,9 @@
       </div>
 
     </div>
-  </div>
 
-    <div class="my-4">
-    <h3 class="text-blue">A savoir</h3>
+    <div class="my-3">
+    <h3 class="text-blue"><%= "à".upcase %> savoir</h3>
     <div class="row to-know">
       <%= render "to_know",
         arrival_hour: @room.arrival_hour,
