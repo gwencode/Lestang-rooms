@@ -1,22 +1,20 @@
 <h3 class="text-blue">Les équipements</h3>
 
-<div class="equipment py-2">
+<div class="equipment">
   <h5 class="fw-bold text-blue">Salle de bain</h5>
   <p><i class="fa-solid fa-bath"></i><span class="stuff">Baignoire</span></p>
-  <p><%= image_tag "icons/hairdryer.png", alt: "", width: 18 %><span class="stuff">Sèche-cheveux</span></p>
-  <p><i class="fa-solid fa-broom"></i><span class="stuff">Produits de nettoyage</span></p>
-  <p><i class="fa-solid fa-pump-soap"></i><span class="stuff">Shampooing</span></p>
   <p><i class="fa-solid fa-soap"></i><span class="stuff">Savon pour le corps</span></p>
   <p><i class="fa-solid fa-fire-flame-simple"></i><span class="stuff">Eau chaude</span></p>
 </div>
 
 <div class="equipment">
   <h5 class="fw-bold text-blue">Chambre et linge</h5>
-  <p><%= image_tag "icons/washing-machine.png", alt: "", width: 18 %><span class="stuff">Lave-linge : dans le logement</span></p>
+  <p><%= image_tag "icons/washing-machine.png", alt: "", width: 18 %><span class="stuff">Lave-linge (Gratuit) : dans le logement</span></p>
   <p class="with-comment"><i class="fa-solid fa-toilet-paper"></i><span class="stuff">Équipements de base</span></p>
   <p class="comment">Serviettes, draps, savon et papier toilettes</p>
   <p class="with-comment"><i class="fa-solid fa-bed"></i><span class="stuff">Draps</span></p>
   <p class="comment">Linge de lit en coton</p>
+  <p><i class="fa-solid fa-mattress-pillow"></i><span class="stuff">Oreillers et couvertures supplémentaires</span></p>
   <p><%= image_tag "icons/blinds.png", alt: "", width: 18 %><span class="stuff">Stores</span></p>
   <p><%= image_tag "icons/iron.png", alt: "", width: 18 %><span class="stuff">Fer à repasser</span></p>
   <p><%= image_tag "icons/cintre.png", alt: "", width: 18 %><span class="stuff">Étendoir à linge</span></p>
@@ -24,30 +22,27 @@
 </div>
 
 <div class="equipment">
-  <h5 class="fw-bold text-blue">Famille</h5>
-  <p><i class="fa-solid fa-dice"></i><span class="stuff">Jeux de plateau</span></p>
-</div>
-<div class="equipment">
   <h5 class="fw-bold text-blue">Chauffage et climatisation</h5>
   <p><i class="fa-regular fa-snowflake"></i><span class="stuff">Climatisation centrale</span></p>
-  <p><%= image_tag "icons/ventilation.png", alt: "", width: 18 %><span class="stuff">Ventilateurs portables</span></p>
-  <p><i class="fa-solid fa-temperature-three-quarters"></i><span class="stuff">Chauffage central</span></p>
-  <p><i class="fa-solid fa-temperature-arrow-up"></i><span class="stuff">Chauffage d'appoint</span></p>
+  <p><i class="fa-solid fa-temperature-three-quarters"></i><span class="stuff">Chauffage radiant</span></p>
 </div>
+
 <div class="equipment">
   <h5 class="fw-bold text-blue">Sécurité à la maison</h5>
   <p><%= image_tag "icons/camera.png", alt: "", width: 18 %><span class="stuff">Caméras de surveillance extérieures</span></p>
   <p><%= image_tag "icons/fire-alarm.png", alt: "", width: 18 %><span class="stuff">Détecteur de fumée</span></p>
-  <p><i class="fa-solid fa-kit-medical"></i><span class="stuff">Kit de premiers secours</span></p>
+  <p><%= image_tag "icons/door-handle.png", alt: "", width: 18 %><span class="stuff">Porte de la chambre avec verrou fermant à clef</span></p>
 </div>
+
 <div class="equipment">
   <h5 class="fw-bold text-blue">Internet et bureau</h5>
   <p><i class="fa-solid fa-network-wired"></i><span class="stuff">Connexion Ethernet</span></p>
-  <p class="with-comment"><i class="fa-solid fa-wifi"></i><span class="stuff">Vitesse du réseau wifi : 44 Mbps</span></p>
-  <p class="comment">Vérifié par un test de débit. Il est possible de regarder des vidéos 4K en streaming et de participer à des appels vidéo.</span></p>
+  <p class="with-comment"><i class="fa-solid fa-wifi"></i><span class="stuff">Wifi rapide (68 Mbit/s)</span></p>
+  <p class="comment">Vérifié par un test de débit. Il est possible de regarder des vidéos 4K en streaming et de participer à des appels vidéo sur plusieurs appareils.</span></p>
   <p class="with-comment"><%= image_tag "icons/desk.png", alt: "", width: 18 %><span class="stuff">Espace de travail dédié</span></p>
   <p class="comment">Dans un espace commun</span></p>
 </div>
+
 <div class="equipment">
   <h5 class="fw-bold text-blue">Cuisine et salle à manger</h5>
   <p class="with-comment"><i class="fa-solid fa-utensils"></i><span class="stuff">Cuisine</span></p>
@@ -72,6 +67,7 @@
   <p><i class="fa-solid fa-mug-hot"></i><span class="stuff">Café</span></p>
   <p><%= image_tag "icons/kitchen-table.png", alt: "", width: 18 %><span class="stuff">Table à manger</span></p>
 </div>
+
 <div class="equipment">
   <h5 class="fw-bold text-blue">Extérieur</h5>
   <p class="with-comment"><i class="fa-solid fa-leaf"></i><span class="stuff">Arrière-cour privée - Clôture intégrale</span></p>
@@ -80,15 +76,26 @@
   <p><%= image_tag "icons/outdoor-furniture.png", alt: "", width: 18 %><span class="stuff">Espace repas en plein air</span></p>
   <p><%= image_tag "icons/barbecue.png", alt: "", width: 18 %><span class="stuff">Barbecue</span></p>
 </div>
+
 <div class="equipment">
   <h5 class="fw-bold text-blue">Parking et installations</h5>
   <p><i class="fa-solid fa-car"></i><span class="stuff">Parking gratuit sur place</span></p>
   <p><i class="fa-solid fa-car"></i><span class="stuff">Parking gratuit dans la rue</span></p>
 </div>
+
+<div class="equipment">
+  <h5 class="fw-bold text-blue">Services</h5>
+  <p><i class="fa-solid fa-key"></i><span class="stuff">Arrivée autonome</span></p>
+  <p class="with-comment"><%= image_tag "icons/digital-door.png", alt: "", width: 18 %><span class="stuff">Serrure numérique</span></p>
+  <p class="comment">Accédez à la maison avec un code</p>
+</div>
+
 <div class="equipment">
   <h5 class="fw-bold text-blue">Non inclus</h5>
   <p><i class="fa-solid fa-tv"></i><span class="stuff indisponible">Télévision</span></p>
+  <p><%= image_tag "icons/hairdryer.png", alt: "", width: 18 %><span class="stuff indisponible">Sèche-cheveux</span></p>
   <p class="with-comment"><%= image_tag "icons/smoke-detector.png", alt: "", width: 18 %><span class="stuff indisponible">Détecteur de monoxyde de carbone</span></p>
-  <p class="comment">Le logement n'est pas équipé de détecteur de monoxyde de carbone.</p>
+  <p class="comment">Détecteur de monoxyde de carbone non nécessaire. Contactez-nous si vous avez des questions.</p>
+  <p><i class="fa-solid fa-pump-soap"></i><span class="stuff indisponible">Shampooing</span></p>
   <p><i class="fa-solid fa-door-closed"></i><span class="stuff indisponible">Entrée privée</span></p>
 </div>
