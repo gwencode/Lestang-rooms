@@ -22,6 +22,8 @@ class RoomsController < ApplicationController
 
     sleep_files = Dir.glob(Rails.root.join('app', 'assets', 'images', "#{@room.name}", 'sleep', '*.{jpg,jpeg,png,PNG,gif}'))
     @sleep_images = sleep_files.map { |image_path| "#{@room.name}/sleep/#{File.basename(image_path)}" }
+
+    @booking = Booking.new(room: @room)
   end
 
   private

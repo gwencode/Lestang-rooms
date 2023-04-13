@@ -48,6 +48,11 @@
 
     <div class="dates py-3 col-12 col-lg-5">
       <h3 class="text-blue">Voir les disponibilités</h3>
+      <%= simple_form_for([@room, @booking], url: room_bookings_path(@room), method: :post) do |f| %>
+        <%= f.input :start_date, as: :string %>
+        <%= f.input :end_date, as: :string %>
+        <%= f.submit 'Book now' %>
+      <% end %>
     </div>
 
   </div>
