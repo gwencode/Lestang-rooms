@@ -56,9 +56,11 @@ puts "2 normal users created!"
 
 puts "Creating 2 rooms..."
 
+description_maison = "En séjournant dans notre maison, vous pourrez profiter d'un cadre de vie chaleureux et convivial, avec une décoration soignée qui reflète notre personnalité et notre style de vie. Notre maison est équipée de tout ce dont vous aurez besoin pour passer un séjour confortable, notamment une cuisine entièrement équipée, une salle de bains moderne et des chambres confortables."
+
 maison = Room.create(
   name: "La Maison",
-  description: "Description 1",
+  description: description_maison,
   max_guests: 8,
   price_per_day: 75,
   arrival_hour: "à partir de 14:00",
@@ -68,9 +70,11 @@ maison = Room.create(
   bathrooms: 2
 )
 
+description_chambre = "Nous proposons une chambre confortable, lumineuse et climatisée, équipée d'un lit Queen size et d'une commode pour ranger vos effets personnels. Vous aurez également accès au reste des parties communes partagées avec nous."
+
 chambre = Room.create(
   name: "La Chambre",
-  description: "Description 2",
+  description: description_chambre,
   max_guests: 2,
   price_per_day: 25,
   arrival_hour: "entre 18:00 et 22:00",
