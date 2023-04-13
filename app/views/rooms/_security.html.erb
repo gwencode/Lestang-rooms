@@ -1,18 +1,32 @@
-<h3>Sécurité et logement</h3>
-<p>Évitez les surprises en consultant ces informations importantes concernant le logement de votre hôte.</p>
+<h3 class="text-blue">Sécurité et logement</h3>
+<p>Évitez les surprises en consultant ces informations importantes concernant notre logement.</p>
 
-<h5>Consignes de sécurité</h5>
-<p class="with-comment">Ne convient pas aux bébés (moins de 2 ans)</p>
-<p class="comment">Le logement ne dispose pas de lit bébé, n'est pas équipé de protection bébé au niveau des prises. Convient pour un nourrisson.</p>
-<p>Lac, rivière ou autre étendue d'eau à proximité</p>
-<p>Aire de jeux ou structure d'escalade</p>
+<div class="short-equipment">
+  <h5 class="fw-bold text-blue">Consignes de sécurité</h5>
+  <p class="with-comment"><i class="fa-solid fa-baby" style="font-size: 1.4em"></i><span class="stuff indisponible">Ne convient pas aux bébés (moins de 2 ans)</span></p>
+  <p class="comment">Le logement ne dispose pas de lit bébé, n'est pas équipé de protection bébé au niveau des prises. Convient pour un nourrisson.</p>
+  <p><i class="fa-solid fa-triangle-exclamation"></i><span class="stuff">Lac, rivière ou autre étendue d'eau à proximité</span></p>
+  <p><i class="fa-solid fa-triangle-exclamation"></i><span class="stuff">Aire de jeux ou structure d'escalade</span></p>
+</div>
 
-<h5>Dispositifs de sécurité</h5>
-<p>Caméra de surveillance extérieure</p>
-<p class="indisponible">Détecteur de monoxyde de carbone</p>
-<p>Détecteur de fumée installé</p>
+<div class="short-equipment">
+  <h5 class="fw-bold text-blue">Dispositifs de sécurité</h5>
+  <p><%= image_tag "icons/camera.png", alt: "", width: 17 %><span class="stuff">Caméras de surveillance extérieures</span></p>
+  <p class="with-comment"><%= image_tag "icons/smoke-detector.png", alt: "", width: 17 %><span class="stuff indisponible">Détecteur de monoxyde de carbone</span></p>
+  <p class="comment">Un tel dispositif n'est pas nécessaire dans notre logement. Par exemple, tous les appareils sont électriques et ne sont pas alimentés au gaz, à l'essence, au kérosène ou au bois.</p>
+  <p><%= image_tag "icons/smoke-detector.png", alt: "", width: 17 %><span class="stuff">Détecteur de fumée installé</span></p>
+</div>
 
-<h5>Informations sur le logement</h5>
-<p class="with-comment">Présence d'animaux de compagnie sur place</p>
-<p class="comment">“Krampouz, notre chat noir et tigré, vit avec nous dans notre maison. Il est possible que vous le voyez pendant votre séjour.”</p>
-<p>Le logement comprend des marches ou escaliers</p>
+<div class="short-equipment">
+  <h5 class="fw-bold text-blue">Informations sur le logement</h5>
+
+  <% if @room.name == "La Chambre" %>
+    <p class="with-comment"><i class="fa-solid fa-couch" style="font-size: 0.9em"></i><span class="stuff">Certains espaces sont partagés</span></p>
+    <p class="comment">Nous pouvons mettre à disposition une étagère du frigo si besoin.</p>
+  <% end %>
+
+  <p class="with-comment"><i class="fa-solid fa-cat" style="font-size: 1.1em"></i><span class="stuff">Présence d'un chat sur place</span></p>
+  <p class="comment">Krampouz, notre chat noir et tigré, vit avec nous dans notre maison. Il est possible que vous le voyez pendant votre séjour. Il est très peu présent mais il peu y avoir quelques poils de chat dans la maison (pas dans les chambres).</p>
+  <p class="with-comment"><i class="fa-solid fa-stairs" style="font-size: 0.9em"></i><span class="stuff">Le logement comprend des marches et escaliers</span></p>
+  <p class="comment">3 marches pour accéder à la maison. 1 escalier pour accéder à la chambre qui se trouve à l'étage.</p>
+</div>
