@@ -17,7 +17,7 @@
 
   <div class="row">
 
-    <div class="room-description col-12 col-lg-7 my-3">
+    <div class="room-description col-12 col-lg-7 py-3">
       <% if @room.name == "La Maison" %>
         <%= render "short_description_maison" %>
       <% elsif @room.name == "La Chambre" %>
@@ -46,13 +46,13 @@
 
     </div>
 
-    <div class="dates my-3 col-12 col-lg-5">
+    <div class="dates py-3 col-12 col-lg-5">
       <h3 class="text-blue">Voir les disponibilités</h3>
     </div>
 
   </div>
 
-  <div class="my-3">
+  <div class="py-3">
     <h3 class="text-blue">Où vous dormirez</h3>
     <div class="row sleep">
       <%= render "sleep", sleep_images: @sleep_images %>
@@ -61,7 +61,7 @@
 
   <div class="row">
 
-    <div class="room-equipment col-12 col-lg-8 my-3">
+    <div class="room-equipment col-12 col-lg-8 py-3">
       <h3 class="text-blue">Les équipements</h3>
       <% if @room.name == "La Maison" %>
         <%= render "short_equipment_maison" %>
@@ -70,7 +70,7 @@
       <% end %>
       <a href="" class="button-blue" data-bs-toggle="modal" data-bs-target="#equipmentModal">Afficher tous les équipements</a>
 
-      <!-- Modal -->
+      <!-- Modal Equipments -->
       <div class="modal fade" id="equipmentModal" tabindex="-1" aria-labelledby="equipmentModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
           <div class="modal-content">
@@ -88,21 +88,20 @@
         </div>
       </div>
 
-
     </div>
 
-      <div class="dates my-3 col-12 col-lg-4">
-        <h3 class="text-blue">Les +</h3>
-        <% if @room.name == "La Maison" %>
-          <%= render "more_maison" %>
-        <% elsif @room.name == "La Chambre" %>
-          <%= render "more_chambre" %>
-        <% end %>
-      </div>
-
+    <div class="the-plus p-3 col-12 col-lg-4">
+      <h3 class="text-blue">Les +</h3>
+      <% if @room.name == "La Maison" %>
+        <%= render "more_maison" %>
+      <% elsif @room.name == "La Chambre" %>
+        <%= render "more_chambre" %>
+      <% end %>
     </div>
 
-    <div class="my-3">
+  </div>
+
+  <div class="py-3">
     <h3 class="text-blue"><%= "à".upcase %> savoir</h3>
     <div class="row to-know">
       <%= render "to_know",
