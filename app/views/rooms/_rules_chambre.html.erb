@@ -1,0 +1,25 @@
+<h3 class="text-blue">Règlement intérieur</h3>
+<p>Suivez ces règles pour vous comporter en voyageur respectueux et éviter tout problème pendant votre séjour.</p>
+
+<div class="equipment">
+  <h5 class="fw-bold text-blue">Qui peut séjourner dans le logement ?</h5>
+  <p><i class="fa-solid fa-users"></i><span class="stuff"><%= max_guests %> voyageurs maximum</span></p>
+  <p><i class="fa-solid fa-paw"></i><span class="stuff indisponible">Pas d'animaux</span></p>
+</div>
+
+<div class="equipment">
+  <h5 class="fw-bold text-blue">Ce qui est autorisé</h5>
+  <p><i class="fa-solid fa-clock"></i><span class="stuff">Arrivée <%= arrival_hour %></span></p>
+  <p><i class="fa-solid fa-clock"></i><span class="stuff">Départ <%= departure_hour %></span></p>
+  <p class="with-comment"><i class="fa-solid fa-moon"></i></i><span class="stuff">Horaires où le calme doit être respecté</span></p>
+  <p class="comment">22:00 - 08:00</p>
+  <p><i class="fa-solid fa-door-closed"></i><span class="stuff">Arrivée autonome avec serrure numérique</span></p>
+  <p><i class="fa-solid fa-camera"></i><span class="stuff">Photographie commerciale autorisée</span></p>
+  <p><%= image_tag "icons/party.png", alt: "", width: 18 %><span class="stuff indisponible">Pas de fête ni de soirée</span></p>
+  <p><i class="fa-solid fa-smoking"></i><span class="stuff indisponible">Non fumeur</span></p>
+</div>
+
+<div class="equipment">
+  <h5 class="fw-bold text-blue">Règles supplémentaires</h5>
+  <p><i class="fa-solid fa-users"></i><span class="stuff indisponible">Les personnes non inscrites dans la réservation sont interdites.</span></p>
+</div>

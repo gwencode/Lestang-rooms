@@ -1,8 +1,8 @@
 <div class="col-12 col-md-6">
   <p class="fw-bold">Règlement intérieur</p>
-  <p>Arrivée <%= arrival_hour %></p>
-  <p>Départ <%= departure_hour %></p>
-  <p><%= max_guests %> voyageurs maximum</p>
+  <p><i class="fa-solid fa-clock"></i>Arrivée <%= arrival_hour %></p>
+  <p><i class="fa-solid fa-clock"></i>Départ <%= departure_hour %></p>
+  <p><i class="fa-solid fa-users" style="font-size: 0.8em"></i><%= max_guests %> voyageurs maximum</p>
   <a href="" class="fw-bold text-black" data-bs-toggle="modal" data-bs-target="#rulesModal">En savoir plus</a>
 
   <!-- Modal -->
@@ -13,10 +13,17 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <%= render "rules",
-              arrival_hour: arrival_hour,
-              departure_hour: departure_hour,
-              max_guests: max_guests %>
+          <% if @room.name == "La Maison" %>
+            <%= render "rules_maison",
+                arrival_hour: arrival_hour,
+                departure_hour: departure_hour,
+                max_guests: max_guests %>
+          <% elsif @room.name == "La Chambre" %>
+            <%= render "rules_chambre",
+                arrival_hour: arrival_hour,
+                departure_hour: departure_hour,
+                max_guests: max_guests %>
+          <% end %>
         </div>
       </div>
     </div>
@@ -26,9 +33,9 @@
 
 <div class="col-12 col-md-6">
   <p class="fw-bold">Sécurité et logement</p>
-  <p>Caméra de surveillance/système d'enregistrement</p>
-  <p>Lac, rivière ou autre étendue d'eau à proximité</p>
-  <p>Aire de jeux ou structure d'escalade</p>
+  <p><%= image_tag "icons/camera.png", alt: "", width: 16 %>Caméras de surveillance extérieures</p>
+  <p><i class="fa-solid fa-triangle-exclamation"></i>Lac, rivière ou autre étendue d'eau à proximité</p>
+  <p><i class="fa-solid fa-triangle-exclamation"></i>Aire de jeux ou structure d'escalade</p>
   <a href="" class="fw-bold text-black" data-bs-toggle="modal" data-bs-target="#securityModal">En savoir plus</a>
 
   <!-- Modal -->
