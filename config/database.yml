@@ -81,4 +81,6 @@ test:
 #
 production:
   <<: *default
-   url: <%= ENV['DATABASE_URL'] %>
+  database: Lestang_rooms_production
+  username: Lestang_rooms
+  password: <%= ENV["LESTANG_ROOMS_DATABASE_PASSWORD"] %>
