@@ -1,3 +1,0 @@
-HOUSE_LEGENDS = {
-
-}
