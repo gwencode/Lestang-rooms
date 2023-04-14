@@ -1,5 +1,3 @@
-require_relative "../services/rooms_images_legends_service"
-
 class RoomsController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[index show]
   before_action :set_room, only: [:show]
