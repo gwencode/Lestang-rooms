@@ -10,6 +10,9 @@ application.register("carousel-height", CarouselHeightController)
 import CollapseController from "./collapse_controller"
 application.register("collapse", CollapseController)
 
+import FlatpickrController from "./flatpickr_controller"
+application.register("flatpickr", FlatpickrController)
+
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
 

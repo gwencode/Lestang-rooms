@@ -48,10 +48,10 @@
 
     <div class="dates p-3 col-12 col-lg-5">
       <h3 class="text-blue">Voir les disponibilités</h3>
-      <%= simple_form_for([@room, @booking], url: room_bookings_path(@room), method: :post) do |f| %>
-        <%= f.input :start_date, as: :string %>
-        <%= f.input :end_date, as: :string %>
-        <%= f.submit 'Book now' %>
+      <%= simple_form_for([@room, @booking], url: room_bookings_path(@room), method: :post, data: { controller: 'flatpickr' }) do |f| %>
+        <%= f.input :start_date, as: :string, input_html: { data: { flatpickr_target: "startTime" } } %>
+        <%= f.input :end_date, as: :string, input_html: { data: { flatpickr_target: "endTime" } } %>
+        <%= f.submit 'Réserver', class: "button-blue" %>
       <% end %>
     </div>
 
