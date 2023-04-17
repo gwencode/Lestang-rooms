@@ -58,10 +58,22 @@
             <%= f.input :start_date, as: :string, label: "Arrivée", required: false, input_html: { data: { flatpickr_target: "startTime" } } %>
             <%= f.input :end_date, as: :string, label: "Départ", required: false, input_html: { data: { flatpickr_target: "endTime" }, id: 'end_date' } %>
           </div>
-          <%= f.input :guests_number,  label: "Voyageurs", required: false, input_html: { min: 1, max: @room.max_guests, in: 1..@room.max_guests, class: "form-control", placeholder: "#{@room.max_guests} voyageurs maximum" }  %>
+          <div class="row">
+            <div class="col-8">
+              <p class="mb-1">Voyageurs</p>
+              <p class="fw-light">2 ans et plus</p>
+            </div>
+            <div class="col-4">
+              <%= f.input :guests_number, label: false, required: false,
+                  input_html: { min: 1, max: @room.max_guests, in: 1..@room.max_guests, class: "form-control gap-3" },
+                  wrapper_html: { class: "input-group" } do %>
+                    <%= button_tag "-", class: "btn btn-outline-secondary rounded-circle", type: "button" %>
+                    <%= text_field_tag "booking[guests_number]", 1, class: "form-control guests-input", disabled: true, readonly: true %>
+                    <%= button_tag "+", class: "btn btn-outline-secondary rounded-circle", type: "button" %>
+                  <% end %>
+            </div>
+          </div>
           <%= f.submit 'Faire une demande', class: "button-blue w-100" %>
-
-
         <% end %>
       </div>
 
