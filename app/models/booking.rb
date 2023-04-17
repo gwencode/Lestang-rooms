@@ -3,9 +3,9 @@ class Booking < ApplicationRecord
   belongs_to :room
 
   validates :start_date, :end_date, :guests_number, :booking_price, :status, presence: true
-  # validate :end_date_after_start_date
-  # validate :start_date_after_today
-  # validate :room_available
+  validate :end_date_after_start_date
+  validate :start_date_after_today
+  validate :room_available
 
   def nights
     ((end_date - start_date) / 60 / 60 / 24).round
@@ -57,5 +57,31 @@ class Booking < ApplicationRecord
     price += week_reduction
     price += cleaning_fee
     return price
+  end
+
+  def end_date_after_start_date
+    return if end_date.blank? || start_date.blank?
+
+    if end_date < start_date
+      errors.add(:end_date, "doit être après la date d'arrivée")
+    end
+  end
+
+  def start_date_after_today
+    return if start_date.blank?
+
+    if start_date < DateTime.now
+      errors.add(:start_date, "doit être après aujourd'hui")
+    end
+  end
+
+  def room_available
+    return if start_date.blank? || end_date.blank?
+
+    room.bookings.each do |booking|
+      if booking.start_date < end_date && booking.end_date > start_date
+        errors.add(:room, "pas disponible à ces dates")
+      end
+    end
   end
 end
