@@ -1,5 +1,6 @@
 import { Controller } from "@hotwired/stimulus"
 import flatpickr from "flatpickr";
+import { French } from "flatpickr/dist/l10n/fr.js"
 // Import the rangePlugin from the flatpickr library
 import rangePlugin from "flatpickr/dist/plugins/rangePlugin";
 
@@ -14,6 +15,7 @@ export default class extends Controller {
     // console.log(this.datesDisabledValue)
 
     flatpickr(this.startTimeTarget, {
+      "locale": French,
       altInput: true,
       altFormat: "d/m/Y",
       disable: this.datesDisabledValue,
@@ -23,6 +25,7 @@ export default class extends Controller {
       // enableTime: true
     })
     flatpickr(this.endTimeTarget, {
+      "locale": French,
       altInput: true,
       altFormat: "d/m/Y",
       disable: this.datesDisabledValue,

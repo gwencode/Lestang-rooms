@@ -48,19 +48,40 @@
 
     <div class="dates p-3 col-12 col-lg-5">
       <h3 class="text-blue">Voir les disponibilités</h3>
-      <%= simple_form_for([@room, @booking],
-                           url: room_bookings_path(@room),
-                           method: :post,
-                           data: { controller: 'flatpickr',
-                                   flatpickr_dates_disabled_value: @dates_disabled }) do |f| %>
+      <div class="py-3">
+        <%= simple_form_for([@room, @booking],
+                            url: room_bookings_path(@room),
+                            method: :post,
+                            data: { controller: 'flatpickr',
+                                    flatpickr_dates_disabled_value: @dates_disabled }) do |f| %>
+          <div class="d-flex justify-content-between gap-3">
+            <%= f.input :start_date, as: :string, label: "Arrivée", required: false, input_html: { data: { flatpickr_target: "startTime" } } %>
+            <%= f.input :end_date, as: :string, label: "Départ", required: false, input_html: { data: { flatpickr_target: "endTime" }, id: 'end_date' } %>
+          </div>
+          <%= f.input :guests_number,  label: "Voyageurs", required: false, input_html: { min: 1, max: @room.max_guests, in: 1..@room.max_guests, class: "form-control", placeholder: "#{@room.max_guests} voyageurs maximum" }  %>
+          <%= f.submit 'Faire une demande', class: "button-blue w-100" %>
 
-        <%= f.input :start_date, as: :string, label: "Arrivée", required: false, input_html: { data: { flatpickr_target: "startTime" } } %>
-        <%= f.input :end_date, as: :string, label: "Départ", required: false, input_html: { data: { flatpickr_target: "endTime" }, id: 'end_date' } %>
-        <%= f.input :guests_number,  label: "Voyageurs", required: false, input_html: { min: 1, max: @room.max_guests, in: 1..@room.max_guests, class: "form-control", placeholder: "#{@room.max_guests} voyageurs maximum" }  %>
-        <%= f.input :status, value: "pending" %>
-        <%= f.submit 'Réserver', class: "button-blue" %>
 
-      <% end %>
+        <% end %>
+      </div>
+
+      <div class="d-flex justify-content-between">
+        <p>Prix par nuit</p>
+        <p>TO DO €</p>
+      </div>
+      <div class="d-flex justify-content-between">
+        <p>Prix total de base</p>
+        <p>TO DO €</p>
+      </div>
+      <div class="d-flex justify-content-between">
+        <p>Réduction à la semaine</p>
+        <p class="text-success">TO DO €</p>
+      </div>
+      <div class="d-flex justify-content-between">
+        <p class="fw-bold">Total</p>
+        <p>TO DO €</p>
+      </div>
+
     </div>
 
   </div>
