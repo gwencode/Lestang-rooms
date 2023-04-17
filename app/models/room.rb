@@ -8,7 +8,7 @@ class Room < ApplicationRecord
     bookings.map do |booking|
       {
         from: booking.start_date,
-        to: booking.end_date - (booking.end_date.hour + 3) * 3600
+        to: booking.end_date - (booking.end_date.hour + 4) * 3600
       }
     end
   end
