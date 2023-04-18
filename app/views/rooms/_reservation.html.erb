@@ -15,10 +15,10 @@
               <p class="fw-light">2 ans et plus</p>
             </div>
             <div class="col-4">
-              <div class="input-group">
-                <%= button_tag "-", class: "btn btn-outline-secondary rounded-circle", type: "button" %>
-                <%= f.text_field :guests_number, class: "form-control guests-input", value: (params[:guests_number] || 1), min: 1, max: room.max_guests, readonly: true %>
-                <%= button_tag "+", class: "btn btn-outline-secondary rounded-circle", type: "button" %>
+              <div class="input-group" data-controller="guests" data-guests-max-guests-value=<%= room.max_guests %>>
+                <%= button_tag "-", class: "btn btn-outline-secondary rounded-circle", type: "button", data: { action: "click->guests#decrease" } %>
+                <%= f.text_field :guests_number, class: "form-control guests-input", value: (params[:guests_number] || 1), min: 1, max: room.max_guests, readonly: true, data: { guests_target: "price" } %>
+                <%= button_tag "+", class: "btn btn-outline-secondary rounded-circle", type: "button", data: { action: "click->guests#increase"  } %>
               </div>
             </div>
           </div>

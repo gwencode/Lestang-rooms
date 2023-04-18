@@ -13,6 +13,9 @@ application.register("collapse", CollapseController)
 import FlatpickrController from "./flatpickr_controller"
 application.register("flatpickr", FlatpickrController)
 
+import GuestsController from "./guests_controller"
+application.register("guests", GuestsController)
+
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
 
