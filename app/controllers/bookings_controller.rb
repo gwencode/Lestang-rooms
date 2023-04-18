@@ -6,10 +6,21 @@ class BookingsController < ApplicationController
     @booking.room = Room.find(params[:room_id])
     @booking.start_date = @booking.start_date.change(hour: set_hour[:arrival])
     @booking.end_date = @booking.end_date.change(hour: set_hour[:departure])
-    # @booking.user = current_user
     @booking.booking_price = @booking.calculate_booking_price
     @booking.status = "pending"
+
+    user = User.find_by(email: params[:email])
+    if user.nil?
+      user = User.new(first_name: params[:first_name].strip.capitalize,
+                      last_name: params[:last_name].strip.upcase,
+                      email: params[:email],
+                      password: "password")
+      user.save
+    end
+    @booking.user = user
+
     raise
+
     if @booking.save!
       redirect_to root_path
     else
