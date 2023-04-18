@@ -17,9 +17,12 @@ class RoomsController < ApplicationController
   end
 
   def show
-    image_files = Dir.glob(Rails.root.join('app', 'assets', 'images', "#{@room.name}", '*.{jpg,jpeg,png,gif}'))
-    @image_paths = image_files.map { |image_path| "#{@room.name}/#{File.basename(image_path)}" }
-    @last_image_paths = @image_paths.drop(1)
+    # image_files = Dir.glob(Rails.root.join('app', 'assets', 'images', "#{@room.name}", '*.{jpg,jpeg,png,gif}'))
+    # @image_paths = image_files.map { |image_path| "#{@room.name}/#{File.basename(image_path)}" }
+    # @last_image_paths = @image_paths.drop(1)
+
+    gallery_files = Dir.glob(Rails.root.join('app', 'assets', 'images', "#{@room.name}", 'gallery', '*.{jpg,jpeg,png,PNG,gif}'))
+    @gallery_images = gallery_files.map { |image_path| "#{@room.name}/gallery/#{File.basename(image_path)}" }
 
     sleep_files = Dir.glob(Rails.root.join('app', 'assets', 'images', "#{@room.name}", 'sleep', '*.{jpg,jpeg,png,PNG,gif}'))
     @sleep_images = sleep_files.map { |image_path| "#{@room.name}/sleep/#{File.basename(image_path)}" }
