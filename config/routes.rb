@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  resources :rooms, only: [:show] do
+  resources :rooms, only: %i[show update destroy] do
     resources :bookings, only: [:create]
   end
 

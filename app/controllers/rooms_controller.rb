@@ -3,6 +3,7 @@ class RoomsController < ApplicationController
   before_action :set_room, only: [:show]
 
   def index
+    policy_scope(Room)
     @maison = Room.first
     @chambre = Room.last
     @reviews = Review.all
@@ -17,9 +18,7 @@ class RoomsController < ApplicationController
   end
 
   def show
-    # image_files = Dir.glob(Rails.root.join('app', 'assets', 'images', "#{@room.name}", '*.{jpg,jpeg,png,gif}'))
-    # @image_paths = image_files.map { |image_path| "#{@room.name}/#{File.basename(image_path)}" }
-    # @last_image_paths = @image_paths.drop(1)
+    authorize @room
 
     gallery_files = Dir.glob(Rails.root.join('app', 'assets', 'images', "#{@room.name}", 'gallery', '*.{jpg,jpeg,png,PNG,gif}'))
     @gallery_images = gallery_files.map { |image_path| "#{@room.name}/gallery/#{File.basename(image_path)}" }
