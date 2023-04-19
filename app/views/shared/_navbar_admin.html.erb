@@ -1,0 +1,48 @@
+<div class="navbar navbar-dark navbar-expand-lg navbar-lewagon">
+  <div class="container-fluid container">
+    <a class="navbar-brand" href="/">Résidence Lestang</a>
+
+    <button class="navbar-toggler" type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto text-end">
+        <li class="nav-item active">
+          <%= link_to "Réservations", root_path, class: "nav-link"%>
+        </li>
+        <li class="nav-item active">
+          <%= link_to "Créneaux", root_path, class: "nav-link"%>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Logements", root_path, class: "nav-link"%>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Messages", root_path, class: "nav-link"%>
+        </li>
+        <% if current_user %>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Mon Compte
+            </a>
+            <div id="navbar-dropdown">
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <li><%= link_to "Profil", root_path, class: "dropdown-item"%></li>
+                <li><%= link_to "Déconnexion", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item"%></li>
+              </ul>
+            </div>
+          </li>
+        <% else %>
+          <li class="nav-item">
+            <%= link_to "Connexion", new_user_session_path, class: "nav-link"%>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>
