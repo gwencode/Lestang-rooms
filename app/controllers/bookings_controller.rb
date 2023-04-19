@@ -8,16 +8,7 @@ class BookingsController < ApplicationController
     @booking.end_date = @booking.end_date.change(hour: set_hour[:departure])
     @booking.booking_price = @booking.calculate_booking_price
     @booking.status = "pending"
-
-    user = User.find_by(email: params[:email])
-    if user.nil?
-      user = User.new(first_name: params[:first_name].strip.capitalize,
-                      last_name: params[:last_name].strip.upcase,
-                      email: params[:email],
-                      password: "password")
-      user.save
-    end
-    @booking.user = user
+    @booking.user = current_user
 
     raise
 
