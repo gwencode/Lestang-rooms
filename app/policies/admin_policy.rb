@@ -1,11 +1,4 @@
 class AdminPolicy < ApplicationPolicy
-  class Scope < Scope
-    # NOTE: Be explicit about which records you allow access to!
-    # def resolve
-    #   scope.all
-    # end
-  end
-
   def dashboard?
     user.admin
   end
@@ -17,4 +10,12 @@ class AdminPolicy < ApplicationPolicy
   def messages?
     dashboard?
   end
+
+  class Scope < Scope
+    # NOTE: Be explicit about which records you allow access to!
+    def resolve
+      scope.all
+    end
+  end
+
 end
