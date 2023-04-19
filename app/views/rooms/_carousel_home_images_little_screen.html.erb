@@ -1,4 +1,4 @@
-<div id="carouselHomePhotos2" class="carousel slide my-3 py-3" data-bs-ride="carousel">
+<div id="carouselHomePhotos2" class="carousel carousel-dark slide my-3 py-3" data-bs-ride="carousel">
   <div class="carousel-indicators">
     <button type="button" data-bs-target="#carouselHomePhotos2" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
       <% home_images.drop(1).each_with_index do |_, index| %>
@@ -9,12 +9,12 @@
   <div class="carousel-inner">
 
     <div class="carousel-item active" data-bs-interval="10000">
-      <%= image_tag home_images.first, alt: "", class: "d-block w-100" %>
+      <%= image_tag home_images.first, alt: "", class: "d-block carousel-home-img" %>
     </div>
 
     <% home_images.drop(1).each do |image_path|  %>
       <div class="carousel-item" data-bs-interval="10000">
-        <%= image_tag image_path, alt: "", class: "d-block w-100" %>
+        <%= image_tag image_path, alt: "", class: "d-block carousel-home-img" %>
       </div>
     <% end %>
 
