@@ -14,7 +14,11 @@
   </head>
 
   <body>
-    <%= render "shared/navbar" %>
+    <% if request.path.start_with?("/admin") %>
+      <%= render "shared/navbar_admin" %>
+    <% else %>
+      <%= render "shared/navbar" %>
+    <% end %>
     <%= render "shared/flashes" %>
     <%= yield %>
     <%= render "shared/footer" %>
