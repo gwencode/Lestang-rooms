@@ -1,4 +1,4 @@
-<div class="navbar navbar-dark navbar-expand-md navbar-light navbar-lewagon">
+<div class="navbar navbar-dark navbar-expand-lg navbar-lewagon">
   <div class="container-fluid container">
     <a class="navbar-brand" href="/">Résidence Lestang</a>
 
@@ -25,6 +25,22 @@
         <li class="nav-item">
           <%= link_to "Contact & Paiement", contact_path, class: "nav-link"%>
         </li>
+        <% if current_user %>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Mon Compte
+            </a>
+            <ul id="navbar-dropdown" class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <li><%= link_to "Réservations", root_path, class: "dropdown-item"%></li>
+              <li><%= link_to "Profil", root_path, class: "dropdown-item"%></li>
+              <li><%= link_to "Déconnexion", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item"%></li>
+            </ul>
+          </li>
+        <% else %>
+          <li class="nav-item">
+            <%= link_to "Connexion", new_user_session_path, class: "nav-link"%>
+          </li>
+        <% end %>
       </ul>
     </div>
   </div>
