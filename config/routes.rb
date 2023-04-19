@@ -3,12 +3,19 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  resources :rooms, only: %i[show update destroy] do
+  resources :rooms, only: %i[show] do
     resources :bookings, only: [:create]
   end
 
   get "/localisation", to: "pages#localisation"
   get "/contact", to: "pages#contact"
+
+  namespace :admin do
+    root to: "admin#dashboard"
+    resources :bookings, only: %i[index show update]
+    get "/slots", to: "admin#slots"
+    get "/messages", to: "admin#messages"
+  end
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   # Defines the root path route ("/")

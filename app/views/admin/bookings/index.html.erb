@@ -1,0 +1,12 @@
+<% @bookings.each do |booking| %>
+  <div class="py-3">
+    <%= link_to "Booking Show", admin_booking_path %>
+    <%= booking.id %>
+    <%= booking.user.email %>
+    <%= booking.start_date %>
+    <%= booking.end_date %>
+    <%= booking.guests_number %>
+    <%= booking.booking_price %>
+    <%= booking.status %>
+  </div>
+<% end %>
