@@ -23,6 +23,16 @@
   background: $dark-gray;
 }
 
+@media (max-width: 992px) {
+  #navbar-dropdown {
+    display: flex;
+    justify-content: end;
+    li {
+      text-align: end;
+    }
+  }
+}
+
 .dropdown-item {
   color: $white;
 }

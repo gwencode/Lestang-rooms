@@ -1,20 +1,28 @@
-<h2>Log in</h2>
+<div class="devise-background">
+  <div class="container col-12 col-md-6 col-lg-4 devise-form">
+    <h2 class="text-blue">Se connecter</h2>
 
-<%= simple_form_for(resource, as: resource_name, url: session_path(resource_name), data: { turbo: :false }) do |f| %>
-  <div class="form-inputs">
-    <%= f.input :email,
-                required: false,
-                autofocus: true,
-                input_html: { autocomplete: "email" } %>
-    <%= f.input :password,
-                required: false,
-                input_html: { autocomplete: "current-password" } %>
-    <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+    <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name), data: {turbo: false}) do |f| %>
+      <div class="form-inputs">
+        <%= f.input :email,
+                    required: false,
+                    autofocus: true,
+                    input_html: { autocomplete: "email" } %>
+        <%= f.input :password,
+                    required: false,
+                    label: "Mot de passe",
+                    input_html: { autocomplete: "current-password" } %>
+        <%= f.input :remember_me, label: "Se souvenir de moi", as: :boolean if devise_mapping.rememberable? %>
+      </div>
+
+      <div class="form-actions mb-3">
+        <%= f.button :submit, "Connexion", class: "button-blue" %>
+      </div>
+    <% end %>
+
+    <div class="py-2">
+      <h5 class="text-blue">Vous n'avez pas de compte?</h5>
+      <%= link_to "Créer un compte", new_user_registration_path, class: "button-dark" %>
+    </div>
   </div>
-
-  <div class="form-actions">
-    <%= f.button :submit, "Log in" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>

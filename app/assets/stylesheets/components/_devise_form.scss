@@ -1,0 +1,62 @@
+.devise-background {
+  padding: 16px;
+}
+
+.devise-form {
+  padding: 1rem;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+
+.sub-links {
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+}
+
+.sub-links-password {
+  margin-top: 36px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.user-profile {
+  margin-top: 16px;
+  color: $white;
+  padding: 0 16px 8px 16px;
+  background-color: $dark-gray;
+  border-radius: 20px;
+  position: relative;
+}
+
+.two-inline-inputs {
+  display: flex;
+  gap: 16px;
+  justify-content: space-between;
+
+  .two-inline-input {
+    width: 50%;
+  }
+
+  @media (max-width: 415px) {
+    flex-direction: column;
+    gap: 8px;
+
+    .two-inline-input {
+      width: 100%;
+    }
+
+    label {
+      margin-bottom: 4px;
+    }
+  }
+}
+
+.user_remember_me {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
