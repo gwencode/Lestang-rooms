@@ -1,59 +1,63 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
-  static targets = ['image'];
+  static targets = ['gallery', 'image'];
 
   connect() {
     // On écoute le chargement de toutes les images
     const images = this.imageTargets;
     images.forEach((image, index) => {
-      console.log(`Hauteur de l'image : ${image.offsetHeight}px`);
-      console.log(`Position de l'image : ${image.offsetTop}px`);
+      // console.log(`Hauteur de l'image : ${image.offsetHeight}px`);
+      // console.log(`Position de l'image : ${image.offsetTop}px`);
 
-      const position = image.getBoundingClientRect().top;
-      const height = image.getBoundingClientRect().height;
+      // const position = image.getBoundingClientRect().top;
+      // const height = image.getBoundingClientRect().height;
 
       if (index >= 3) {
         let previousImage = images[index - 3];
-        console.log('index', index + 1, 'previousImage', previousImage);
+        // console.log('index', index + 1, 'previousImage', previousImage);
 
-        console.log('---------------------');
+        // console.log('---------------------');
 
         let previousHeight = previousImage.offsetHeight;
-        console.log(typeof(previousHeight))
-        console.log('previousHeight', previousHeight)
+        // console.log(typeof(previousHeight))
+        // console.log('previousHeight', previousHeight)
 
-        console.log('---------------------');
+        // console.log('---------------------');
 
         let previousPositionString = previousImage.style.top;
-        console.log(typeof(previousPositionString))
-        console.log('previousPositionString', previousPositionString)
+        // console.log(typeof(previousPositionString))
+        // console.log('previousPositionString', previousPositionString)
 
-        console.log('---------------------');
+        // console.log('---------------------');
 
         let previousPosition = parseInt(previousPositionString);
         previousPosition = isNaN(previousPosition) ? 0 : previousPosition;
-        console.log(typeof(previousPosition))
-        console.log('previousPosition', previousPosition)
+        // console.log(typeof(previousPosition))
+        // console.log('previousPosition', previousPosition)
 
-        console.log('---------------------');
+        // console.log('---------------------');
 
         let newTopPosition = previousHeight + previousPosition + 16;
-        console.log(typeof(previousPosition))
-        console.log('newTopPosition', newTopPosition);
+        // console.log(typeof(previousPosition))
+        // console.log('newTopPosition', newTopPosition);
 
-        console.log('---------------------');
+        // console.log('---------------------');
 
         image.style.position = 'relative'
         image.style.top = `${newTopPosition}px`;
-        console.log('image.style.top', image.style.top)
+        // console.log('image.style.top', image.style.top)
 
-        console.log('---------------------');
-        console.log('---------------------');
+        // console.log('---------------------');
+        // console.log('---------------------');
         // console.log(image);
         // console.log('new image-position', image.offsetTop)
       }
     });
+    const lastImage = images[images.length - 1];
+    const lastImagePosition = lastImage.style.top;
+    this.galleryTarget.style.height = lastImagePosition;
+    console.log(this.galleryTarget);
   }
 }
 
