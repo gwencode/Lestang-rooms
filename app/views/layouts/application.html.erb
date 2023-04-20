@@ -9,9 +9,16 @@
     <link href="https://api.mapbox.com/mapbox-gl-js/v2.11.0/mapbox-gl.css" rel="stylesheet">
     <script src="https://api.mapbox.com/mapbox-gl-js/v2.11.0/mapbox-gl.js"></script>
 
+    <%# Pour le déploiement : Remplacez "123456" par un nombre aléatoire ou un identifiant unique pour chaque déploiement. %>
+    <%# Recompiler les assets et  les déployer à nouveau sur Heroku en exécutant bundle exec rails assets:precompile et en poussant les modifications sur Heroku. %>
+
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%# <%= stylesheet_link_tag "application-123456", media: "all", "data-turbo-track": "reload" %>
+
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
+    <%# <%= javascript_include_tag "application-123456", "data-turbo-track": "reload", defer: true %>
   </head>
 
   <body>
