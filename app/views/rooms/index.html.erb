@@ -70,9 +70,9 @@
   <div class="text-center py-3">
     <h1 class="h1-blue-no-margin">Toutes les photos</h1>
     <div class="separator"></div>
-    <div class="gallery">
-      <% @gallery_images.each do |image|  %>
-        <%= image_tag image, alt: "", class: "gallery-image img-thumbnail" %>
+   <div class="gallery" data-controller="image-gallery">
+      <% @gallery_images.each do |image| %>
+        <%= image_tag image, alt: "", class: "gallery-image img-thumbnail", data: { image_gallery_target: "image" } %>
       <% end %>
     </div>
   </div>

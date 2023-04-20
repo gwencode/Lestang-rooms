@@ -19,5 +19,8 @@ application.register("guests", GuestsController)
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
 
+import ImageGalleryController from "./image_gallery_controller"
+application.register("image-gallery", ImageGalleryController)
+
 import MapController from "./map_controller"
 application.register("map", MapController)
