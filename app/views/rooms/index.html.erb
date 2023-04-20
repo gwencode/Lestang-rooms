@@ -72,7 +72,7 @@
     <div class="separator"></div>
    <div class="gallery" data-controller="image-gallery" data-image-gallery-target="gallery">
       <% @gallery_images.each do |image| %>
-        <%= image_tag image, alt: "", class: "gallery-image img-thumbnail", data: { image_gallery_target: "image" } %>
+        <%= image_tag image, alt: "", class: "gallery-image img-thumbnail", data: { image_gallery_target: "image", action: "click->image-gallery#expandImage" } %>
       <% end %>
     </div>
   </div>
