@@ -22,5 +22,8 @@ application.register("hello", HelloController)
 import ImageGalleryController from "./image_gallery_controller"
 application.register("image-gallery", ImageGalleryController)
 
+import LoadMoreController from "./load_more_controller"
+application.register("load-more", LoadMoreController)
+
 import MapController from "./map_controller"
 application.register("map", MapController)
