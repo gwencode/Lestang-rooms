@@ -1,6 +1,6 @@
 class Admin::RoomsController < ApplicationController
   before_action :set_room, only: %i[show edit update]
-  before_action :authorize_admin, only: :index
+  before_action :authorize_admin, only: %i[index show]
 
   def index
     policy_scope(Room)
@@ -9,6 +9,7 @@ class Admin::RoomsController < ApplicationController
   end
 
   def show
+    authorize @room
   end
 
   def edit

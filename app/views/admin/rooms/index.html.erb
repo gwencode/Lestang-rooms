@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="d-flex align-items-center py-3 my-3 row">
+    <%= image_tag "#{@maison.name}/maison.png", alt: "", class: "col-12 col-lg-6 order-lg-2 images-room-little-screen" %>
+    <div class="text-center col-12 col-lg-6 order-lg-1">
+      <h1 class="h1-blue-no-margin"><%= @maison.name %></h1>
+      <div class="separator"></div>
+      <p class="home-rooms-description"><%= @maison.description%></p>
+      <%= link_to "VOIR LA MAISON", admin_room_path(@maison), class: "button-blue" %>
+    </div>
+  </div>
+
+  <div class="d-flex align-items-center py-3 my-3 row">
+    <%= image_tag "#{@chambre.name}/chambre.png", alt: "", class: "col-12 col-lg-6 images-room-little-screen" %>
+    <div class="text-center col-12 col-lg-6">
+      <h1 class="h1-blue-no-margin"><%= @chambre.name %></h1>
+      <div class="separator"></div>
+      <p class="home-rooms-description"><%= @chambre.description %></p>
+      <%= link_to "VOIR LA CHAMBRE", admin_room_path(@chambre), class: "button-blue" %>
+    </div>
+  </div>
+
+</div>
