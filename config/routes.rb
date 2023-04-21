@@ -15,6 +15,7 @@ Rails.application.routes.draw do
     resources :bookings, only: %i[index show update]
     get "/slots", to: "admin#slots"
     get "/messages", to: "admin#messages"
+    resources :rooms, only: %i[index show edit update]
   end
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
