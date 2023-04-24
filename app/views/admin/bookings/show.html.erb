@@ -1,9 +1,33 @@
-<div class="py-3">
-  <%= @booking.id %>
-  <%= @booking.user.email %>
-  <%= @booking.start_date %>
-  <%= @booking.end_date %>
-  <%= @booking.guests_number %>
-  <%= @booking.booking_price %>
-  <%= @booking.status %>
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url('<%= asset_path("#{@booking.room.name}.png") %>')">
+
+  <div class="container">
+
+    <h2>Réservation de <%= @booking.user.first_name %> <%= @booking.user.last_name %></h2>
+
+    <div class="row py-3">
+
+      <div class="col-12 col-lg-6 text-center">
+        <p class=""><span class="fw-bold">Logement réservé :</span> <%= @booking.room.name %></p>
+        <p class=""><span class="fw-bold">Arrivée :</span> <%= l(@booking.start_date, format: "%A %d %B à %Hh").capitalize %></p>
+        <p class=""><span class="fw-bold">Départ :</span> <%= l(@booking.end_date, format: "%A %d %B à %Hh").capitalize %></p>
+      </div>
+
+      <div class="col-12 col-lg-6 text-center">
+        <p class=""><span class="fw-bold">Nombre de personnes :</span> <%= @booking.guests_number %></p>
+        <p class=""><span class="fw-bold">Prix total :</span> <%= @booking.booking_price %> €</p>
+        <p class=""><span class="fw-bold">Email :</span> <%= @booking.user.email %></p>
+      </div>
+
+    </div>
+
+    <% if @booking.status == "approved" %>
+      <h4 class="text-success text-center"><i class="fa-regular fa-circle-check"></i> Réservation confirmée</h4>
+    <% elsif @booking.status == "pending" %>
+      <h4 class="text-warning text-center"><i class="fa-solid fa-clock-rotate-left"></i> Réservation en attente</h4>
+    <% elsif @booking.status == "refused" %>
+      <h4 class="text-danger text-center"><i class="fa-regular fa-circle-xmark"></i> Réservation refusée</h4>
+    <% end %>
+
+  </div>
+
 </div>
