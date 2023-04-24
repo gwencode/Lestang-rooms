@@ -97,7 +97,7 @@ gwen = User.find_by(first_name: "Gwendal")
 maison = Room.find_by(name: "La Maison")
 chambre = Room.find_by(name: "La Chambre")
 
-puts "Creating 6 bookings..."
+puts "Creating 8 bookings..."
 
 booking1 = Booking.new(
   user: coco,
@@ -165,7 +165,29 @@ booking6 = Booking.new(
 booking6.booking_price = booking6.calculate_booking_price
 booking6.save
 
-puts "6 bookings created!"
+booking7 = Booking.new(
+  user: gwen,
+  room: chambre,
+  start_date: DateTime.new(2023, 5, 26, 18, 0, 0),
+  end_date: DateTime.new(2023, 5, 29, 11, 0, 0),
+  guests_number: 1,
+  status: "refused"
+)
+booking7.booking_price = booking7.calculate_booking_price
+booking7.save
+
+booking8 = Booking.new(
+  user: gwen,
+  room: chambre,
+  start_date: DateTime.new(2023, 2, 20, 18, 0, 0),
+  end_date: DateTime.new(2023, 2, 22, 11, 0, 0),
+  guests_number: 1,
+  status: "approved"
+)
+booking8.booking_price = booking8.calculate_booking_price
+booking8.save
+
+puts "8 bookings created!"
 
 puts "Creating reviews..."
 

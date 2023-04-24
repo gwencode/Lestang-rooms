@@ -5,7 +5,21 @@ class Admin::BookingsController < ApplicationController
       flash[:alert] = "Accès non autorisé."
       redirect_to(root_path)
     end
-    @bookings = policy_scope(Booking)
+    bookings = policy_scope(Booking)
+    case params[:filter]
+    when "upcoming"
+      @bookings = bookings.where("start_date > ?", DateTime.now)
+    when "past"
+      @bookings = bookings.where("end_date < ?", DateTime.now)
+    when "approved"
+      @bookings = bookings.where(status: "approved")
+    when "pending"
+      @bookings = bookings.where(status: "pending")
+    when "refused"
+      @bookings = bookings.where(status: "refused")
+    else
+      @bookings = bookings
+    end
   end
 
   def show

@@ -4,6 +4,9 @@
 
 import { application } from "./application"
 
+import BookingsFilterController from "./bookings_filter_controller"
+application.register("bookings-filter", BookingsFilterController)
+
 import CarouselHeightController from "./carousel_height_controller"
 application.register("carousel-height", CarouselHeightController)
 

@@ -1,4 +1,15 @@
-<div class="container">
+<div class="container my-3 py-3">
+  <h2 class="text-center text-blue">Réservations</h2>
+    <div class="d-flex justify-content-around py-3">
+      <%= link_to "Toutes", admin_bookings_path, class: "btn btn-primary button-medium" %>
+      <%= link_to "A venir", admin_bookings_path(filter: "upcoming"), class: "btn btn-primary button-medium" %>
+      <%= link_to "Passées", admin_bookings_path(filter: "past"), class: "btn btn-primary button-medium" %>
+    </div>
+    <div class="d-flex justify-content-around py-3">
+      <%= link_to "Acceptées", admin_bookings_path(filter: "approved"), class: "btn btn-success button-medium" %>
+      <%= link_to "En attente", admin_bookings_path(filter: "pending"), class: "btn btn-warning button-medium" %>
+      <%= link_to "Refusées", admin_bookings_path(filter: "refused"), class: "btn btn-danger button-medium" %>
+    </div>
 
   <div class="row">
 
