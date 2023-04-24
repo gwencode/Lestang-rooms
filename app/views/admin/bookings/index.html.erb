@@ -1,12 +1,39 @@
-<% @bookings.each do |booking| %>
-  <div class="py-3">
-    <%= link_to "Booking Show", admin_booking_path(booking) %>
-    <%= booking.id %>
-    <%= booking.user.email %>
-    <%= booking.start_date %>
-    <%= booking.end_date %>
-    <%= booking.guests_number %>
-    <%= booking.booking_price %>
-    <%= booking.status %>
+<div class="container">
+
+  <div class="row">
+
+  <% @bookings.each do |booking| %>
+    <div class="my-4 col-12 col-lg-6">
+      <%= link_to admin_booking_path(booking), class: "text-decoration-none text-black" do %>
+        <div class="card-booking">
+
+          <% if booking.room.name == "La Maison" %>
+            <%= image_tag "#{booking.room.name}/maison.png" %>
+          <% elsif booking.room.name == "La Chambre" %>
+            <%= image_tag "#{booking.room.name}/chambre.png" %>
+          <% end %>
+
+          <div class="card-booking-infos">
+              <h2 class="text-blue"><%= booking.user.first_name %> <%= booking.user.last_name %></h2>
+              <p class="">Arrivée : <%= l(booking.start_date, format: "%A %d %B à %Hh").capitalize %></p>
+              <p class="">Départ : <%= l(booking.end_date, format: "%A %d %B à %Hh").capitalize %></p>
+              <p class="">Nombre de personnes : <%= booking.guests_number %></p>
+              <p class="">Prix total : <%= booking.booking_price %> €</p>
+              <p class="">Email : <%= booking.user.email %></p>
+              <% if booking.status == "approved" %>
+                <i class="fa-regular fa-circle-check text-success"></i>
+              <% elsif booking.status == "pending" %>
+                <i class="fa-solid fa-clock-rotate-left text-warning"></i>
+              <% elsif booking.status == "refused" %>
+                <i class="fa-regular fa-circle-xmark text-danger"></i></i>
+              <% end %>
+          </div>
+
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+
   </div>
-<% end %>
+
+</div>
