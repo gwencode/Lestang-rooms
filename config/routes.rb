@@ -2,7 +2,6 @@ Rails.application.routes.draw do
   root to: "rooms#index"
 
   devise_for :users
-  # devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
 
   resources :rooms, only: %i[show] do
     resources :bookings, only: [:create]
