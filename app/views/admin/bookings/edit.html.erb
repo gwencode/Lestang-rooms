@@ -1,0 +1,31 @@
+<div class="container-fluid container background-back-link">
+  <%= link_to raw("<i class='fa-solid fa-arrow-left-long'></i> <span>Back</span>"), :back, class: "back-link" %>
+</div>
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url('<%= asset_path("#{@booking.room.name}.png") %>')">
+
+  <div class="container">
+    <div class="py-3" style="background-color: rgba(0, 0, 0, 0.4);">
+
+      <h3 class="px-5 text-center text-white">Modifier la réservation de <%= @booking.user.first_name %> <%= @booking.user.last_name %></h3>
+
+      <div class="div p-3 text-white">
+
+        <%= simple_form_for [:admin, @booking], url: admin_booking_path(@booking) do |f| %>
+          <div class="row">
+            <div class="col-12 col-md-6"><%= f.input :start_date, as: :datetime, html5: true, label: "Arrivée" %></div>
+            <div class="col-12 col-md-6"><%= f.input :end_date, as: :datetime, html5: true, label: "Départ" %></div>
+          <div class="row">
+            <div class="col-12 col-md-6"><%= f.input :guests_number, label: "Nombre de personnes", collection: (1..@booking.room.max_guests) %></div>
+            <div class="col-12 col-md-6"><%= f.input :status, label: "Statut", collection: ["acceptée", "en attente", "refusée"] %></div>
+          </div>
+          <div class="py-3 d-flex justify-content-center">
+            <%= f.submit "Modifier", class: "button-blue" %>
+          </div>
+        <% end %>
+
+      </div>
+
+    </div>
+  </div>
+
+</div>

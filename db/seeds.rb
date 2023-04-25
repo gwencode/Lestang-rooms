@@ -122,7 +122,7 @@ booking1 = Booking.create(
   start_date: DateTime.new(2023, 5, 1, 14, 0, 0),
   end_date: DateTime.new(2023, 5, 13, 12, 0, 0),
   guests_number: 4,
-  status: "approved"
+  status: "acceptée"
 )
 
 booking2 = Booking.create(
@@ -131,7 +131,7 @@ booking2 = Booking.create(
   start_date: DateTime.new(2023, 5, 21, 14, 0, 0),
   end_date: DateTime.new(2023, 6, 9, 12, 0, 0),
   guests_number: 8,
-  status: "approved"
+  status: "acceptée"
 )
 
 booking3 = Booking.create(
@@ -140,7 +140,7 @@ booking3 = Booking.create(
   start_date: DateTime.new(2023, 4, 25, 18, 0, 0),
   end_date: DateTime.new(2023, 5, 1, 11, 0, 0),
   guests_number: 2,
-  status: "approved"
+  status: "acceptée"
 )
 
 booking4 = Booking.create(
@@ -149,7 +149,7 @@ booking4 = Booking.create(
   start_date: DateTime.new(2023, 5, 5, 18, 0, 0),
   end_date: DateTime.new(2023, 5, 9, 11, 0, 0),
   guests_number: 1,
-  status: "approved"
+  status: "acceptée"
 )
 
 booking5 = Booking.create(
@@ -158,7 +158,7 @@ booking5 = Booking.create(
   start_date: DateTime.new(2023, 5, 12, 18, 0, 0),
   end_date: DateTime.new(2023, 5, 22, 11, 0, 0),
   guests_number: 2,
-  status: "pending"
+  status: "en attente"
 )
 
 booking6 = Booking.create(
@@ -167,7 +167,7 @@ booking6 = Booking.create(
   start_date: DateTime.new(2023, 5, 26, 18, 0, 0),
   end_date: DateTime.new(2023, 5, 29, 11, 0, 0),
   guests_number: 1,
-  status: "pending"
+  status: "en attente"
 )
 
 booking7 = Booking.create(
@@ -176,7 +176,7 @@ booking7 = Booking.create(
   start_date: DateTime.new(2023, 5, 26, 18, 0, 0),
   end_date: DateTime.new(2023, 5, 29, 11, 0, 0),
   guests_number: 1,
-  status: "refused"
+  status: "refusée"
 )
 
 booking8 = Booking.create(
@@ -185,7 +185,7 @@ booking8 = Booking.create(
   start_date: DateTime.new(2023, 2, 20, 18, 0, 0),
   end_date: DateTime.new(2023, 2, 22, 11, 0, 0),
   guests_number: 1,
-  status: "approved"
+  status: "acceptée"
 )
 
 puts "8 bookings created!"

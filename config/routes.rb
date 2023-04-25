@@ -12,7 +12,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     root to: "admin#dashboard"
-    resources :bookings, only: %i[index show update]
+    resources :bookings, only: %i[index show edit update]
     get "/slots", to: "admin#slots"
     get "/messages", to: "admin#messages"
     resources :rooms, only: %i[index show edit update]

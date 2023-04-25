@@ -4,8 +4,13 @@
 <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url('<%= asset_path("#{@room.name}.png") %>')">
 
   <div class="container">
-    <div class="py-3" style="background-color: rgba(0, 0, 0, 0.4);">
-      <h2>Réservation de <%= @booking.user.first_name %> <%= @booking.user.last_name %></h2>
+    <div class="py-3" style="background-color: rgba(0, 0, 0, 0.4); position: relative;">
+
+      <%= link_to edit_admin_booking_path(@booking), class: "edit-icon" do %>
+        <i class="fa-solid fa-pen-to-square"></i>
+      <% end %>
+
+      <h2 class="px-5">Réservation de <%= @booking.user.first_name %> <%= @booking.user.last_name %></h2>
 
       <div class="row py-3">
 
@@ -23,11 +28,11 @@
 
       </div>
 
-      <% if @booking.status == "approved" %>
+      <% if @booking.status == "acceptée" %>
         <h3 class="text-success text-center"><i class="fa-regular fa-circle-check"></i> Réservation confirmée</h3>
-      <% elsif @booking.status == "pending" %>
+      <% elsif @booking.status == "en attente" %>
         <h3 class="text-warning text-center"><i class="fa-solid fa-clock-rotate-left"></i> Réservation en attente</h3>
-      <% elsif @booking.status == "refused" %>
+      <% elsif @booking.status == "refusée" %>
         <h3 class="text-danger text-center"><i class="fa-regular fa-circle-xmark"></i> Réservation refusée</h3>
       <% end %>
 

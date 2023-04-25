@@ -7,7 +7,7 @@ class BookingsController < ApplicationController
     @booking.start_date = @booking.start_date.change(hour: set_hour[:arrival])
     @booking.end_date = @booking.end_date.change(hour: set_hour[:departure])
     @booking.booking_price = @booking.calculate_booking_price
-    @booking.status = "pending"
+    @booking.status = "en attente"
     @booking.user = current_user
 
     raise

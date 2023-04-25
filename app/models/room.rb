@@ -6,7 +6,7 @@ class Room < ApplicationRecord
   validates :name, :description, :max_guests, presence: true
 
   def dates_disabled
-    bookings.map do |booking|
+    bookings.where(status: "acceptée").map do |booking|
       {
         from: booking.start_date,
         to: booking.end_date - (booking.end_date.hour + 4) * 3600

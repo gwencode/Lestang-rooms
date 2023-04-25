@@ -1,4 +1,5 @@
 class Admin::BookingsController < ApplicationController
+  before_action :set_booking, only: %i[show edit update]
 
   def index
     unless current_user.admin
@@ -13,38 +14,56 @@ class Admin::BookingsController < ApplicationController
   end
 
   def show
-    @booking = Booking.find(params[:id])
     authorize @booking
 
     @room = @booking.room
     @room_price = @room.room_price
   end
 
-  def update
-    @booking = Booking.find(params[:id])
+  def edit
     authorize @booking
-    @booking.update(booking_params)
-    redirect_to admin_bookings_path
+  end
+
+  def update
+    authorize @booking
+
+    if @booking.update(booking_params)
+      redirect_to admin_booking_path(@booking)
+    else
+      flash.now[:alert] = ""
+      if @booking.errors.messages.values.count > 1
+        @booking.errors.messages.values.each_with_index do |message, index|
+          flash.now[:alert] += "#{index + 1}. #{message.first.to_s}. "
+        end
+      else
+        flash.now[:alert] = @booking.errors.messages.values.first.first.to_s
+      end
+      render :edit, status: :unprocessable_entity
+    end
   end
 
   private
 
+  def set_booking
+    @booking = Booking.find(params[:id])
+  end
+
   def booking_params
-    params.require(:booking).permit(:status, :start_date, :end_date)
+    params.require(:booking).permit(:start_date, :end_date, :guests_number, :status)
   end
 
   def filter_bookings(bookings)
     case params[:filter]
     when "upcoming"
-      bookings.where("start_date > ?", DateTime.now).where(status: "approved").order("start_date ASC")
+      bookings.where("start_date > ?", DateTime.now).where(status: "acceptée").order("start_date ASC")
     when "past"
       bookings.where("end_date < ?", DateTime.now).order("end_date DESC")
-    when "approved"
-      bookings.where(status: "approved").order("end_date DESC")
-    when "pending"
-      bookings.where(status: "pending").order("start_date ASC")
-    when "refused"
-      bookings.where(status: "refused").order("end_date DESC")
+    when "acceptée"
+      bookings.where(status: "acceptée").order("end_date DESC")
+    when "en attente"
+      bookings.where(status: "en attente").order("start_date ASC")
+    when "refusée"
+      bookings.where(status: "refusée").order("end_date DESC")
     when "house"
       bookings.where(room: Room.find_by(name: "La Maison")).order("end_date DESC")
     when "bedroom"
@@ -68,11 +87,11 @@ class Admin::BookingsController < ApplicationController
       "Prochaines réservations"
     when "past"
       "Anciennes réservations"
-    when "approved"
+    when "acceptée"
       "Réservations acceptées"
-    when "pending"
+    when "en attente"
       "Réservations en attente"
-    when "refused"
+    when "refusée"
       "Réservations refusées"
     when "house"
       "Réservations de la maison"
