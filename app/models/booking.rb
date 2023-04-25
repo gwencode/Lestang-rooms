@@ -7,7 +7,7 @@ class Booking < ApplicationRecord
   validate :start_date_after_today
   validate :room_available
 
-  before_save :calculate_booking_price
+  before_save :set_booking_price
 
   def nights
     ((end_date - start_date) / 60 / 60 / 24).round
@@ -26,13 +26,6 @@ class Booking < ApplicationRecord
 
   def basic_price
     nights * guests_night_price
-  end
-
-  def calculate_booking_price
-    price = basic_price
-    price += room.room_price.week_reduction if nights >= 7
-    price += room.room_price.cleaning_fee
-    self.booking_price = price
   end
 
   def end_date_after_start_date
@@ -59,5 +52,14 @@ class Booking < ApplicationRecord
         errors.add(:room, "pas disponible à ces dates")
       end
     end
+  end
+
+  private
+
+  def set_booking_price
+    price = basic_price
+    price += room.room_price.week_reduction if nights >= 7
+    price += room.room_price.cleaning_fee
+    self.booking_price = price
   end
 end

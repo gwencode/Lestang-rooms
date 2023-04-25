@@ -4,33 +4,55 @@
 <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url('<%= asset_path("#{@booking.room.name}.png") %>')">
 
   <div class="container">
+    <div class="py-3" style="background-color: rgba(0, 0, 0, 0.4);">
+      <h2>Réservation de <%= @booking.user.first_name %> <%= @booking.user.last_name %></h2>
 
-    <h2>Réservation de <%= @booking.user.first_name %> <%= @booking.user.last_name %></h2>
+      <div class="row py-3">
 
-    <div class="row py-3">
+        <div class="col-12 col-md-6 text-center">
+          <p class=""><span class="fw-bold">Logement réservé :</span> <%= @booking.room.name %></p>
+          <p class=""><span class="fw-bold">Arrivée :</span> <%= l(@booking.start_date, format: "%A %d %B à %Hh").capitalize %></p>
+          <p class=""><span class="fw-bold">Départ :</span> <%= l(@booking.end_date, format: "%A %d %B à %Hh").capitalize %></p>
+        </div>
 
-      <div class="col-12 col-lg-6 text-center">
-        <p class=""><span class="fw-bold">Logement réservé :</span> <%= @booking.room.name %></p>
-        <p class=""><span class="fw-bold">Arrivée :</span> <%= l(@booking.start_date, format: "%A %d %B à %Hh").capitalize %></p>
-        <p class=""><span class="fw-bold">Départ :</span> <%= l(@booking.end_date, format: "%A %d %B à %Hh").capitalize %></p>
+        <div class="col-12 col-md-6 text-center">
+          <p class=""><span class="fw-bold">Nombre de personnes :</span> <%= @booking.guests_number %></p>
+          <p class=""><span class="fw-bold">Prix total :</span> <%= @booking.booking_price %> €</p>
+          <p class=""><span class="fw-bold">Email :</span> <%= @booking.user.email %></p>
+        </div>
+
       </div>
 
-      <div class="col-12 col-lg-6 text-center">
-        <p class=""><span class="fw-bold">Nombre de personnes :</span> <%= @booking.guests_number %></p>
-        <p class=""><span class="fw-bold">Prix total :</span> <%= @booking.booking_price %> €</p>
-        <p class=""><span class="fw-bold">Email :</span> <%= @booking.user.email %></p>
-      </div>
+      <% if @booking.status == "approved" %>
+        <h3 class="text-success text-center"><i class="fa-regular fa-circle-check"></i> Réservation confirmée</h3>
+      <% elsif @booking.status == "pending" %>
+        <h3 class="text-warning text-center"><i class="fa-solid fa-clock-rotate-left"></i> Réservation en attente</h3>
+      <% elsif @booking.status == "refused" %>
+        <h3 class="text-danger text-center"><i class="fa-regular fa-circle-xmark"></i> Réservation refusée</h3>
+      <% end %>
 
+      <div class=" my-3 p-3 mx-auto col-12 col-sm-10 col-md-8 col-lg-6 col-xl-4">
+        <h3 class="text-center text-white"><u>Détail du prix</u></h3>
+        <div class="d-flex justify-content-between">
+          <p><%= @booking.guests_night_price %> € x <%= @booking.nights %> nuits</p>
+          <p><%= @booking.basic_price %> €</p>
+        </div>
+        <% if @booking.nights >= 7 %>
+          <div class="d-flex justify-content-between">
+            <p>Réduction à la semaine</p>
+            <p class="text-success">- <%= @room_price.night_price_week_reduction %> €</p>
+          </div>
+        <% end %>
+        <div class="d-flex justify-content-between">
+          <p>Frais de ménage</p>
+          <p><%= @room_price.cleaning_fee %> €</p>
+        </div>
+        <div class="d-flex justify-content-between">
+          <p class="fw-bold">Total</p>
+          <p class="fw-bold"><%= @booking.booking_price %> €</p>
+        </div>
+      </div>
     </div>
-
-    <% if @booking.status == "approved" %>
-      <h4 class="text-success text-center"><i class="fa-regular fa-circle-check"></i> Réservation confirmée</h4>
-    <% elsif @booking.status == "pending" %>
-      <h4 class="text-warning text-center"><i class="fa-solid fa-clock-rotate-left"></i> Réservation en attente</h4>
-    <% elsif @booking.status == "refused" %>
-      <h4 class="text-danger text-center"><i class="fa-regular fa-circle-xmark"></i> Réservation refusée</h4>
-    <% end %>
-
   </div>
 
 </div>

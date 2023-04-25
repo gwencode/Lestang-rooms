@@ -15,6 +15,9 @@ class Admin::BookingsController < ApplicationController
   def show
     @booking = Booking.find(params[:id])
     authorize @booking
+
+    @room = @booking.room
+    @room_price = @room.room_price
   end
 
   def update
