@@ -11,101 +11,101 @@ Review.destroy_all
 Booking.destroy_all
 
 ### Comment 3 next lines after first time in production
-RoomPrice.destroy_all
-Room.destroy_all
-User.destroy_all
+# RoomPrice.destroy_all
+# Room.destroy_all
+# User.destroy_all
 
 puts "Database cleaned!"
 
 ### Comment next lines after first time in production
 
-puts "Creating 2 admin users..."
+# puts "Creating 2 admin users..."
 
-User.create(
-  email: "erle22@hotmail.fr",
-  password: "password",
-  first_name: "Erle",
-  last_name: "Le Bris",
-  admin: true
-)
+# User.create(
+#   email: "erle22@hotmail.fr",
+#   password: "password",
+#   first_name: "Erle",
+#   last_name: "Le Bris",
+#   admin: true
+# )
 
-User.create(
-  email: "emilie.aubry59@gmail.com",
-  password: "password",
-  first_name: "Emilie",
-  last_name: "Aubry",
-  admin: true
-)
+# User.create(
+#   email: "emilie.aubry59@gmail.com",
+#   password: "password",
+#   first_name: "Emilie",
+#   last_name: "Aubry",
+#   admin: true
+# )
 
-puts "2 admin users created!"
+# puts "2 admin users created!"
 
-puts "Creating 2 normal users..."
+# puts "Creating 2 normal users..."
 
-User.create(
-  email: "coco@me.com",
-  password: "password",
-  first_name: "Corentin",
-  last_name: "Le Bris",
-  admin: false
-)
+# User.create(
+#   email: "coco@me.com",
+#   password: "password",
+#   first_name: "Corentin",
+#   last_name: "Le Bris",
+#   admin: false
+# )
 
-User.create(
-  email: "gwen@me.com",
-  password: "password",
-  first_name: "Gwendal",
-  last_name: "Le Bris",
-  admin: false
-)
+# User.create(
+#   email: "gwen@me.com",
+#   password: "password",
+#   first_name: "Gwendal",
+#   last_name: "Le Bris",
+#   admin: false
+# )
 
-puts "2 normal users created!"
+# puts "2 normal users created!"
 
-puts "Creating 2 rooms..."
+# puts "Creating 2 rooms..."
 
-description_maison = "En séjournant dans notre maison, vous pourrez profiter d'un cadre de vie chaleureux et convivial, avec une décoration soignée qui reflète notre personnalité et notre style de vie. Notre maison est équipée de tout ce dont vous aurez besoin pour passer un séjour confortable, notamment une cuisine entièrement équipée, une salle de bains moderne et des chambres confortables."
+# description_maison = "En séjournant dans notre maison, vous pourrez profiter d'un cadre de vie chaleureux et convivial, avec une décoration soignée qui reflète notre personnalité et notre style de vie. Notre maison est équipée de tout ce dont vous aurez besoin pour passer un séjour confortable, notamment une cuisine entièrement équipée, une salle de bains moderne et des chambres confortables."
 
-maison = Room.create(
-  name: "La Maison",
-  description: description_maison,
-  max_guests: 8,
-  arrival_hour: "à partir de 14:00",
-  departure_hour: "avant 12:00",
-  bedrooms: 3,
-  beds: 3,
-  bathrooms: 2
-)
+# maison = Room.create(
+#   name: "La Maison",
+#   description: description_maison,
+#   max_guests: 8,
+#   arrival_hour: "à partir de 14:00",
+#   departure_hour: "avant 12:00",
+#   bedrooms: 3,
+#   beds: 3,
+#   bathrooms: 2
+# )
 
-description_chambre = "Nous proposons une chambre confortable, lumineuse et climatisée, équipée d'un lit Queen size et d'une commode pour ranger vos effets personnels. Vous aurez également accès au reste des parties communes partagées avec nous."
+# description_chambre = "Nous proposons une chambre confortable, lumineuse et climatisée, équipée d'un lit Queen size et d'une commode pour ranger vos effets personnels. Vous aurez également accès au reste des parties communes partagées avec nous."
 
-chambre = Room.create(
-  name: "La Chambre",
-  description: description_chambre,
-  max_guests: 2,
-  arrival_hour: "entre 18:00 et 22:00",
-  departure_hour: "avant 11:00",
-  bedrooms: 1,
-  beds: 1,
-  bathrooms: 1
-)
+# chambre = Room.create(
+#   name: "La Chambre",
+#   description: description_chambre,
+#   max_guests: 2,
+#   arrival_hour: "entre 18:00 et 22:00",
+#   departure_hour: "avant 11:00",
+#   bedrooms: 1,
+#   beds: 1,
+#   bathrooms: 1
+# )
 
-puts "2 rooms created!"
+# puts "2 rooms created!"
 
-puts "Creating 2 room prices..."
+# puts "Creating 2 room prices..."
 
-RoomPrice.create(
-  room: maison,
-  night_price: 160,
-  week_reduction: -32,
-  cleaning_fee: 60
-)
+# RoomPrice.create(
+#   room: maison,
+#   night_price: 160,
+#   week_reduction: -32,
+#   cleaning_fee: 60
+# )
 
-RoomPrice.create(
-  room: chambre,
-  night_price: 40,
-  week_reduction: -6,
-  cleaning_fee: 0
-)
+# RoomPrice.create(
+#   room: chambre,
+#   night_price: 40,
+#   week_reduction: -6,
+#   cleaning_fee: 0
+# )
 
-puts "2 room prices created!"
+# puts "2 room prices created!"
 
 ### Finsih commenting lines after first time in production
 
