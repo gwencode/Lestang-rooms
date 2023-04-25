@@ -12,32 +12,41 @@
       <% end %>
 
       <h2><%= @room.name %></h2>
-      <div id="room-details">
-        <p class="m-0"><%= @room.max_guests > 1 ? "#{@room.max_guests} voyageurs" : "1 voyageur"%> maximum</p>
-        <p class="m-0">|</p>
-        <p class="m-0"><%= @room.bedrooms > 1 ? "#{@room.bedrooms} chambres" : "1 chambre"%></p>
-        <p class="m-0">|</p>
-        <p class="m-0"><%= @room.beds > 1 ? "#{@room.beds} lits" : "1 lit"%></p>
-        <p class="m-0">|</p>
-        <p class="m-0"><%= @room.bathrooms > 1 ? "#{@room.bathrooms} salles de bain" : "1 salle de bain"%></p>
-      </div>
 
-      <div class="p-3 text-center text-white">
-        <h5><u>Description</u></h5>
-        <p><%= @room.description%></p>
-      </div>
+      <div class="py-3">
+        <h5 class="text-center text-white"><u>Infos</u></h5>
+        <div id="room-details">
+          <p class="m-0"><%= @room.max_guests > 1 ? "#{@room.max_guests} voyageurs" : "1 voyageur"%> maximum</p>
+          <p class="m-0">|</p>
+          <p class="m-0"><%= @room.bedrooms > 1 ? "#{@room.bedrooms} chambres" : "1 chambre"%></p>
+          <p class="m-0">|</p>
+          <p class="m-0"><%= @room.beds > 1 ? "#{@room.beds} lits" : "1 lit"%></p>
+          <p class="m-0">|</p>
+          <p class="m-0"><%= @room.bathrooms > 1 ? "#{@room.bathrooms} salles de bain" : "1 salle de bain"%></p>
+        </div>
+
+        <div class="pt-3 text-center text-white">
+          <h5><u>Description</u></h5>
+          <p><%= @room.description%></p>
+        </div>
 
         <div class="mx-auto col-12 col-md-8 text-center text-white">
+
           <h5><u>Horaires</u></h5>
           <p><span class="fw-bold">Heure d'arrivée :</span> <%= @room.arrival_hour %></p>
           <p><span class="fw-bold">Heure de départ :</span> <%= @room.departure_hour %></p>
+
           <h5><u>Prix</u></h5>
           <p><span class="fw-bold">Prix par nuit :</span> <%= @room.room_price.night_price %> €</p>
           <p><span class="fw-bold">Réduction à la semaine / nuit :</span> <%= @room.room_price.week_reduction %> €</p>
           <p><span class="fw-bold">Prix / nuit avec réduction à la semaine :</span> <%= @room.room_price.night_price_week_reduction %> €</p>
           <p><span class="fw-bold">Frais de ménage :</span> <%= @room.room_price.cleaning_fee %> €</p>
+
         </div>
+
+      </div>
 
     </div>
   </div>
+
 </div>
