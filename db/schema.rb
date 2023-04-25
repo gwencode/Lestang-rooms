@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_17_130921) do
+ActiveRecord::Schema[7.0].define(version: 2023_04_25_100635) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -37,11 +37,21 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_17_130921) do
     t.index ["room_id"], name: "index_reviews_on_room_id"
   end
 
+  create_table "room_prices", force: :cascade do |t|
+    t.bigint "room_id", null: false
+    t.integer "night_price"
+    t.integer "week_reduction"
+    t.integer "night_price_week_reduction"
+    t.integer "cleaning_fee"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["room_id"], name: "index_room_prices_on_room_id"
+  end
+
   create_table "rooms", force: :cascade do |t|
     t.string "name"
     t.string "description"
     t.integer "max_guests"
-    t.integer "price_per_day"
     t.string "arrival_hour"
     t.string "departure_hour"
     t.datetime "created_at", null: false
@@ -69,4 +79,5 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_17_130921) do
   add_foreign_key "bookings", "rooms"
   add_foreign_key "bookings", "users"
   add_foreign_key "reviews", "rooms"
+  add_foreign_key "room_prices", "rooms"
 end

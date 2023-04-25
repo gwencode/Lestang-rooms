@@ -10,7 +10,8 @@ puts "Cleaning database..."
 Review.destroy_all
 Booking.destroy_all
 
-### Comment 2 next lines after first time in production
+### Comment 3 next lines after first time in production
+RoomPrice.destroy_all
 Room.destroy_all
 User.destroy_all
 
@@ -62,11 +63,10 @@ puts "Creating 2 rooms..."
 
 description_maison = "En séjournant dans notre maison, vous pourrez profiter d'un cadre de vie chaleureux et convivial, avec une décoration soignée qui reflète notre personnalité et notre style de vie. Notre maison est équipée de tout ce dont vous aurez besoin pour passer un séjour confortable, notamment une cuisine entièrement équipée, une salle de bains moderne et des chambres confortables."
 
-Room.create(
+maison = Room.create(
   name: "La Maison",
   description: description_maison,
   max_guests: 8,
-  price_per_day: 160,
   arrival_hour: "à partir de 14:00",
   departure_hour: "avant 12:00",
   bedrooms: 3,
@@ -76,11 +76,10 @@ Room.create(
 
 description_chambre = "Nous proposons une chambre confortable, lumineuse et climatisée, équipée d'un lit Queen size et d'une commode pour ranger vos effets personnels. Vous aurez également accès au reste des parties communes partagées avec nous."
 
-Room.create(
+chambre = Room.create(
   name: "La Chambre",
   description: description_chambre,
   max_guests: 2,
-  price_per_day: 40,
   arrival_hour: "entre 18:00 et 22:00",
   departure_hour: "avant 11:00",
   bedrooms: 1,
@@ -89,6 +88,24 @@ Room.create(
 )
 
 puts "2 rooms created!"
+
+puts "Creating 2 room prices..."
+
+RoomPrice.create(
+  room: maison,
+  night_price: 160,
+  week_reduction: -32,
+  cleaning_fee: 60
+)
+
+RoomPrice.create(
+  room: chambre,
+  night_price: 40,
+  week_reduction: -6,
+  cleaning_fee: 0
+)
+
+puts "2 room prices created!"
 
 ### Finsih commenting lines after first time in production
 
@@ -99,7 +116,7 @@ chambre = Room.find_by(name: "La Chambre")
 
 puts "Creating 8 bookings..."
 
-booking1 = Booking.new(
+booking1 = Booking.create(
   user: coco,
   room: maison,
   start_date: DateTime.new(2023, 5, 1, 14, 0, 0),
@@ -107,10 +124,8 @@ booking1 = Booking.new(
   guests_number: 4,
   status: "approved"
 )
-booking1.booking_price = booking1.calculate_booking_price
-booking1.save
 
-booking2 = Booking.new(
+booking2 = Booking.create(
   user: gwen,
   room: maison,
   start_date: DateTime.new(2023, 5, 21, 14, 0, 0),
@@ -118,10 +133,8 @@ booking2 = Booking.new(
   guests_number: 8,
   status: "approved"
 )
-booking2.booking_price = booking2.calculate_booking_price
-booking2.save
 
-booking3 = Booking.new(
+booking3 = Booking.create(
   user: coco,
   room: chambre,
   start_date: DateTime.new(2023, 4, 25, 18, 0, 0),
@@ -129,10 +142,8 @@ booking3 = Booking.new(
   guests_number: 2,
   status: "approved"
 )
-booking3.booking_price = booking3.calculate_booking_price
-booking3.save
 
-booking4 = Booking.new(
+booking4 = Booking.create(
   user: gwen,
   room: chambre,
   start_date: DateTime.new(2023, 5, 5, 18, 0, 0),
@@ -140,10 +151,8 @@ booking4 = Booking.new(
   guests_number: 1,
   status: "approved"
 )
-booking4.booking_price = booking4.calculate_booking_price
-booking4.save
 
-booking5 = Booking.new(
+booking5 = Booking.create(
   user: coco,
   room: chambre,
   start_date: DateTime.new(2023, 5, 12, 18, 0, 0),
@@ -151,10 +160,8 @@ booking5 = Booking.new(
   guests_number: 2,
   status: "pending"
 )
-booking5.booking_price = booking5.calculate_booking_price
-booking5.save
 
-booking6 = Booking.new(
+booking6 = Booking.create(
   user: gwen,
   room: chambre,
   start_date: DateTime.new(2023, 5, 26, 18, 0, 0),
@@ -162,10 +169,8 @@ booking6 = Booking.new(
   guests_number: 1,
   status: "pending"
 )
-booking6.booking_price = booking6.calculate_booking_price
-booking6.save
 
-booking7 = Booking.new(
+booking7 = Booking.create(
   user: gwen,
   room: chambre,
   start_date: DateTime.new(2023, 5, 26, 18, 0, 0),
@@ -173,10 +178,8 @@ booking7 = Booking.new(
   guests_number: 1,
   status: "refused"
 )
-booking7.booking_price = booking7.calculate_booking_price
-booking7.save
 
-booking8 = Booking.new(
+booking8 = Booking.create(
   user: gwen,
   room: chambre,
   start_date: DateTime.new(2023, 2, 20, 18, 0, 0),
@@ -184,8 +187,6 @@ booking8 = Booking.new(
   guests_number: 1,
   status: "approved"
 )
-booking8.booking_price = booking8.calculate_booking_price
-booking8.save
 
 puts "8 bookings created!"
 
