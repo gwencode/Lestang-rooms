@@ -1,5 +1,5 @@
 class Admin::BookingsController < ApplicationController
-  before_action :set_booking, only: %i[show edit update]
+  before_action :set_booking, only: %i[show edit update accept decline]
 
   def index
     unless current_user.admin
@@ -40,6 +40,16 @@ class Admin::BookingsController < ApplicationController
       end
       render :edit, status: :unprocessable_entity
     end
+  end
+
+  def accept
+    authorize @booking
+    redirect_if_update(@booking, "acceptée")
+  end
+
+  def decline
+    authorize @booking
+    redirect_if_update(@booking, "refusée")
   end
 
   private
@@ -99,6 +109,15 @@ class Admin::BookingsController < ApplicationController
       "Réservations de la chambre"
     else
       "Toutes les réservations"
+    end
+  end
+
+  def redirect_if_update(booking, status)
+    if booking.update(status: status)
+      redirect_to admin_booking_path(booking)
+    else
+      flash.now[:alert] = booking.errors.messages.values.first.first.to_s
+      render :show, status: :unprocessable_entity
     end
   end
 end

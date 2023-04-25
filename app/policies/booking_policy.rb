@@ -11,6 +11,14 @@ class BookingPolicy < ApplicationPolicy
     user.admin
   end
 
+  def accept?
+    user.admin
+  end
+
+  def decline?
+    user.admin
+  end
+
   class Scope < Scope
     # NOTE: Be explicit about which records you allow access to!
     def resolve
