@@ -13,9 +13,11 @@ class Admin::RoomsController < ApplicationController
   end
 
   def edit
+    authorize @room
   end
 
   def update
+    authorize @room
     @room.update(room_params)
 
     redirect_to admin_room_path(@room)

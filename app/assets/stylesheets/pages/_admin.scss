@@ -117,11 +117,19 @@
   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
 }
 
-.edit-icon {
+.admin-icon {
   position: absolute;
-  top: 8px;
-  right: 8px;
   font-size: 24px;
   text-decoration: none;
   color: white;
+
+  &#edit {
+    right: 8px;
+    top: 8px;
+  }
+
+  &#message {
+    left: 8px;
+    top: 10px;
+  }
 }
