@@ -36,7 +36,7 @@ class Admin::BookingsController < ApplicationController
   def filter_bookings(bookings)
     case params[:filter]
     when "upcoming"
-      bookings.where("start_date > ?", DateTime.now).order("start_date ASC")
+      bookings.where("start_date > ?", DateTime.now).where(status: "approved").order("start_date ASC")
     when "past"
       bookings.where("end_date < ?", DateTime.now).order("end_date DESC")
     when "approved"
