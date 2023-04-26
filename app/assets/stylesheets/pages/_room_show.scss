@@ -43,17 +43,23 @@
   border-radius: 10px;
 }
 
-@media (max-width: 992px) {
+@media (max-width: 1200px) {
   .card-sleep {
     width: 31%;
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 992px) {
   .card-sleep {
     width: 48%;
   }
 }
+
+// @media (max-width: 768px) {
+//   .card-sleep {
+//     width: 48%;
+//   }
+// }
 
 @media (max-width: 576px) {
   .card-sleep {
