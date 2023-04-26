@@ -33,6 +33,17 @@
   padding: 1rem;
 }
 
+#introduction {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+// @media (max-width: 992px) {
+//   #introduction {
+//     margin-bottom: 0;
+//   }
+// }
+
 
 @media (max-width: 992px) {
   .images-room-little-screen {
