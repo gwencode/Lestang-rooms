@@ -19,6 +19,20 @@
             <div class="col-12 col-md-6"><%= f.input :guests_number, label: "Nombre de personnes", collection: (1..@booking.room.max_guests) %></div>
             <div class="col-12 col-md-6"><%= f.input :status, label: "Statut", collection: ["acceptée", "en attente", "refusée"] %></div>
           </div>
+          <div class="row">
+            <div class="col-12 col-md-4">
+              <%= label_tag :first_name, 'Prénom', class: "form-label" %>
+              <%= text_field_tag :first_name, @booking.user.first_name, class: "form-control" %>
+            </div>
+            <div class="col-12 col-md-4">
+              <%= label_tag :last_name, 'Nom', class: "form-label" %>
+              <%= text_field_tag :last_name, @booking.user.last_name, class: "form-control" %>
+            </div>
+            <div class="col-12 col-md-4">
+              <%= label_tag :email, 'Email', class: "form-label" %>
+              <%= email_field_tag :email, @booking.user.email, class: 'form-control' %>
+            </div>
+          </div>
           <div class="py-3 d-flex justify-content-center">
             <%= f.submit "Modifier", class: "button-blue" %>
           </div>

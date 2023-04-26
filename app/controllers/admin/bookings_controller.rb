@@ -26,6 +26,7 @@ class Admin::BookingsController < ApplicationController
 
   def update
     authorize @booking
+    @booking.user.update(first_name: params[:first_name], last_name: params[:last_name], email: params[:email])
 
     if @booking.update(booking_params)
       redirect_to admin_booking_path(@booking)
