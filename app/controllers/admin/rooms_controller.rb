@@ -18,9 +18,18 @@ class Admin::RoomsController < ApplicationController
 
   def update
     authorize @room
-    @room.update(room_params)
+    @room.room_price.update(
+      night_price: params[:night_price],
+      night_price_seven_guests: params[:night_price_seven_guests].to_i,
+      night_price_eight_guests: params[:night_price_eight_guests].to_i,
+      week_reduction: params[:week_reduction],
+      cleaning_fee: params[:cleaning_fee])
 
-    redirect_to admin_room_path(@room)
+    if @room.update(room_params)
+      redirect_to admin_room_path(@room)
+    else
+      render :edit, status: :unprocessable_entity
+    end
   end
 
   private
@@ -36,7 +45,6 @@ class Admin::RoomsController < ApplicationController
   def room_params
     params.require(:room).permit(:description,
                                  :max_guests,
-                                 :price_per_day,
                                  :arrival_hour,
                                  :departure_hour,
                                  :bedrooms,

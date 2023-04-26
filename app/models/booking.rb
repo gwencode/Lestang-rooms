@@ -16,9 +16,9 @@ class Booking < ApplicationRecord
   def guests_night_price
     case guests_number
     when 7
-      room.room_price.night_price + 10
+      room.room_price.night_price_seven_guests
     when 8
-      room.room_price.night_price + 20
+      room.room_price.night_price_eight_guests
     else
       room.room_price.night_price
     end

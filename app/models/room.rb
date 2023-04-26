@@ -13,13 +13,4 @@ class Room < ApplicationRecord
       }
     end
   end
-
-  def max_guests
-    case name
-    when "La Maison"
-      8
-    when "La Chambre"
-      2
-    end
-  end
 end

@@ -94,6 +94,8 @@ puts "Creating 2 room prices..."
 RoomPrice.create(
   room: maison,
   night_price: 160,
+  night_price_seven_guests: 170,
+  night_price_eight_guests: 180,
   week_reduction: -32,
   cleaning_fee: 60
 )

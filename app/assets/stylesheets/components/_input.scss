@@ -1,0 +1,27 @@
+.long-input {
+  min-height: 100px !important;
+}
+
+@media (max-width: 1200px) {
+  .long-input{
+    min-height: 130px !important;
+  }
+}
+
+@media (max-width: 992px) {
+  .long-input{
+    min-height: 130px !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .long-input{
+    min-height: 200px !important;
+  }
+}
+
+@media (max-width: 576px) {
+  .long-input{
+    min-height: 250px !important;
+  }
+}
