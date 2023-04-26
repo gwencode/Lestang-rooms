@@ -73,14 +73,37 @@
 }
 
 .img-room-carousel {
-  width: 50vw;
-  height: 33vw;
+  height: 500px;
 }
 
 @media (max-width: 1200px) {
   .img-room-carousel {
-    width: 100vw;
-    height: 67vw;
+    height: 475px;
+  }
+}
+
+@media (max-width: 992px) {
+  .img-room-carousel {
+    height: 370px;
+  }
+}
+
+@media (max-width: 768px) {
+  .img-room-carousel {
+    height: 350px;
+  }
+}
+
+@media (max-width: 576px) {
+  .img-room-carousel {
+    height: 60vw;
+  }
+}
+
+@media (max-width: 400px) {
+  .img-room-carousel {
+    width: 100%;
+    object-fit: cover;
   }
 }
 
