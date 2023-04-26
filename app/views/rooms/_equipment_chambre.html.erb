@@ -9,22 +9,21 @@
 
 <div class="equipment">
   <h5 class="fw-bold text-blue">Chambre et linge</h5>
-  <p><%= image_tag "icons/washing-machine.png", alt: "", width: 18 %><span class="stuff">Lave-linge (Gratuit) : dans le logement</span></p>
+  <p class="comment"><%= image_tag "icons/washing-machine.png", alt: "", width: 18 %><span class="stuff">Lave-linge, fer à repasser, étendoir</span></p>
+  <p class="comment">Dans les parties communes</p>
   <p class="with-comment"><i class="fa-solid fa-toilet-paper"></i><span class="stuff">Équipements de base</span></p>
   <p class="comment">Serviettes, draps, savon et papier toilettes</p>
   <p class="with-comment"><i class="fa-solid fa-bed"></i><span class="stuff">Draps</span></p>
   <p class="comment">Linge de lit en coton</p>
   <p><i class="fa-solid fa-mattress-pillow"></i><span class="stuff">Oreillers et couvertures supplémentaires</span></p>
-  <p><%= image_tag "icons/blinds.png", alt: "", width: 18 %><span class="stuff">Stores</span></p>
-  <p><%= image_tag "icons/iron.png", alt: "", width: 18 %><span class="stuff">Fer à repasser</span></p>
-  <p><%= image_tag "icons/cintre.png", alt: "", width: 18 %><span class="stuff">Étendoir à linge</span></p>
+  <p><%= image_tag "icons/blinds.png", alt: "", width: 18 %><span class="stuff">Volets roulants</span></p>
   <p><%= image_tag "icons/chest-of-drawers.png", alt: "", width: 18 %><span class="stuff">Commode</span></p>
 </div>
 
 <div class="equipment">
   <h5 class="fw-bold text-blue">Chauffage et climatisation</h5>
   <p><i class="fa-regular fa-snowflake"></i><span class="stuff">Climatisation centrale</span></p>
-  <p><i class="fa-solid fa-temperature-three-quarters"></i><span class="stuff">Chauffage radiant</span></p>
+  <p><i class="fa-solid fa-temperature-three-quarters"></i><span class="stuff">Pompe à chaleur </span></p>
 </div>
 
 <div class="equipment">
@@ -40,7 +39,7 @@
   <p class="with-comment"><i class="fa-solid fa-wifi"></i><span class="stuff">Wifi rapide / Fibre</span></p>
   <p class="comment">Il est possible de regarder des vidéos 4K en streaming et de participer à des appels vidéo sur plusieurs appareils.</span></p>
   <p class="with-comment"><%= image_tag "icons/desk.png", alt: "", width: 18 %><span class="stuff">Espace de travail dédié</span></p>
-  <p class="comment">Dans un espace commun</span></p>
+  <p class="comment">Dans un espace commun</p>
 </div>
 
 <div class="equipment">
@@ -52,20 +51,16 @@
   <p class="with-comment"><i class="fa-solid fa-kitchen-set"></i><span class="stuff">Équipements de cuisine de base</span></p>
   <p class="comment">Casseroles et poêles, huile, sel et poivre</p>
   <p class="with-comment"><i class="fa-solid fa-utensils"></i><span class="stuff">Vaisselle et couverts</span></p>
-  <p class="comment">Bols, baguettes, assiettes, tasses, etc.</p>
+  <p class="comment">Bols, assiettes, tasses, etc.</p>
   <p><%= image_tag "icons/freezer.png", alt: "", width: 16 %><span class="stuff">Congélateur</span></p>
   <p><%= image_tag "icons/dishwasher.png", alt: "", width: 18 %><span class="stuff">Lave-vaisselle</span></p>
   <p><%= image_tag "icons/oven.png", alt: "", width: 18 %><span class="stuff">Four</span></p>
   <p><%= image_tag "icons/kettle.png", alt: "", width: 18 %><span class="stuff">Bouilloire électrique</span></p>
-  <p><%= image_tag "icons/coffee-maker.png", alt: "", width: 18 %><span class="stuff">Cafetière : cafetière filtre</span></p>
-  <p><i class="fa-solid fa-champagne-glasses"></i><span class="stuff">Verres à vin</span></p>
+  <p><%= image_tag "icons/coffee-maker.png", alt: "", width: 18 %><span class="stuff">Cafetière Dolce Gusto (filtre)</span></p>
   <p><%= image_tag "icons/toaster.png", alt: "", width: 18 %><span class="stuff">Grille-pain</span></p>
   <p><%= image_tag "icons/stove.png", alt: "", width: 18 %><span class="stuff">Plaques de cuisson</span></p>
-  <p><%= image_tag "icons/rice-cooker.png", alt: "", width: 18 %><span class="stuff">Cuiseur à riz</span></p>
   <p class="with-comment"><%= image_tag "icons/barbecue.png", alt: "", width: 18 %><span class="stuff">Ustensiles de barbecue</span></p>
   <p class="comment">Barbecue, charbon, brochettes en bambou ou en métal, etc.</p>
-  <p><i class="fa-solid fa-mug-hot"></i><span class="stuff">Café</span></p>
-  <p><%= image_tag "icons/kitchen-table.png", alt: "", width: 18 %><span class="stuff">Table à manger</span></p>
 </div>
 
 <div class="equipment">
@@ -79,7 +74,6 @@
 
 <div class="equipment">
   <h5 class="fw-bold text-blue">Parking et installations</h5>
-  <p><i class="fa-solid fa-car"></i><span class="stuff">Parking gratuit sur place</span></p>
   <p><i class="fa-solid fa-car"></i><span class="stuff">Parking gratuit dans la rue</span></p>
 </div>
 
@@ -91,11 +85,6 @@
 </div>
 
 <div class="equipment">
-  <h5 class="fw-bold text-blue">Non inclus</h5>
+  <h5 class="fw-bold text-blue">Non présent</h5>
   <p><i class="fa-solid fa-tv"></i><span class="stuff indisponible">Télévision</span></p>
-  <p><%= image_tag "icons/hairdryer.png", alt: "", width: 18 %><span class="stuff indisponible">Sèche-cheveux</span></p>
-  <p class="with-comment"><%= image_tag "icons/smoke-detector.png", alt: "", width: 18 %><span class="stuff indisponible">Détecteur de monoxyde de carbone</span></p>
-  <p class="comment">Un tel dispositif n'est pas nécessaire dans notre logement. Par exemple, tous les appareils sont électriques et ne sont pas alimentés au gaz, à l'essence, au kérosène ou au bois.</p>
-  <p><i class="fa-solid fa-pump-soap"></i><span class="stuff indisponible">Shampooing</span></p>
-  <p><i class="fa-solid fa-door-closed"></i><span class="stuff indisponible">Entrée privée</span></p>
 </div>
