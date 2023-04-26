@@ -47,9 +47,26 @@ export default class extends Controller {
   #updateMarkerSize() {
     const background = document.getElementById("background-marker")
     const zoom = this.map.getZoom()
-    const size = 200 + ((zoom - 14)*300)^5 // Modifier cette valeur pour ajuster la taille des marqueurs en fonction de votre préférence
-    background.style.width = size + "px"
-    background.style.height = size + "px"
-    console.log("puissance 5 x 300")
+    if (zoom > 15) {
+      const size = 400 + (zoom - 14) * 500 // Modifier cette valeur pour ajuster la taille des marqueurs en fonction de votre préférence
+      background.style.width = size + "px"
+      background.style.height = size + "px"
+    } else if (zoom > 14) {
+      const size = 400 + (zoom - 14) * 400
+      background.style.width = size + "px"
+      background.style.height = size + "px"
+    } else if (zoom > 13.5) {
+      const size = 400 + (zoom - 14) * 300
+      background.style.width = size + "px"
+      background.style.height = size + "px"
+    } else if (zoom > 12.8) {
+      const size = 400 + (zoom - 14) * 200
+      background.style.width = size + "px"
+      background.style.height = size + "px"
+    } else {
+      const size = 400 + (zoom - 14) * 170
+      background.style.width = size + "px"
+      background.style.height = size + "px"
+    }
   }
 }
