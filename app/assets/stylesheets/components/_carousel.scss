@@ -1,11 +1,17 @@
 // Carousel Home Images
 
 .carousel-home-img {
-  width: 33%;
+  height: 300px;
 }
 
 .carousel-home-images-little-screen {
   display: none;
+}
+
+@media (max-width: 1200px) {
+  .carousel-home-img {
+    height: 250px;
+  }
 }
 
 @media (max-width: 992px) {
@@ -18,16 +24,22 @@
   }
 
   .carousel-home-img {
-    width: 80%;
-    height: 46vw;
+    height: 350px;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .carousel-home-img {
+    height: 275px;
     margin: 0 auto;
   }
 }
 
 @media (max-width: 576px) {
   .carousel-home-img {
-    width: 100%;
-    height: 70vw;
+    height: 250px;
+    margin: 0 auto;
   }
 }
 
