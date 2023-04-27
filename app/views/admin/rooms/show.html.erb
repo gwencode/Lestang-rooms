@@ -1,5 +1,5 @@
 <div class="container-fluid container background-back-link">
-  <%= link_to raw("<i class='fa-solid fa-arrow-left-long'></i> <span>Back</span>"), :back, class: "back-link" %>
+  <%= link_to raw("<i class='fa-solid fa-arrow-left-long'></i> <span>Retour</span>"), :back, class: "back-link" %>
 </div>
 
 <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url('<%= asset_path("#{@room.name}.png") %>')">
@@ -34,10 +34,26 @@
 
         <div class="separator"></div>
 
-        <div class="mx-auto col-12 col-md-8 text-center text-white">
-          <h4 class="text-white">Horaires</h4>
-          <p><span class="fw-bold">Heure d'arrivée :</span> <%= @room.arrival_hour %></p>
-          <p><span class="fw-bold">Heure de départ :</span> <%= @room.departure_hour %></p>
+        <h4 class="text-center text-white">Horaires</h4>
+        <div class="row py-2">
+          <div class="col-12 col-md-6 text-center">
+            <p class="m-0"><span class="fw-bold">Heure d'arrivée :</span> <%= @room.arrival_hour %></p>
+          </div>
+          <div class="col-12 col-md-6 text-center">
+            <p class="m-0"><span class="fw-bold">Heure de départ :</span> <%= @room.departure_hour %></p>
+          </div>
+        </div>
+
+        <div class="separator"></div>
+
+        <h4 class="text-center text-white">Nombre de nuits min / max</h4>
+        <div class="row py-2">
+          <div class="col-12 col-md-6 text-center">
+            <p class="m-0"><span class="fw-bold">Minimum :</span> <%= @room.min_nights %> nuit(s)</p>
+          </div>
+          <div class="col-12 col-md-6 text-center">
+            <p class="m-0"><span class="fw-bold">Maximum :</span> <%= @room.max_nights %> nuits</p>
+          </div>
         </div>
 
         <div class="separator"></div>
@@ -55,27 +71,35 @@
           </div>
         </div>
 
-        <div class="row py-2">
-          <div class="col-12 col-lg-4 text-center">
-            <p class="m-0"><span class="fw-bold">Réduction >= <%= @room.room_price.week_duration %> nuits :</span> <%= @room.room_price.week_reduction %>€ / nuit</p>
-          </div>
-          <div class="col-12 col-lg-4 text-center">
-            <p class="m-0"><span class="fw-bold">Réduction >= <%= @room.room_price.medium_duration %> nuits :</span> <%= @room.room_price.medium_reduction %>€ / nuit</p>
-          </div>
-          <div class="col-12 col-lg-4 text-center">
-            <p class="m-0"><span class="fw-bold">Réduction >= <%= @room.room_price.high_duration %> nuits :</span> <%= @room.room_price.high_reduction %>€ / nuit</p>
-          </div>
-        </div>
+        <div class="separator"></div>
+
+        <h4 class="text-center text-white">Réductions</h4>
 
         <div class="row py-2">
           <div class="col-12 col-lg-4 text-center">
-            <p class="m-0"><span class="fw-bold">Frais de ménage <= <%= @room.room_price.small_cleaning_duration %> nuits :</span> <%= @room.room_price.small_cleaning_fee %>€</p>
+            <p class="m-0"><span class="fw-bold">A partir de <%= @room.room_price.week_duration %> nuits :</span> <%= @room.room_price.week_reduction %>€ / nuit</p>
           </div>
           <div class="col-12 col-lg-4 text-center">
-            <p class="m-0"><span class="fw-bold">Frais de ménage >= <%= @room.room_price.medium_cleaning_duration %> nuits :</span> <%= @room.room_price.medium_cleaning_fee %>€</p>
+            <p class="m-0"><span class="fw-bold">A partir de <%= @room.room_price.medium_duration %> nuits :</span> <%= @room.room_price.medium_reduction %>€ / nuit</p>
           </div>
           <div class="col-12 col-lg-4 text-center">
-            <p class="m-0"><span class="fw-bold">Frais de ménage >= <%= @room.room_price.high_cleaning_duration %> nuits :</span> <%= @room.room_price.high_cleaning_fee %>€</p>
+            <p class="m-0"><span class="fw-bold">A partir de <%= @room.room_price.high_duration %> nuits :</span> <%= @room.room_price.high_reduction %>€ / nuit</p>
+          </div>
+        </div>
+
+        <div class="separator"></div>
+
+        <h4 class="text-center text-white">Frais de ménage</h4>
+
+        <div class="row py-2">
+          <div class="col-12 col-lg-4 text-center">
+            <p class="m-0"><span class="fw-bold"><%= @room.room_price.small_cleaning_duration %> nuits ou moins : </span> <%= @room.room_price.small_cleaning_fee %>€</p>
+          </div>
+          <div class="col-12 col-lg-4 text-center">
+            <p class="m-0"><span class="fw-bold">A partir de <%= @room.room_price.medium_cleaning_duration %> nuits :</span> <%= @room.room_price.medium_cleaning_fee %>€</p>
+          </div>
+          <div class="col-12 col-lg-4 text-center">
+            <p class="m-0"><span class="fw-bold">A partir de <%= @room.room_price.high_cleaning_duration %> nuits :</span> <%= @room.room_price.high_cleaning_fee %>€</p>
           </div>
         </div>
 

@@ -20,10 +20,23 @@ class Admin::RoomsController < ApplicationController
     authorize @room
     @room.room_price.update(
       night_price: params[:night_price],
-      night_price_medium_guests: params[:night_price_medium_guests].to_i,
-      night_price_high_guests: params[:night_price_high_guests].to_i,
+      medium_guests: params[:medium_guests],
+      night_price_medium_guests: params[:night_price_medium_guests],
+      high_guests: params[:high_guests],
+      night_price_high_guests: params[:night_price_high_guests],
+      week_duration: params[:week_duration],
       week_reduction: params[:week_reduction],
-      small_cleaning_fee: params[:small_cleaning_fee])
+      medium_duration: params[:medium_duration],
+      medium_reduction: params[:medium_reduction],
+      high_duration: params[:high_duration],
+      high_reduction: params[:high_reduction],
+      small_cleaning_duration: params[:small_cleaning_duration],
+      small_cleaning_fee: params[:small_cleaning_fee],
+      medium_cleaning_duration: params[:medium_cleaning_duration],
+      medium_cleaning_fee: params[:medium_cleaning_fee],
+      high_cleaning_duration: params[:high_cleaning_duration],
+      high_cleaning_fee: params[:high_cleaning_fee]
+    )
 
     if @room.update(room_params)
       redirect_to admin_room_path(@room)
@@ -49,6 +62,8 @@ class Admin::RoomsController < ApplicationController
                                  :departure_hour,
                                  :bedrooms,
                                  :beds,
-                                 :bathrooms)
+                                 :bathrooms,
+                                 :min_nights,
+                                 :max_nights)
   end
 end
