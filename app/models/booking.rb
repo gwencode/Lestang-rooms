@@ -4,7 +4,7 @@ class Booking < ApplicationRecord
 
   validates :start_date, :end_date, :guests_number, :status, presence: true
   validate :end_date_after_start_date
-  validate :start_date_after_today
+  # validate :start_date_after_today
   validate :room_available
 
   before_save :set_booking_price
