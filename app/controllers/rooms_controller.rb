@@ -32,9 +32,6 @@ class RoomsController < ApplicationController
     if params[:nights].present?
       @nights = params[:nights].to_i
       render partial: 'prices', locals: { room: @room, nights: @nights }
-      # respond_to do |format|
-      #   format.json { render json: { nights: @nights } }
-      # end
     else
       @nights = 0
     end

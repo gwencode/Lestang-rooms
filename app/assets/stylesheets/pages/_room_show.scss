@@ -133,6 +133,16 @@
   text-align: center;
 }
 
+#prices {
+  padding-top: 16px;
+  border-top: 1px solid $black;
+}
+
+.text-gray-line-through {
+  text-decoration: line-through;
+  color: $gray;
+}
+
 // Style for To Know section
 
 .to-know {

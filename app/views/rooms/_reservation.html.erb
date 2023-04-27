@@ -1,6 +1,5 @@
 <div data-controller="guests" data-guests-max-guests-value=<%= room.max_guests %>>
   <script>
-    var nights = <%= nights %>;
     var id = <%= room.id %>;
   </script>
 
@@ -49,7 +48,7 @@
 
       <p class="text-center fw-bold m-0" data-guests-target="instruction">Ajouter des dates pour voir le prix</p>
 
-      <div data-guests-target="partial" class="d-none">
+      <div data-guests-target="partial" class="d-none" id="prices">
         <%= render "prices", room: room, nights: nights %>
       </div>
 

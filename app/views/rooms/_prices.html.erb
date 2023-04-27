@@ -1,16 +1,19 @@
 <div data-guests-target="prices">
+  <% if nights >= 7 %>
+    <h5><span class="text-gray-line-through"><%= room.room_price.night_price %> €</span> <%= room.room_price.night_price_week_reduction %> € par nuit</h5>
+  <% else %>
+    <h5><%= room.room_price.night_price %> € par nuit</h5>
+  <% end %>
   <div class="d-flex justify-content-between">
     <p><%= room.room_price.night_price %> € x <%= nights %> <%= nights > 1 ? "nuits" : "nuit" %></p>
     <p><%= room.room_price.night_price * nights %> €</p>
   </div>
-  <div class="d-flex justify-content-between">
-    <p>Prix total de base</p>
-    <p>TO DO €</p>
-  </div>
-  <div class="d-flex justify-content-between">
-    <p>Réduction à la semaine</p>
-    <p class="text-success">TO DO €</p>
-  </div>
+  <% if nights >= 7 %>
+    <div class="d-flex justify-content-between">
+      <p>Réduction à la semaine</p>
+      <p class="text-success"><%= room.room_price.week_reduction * nights %> €</p>
+    </div>
+  <% end %>
   <div class="d-flex justify-content-between">
     <p class="fw-bold">Total</p>
     <p>TO DO €</p>

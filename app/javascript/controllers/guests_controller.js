@@ -7,8 +7,7 @@ export default class extends Controller {
 
   connect() {
     // console.log(this.pricesTarget)
-    console.log(nights)
-    console.log(this.partialTarget)
+    // console.log(this.partialTarget)
   }
 
   decrease() {
