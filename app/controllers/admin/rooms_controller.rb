@@ -23,7 +23,7 @@ class Admin::RoomsController < ApplicationController
       night_price_medium_guests: params[:night_price_medium_guests].to_i,
       night_price_high_guests: params[:night_price_high_guests].to_i,
       week_reduction: params[:week_reduction],
-      cleaning_fee: params[:cleaning_fee])
+      small_cleaning_fee: params[:small_cleaning_fee])
 
     if @room.update(room_params)
       redirect_to admin_room_path(@room)

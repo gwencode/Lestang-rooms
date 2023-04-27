@@ -58,8 +58,8 @@ class Booking < ApplicationRecord
 
   def set_booking_price
     price = basic_price
-    price += (room.room_price.week_reduction * nights) if nights >= 7
-    price += room.room_price.cleaning_fee
+    price += (room.room_price.week_reduction * nights) if nights >= room.room_price.week_duration
+    price += room.room_price.small_cleaning_fee
     self.booking_price = price
   end
 end

@@ -51,7 +51,7 @@
           <p><%= @booking.guests_night_price %> € x <%= @booking.nights %> nuits</p>
           <p><%= @booking.basic_price %> €</p>
         </div>
-        <% if @booking.nights >= 7 %>
+        <% if @booking.nights >= @room_price.week_duration %>
           <div class="d-flex justify-content-between">
             <p>Réduction à la semaine : <%= @room_price.week_reduction %> € x <%= @booking.nights %> nuits</p>
             <p class="text-success"><%= @room_price.week_reduction * @booking.nights %> €</p>
@@ -59,7 +59,7 @@
         <% end %>
         <div class="d-flex justify-content-between">
           <p>Frais de ménage</p>
-          <p><%= @room_price.cleaning_fee %> €</p>
+          <p><%= @room_price.small_cleaning_fee %> €</p>
         </div>
         <div class="d-flex justify-content-between">
           <p class="fw-bold">Total</p>
