@@ -29,11 +29,13 @@ class RoomsController < ApplicationController
     @booking = Booking.new(room: @room)
     @dates_disabled = @room.dates_disabled
 
+    @nights = 1
+    @guests = 1
+
     if params[:nights].present?
       @nights = params[:nights].to_i
-      render partial: 'prices', locals: { room: @room, nights: @nights }
-    else
-      @nights = 0
+      @guests = params[:guests].to_i
+      render partial: 'prices', locals: { room: @room, nights: @nights, guests: @guests }
     end
   end
 

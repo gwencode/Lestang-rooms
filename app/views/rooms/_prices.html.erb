@@ -1,21 +1,39 @@
 <div data-guests-target="prices">
-  <% if nights >= 7 %>
-    <h5><span class="text-gray-line-through"><%= room.room_price.night_price %> €</span> <%= room.room_price.night_price_week_reduction %> € par nuit</h5>
+  <% if guests == 7 %>
+    <% night_price =  room.room_price.night_price_seven_guests %>
+  <% elsif guests == 8 %>
+    <% night_price =  room.room_price.night_price_eight_guests %>
   <% else %>
-    <h5><%= room.room_price.night_price %> € par nuit</h5>
+    <% night_price =  room.room_price.night_price %>
+  <% end %>
+
+  <% if nights >= 7 %>
+    <h5><span class="text-gray-line-through"><%= night_price %>€</span> <%= night_price + room.room_price.week_reduction %>€ par nuit</h5>
+  <% else %>
+    <h5><%= night_price %>€ par nuit</h5>
   <% end %>
   <div class="d-flex justify-content-between">
-    <p><%= room.room_price.night_price %> € x <%= nights %> <%= nights > 1 ? "nuits" : "nuit" %></p>
-    <p><%= room.room_price.night_price * nights %> €</p>
+    <p><%= night_price %>€ x <%= nights %> <%= nights > 1 ? "nuits" : "nuit" %></p>
+    <p><%= night_price * nights %>€</p>
   </div>
   <% if nights >= 7 %>
     <div class="d-flex justify-content-between">
       <p>Réduction à la semaine</p>
-      <p class="text-success"><%= room.room_price.week_reduction * nights %> €</p>
+      <p class="text-success fw-semibold"><%= room.room_price.week_reduction * nights %>€</p>
+    </div>
+  <% end %>
+  <% if room.room_price.cleaning_fee > 0 %>
+    <div class="d-flex justify-content-between">
+      <p>Frais de ménage</p>
+      <p><%= room.room_price.cleaning_fee %>€</p>
     </div>
   <% end %>
   <div class="d-flex justify-content-between">
     <p class="fw-bold">Total</p>
-    <p>TO DO €</p>
+    <% if nights >= 7 %>
+      <p class="fw-bold"><%= night_price * nights + room.room_price.week_reduction * nights + room.room_price.cleaning_fee %>€</p>
+    <% else %>
+      <p class="fw-bold"><%= night_price * nights + room.room_price.cleaning_fee %>€</p>
+    <% end %>
   </div>
 </div>

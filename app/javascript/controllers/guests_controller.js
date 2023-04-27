@@ -13,20 +13,22 @@ export default class extends Controller {
   decrease() {
     if (1 < parseInt(this.guestsTarget.value)) {
       this.guestsTarget.value = parseInt(this.guestsTarget.value) - 1
+      this.setDates()
     }
   }
 
   increase() {
     if (parseInt(this.guestsTarget.value) < this.maxGuestsValue) {
       this.guestsTarget.value = parseInt(this.guestsTarget.value) + 1
+      this.setDates()
     }
-    // console.log(this.arrivalTarget.value)
-    // console.log(typeof(this.arrivalTarget.value))
   }
 
   setDates() {
     let dateStr = this.arrivalTarget.value
-    console.log(dateStr)
+    // console.log(dateStr)
+    let guests = parseInt(this.guestsTarget.value)
+    // console.log(guests)
     if (dateStr.length > 11) {
       let arrival = dateStr.substring(0, 10);
       let departure = dateStr.substring(14);
@@ -35,11 +37,11 @@ export default class extends Controller {
       let diff = date2.getTime() - date1.getTime();
       let nights = Math.ceil(diff / (1000 * 3600 * 24));
       if (nights >= 1) {
-        const url =`/rooms/${id}?nights=${nights}`
+        const url =`/rooms/${id}?nights=${nights}&guests=${guests}`
         fetch(url)
         .then(response => response.text())
         .then((html) => {
-          console.log(html);
+          // console.log(html);
           this.pricesTarget.innerHTML = html;
           this.partialTarget.classList.remove("d-none");
           this.submitTarget.classList.remove("d-none");
