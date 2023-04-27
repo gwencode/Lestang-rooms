@@ -37,19 +37,20 @@
               <%= number_field_tag :night_price, @room.room_price.night_price, class: "form-control" %>
             </div>
 
-            <% if @room.name == "La Maison" %>
-
+            <% if @room.room_price.medium_guests > 0 %>
               <div class="col-12 col-sm-6 col-md-4 py-2">
-                <%= label_tag :night_price_seven_guests, 'Prix / nuit € (7 voyageurs)', class: "form-label" %>
-                <%= number_field_tag :night_price_seven_guests, @room.room_price.night_price_seven_guests, class: "form-control" %>
+                <%= label_tag :night_price_medium_guests, "Prix / nuit € (#{@room.room_price.medium_guests} voyageurs)", class: "form-label" %>
+                <%= number_field_tag :night_price_medium_guests, @room.room_price.night_price_medium_guests, class: "form-control" %>
               </div>
-
-              <div class="col-12 col-sm-6 col-md-4 py-2">
-                <%= label_tag :night_price_eight_guests, 'Prix / nuit € (8 voyageurs)', class: "form-label" %>
-                <%= number_field_tag :night_price_eight_guests, @room.room_price.night_price_eight_guests, class: "form-control" %>
-              </div>
-
             <% end %>
+
+            <% if @room.room_price.high_guests > 0 %>
+              <div class="col-12 col-sm-6 col-md-4 py-2">
+                <%= label_tag :night_price_high_guests, "Prix / nuit € (#{@room.room_price.high_guests} voyageurs)", class: "form-label" %>
+                <%= number_field_tag :night_price_high_guests, @room.room_price.night_price_high_guests, class: "form-control" %>
+              </div>
+            <% end %>
+
               <div class="col-12 col-sm-6 col-md-4 py-2">
                 <%= label_tag :week_reduction, 'Réduction à la semaine / nuit €', class: "form-label" %>
                 <%= number_field_tag :week_reduction, @room.room_price.week_reduction, class: "form-control" %>

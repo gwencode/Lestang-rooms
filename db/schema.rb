@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_04_26_143258) do
+ActiveRecord::Schema[7.0].define(version: 2023_04_27_151456) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -40,13 +40,22 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_26_143258) do
   create_table "room_prices", force: :cascade do |t|
     t.bigint "room_id", null: false
     t.integer "night_price"
+    t.integer "medium_guests", default: 0
+    t.integer "night_price_medium_guests", default: 0
+    t.integer "high_guests", default: 0
+    t.integer "night_price_high_guests", default: 0
+    t.integer "week_duration", default: 7
     t.integer "week_reduction"
-    t.integer "night_price_week_reduction"
-    t.integer "cleaning_fee"
+    t.integer "medium_duration", default: 15
+    t.integer "medium_reduction"
+    t.integer "high_duration", default: 28
+    t.integer "high_reduction"
+    t.integer "small_cleaning_duration", default: 0
+    t.integer "small_cleaning_fee", default: 0
+    t.integer "high_cleaning_duration", default: 0
+    t.integer "high_cleaning_fee", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "night_price_seven_guests", default: 0
-    t.integer "night_price_eight_guests", default: 0
     t.index ["room_id"], name: "index_room_prices_on_room_id"
   end
 
@@ -61,6 +70,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_26_143258) do
     t.integer "bedrooms"
     t.integer "beds"
     t.integer "bathrooms"
+    t.integer "min_nights"
+    t.integer "max_nights"
   end
 
   create_table "users", force: :cascade do |t|

@@ -40,8 +40,8 @@
           <p><span class="fw-bold">Prix / nuit :</span> <%= @room.room_price.night_price %> €</p>
 
           <% if @room.name == "La Maison" %>
-            <p><span class="fw-bold">Prix / nuit (7 voyageurs) :</span> <%= @room.room_price.night_price_seven_guests %> €</p>
-            <p><span class="fw-bold">Prix / nuit (8 voyageurs) :</span> <%= @room.room_price.night_price_eight_guests %> €</p>
+            <p><span class="fw-bold">Prix / nuit (<%= @room.room_price.medium_guests %> voyageurs) :</span> <%= @room.room_price.night_price_medium_guests %> €</p>
+            <p><span class="fw-bold">Prix / nuit (<%= @room.room_price.high_guests %> voyageurs) :</span> <%= @room.room_price.night_price_high_guests %> €</p>
           <% end %>
 
           <p><span class="fw-bold">Réduction à la semaine / nuit :</span> <%= @room.room_price.week_reduction %> €</p>

@@ -15,10 +15,10 @@ class Booking < ApplicationRecord
 
   def guests_night_price
     case guests_number
-    when 7
-      room.room_price.night_price_seven_guests
-    when 8
-      room.room_price.night_price_eight_guests
+    when room.room_price.medium_guests
+      room.room_price.night_price_medium_guests
+    when room.room_price.high_guests
+      room.room_price.night_price_high_guests
     else
       room.room_price.night_price
     end
@@ -58,7 +58,7 @@ class Booking < ApplicationRecord
 
   def set_booking_price
     price = basic_price
-    price += (room.room_price.week_reduction * nights)  if nights >= 7
+    price += (room.room_price.week_reduction * nights) if nights >= 7
     price += room.room_price.cleaning_fee
     self.booking_price = price
   end

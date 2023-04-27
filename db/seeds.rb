@@ -71,7 +71,9 @@ maison = Room.create(
   departure_hour: "avant 12:00",
   bedrooms: 3,
   beds: 3,
-  bathrooms: 2
+  bathrooms: 2,
+  min_nights: 1,
+  max_nights: 15
 )
 
 description_chambre = "Nous proposons une chambre confortable, lumineuse et climatisée, équipée d'un lit Queen size et d'une commode pour ranger vos effets personnels. Vous aurez également accès au reste des parties communes partagées avec nous."
@@ -84,7 +86,9 @@ chambre = Room.create(
   departure_hour: "avant 11:00",
   bedrooms: 1,
   beds: 1,
-  bathrooms: 1
+  bathrooms: 1,
+  min_nights: 1,
+  max_nights: 365
 )
 
 puts "2 rooms created!"
@@ -94,17 +98,23 @@ puts "Creating 2 room prices..."
 RoomPrice.create(
   room: maison,
   night_price: 160,
-  night_price_seven_guests: 170,
-  night_price_eight_guests: 180,
+  medium_guests: 7,
+  night_price_medium_guests: 170,
+  high_guests: 8,
+  night_price_high_guests: 180,
   week_reduction: -32,
-  cleaning_fee: 60
+  medium_reduction: -32,
+  high_reduction: -64,
+  small_cleaning_fee: 30,
+  high_cleaning_fee: 60
 )
 
 RoomPrice.create(
   room: chambre,
   night_price: 40,
   week_reduction: -6,
-  cleaning_fee: 0
+  medium_reduction: -6,
+  high_reduction: -14
 )
 
 puts "2 room prices created!"

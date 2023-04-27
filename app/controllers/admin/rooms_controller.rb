@@ -20,8 +20,8 @@ class Admin::RoomsController < ApplicationController
     authorize @room
     @room.room_price.update(
       night_price: params[:night_price],
-      night_price_seven_guests: params[:night_price_seven_guests].to_i,
-      night_price_eight_guests: params[:night_price_eight_guests].to_i,
+      night_price_medium_guests: params[:night_price_medium_guests].to_i,
+      night_price_high_guests: params[:night_price_high_guests].to_i,
       week_reduction: params[:week_reduction],
       cleaning_fee: params[:cleaning_fee])
 
