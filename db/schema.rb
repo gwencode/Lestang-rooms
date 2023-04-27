@@ -50,9 +50,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_27_151456) do
     t.integer "medium_reduction"
     t.integer "high_duration", default: 28
     t.integer "high_reduction"
-    t.integer "small_cleaning_duration", default: 0
+    t.integer "small_cleaning_duration", default: 2
     t.integer "small_cleaning_fee", default: 0
-    t.integer "high_cleaning_duration", default: 0
+    t.integer "high_cleaning_duration", default: 3
     t.integer "high_cleaning_fee", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

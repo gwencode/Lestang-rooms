@@ -22,18 +22,18 @@
       <p class="text-success fw-semibold"><%= room.room_price.week_reduction * nights %>€</p>
     </div>
   <% end %>
-  <% if room.room_price.cleaning_fee > 0 %>
+  <% if room.room_price.small_cleaning_fee > 0 %>
     <div class="d-flex justify-content-between">
       <p>Frais de ménage</p>
-      <p><%= room.room_price.cleaning_fee %>€</p>
+      <p><%= room.room_price.small_cleaning_fee %>€</p>
     </div>
   <% end %>
   <div class="d-flex justify-content-between">
     <p class="fw-bold">Total</p>
     <% if nights >= room.room_price.week_duration %>
-      <p class="fw-bold"><%= night_price * nights + room.room_price.week_reduction * nights + room.room_price.cleaning_fee %>€</p>
+      <p class="fw-bold"><%= night_price * nights + room.room_price.week_reduction * nights + room.room_price.small_cleaning_fee %>€</p>
     <% else %>
-      <p class="fw-bold"><%= night_price * nights + room.room_price.cleaning_fee %>€</p>
+      <p class="fw-bold"><%= night_price * nights + room.room_price.small_cleaning_fee %>€</p>
     <% end %>
   </div>
 </div>
