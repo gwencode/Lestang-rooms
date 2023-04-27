@@ -7,7 +7,7 @@ class Booking < ApplicationRecord
   # validate :arrival_after_today
   validate :room_available
 
-  before_create :set_night_price, :set_nights, :set_duration, :set_reduction, :set_cleaning_fee, :set_booking_price
+  before_save :set_night_price, :set_nights, :set_duration, :set_reduction, :set_cleaning_fee, :set_booking_price
 
   def basic_price
     nights * night_price
