@@ -106,6 +106,7 @@ RoomPrice.create(
   medium_reduction: -32,
   high_reduction: -64,
   small_cleaning_fee: 30,
+  medium_cleaning_fee: 60,
   high_cleaning_fee: 60
 )
 
@@ -126,7 +127,7 @@ gwen = User.find_by(first_name: "Gwendal")
 maison = Room.find_by(name: "La Maison")
 chambre = Room.find_by(name: "La Chambre")
 
-puts "Creating 8 bookings..."
+puts "Creating 10 bookings..."
 
 booking1 = Booking.create(
   user: coco,
@@ -200,7 +201,25 @@ booking8 = Booking.create(
   status: "acceptée"
 )
 
-puts "8 bookings created!"
+booking9 = Booking.create(
+  user: gwen,
+  room: chambre,
+  arrival: DateTime.new(2023, 6, 1, 18, 0, 0),
+  departure: DateTime.new(2023, 6, 30, 11, 0, 0),
+  guests_number: 1,
+  status: "en attente"
+)
+
+booking10 = Booking.create(
+  user: coco,
+  room: maison,
+  arrival: DateTime.new(2023, 7, 1, 14, 0, 0),
+  departure: DateTime.new(2023, 7, 2, 12, 0, 0),
+  guests_number: 1,
+  status: "en attente"
+)
+
+puts "10 bookings created!"
 
 puts "Creating reviews..."
 

@@ -7,25 +7,11 @@ class Booking < ApplicationRecord
   # validate :arrival_after_today
   validate :room_available
 
-  before_save :set_booking_price
-
-  def nights
-    ((departure - arrival) / 60 / 60 / 24).round
-  end
-
-  def guests_night_price
-    case guests_number
-    when room.room_price.medium_guests
-      room.room_price.night_price_medium_guests
-    when room.room_price.high_guests
-      room.room_price.night_price_high_guests
-    else
-      room.room_price.night_price
-    end
-  end
+  before_create :set_night_price, :set_nights, :set_duration, :set_reduction, :set_cleaning_fee
+  before_create :set_booking_price
 
   def basic_price
-    nights * guests_night_price
+    nights * night_price
   end
 
   def arrival_after_today
@@ -56,10 +42,57 @@ class Booking < ApplicationRecord
 
   private
 
+  def set_night_price
+    case guests_number
+    when room.room_price.medium_guests
+      self.night_price = room.room_price.night_price_medium_guests
+    when room.room_price.high_guests
+      self.night_price = room.room_price.night_price_high_guests
+    else
+      self.night_price = room.room_price.night_price
+    end
+  end
+
+  def set_nights
+    self.nights = ((departure - arrival) / 60 / 60 / 24).round
+  end
+
+  def set_duration
+    if nights >= room.room_price.high_duration
+      self.duration = "high"
+    elsif nights >= room.room_price.medium_duration
+      self.duration = "medium"
+    elsif nights >= room.room_price.week_duration
+      self.duration = "week"
+    else
+      self.duration = nil
+    end
+  end
+
+  def set_reduction
+    case duration
+    when "high"
+      self.reduction = nights * room.room_price.high_reduction
+    when "medium"
+      self.reduction = nights * room.room_price.medium_reduction
+    when "week"
+      self.reduction = nights * room.room_price.week_reduction
+    else
+      self.reduction = 0
+    end
+  end
+
+  def set_cleaning_fee
+    if nights >= room.room_price.high_cleaning_duration
+      self.cleaning_fee = room.room_price.high_cleaning_fee
+    elsif nights >= room.room_price.medium_cleaning_duration
+      self.cleaning_fee = room.room_price.medium_cleaning_fee
+    else
+      self.cleaning_fee = room.room_price.small_cleaning_fee
+    end
+  end
+
   def set_booking_price
-    price = basic_price
-    price += (room.room_price.week_reduction * nights) if nights >= room.room_price.week_duration
-    price += room.room_price.small_cleaning_fee
-    self.booking_price = price
+    self.booking_price = basic_price + reduction + cleaning_fee
   end
 end

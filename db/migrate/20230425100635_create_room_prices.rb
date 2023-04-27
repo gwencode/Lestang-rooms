@@ -15,7 +15,9 @@ class CreateRoomPrices < ActiveRecord::Migration[7.0]
       t.integer :high_reduction
       t.integer :small_cleaning_duration, default: 2
       t.integer :small_cleaning_fee, default: 0
-      t.integer :high_cleaning_duration, default: 3
+      t.integer :medium_cleaning_duration, default: 3
+      t.integer :medium_cleaning_fee, default: 0
+      t.integer :high_cleaning_duration, default: 7
       t.integer :high_cleaning_fee, default: 0
 
       t.timestamps
