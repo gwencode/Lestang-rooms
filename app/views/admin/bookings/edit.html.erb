@@ -12,8 +12,8 @@
 
         <%= simple_form_for [:admin, @booking], url: admin_booking_path(@booking) do |f| %>
           <div class="row">
-            <div class="col-12 col-md-6"><%= f.input :start_date, as: :datetime, html5: true, label: "Arrivée" %></div>
-            <div class="col-12 col-md-6"><%= f.input :end_date, as: :datetime, html5: true, label: "Départ" %></div>
+            <div class="col-12 col-md-6"><%= f.input :arrival, as: :datetime, html5: true, label: "Arrivée" %></div>
+            <div class="col-12 col-md-6"><%= f.input :departure, as: :datetime, html5: true, label: "Départ" %></div>
           </div>
           <div class="row">
             <div class="col-12 col-md-6"><%= f.input :guests_number, label: "Nombre de personnes", collection: (1..@booking.room.max_guests) %></div>

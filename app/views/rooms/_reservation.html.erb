@@ -12,7 +12,7 @@
                                 flatpickr_dates_disabled_value: @dates_disabled }) do |f| %>
       <div class="d-flex justify-content-between gap-3">
 
-        <%= f.input :start_date, as: :string, label: "Arrivée", required: false,
+        <%= f.input :arrival, as: :string, label: "Arrivée", required: false,
           input_html: { data:
           {
             flatpickr_target: "startTime",
@@ -21,13 +21,13 @@
           }
         } %>
 
-        <%= f.input :end_date, as: :string, label: "Départ", required: false,
+        <%= f.input :departure, as: :string, label: "Départ", required: false,
           input_html: { data:
             {
               flatpickr_target: "endTime",
               guests_target: "departure"
             },
-            id: 'end_date'
+            id: 'departure'
           }
         %>
       </div>

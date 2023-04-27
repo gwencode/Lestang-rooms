@@ -2,15 +2,15 @@ class Booking < ApplicationRecord
   belongs_to :user
   belongs_to :room
 
-  validates :start_date, :end_date, :guests_number, :status, presence: true
-  validate :end_date_after_start_date
-  # validate :start_date_after_today
+  validates :arrival, :departure, :guests_number, :status, presence: true
+  validate :departure_after_arrival
+  # validate :arrival_after_today
   validate :room_available
 
   before_save :set_booking_price
 
   def nights
-    ((end_date - start_date) / 60 / 60 / 24).round
+    ((departure - arrival) / 60 / 60 / 24).round
   end
 
   def guests_night_price
@@ -28,27 +28,27 @@ class Booking < ApplicationRecord
     nights * guests_night_price
   end
 
-  def start_date_after_today
-    return if start_date.blank?
+  def arrival_after_today
+    return if arrival.blank?
 
-    if start_date < DateTime.now
-      errors.add(:start_date, "La date d'arrivée doit être après aujourd'hui")
+    if arrival < DateTime.now
+      errors.add(:arrival, "La date d'arrivée doit être après aujourd'hui")
     end
   end
 
-  def end_date_after_start_date
-    return if end_date.blank? || start_date.blank?
+  def departure_after_arrival
+    return if departure.blank? || arrival.blank?
 
-    if end_date <= start_date
-      errors.add(:end_date, "La date de départ doit être après la date d'arrivée")
+    if departure <= arrival
+      errors.add(:departure, "La date de départ doit être après la date d'arrivée")
     end
   end
 
   def room_available
-    return if start_date.blank? || end_date.blank?
+    return if arrival.blank? || departure.blank?
 
     room.bookings.excluding(self).where(status: "acceptée").each do |booking|
-      if booking.start_date < end_date && booking.end_date > start_date
+      if booking.arrival < departure && booking.departure > arrival
         errors.add(:room, "Logement pas disponible à ces dates")
       end
     end

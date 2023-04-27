@@ -4,8 +4,8 @@ class BookingsController < ApplicationController
   def create
     @booking = Booking.new(booking_params)
     @booking.room = Room.find(params[:room_id])
-    @booking.start_date = @booking.start_date.change(hour: set_hour[:arrival])
-    @booking.end_date = @booking.end_date.change(hour: set_hour[:departure])
+    @booking.arrival = @booking.arrival.change(hour: set_hour[:arrival])
+    @booking.departure = @booking.departure.change(hour: set_hour[:departure])
     @booking.booking_price = @booking.calculate_booking_price
     @booking.status = "en attente"
     @booking.user = current_user
@@ -22,7 +22,7 @@ class BookingsController < ApplicationController
   private
 
   def booking_params
-    params.require(:booking).permit(:start_date, :end_date, :guests_number)
+    params.require(:booking).permit(:arrival, :departure, :guests_number)
   end
 
   def set_hour

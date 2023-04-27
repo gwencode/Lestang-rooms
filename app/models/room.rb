@@ -8,8 +8,8 @@ class Room < ApplicationRecord
   def dates_disabled
     bookings.where(status: "acceptée").map do |booking|
       {
-        from: booking.start_date,
-        to: booking.end_date - (booking.end_date.hour + 4) * 3600
+        from: booking.arrival,
+        to: booking.departure - (booking.departure.hour + 4) * 3600
       }
     end
   end

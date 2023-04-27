@@ -20,7 +20,7 @@ export default class extends Controller {
       altFormat: "d/m/Y",
       disable: this.datesDisabledValue,
       // Provide an id for the plugin to work
-      plugins: [new rangePlugin({ input: "#end_date"})],
+      plugins: [new rangePlugin({ input: "#departure"})],
       minDate: "today"
 
       // enableTime: true

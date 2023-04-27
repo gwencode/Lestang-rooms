@@ -60,27 +60,27 @@ class Admin::BookingsController < ApplicationController
   end
 
   def booking_params
-    params.require(:booking).permit(:start_date, :end_date, :guests_number, :status)
+    params.require(:booking).permit(:arrival, :departure, :guests_number, :status)
   end
 
   def filter_bookings(bookings)
     case params[:filter]
     when "upcoming"
-      bookings.where("start_date > ?", DateTime.now).where(status: "acceptée").order("start_date ASC")
+      bookings.where("arrival > ?", DateTime.now).where(status: "acceptée").order("arrival ASC")
     when "past"
-      bookings.where("end_date < ?", DateTime.now).order("end_date DESC")
+      bookings.where("departure < ?", DateTime.now).order("departure DESC")
     when "acceptée"
-      bookings.where(status: "acceptée").order("end_date DESC")
+      bookings.where(status: "acceptée").order("departure DESC")
     when "en attente"
-      bookings.where(status: "en attente").order("start_date ASC")
+      bookings.where(status: "en attente").order("arrival ASC")
     when "refusée"
-      bookings.where(status: "refusée").order("end_date DESC")
+      bookings.where(status: "refusée").order("departure DESC")
     when "house"
-      bookings.where(room: Room.find_by(name: "La Maison")).order("end_date DESC")
+      bookings.where(room: Room.find_by(name: "La Maison")).order("departure DESC")
     when "bedroom"
-      bookings.where(room: Room.find_by(name: "La Chambre")).order("end_date DESC")
+      bookings.where(room: Room.find_by(name: "La Chambre")).order("departure DESC")
     else
-      bookings.order("end_date DESC")
+      bookings.order("departure DESC")
     end
   end
 

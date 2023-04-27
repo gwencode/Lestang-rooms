@@ -121,8 +121,8 @@ puts "Creating 8 bookings..."
 booking1 = Booking.create(
   user: coco,
   room: maison,
-  start_date: DateTime.new(2023, 5, 1, 14, 0, 0),
-  end_date: DateTime.new(2023, 5, 13, 12, 0, 0),
+  arrival: DateTime.new(2023, 5, 1, 14, 0, 0),
+  departure: DateTime.new(2023, 5, 13, 12, 0, 0),
   guests_number: 4,
   status: "acceptée"
 )
@@ -130,8 +130,8 @@ booking1 = Booking.create(
 booking2 = Booking.create(
   user: gwen,
   room: maison,
-  start_date: DateTime.new(2023, 5, 21, 14, 0, 0),
-  end_date: DateTime.new(2023, 6, 9, 12, 0, 0),
+  arrival: DateTime.new(2023, 5, 21, 14, 0, 0),
+  departure: DateTime.new(2023, 6, 9, 12, 0, 0),
   guests_number: 8,
   status: "acceptée"
 )
@@ -139,8 +139,8 @@ booking2 = Booking.create(
 booking3 = Booking.create(
   user: coco,
   room: chambre,
-  start_date: DateTime.new(2023, 4, 25, 18, 0, 0),
-  end_date: DateTime.new(2023, 5, 1, 11, 0, 0),
+  arrival: DateTime.new(2023, 4, 25, 18, 0, 0),
+  departure: DateTime.new(2023, 5, 1, 11, 0, 0),
   guests_number: 2,
   status: "acceptée"
 )
@@ -148,8 +148,8 @@ booking3 = Booking.create(
 booking4 = Booking.create(
   user: gwen,
   room: chambre,
-  start_date: DateTime.new(2023, 5, 5, 18, 0, 0),
-  end_date: DateTime.new(2023, 5, 9, 11, 0, 0),
+  arrival: DateTime.new(2023, 5, 5, 18, 0, 0),
+  departure: DateTime.new(2023, 5, 9, 11, 0, 0),
   guests_number: 1,
   status: "acceptée"
 )
@@ -157,8 +157,8 @@ booking4 = Booking.create(
 booking5 = Booking.create(
   user: coco,
   room: chambre,
-  start_date: DateTime.new(2023, 5, 12, 18, 0, 0),
-  end_date: DateTime.new(2023, 5, 22, 11, 0, 0),
+  arrival: DateTime.new(2023, 5, 12, 18, 0, 0),
+  departure: DateTime.new(2023, 5, 22, 11, 0, 0),
   guests_number: 2,
   status: "en attente"
 )
@@ -166,8 +166,8 @@ booking5 = Booking.create(
 booking6 = Booking.create(
   user: gwen,
   room: chambre,
-  start_date: DateTime.new(2023, 5, 26, 18, 0, 0),
-  end_date: DateTime.new(2023, 5, 29, 11, 0, 0),
+  arrival: DateTime.new(2023, 5, 26, 18, 0, 0),
+  departure: DateTime.new(2023, 5, 29, 11, 0, 0),
   guests_number: 1,
   status: "en attente"
 )
@@ -175,8 +175,8 @@ booking6 = Booking.create(
 booking7 = Booking.create(
   user: gwen,
   room: chambre,
-  start_date: DateTime.new(2023, 5, 26, 18, 0, 0),
-  end_date: DateTime.new(2023, 5, 29, 11, 0, 0),
+  arrival: DateTime.new(2023, 5, 26, 18, 0, 0),
+  departure: DateTime.new(2023, 5, 29, 11, 0, 0),
   guests_number: 1,
   status: "refusée"
 )
@@ -184,8 +184,8 @@ booking7 = Booking.create(
 booking8 = Booking.create(
   user: gwen,
   room: chambre,
-  start_date: DateTime.new(2023, 2, 20, 18, 0, 0),
-  end_date: DateTime.new(2023, 2, 22, 11, 0, 0),
+  arrival: DateTime.new(2023, 2, 20, 18, 0, 0),
+  departure: DateTime.new(2023, 2, 22, 11, 0, 0),
   guests_number: 1,
   status: "acceptée"
 )

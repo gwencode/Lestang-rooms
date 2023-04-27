@@ -20,8 +20,8 @@
 
         <div class="col-12 col-md-6 text-center">
           <p><span class="fw-bold">Logement réservé :</span> <%= @room.name %></p>
-          <p><span class="fw-bold">Arrivée :</span> <%= l(@booking.start_date, format: "%A %d %B à %Hh").capitalize %></p>
-          <p><span class="fw-bold">Départ :</span> <%= l(@booking.end_date, format: "%A %d %B à %Hh").capitalize %></p>
+          <p><span class="fw-bold">Arrivée :</span> <%= l(@booking.arrival, format: "%A %d %B à %Hh").capitalize %></p>
+          <p><span class="fw-bold">Départ :</span> <%= l(@booking.departure, format: "%A %d %B à %Hh").capitalize %></p>
         </div>
 
         <div class="col-12 col-md-6 text-center">
