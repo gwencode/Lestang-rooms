@@ -123,6 +123,12 @@
             <% end %>
           </div>
 
+           <div class="py-2">
+            <h4 class="text-center"><u>Calendrier</u></h4>
+              <div class="col-12 col-sm-6 col-md-4 mx-auto text-center">
+                <%= f.input :available_days, label: "Visible jusqu'à ... jours avant" %>
+              </div>
+
           <div class="py-3 d-flex justify-content-center">
             <%= f.submit "Modifier", class: "button-blue" %>
           </div>

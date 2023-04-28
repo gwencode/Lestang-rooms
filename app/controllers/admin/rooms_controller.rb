@@ -64,6 +64,7 @@ class Admin::RoomsController < ApplicationController
                                  :beds,
                                  :bathrooms,
                                  :min_nights,
-                                 :max_nights)
+                                 :max_nights,
+                                 :available_days)
   end
 end
