@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_04_27_160532) do
+ActiveRecord::Schema[7.0].define(version: 2023_04_28_150953) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -79,6 +79,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_27_160532) do
     t.integer "bathrooms"
     t.integer "min_nights"
     t.integer "max_nights"
+    t.integer "available_days", default: 0
   end
 
   create_table "users", force: :cascade do |t|

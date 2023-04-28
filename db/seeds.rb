@@ -73,7 +73,8 @@ maison = Room.create(
   beds: 3,
   bathrooms: 2,
   min_nights: 1,
-  max_nights: 15
+  max_nights: 15,
+  available_days: 365
 )
 
 description_chambre = "Nous proposons une chambre confortable, lumineuse et climatisée, équipée d'un lit Queen size et d'une commode pour ranger vos effets personnels. Vous aurez également accès au reste des parties communes partagées avec nous."
@@ -88,7 +89,8 @@ chambre = Room.create(
   beds: 1,
   bathrooms: 1,
   min_nights: 1,
-  max_nights: 365
+  max_nights: 365,
+  available_days: 92
 )
 
 puts "2 rooms created!"
