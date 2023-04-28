@@ -9,12 +9,23 @@ export default class extends Controller {
   static targets = [ "startTime", "endTime" ]
   static values = {
     datesDisabled: Array,
+    defaultAvailableSlots: Boolean,
     availableDays: Number
   }
 
   connect() {
     console.log(this.datesDisabledValue)
+    console.log(this.defaultAvailableSlotsValue)
     console.log(this.availableDaysValue)
+
+    // flatpickr(this.startTimeTarget, {
+    //   enable: [
+    //     {
+    //       from: "today",
+    //       to: new Date().fp_incr(7) // 7 days from now
+    //     }
+    //   ]
+    // })
 
     flatpickr(this.startTimeTarget, {
       "locale": French,

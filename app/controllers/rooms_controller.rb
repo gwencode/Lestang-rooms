@@ -27,7 +27,6 @@ class RoomsController < ApplicationController
     @sleep_images = sleep_files.map { |image_path| "#{@room.name}/sleep/#{File.basename(image_path)}" }
 
     @booking = Booking.new(room: @room)
-    @dates_disabled = @room.dates_disabled
 
     @nights = 1
     @guests = 1

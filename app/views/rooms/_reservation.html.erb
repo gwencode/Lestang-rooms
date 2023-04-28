@@ -9,7 +9,8 @@
                         url: room_bookings_path(room),
                         method: :post,
                         data: { controller: 'flatpickr',
-                                flatpickr_dates_disabled_value: @dates_disabled,
+                                flatpickr_dates_disabled_value: @room.dates_disabled,
+                                flatpickr_default_available_slots_value: @room.default_available_slots,
                                 flatpickr_available_days_value: @room.available_days }) do |f| %>
       <div class="d-flex justify-content-between gap-3">
 
