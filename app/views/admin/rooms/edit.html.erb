@@ -16,7 +16,7 @@
           <div class="py-1">
             <h4 class="text-center"><u>Infos</u></h4>
             <div class="row">
-              <div class="col-12 col-sm-6 col-xl-3"><%= f.input :max_guests, label: "Nb de voyageurs maximum", hint: "Voyageurs de plus de 2 ans", required: false%></div>
+              <div class="col-12 col-sm-6 col-xl-3"><%= f.input :max_guests, label: "Nb de voyageurs maximum", hint: "Voyageurs de plus de 2 ans", required: false %></div>
               <div class="col-12 col-sm-6 col-xl-3"><%= f.input :bedrooms, label: "Nb de chambres" %></div>
               <div class="col-12 col-sm-6 col-xl-3"><%= f.input :beds, label: "Nb de lits" %></div>
               <div class="col-12 col-sm-6 col-xl-3"><%= f.input :bathrooms, label: "Nb de salles de bain" %></div>
@@ -31,128 +31,96 @@
           <div class="py-1">
             <h4 class="text-center"><u>Horaires</u></h4>
             <div class="row">
-              <div class="col-12 col-md-6"><%= f.input :arrival_hour, label: "Arrivée", hint: "Ecrire une phrase. Format de l'heure HH:MM" %></div>
-              <div class="col-12 col-md-6"><%= f.input :departure_hour, label: "Départ", hint: "Ecrire une phrase. Format de l'heure HH:MM" %></div>
+              <% { arrival_hour: "Arrivée", departure_hour: "Départ" }.each do |key, value| %>
+                <div class="col-12 col-md-6"><%= f.input key, label: value, hint: "Ecrire une phrase. Format de l'heure HH:MM" %></div>
+              <% end %>
             </div>
           </div>
 
           <div class="py-1">
             <h4 class="text-center"><u>Nb de nuits min / max</u></h4>
             <div class="row">
-              <div class="col-12 col-md-6"><%= f.input :min_nights, label: "Nb de nuits minimum" %></div>
-              <div class="col-12 col-md-6"><%= f.input :max_nights, label: "Nb de nuits minimum" %></div>
+              <% { min_nights: "Nb de nuits minimum", max_nights: "Nb de nuits maximul" }.each do |key, value| %>
+                <div class="col-12 col-md-6"><%= f.input key, label: value %></div>
+              <% end %>
             </div>
           </div>
 
-
           <div class="py-1">
             <h4 class="text-center"><u>Prix</u></h4>
-            <div class="row">
-              <div class="col-12 col-md-6 py-2">
-                <%= label_tag :night_price, 'Prix de base / nuit en €', class: "form-label" %>
-                <%= number_field_tag :night_price, @room.room_price.night_price, class: "form-control" %>
+            <% [{
+                night_price: { label: "Prix de base / nuit en €", number: @room.room_price.night_price }
+                },
+                {
+                medium_guests: { label: "Nb moyen de voyageurs", number: @room.room_price.medium_guests },
+                night_price_medium_guests: { label: "Prix / nuit en € (Nb moyen de voyageurs)", number: @room.room_price.night_price_medium_guests }
+                },
+                {
+                high_guests: { label: "Nb élevé de voyageurs", number: @room.room_price.high_guests },
+                night_price_high_guests: { label: "Prix / nuit en € (Nb élevé de voyageurs)", number: @room.room_price.night_price_high_guests }
+                }
+              ].each do |hash| %>
+              <div class="row">
+                <% hash.each do |key, value| %>
+                  <div class="col-12 col-md-6 py-2">
+                    <%= label_tag key, value[:label], class: "form-label" %>
+                    <%= number_field_tag key, value[:number], class: "form-control" %>
+                  </div>
+                <% end %>
               </div>
-            </div>
-
-            <div class="row">
-              <div class="col-12 col-md-6 py-2">
-                <%= label_tag :medium_guests, 'Nb moyen de voyageurs', class: "form-label" %>
-                <%= number_field_tag :medium_guests, @room.room_price.medium_guests, class: "form-control" %>
-              </div>
-
-              <div class="col-12 col-md-6 py-2">
-                <%= label_tag :night_price_medium_guests, "Prix / nuit en € (Nb moyen de voyageurs)", class: "form-label" %>
-                <%= number_field_tag :night_price_medium_guests, @room.room_price.night_price_medium_guests, class: "form-control" %>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col-12 col-md-6 py-2">
-                <%= label_tag :high_guests, 'Nb élevé de voyageurs', class: "form-label" %>
-                <%= number_field_tag :high_guests, @room.room_price.high_guests, class: "form-control" %>
-              </div>
-
-              <div class="col-12 col-md-6 py-2">
-                <%= label_tag :night_price_high_guests, "Prix / nuit en € (Nb élevé de voyageurs)", class: "form-label" %>
-                <%= number_field_tag :night_price_high_guests, @room.room_price.night_price_high_guests, class: "form-control" %>
-              </div>
-            </div>
+            <% end %>
           </div>
 
           <div class="py-2">
             <h4 class="text-center"><u>Réductions</u></h4>
-
-            <div class="row">
-              <div class="col-12 col-md-6 py-2">
-                <%= label_tag :week_duration, 'Nb de nuits semaine', class: "form-label" %>
-                <%= number_field_tag :week_duration, @room.room_price.week_duration, class: "form-control" %>
+            <% [{
+                week_duration: { label: "Nb de nuits semaine", number: @room.room_price.week_duration },
+                week_reduction: { label: "Réduction semaine / nuit en €", number: @room.room_price.week_reduction }
+                },
+                {
+                medium_duration: { label: "Nb de nuits moyenne durée", number: @room.room_price.medium_duration },
+                medium_reduction: { label: "Réduction moyenne durée / nuit en €", number: @room.room_price.medium_reduction }
+                },
+                {
+                high_duration: { label: "Nb de nuits longue durée", number: @room.room_price.high_duration },
+                high_reduction: { label: "Réduction longue durée / nuit en €", number: @room.room_price.high_reduction }
+                }
+              ].each do |hash| %>
+              <div class="row">
+                <% hash.each do |key, value| %>
+                  <div class="col-12 col-md-6 py-2">
+                    <%= label_tag key, value[:label], class: "form-label" %>
+                    <%= number_field_tag key, value[:number], class: "form-control" %>
+                  </div>
+                <% end %>
               </div>
-              <div class="col-12 col-md-6 py-2">
-                <%= label_tag :week_reduction, 'Réduction semaine / nuit en €', class: "form-label" %>
-                <%= number_field_tag :week_reduction, @room.room_price.week_reduction, class: "form-control" %>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col-12 col-md-6 py-2">
-                <%= label_tag :medium_duration, 'Nb de nuits moyenne durée', class: "form-label" %>
-                <%= number_field_tag :medium_duration, @room.room_price.medium_duration, class: "form-control" %>
-              </div>
-              <div class="col-12 col-md-6 py-2">
-                <%= label_tag :medium_reduction, 'Réduction moyenne durée / nuit en €', class: "form-label" %>
-                <%= number_field_tag :medium_reduction, @room.room_price.medium_reduction, class: "form-control" %>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col-12 col-md-6 py-2">
-                <%= label_tag :high_duration, 'Nb de nuits longue durée', class: "form-label" %>
-                <%= number_field_tag :high_duration, @room.room_price.high_duration, class: "form-control" %>
-              </div>
-              <div class="col-12 col-md-6 py-2">
-                <%= label_tag :high_reduction, 'Réduction longue durée / nuit en €', class: "form-label" %>
-                <%= number_field_tag :high_reduction, @room.room_price.high_reduction, class: "form-control" %>
-              </div>
-            </div>
-
+            <% end %>
           </div>
 
           <div class="py-2">
             <h4 class="text-center"><u>Frais de ménage</u></h4>
-
-            <div class="row">
-              <div class="col-12 col-md-6 py-2">
-                <%= label_tag :small_cleaning_duration, 'Nb de jours ménage faible durée', class: "form-label" %>
-                <%= number_field_tag :small_cleaning_duration, @room.room_price.small_cleaning_duration, class: "form-control" %>
+             <% [{
+                small_cleaning_duration: { label: "Nb de jours ménage faible durée", number: @room.room_price.small_cleaning_duration },
+                small_cleaning_fee: { label: "Frais de ménage faible durée en €", number: @room.room_price.small_cleaning_duration }
+                },
+                {
+                medium_cleaning_duration: { label: "Nb de jours ménage moyenne durée", number: @room.room_price.medium_cleaning_duration },
+                medium_cleaning_fee: { label: "Frais de ménage moyenne durée en €", number: @room.room_price.medium_cleaning_duration }
+                },
+                {
+                high_cleaning_duration: { label: "Nb de jours ménage longue durée", number: @room.room_price.high_cleaning_duration },
+                high_cleaning_fee: { label: "Frais de ménage longue durée en €", number: @room.room_price.high_cleaning_duration }
+                }
+              ].each do |hash| %>
+              <div class="row">
+                <% hash.each do |key, value| %>
+                  <div class="col-12 col-md-6 py-2">
+                    <%= label_tag key, value[:label], class: "form-label" %>
+                    <%= number_field_tag key, value[:number], class: "form-control" %>
+                  </div>
+                <% end %>
               </div>
-              <div class="col-12 col-md-6 py-2">
-                <%= label_tag :small_cleaning_fee, 'Frais de ménage faible durée en €', class: "form-label" %>
-                <%= number_field_tag :small_cleaning_fee, @room.room_price.small_cleaning_fee, class: "form-control" %>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col-12 col-md-6 py-2">
-                <%= label_tag :medium_cleaning_duration, 'Nb de jours ménage moyenne durée', class: "form-label" %>
-                <%= number_field_tag :medium_cleaning_duration, @room.room_price.medium_cleaning_duration, class: "form-control" %>
-              </div>
-              <div class="col-12 col-md-6 py-2">
-                <%= label_tag :medium_cleaning_fee, 'Frais de ménage moyenne durée en €', class: "form-label" %>
-                <%= number_field_tag :medium_cleaning_fee, @room.room_price.medium_cleaning_fee, class: "form-control" %>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col-12 col-md-6 py-2">
-                <%= label_tag :high_cleaning_duration, 'Nb de jours ménage longue durée', class: "form-label" %>
-                <%= number_field_tag :high_cleaning_duration, @room.room_price.high_cleaning_duration, class: "form-control" %>
-              </div>
-              <div class="col-12 col-md-6 py-2">
-                <%= label_tag :high_cleaning_fee, 'Frais de ménage longue durée en €', class: "form-label" %>
-                <%= number_field_tag :high_cleaning_fee, @room.room_price.high_cleaning_fee, class: "form-control" %>
-              </div>
-            </div>
-
+            <% end %>
           </div>
 
           <div class="py-3 d-flex justify-content-center">

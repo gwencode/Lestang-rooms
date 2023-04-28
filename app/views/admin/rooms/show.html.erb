@@ -13,7 +13,7 @@
 
       <h2><%= @room.name %></h2>
 
-      <div class="pt-3">
+      <div class="pt-3 px-2">
         <h4 class="text-center text-white">Infos</h4>
         <div id="room-details">
           <p class="m-0"><%= @room.max_guests > 1 ? "#{@room.max_guests} voyageurs" : "1 voyageur"%> maximum</p>
@@ -100,6 +100,16 @@
           </div>
           <div class="col-12 col-lg-4 text-center">
             <p class="m-0"><span class="fw-bold">A partir de <%= @room.room_price.high_cleaning_duration %> nuits :</span> <%= @room.room_price.high_cleaning_fee %>€</p>
+          </div>
+        </div>
+
+         <div class="separator"></div>
+
+        <h4 class="text-center text-white">Disponibilité</h4>
+
+        <div class="row py-2">
+          <div class="col-12 text-center">
+            <p class="m-0"><span class="fw-bold">Ouvert à la réservation :</span> <%= @room.available_days %> jours avant</p>
           </div>
         </div>
 
