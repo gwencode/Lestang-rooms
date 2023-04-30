@@ -12,7 +12,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     root to: "admin#dashboard"
-    resources :bookings, only: %i[index edit update]
+    resources :bookings, only: %i[index edit update destroy]
     resources :bookings, only: %i[show] do
       member do
         patch :accept

@@ -1,5 +1,5 @@
 class Admin::BookingsController < ApplicationController
-  before_action :set_booking, only: %i[show edit update accept decline]
+  before_action :set_booking, only: %i[show edit update accept decline destroy]
 
   def index
     unless current_user.admin
@@ -53,6 +53,13 @@ class Admin::BookingsController < ApplicationController
     authorize @booking
     redirect_if_update(@booking, "refusée")
   end
+
+  def destroy
+    authorize @booking
+    @booking.destroy
+    redirect_to admin_bookings_path, notice: "La réservation a bien été supprimée"
+  end
+
 
   private
 

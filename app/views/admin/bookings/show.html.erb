@@ -65,7 +65,16 @@
           <p class="fw-bold">Total</p>
           <p class="fw-bold"><%= @booking.booking_price %> €</p>
         </div>
+
+        <div class="text-center pt-3">
+          <%= link_to raw("<i class='fa-solid fa-trash-can'></i>"),
+                    admin_booking_path(@booking),
+                    data: {turbo_method: :delete, turbo_confirm: "Supprimer cette réservation ?"},
+                    class: "text-decoration-none text-white",
+                    style: "font-size: 24px" %>
+        </div>
       </div>
+
     </div>
   </div>
 
