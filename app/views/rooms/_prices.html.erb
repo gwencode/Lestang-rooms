@@ -7,33 +7,51 @@
     <% night_price =  room.room_price.night_price %>
   <% end %>
 
-  <% if nights >= room.room_price.week_duration %>
-    <h5><span class="text-gray-line-through"><%= night_price %>€</span> <%= night_price + room.room_price.week_reduction %>€ par nuit</h5>
+  <% if nights >= room.room_price.high_duration %>
+    <% night_reduction = room.room_price.high_reduction %>
+  <% elsif nights >= room.room_price.medium_duration %>
+    <% night_reduction = room.room_price.medium_reduction %>
+  <% elsif nights >= room.room_price.week_duration %>
+    <% night_reduction = room.room_price.week_reduction %>
+  <% else %>
+    <% night_reduction = 0 %>
+  <% end %>
+
+  <% if night_reduction.negative? %>
+  <h5><span class="text-gray-line-through"><%= night_price %>€</span> <%= night_price + night_reduction %>€ par nuit</h5>
   <% else %>
     <h5><%= night_price %>€ par nuit</h5>
-  <% end %>
+<% end %>
+
   <div class="d-flex justify-content-between">
     <p><%= night_price %>€ x <%= nights %> <%= nights > 1 ? "nuits" : "nuit" %></p>
     <p><%= night_price * nights %>€</p>
   </div>
-  <% if nights >= room.room_price.week_duration %>
+
+  <% if night_reduction.negative? %>
     <div class="d-flex justify-content-between">
-      <p>Réduction à la semaine</p>
-      <p class="text-success fw-semibold"><%= room.room_price.week_reduction * nights %>€</p>
+      <p>Location longue durée</p>
+      <p class="text-success fw-semibold"><%= night_reduction * nights %>€</p>
     </div>
   <% end %>
-  <% if room.room_price.small_cleaning_fee > 0 %>
+
+  <% if nights >= room.room_price.high_cleaning_duration %>
+    <% cleaning_fee = room.room_price.high_cleaning_fee %>
+  <% elsif nights >= room.room_price.medium_cleaning_duration %>
+    <% cleaning_fee = room.room_price.medium_cleaning_fee %>
+  <% else nights <= room.room_price.small_cleaning_duration%>
+    <% cleaning_fee = room.room_price.small_cleaning_fee %>
+  <% end %>
+
+  <% if cleaning_fee.positive? %>
     <div class="d-flex justify-content-between">
       <p>Frais de ménage</p>
-      <p><%= room.room_price.small_cleaning_fee %>€</p>
+      <p><%= cleaning_fee %>€</p>
     </div>
   <% end %>
+
   <div class="d-flex justify-content-between">
     <p class="fw-bold">Total</p>
-    <% if nights >= room.room_price.week_duration %>
-      <p class="fw-bold"><%= night_price * nights + room.room_price.week_reduction * nights + room.room_price.small_cleaning_fee %>€</p>
-    <% else %>
-      <p class="fw-bold"><%= night_price * nights + room.room_price.small_cleaning_fee %>€</p>
-    <% end %>
+    <p class="fw-bold"><%= night_price * nights + night_reduction * nights + cleaning_fee %>€</p>
   </div>
 </div>
