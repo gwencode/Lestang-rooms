@@ -3,19 +3,22 @@ class BookingsController < ApplicationController
 
   def create
     @booking = Booking.new(booking_params)
+
+    authorize @booking
+
     @booking.room = Room.find(params[:room_id])
     @booking.arrival = @booking.arrival.change(hour: set_hour[:arrival])
     @booking.departure = @booking.departure.change(hour: set_hour[:departure])
-    @booking.booking_price = @booking.calculate_booking_price
+    # @booking.booking_price = @booking.calculate_booking_price
     @booking.status = "en attente"
     @booking.user = current_user
 
-    raise
-
-    if @booking.save!
-      redirect_to root_path
+    if @booking.save
+      redirect_to root_path, notice: "Votre demande de réservation a bien été envoyée"
+      # flash[:notice] = "Votre demande de réservation a bien été envoyée"
     else
-      render 'rooms/show', status: :unprocessable_entity
+      redirect_to room_path(@booking.room), alert: @booking.errors.messages.values.join(", ")
+      return
     end
   end
 
@@ -26,10 +29,11 @@ class BookingsController < ApplicationController
   end
 
   def set_hour
-    if @booking.room.name == "La Maison"
-      hour = { arrival: 14, departure: 12 }
-    elsif @booking.room.name == "La Chambre"
-      hour = { arrival: 18, departure: 11 }
+    case @booking.room.name
+    when "La Maison"
+      { arrival: 14, departure: 12 }
+    when "La Chambre"
+      { arrival: 18, departure: 11 }
     end
   end
 end

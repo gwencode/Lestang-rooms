@@ -38,7 +38,7 @@ class Booking < ApplicationRecord
 
     room.bookings.excluding(self).where(status: "acceptée").each do |booking|
       if booking.arrival < departure && booking.departure > arrival
-        errors.add(:room, "Logement pas disponible à ces dates")
+        errors.add(:room, "Le logement n'est pas disponible à ces dates")
       end
     end
   end
