@@ -1,6 +1,6 @@
 <% sleep_images.each_with_index do |image_path, index| %>
   <div class="card-sleep col-12 col-md-6 col-lg-4 col-xl-3 p-0">
-    <i class="fa-solid fa-expand" data-bs-toggle="modal" data-bs-target=<%= "#sleepImageModal-#{index}" %>></i>
+    <i class="fa-solid fa-expand" id="expand" data-bs-toggle="modal" data-bs-target=<%= "#sleepImageModal-#{index}" %>></i>
     <%= image_tag "#{image_path}", alt: "" %>
     <div class="card-sleep-infos">
       <% if index + 1 <= 2 %>

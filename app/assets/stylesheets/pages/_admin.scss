@@ -116,20 +116,3 @@
   color: white;
   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
 }
-
-.admin-icon {
-  position: absolute;
-  font-size: 24px;
-  text-decoration: none;
-  color: white;
-
-  &#edit {
-    right: 8px;
-    top: 8px;
-  }
-
-  &#message {
-    left: 8px;
-    top: 10px;
-  }
-}
