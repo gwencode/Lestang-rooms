@@ -12,9 +12,19 @@ class Admin::SeasonsController < ApplicationController
   end
 
   def new
+    @season = Season.new
+    authorize @season
   end
 
   def create
+    @season = Season.new(season_params)
+    @season.room = @room
+    authorize @season
+    if @season.save
+      redirect_to admin_room_seasons_path, notice: "Condition ajoutée"
+    else
+      render :new, status: :unprocessable_entity
+    end
   end
 
   def edit
@@ -31,6 +41,9 @@ class Admin::SeasonsController < ApplicationController
   end
 
   def destroy
+    authorize @season
+    @season.destroy
+    redirect_to admin_room_seasons_path, notice: "Condition supprimée"
   end
 
   private

@@ -8,19 +8,7 @@
 
     <div class="p-3" style="background-color: rgba(0, 0, 0, 0.6); position: relative;">
 
-      <%= link_to raw("<i class='fa-solid fa-trash-can'></i>"),
-                admin_room_season_path(@room, @season),
-                data: {turbo_method: :delete, turbo_confirm: "Supprimer cette période ?"},
-                class: "text-decoration-none text-white",
-                style: "font-size: 24px; position: absolute; right: 12px; top: 8px" %>
-
-      <div class="text-center">
-        <h2 class="px-1">Modifier la période : </h2>
-        <h4 class="text-white m-0"><%= l(@season.start_date, format: "%d %B %Y") %> - <%= l(@season.end_date, format: "%d %B %Y") %>  </h4>
-        <p class="m-0">Nb de nuits minimum : <%= @season.min_nights %> </p>
-      </div>
-
-      <%= simple_form_for [:admin, @season], url: admin_room_season_path(@room, @season) do |f| %>
+      <%= simple_form_for [:admin, @season], url: admin_room_seasons_path(@room) do |f| %>
         <div class="row text-white py-3">
             <div class="col-12 col-md-6 col-lg-4">
               <%= f.input :start_date, as: :datetime, html5: true, label: "Début" %>
@@ -33,10 +21,9 @@
           </div>
         </div>
         <div class="text-center">
-          <%= f.submit "Modifier", class: "btn btn-light" %>
+          <%= f.submit "Nouvelle condition", class: "btn btn-light" %>
         </div>
       <% end %>
-
     </div>
 
   </div>
