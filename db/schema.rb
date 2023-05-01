@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_04_28_162215) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_01_084639) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -83,6 +83,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_28_162215) do
     t.boolean "default_available_slots", default: false
   end
 
+  create_table "seasons", force: :cascade do |t|
+    t.bigint "room_id", null: false
+    t.datetime "start_date"
+    t.datetime "end_date"
+    t.integer "min_nights"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["room_id"], name: "index_seasons_on_room_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -102,4 +112,5 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_28_162215) do
   add_foreign_key "bookings", "users"
   add_foreign_key "reviews", "rooms"
   add_foreign_key "room_prices", "rooms"
+  add_foreign_key "seasons", "rooms"
 end

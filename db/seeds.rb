@@ -12,6 +12,7 @@ Booking.destroy_all
 
 ### Comment 3 next lines after first time in production
 RoomPrice.destroy_all
+Season.destroy_all
 Room.destroy_all
 User.destroy_all
 
@@ -123,6 +124,45 @@ RoomPrice.create(
 )
 
 puts "2 room prices created!"
+
+puts "Creating 5 seasons..."
+
+Season.create(
+  room: maison,
+  start_date: DateTime.new(2023, 7, 25, 14, 0, 0),
+  end_date: DateTime.new(2023, 7, 30, 12, 0, 0),
+  min_nights: 3
+)
+
+Season.create(
+  room: maison,
+  start_date: DateTime.new(2023, 5, 13, 14, 0, 0),
+  end_date: DateTime.new(2023, 5, 21, 12, 0, 0),
+  min_nights: 3
+)
+
+Season.create(
+  room: maison,
+  start_date: DateTime.new(2023, 6, 9, 14, 0, 0),
+  end_date: DateTime.new(2023, 6, 11, 12, 0, 0),
+  min_nights: 2
+)
+
+Season.create(
+  room: maison,
+  start_date: DateTime.new(2023, 8, 12, 14, 0, 0),
+  end_date: DateTime.new(2023, 8, 15, 12, 0, 0),
+  min_nights: 2
+)
+
+Season.create(
+  room: maison,
+  start_date: DateTime.new(2023, 7, 8, 14, 0, 0),
+  end_date: DateTime.new(2023, 7, 23, 12, 0, 0),
+  min_nights: 6
+)
+
+puts "5 seasons created!"
 
 ### Finsih commenting lines after first time in production
 
