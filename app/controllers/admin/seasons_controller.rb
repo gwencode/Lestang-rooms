@@ -6,7 +6,8 @@ class Admin::SeasonsController < ApplicationController
       flash[:alert] = "Accès non autorisé."
       redirect_to(root_path)
     end
-    @seasons = policy_scope(Season)
+    policy_scope(Season)
+    @seasons = @room.seasons
   end
 
   def show
