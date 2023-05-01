@@ -22,11 +22,14 @@ Rails.application.routes.draw do
     end
 
     get "/slots", to: "admin#slots"
+
+
     get "/messages", to: "admin#messages"
 
     resources :rooms, only: %i[index show edit update]
     resources :rooms, only: %i[show] do
       resources :seasons, except: %i[show]
+      resources :slots
     end
 
   end
