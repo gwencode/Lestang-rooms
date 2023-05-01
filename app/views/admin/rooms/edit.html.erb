@@ -125,8 +125,16 @@
 
            <div class="py-2">
             <h4 class="text-center"><u>Calendrier</u></h4>
-              <div class="col-12 col-sm-6 col-md-4 mx-auto text-center">
-                <%= f.input :available_days, label: "Visible jusqu'à ... jours avant" %>
+              <div class="row">
+                <div class="col-12 col-md-4 py-2">
+                  <%= f.input :available_days, label: "Visible jusqu'à ... jours avant" %>
+                </div>
+                <div class="col-12 col-md-4 py-2">
+                  <%= f.input :min_nights, label: "Nb de nuits minimum", hint: "Hors conditions saisonnières" %>
+                </div>
+                <div class="col-12 col-md-4 py-2">
+                  <%= f.input :max_nights, label: "Nb de nuits maximum" %>
+                </div>
               </div>
 
           <div class="py-3 d-flex justify-content-center">
