@@ -7,11 +7,20 @@ class Room < ApplicationRecord
   validates :name, :description, :max_guests, presence: true
 
   def arrivals_disabled
-    bookings.where(status: "acceptée").map do |booking|
-      {
-        from: booking.arrival - ((booking.arrival.hour + 4) * 3600),
-        to: booking.departure - ((booking.departure.hour + 4) * 3600)
-      }
+    if self.name == "La Chambre"
+      Booking.all.where(status: "acceptée").map do |booking|
+        {
+          from: booking.arrival - ((booking.arrival.hour + 4) * 3600),
+          to: booking.departure - ((booking.departure.hour + 4) * 3600)
+        }
+      end
+    else
+      bookings.where(status: "acceptée").map do |booking|
+        {
+          from: booking.arrival - ((booking.arrival.hour + 4) * 3600),
+          to: booking.departure - ((booking.departure.hour + 4) * 3600)
+        }
+      end
     end
   end
 
