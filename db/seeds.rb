@@ -10,9 +10,10 @@ puts "Cleaning database..."
 Review.destroy_all
 Booking.destroy_all
 
-### Comment 3 next lines after first time in production
+### Comment 5 next lines after first time in production
 RoomPrice.destroy_all
 Season.destroy_all
+Slot.destroy_all
 Room.destroy_all
 User.destroy_all
 
@@ -171,6 +172,32 @@ Season.create(
 )
 
 puts "5 seasons created!"
+
+puts "Creating slots for House..."
+
+slots = [
+  { start_date: DateTime.new(2023, 5, 13, 14, 0, 0), end_date: DateTime.new(2023, 5, 21, 12, 0, 0) },
+  { start_date: DateTime.new(2023, 5, 27, 14, 0, 0), end_date: DateTime.new(2023, 5, 28, 12, 0, 0) },
+  { start_date: DateTime.new(2023, 6, 9, 14, 0, 0), end_date: DateTime.new(2023, 6, 11, 12, 0, 0) },
+  { start_date: DateTime.new(2023, 6, 17, 14, 0, 0), end_date: DateTime.new(2023, 6, 18, 12, 0, 0) },
+  { start_date: DateTime.new(2023, 7, 1, 14, 0, 0), end_date: DateTime.new(2023, 7, 2, 12, 0, 0) },
+  { start_date: DateTime.new(2023, 7, 8, 14, 0, 0), end_date: DateTime.new(2023, 7, 23, 12, 0, 0) },
+  { start_date: DateTime.new(2023, 7, 25, 14, 0, 0), end_date: DateTime.new(2023, 7, 31, 12, 0, 0) },
+  { start_date: DateTime.new(2023, 8, 5, 14, 0, 0), end_date: DateTime.new(2023, 8, 6, 12, 0, 0) },
+  { start_date: DateTime.new(2023, 8, 12, 14, 0, 0), end_date: DateTime.new(2023, 8, 15, 12, 0, 0) },
+  { start_date: DateTime.new(2023, 8, 19, 14, 0, 0), end_date: DateTime.new(2023, 8, 20, 12, 0, 0) }
+]
+
+slots.each do |slot|
+  Slot.create(
+    room: maison,
+    start_date: slot[:start_date],
+    end_date: slot[:end_date],
+    available: true
+  )
+end
+
+puts "#{Slot.where(room_id: maison.id).count} slots for house created!"
 
 ### Finsih commenting lines after first time in production
 
