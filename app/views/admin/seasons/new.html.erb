@@ -1,5 +1,5 @@
 <div class="container-fluid container background-back-link">
-  <%= link_to raw("<i class='fa-solid fa-arrow-left-long'></i> <span>Retour</span>"), :back, class: "back-link" %>
+  <%= link_to raw("<i class='fa-solid fa-arrow-left-long'></i> <span>Retour</span>"), admin_room_seasons_path, class: "back-link" %>
 </div>
 
 <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url('<%= asset_path("#{@room.name}.png") %>')">
@@ -7,6 +7,8 @@
   <div class="container">
 
     <div class="p-3" style="background-color: rgba(0, 0, 0, 0.6); position: relative;">
+
+    <h4 class="text-center text-white">Nouvelle condition saisonnière pour <%= @room.name.downcase %></h4>
 
       <%= simple_form_for [:admin, @season], url: admin_room_seasons_path(@room) do |f| %>
         <div class="row text-white py-3">

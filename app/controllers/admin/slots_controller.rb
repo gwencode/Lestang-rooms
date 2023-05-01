@@ -24,7 +24,8 @@ class Admin::SlotsController < ApplicationController
       @slot.update(start_date: @slot.start_date.change(hour: 14), end_date: @slot.end_date.change(hour: 12))
       redirect_to admin_room_slots_path, notice: "Créneau ajouté"
     else
-      render :new, status: :unprocessable_entity, alert: @slot.errors.messages.values.join(", ")
+      redirect_to new_admin_room_slot_path(@room), alert: @slot.errors.full_messages.join(", ")
+      return
     end
   end
 
@@ -35,9 +36,11 @@ class Admin::SlotsController < ApplicationController
   def update
     authorize @slot
     if @slot.update(slot_params)
+      @slot.update(start_date: @slot.start_date.change(hour: 14), end_date: @slot.end_date.change(hour: 12))
       redirect_to admin_room_slots_path, notice: "Créneau modifié"
     else
-      render :edit, status: :unprocessable_entity
+      redirect_to edit_admin_room_slot_path(@room, @slot), alert: @slot.errors.full_messages.join(", ")
+      return
     end
   end
 

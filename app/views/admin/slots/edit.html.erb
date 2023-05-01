@@ -15,7 +15,7 @@
                 style: "font-size: 24px; position: absolute; right: 12px; top: 8px" %>
 
       <div class="text-center">
-        <h2 class="px-1">Modifier la période : </h2>
+        <h2 class="px-1">Modifier le créneau : </h2>
         <h4 class="text-white m-0"><%= l(@slot.start_date, format: "%d %B %Y") %> - <%= l(@slot.end_date, format: "%d %B %Y") %>  </h4>
         <p class="m-0 <%= @slot.available ? "text-success" : "text-warning" %>"><%= @slot.available ? "Disponible" : "Indisponible" %> </p>
       </div>
@@ -23,10 +23,10 @@
       <%= simple_form_for [:admin, @slot], url: admin_room_slot_path(@room, @slot) do |f| %>
         <div class="row text-white py-3">
             <div class="col-12 col-md-6 col-lg-4">
-              <%= f.input :start_date, as: :datetime, html5: true, label: "Début" %>
+              <%= f.input :start_date, as: :date, html5: true, label: "Début" %>
             </div>
             <div class="col-12 col-md-6 col-lg-4">
-              <%= f.input :end_date, as: :datetime, html5: true, label: "Fin" %>
+              <%= f.input :end_date, as: :date, html5: true, label: "Fin" %>
             </div>
             <div class="col-12 col-md-6 col-lg-4">
               <%= f.input :available, label: "Disponible" %>
