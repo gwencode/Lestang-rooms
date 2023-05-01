@@ -1,5 +1,6 @@
 class Admin::SeasonsController < ApplicationController
   before_action :set_room
+  before_action :set_season, only: %i[edit update destroy]
 
   def index
     unless current_user.admin
@@ -10,9 +11,6 @@ class Admin::SeasonsController < ApplicationController
     @seasons = @room.seasons
   end
 
-  def show
-  end
-
   def new
   end
 
@@ -20,9 +18,16 @@ class Admin::SeasonsController < ApplicationController
   end
 
   def edit
+    authorize @season
   end
 
   def update
+    authorize @season
+    if @season.update(season_params)
+      redirect_to admin_room_seasons_path, notice: "Condition modifiée"
+    else
+      render :edit, status: :unprocessable_entity
+    end
   end
 
   def destroy
@@ -32,5 +37,13 @@ class Admin::SeasonsController < ApplicationController
 
   def set_room
     @room = Room.find(params[:room_id])
+  end
+
+  def set_season
+    @season = Season.find(params[:id])
+  end
+
+  def season_params
+    params.require(:season).permit(:start_date, :end_date, :min_nights)
   end
 end

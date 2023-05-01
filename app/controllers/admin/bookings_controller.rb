@@ -30,7 +30,7 @@ class Admin::BookingsController < ApplicationController
     @booking.user.update(first_name: params[:first_name], last_name: params[:last_name], email: params[:email])
 
     if @booking.update(booking_params)
-      redirect_to admin_booking_path(@booking)
+      redirect_to admin_booking_path(@booking), notice: "Réservation modifiée"
     else
       flash.now[:alert] = ""
       if @booking.errors.messages.values.count > 1

@@ -14,8 +14,12 @@
         <div class="row">
           <% @seasons.each do |season| %>
             <div class="col-12 col-md-6 py-2">
-              <h4 class="text-white m-0"><%= l(season.start_date, format: "%d %B %Y") %> - <%= l(season.end_date, format: "%d %B %Y") %> </h4>
-              <p class="m-0"><%= season.min_nights %> nuits minimum</p>
+              <%= link_to edit_admin_room_season_path(@room, season), class: "text-decoration-none" do %>
+                <div>
+                  <h4 class="text-white m-0"><%= l(season.start_date, format: "%d %B %Y") %> - <%= l(season.end_date, format: "%d %B %Y") %> </h4>
+                  <p class="m-0"><%= season.min_nights %> nuits minimum</p>
+                </div>
+              <% end %>
             </div>
           <% end %>
         </div>

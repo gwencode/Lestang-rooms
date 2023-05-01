@@ -26,7 +26,7 @@ Rails.application.routes.draw do
 
     resources :rooms, only: %i[index show edit update]
     resources :rooms, only: %i[show] do
-      resources :seasons
+      resources :seasons, except: %i[show]
     end
 
   end

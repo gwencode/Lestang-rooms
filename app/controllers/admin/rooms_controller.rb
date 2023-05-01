@@ -39,7 +39,7 @@ class Admin::RoomsController < ApplicationController
     )
 
     if @room.update(room_params)
-      redirect_to admin_room_path(@room)
+      redirect_to admin_room_path(@room), notice: "Logement modifié"
     else
       render :edit, status: :unprocessable_entity
     end
