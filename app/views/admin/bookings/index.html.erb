@@ -1,7 +1,7 @@
 <div class="container-fluid container background-back-link">
-  <%= link_to raw("<i class='fa-solid fa-arrow-left-long'></i> <span>Retour</span>"), :back, class: "back-link" %>
+  <%= link_to raw("<i class='fa-solid fa-arrow-left-long'></i> <span>Dashboard</span>"), admin_root_path, class: "back-link" %>
 </div>
-<div class="py-4 px-5 header-blue">
+<div class="p-5 header-blue">
   <h1 class="px-5"><%= @title %> (<%= @amount_bookings %>)</h1>
 </div>
 <div class="container py-3">
