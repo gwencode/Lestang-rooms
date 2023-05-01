@@ -1,6 +1,10 @@
-class BookingPolicy < ApplicationPolicy
-  def show?
+class SlotPolicy < ApplicationPolicy
+  def create?
     user.admin
+  end
+
+  def new?
+    create?
   end
 
   def update?
@@ -9,18 +13,6 @@ class BookingPolicy < ApplicationPolicy
 
   def edit?
     update?
-  end
-
-  def accept?
-    user.admin
-  end
-
-  def decline?
-    user.admin
-  end
-
-  def create?
-    true
   end
 
   def destroy?

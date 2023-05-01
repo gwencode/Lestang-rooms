@@ -1,7 +1,7 @@
 class Slot < ApplicationRecord
   belongs_to :room
 
-  validates :start_date, :end_date, :available, presence: true
+  validates :start_date, :end_date, presence: true
   validate :end_date_after_start_date
 
   def end_date_after_start_date

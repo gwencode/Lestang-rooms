@@ -97,7 +97,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_01_150159) do
     t.bigint "room_id", null: false
     t.datetime "start_date"
     t.datetime "end_date"
-    t.boolean "available"
+    t.boolean "available", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["room_id"], name: "index_slots_on_room_id"

@@ -7,17 +7,17 @@
   <div class="container">
     <div class="py-3" style="background-color: rgba(0, 0, 0, 0.6); position: relative;">
 
-      <h2 class="px-1">Conditions saisonnières de <%= @room.name.downcase %></h2>
+      <h2 class="px-1">Créneaux de <%= @room.name.downcase %></h2>
 
       <div class="px-3">
 
         <div class="row">
-          <% @seasons.each do |season| %>
+          <% @slots.each do |slot| %>
             <div class="col-12 col-md-6 py-2">
-              <%= link_to edit_admin_room_season_path(@room, season), class: "text-decoration-none" do %>
+              <%= link_to edit_admin_room_slot_path(@room, slot), class: "text-decoration-none" do %>
                 <div>
-                  <h4 class="text-white m-0"><%= l(season.start_date, format: "%d %B %Y") %> - <%= l(season.end_date, format: "%d %B %Y") %> </h4>
-                  <p class="m-0"><%= season.min_nights %> <%= season.min_nights > 1 ? "nuits" : "nuit" %> minimum</p>
+                  <h4 class="text-white m-0"><%= l(slot.start_date, format: "%d %B %Y") %> - <%= l(slot.end_date, format: "%d %B %Y") %> </h4>
+                  <p class="m-0 <%= slot.available ? "text-success" : "text-warning" %>"><%= slot.available ? "Disponible" : "Indisponible" %></p>
                 </div>
               <% end %>
             </div>
@@ -25,7 +25,7 @@
         </div>
 
         <div class="text-center py-3">
-          <h5 class="m-0"><%= link_to "Ajouter une condition", new_admin_room_season_path(@room), class: "text-white" %></h5>
+          <h5 class="m-0"><%= link_to "Nouveau créneau", new_admin_room_slot_path(@room), class: "text-white" %></h5>
         </div>
 
       </div>
