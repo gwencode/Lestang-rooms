@@ -11,10 +11,10 @@
       <%= simple_form_for [:admin, @season], url: admin_room_seasons_path(@room) do |f| %>
         <div class="row text-white py-3">
             <div class="col-12 col-md-6 col-lg-4">
-              <%= f.input :start_date, as: :datetime, html5: true, label: "Début" %>
+              <%= f.input :start_date, as: :date, html5: true, label: "Début"  %>
             </div>
             <div class="col-12 col-md-6 col-lg-4">
-              <%= f.input :end_date, as: :datetime, html5: true, label: "Fin" %>
+              <%= f.input :end_date, as: :date, html5: true, label: "Fin" %>
             </div>
             <div class="col-12 col-md-6 col-lg-4">
               <%= f.input :min_nights, label: "Nuits minimum" %>

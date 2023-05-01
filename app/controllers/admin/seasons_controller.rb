@@ -21,6 +21,7 @@ class Admin::SeasonsController < ApplicationController
     @season.room = @room
     authorize @season
     if @season.save
+      @season.update(start_date: @season.start_date.change(hour: 14), end_date: @season.end_date.change(hour: 12))
       redirect_to admin_room_seasons_path, notice: "Condition ajoutée"
     else
       render :new, status: :unprocessable_entity
