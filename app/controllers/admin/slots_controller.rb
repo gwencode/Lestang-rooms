@@ -3,6 +3,10 @@ class Admin::SlotsController < ApplicationController
   before_action :set_slot, only: %i[edit update destroy]
 
   def index
+    unless current_user.admin
+      flash[:alert] = "Accès non autorisé."
+      redirect_to(root_path)
+    end
     policy_scope(Slot)
     @slots = @room.slots.order("start_date ASC")
   end
@@ -35,6 +39,12 @@ class Admin::SlotsController < ApplicationController
     else
       render :edit, status: :unprocessable_entity
     end
+  end
+
+  def destroy
+    authorize @slot
+    @slot.destroy
+    redirect_to admin_room_slots_path, notice: "Créneau supprimé"
   end
 
   private
