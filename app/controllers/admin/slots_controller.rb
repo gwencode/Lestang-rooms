@@ -1,6 +1,6 @@
 class Admin::SlotsController < ApplicationController
-
   before_action :set_room
+  before_action :set_slot, only: %i[edit update destroy]
 
   def index
     policy_scope(Slot)
@@ -24,6 +24,19 @@ class Admin::SlotsController < ApplicationController
     end
   end
 
+  def edit
+    authorize @slot
+  end
+
+  def update
+    authorize @slot
+    if @slot.update(slot_params)
+      redirect_to admin_room_slots_path, notice: "Créneau modifié"
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
   private
 
   def set_room
@@ -32,5 +45,9 @@ class Admin::SlotsController < ApplicationController
 
   def slot_params
     params.require(:slot).permit(:start_date, :end_date, :available)
+  end
+
+  def set_slot
+    @slot = Slot.find(params[:id])
   end
 end
