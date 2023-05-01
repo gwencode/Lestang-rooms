@@ -108,14 +108,29 @@
         <h4 class="text-center text-white">Calendrier</h4>
 
         <div class="row py-2">
-          <div class="col-12 col-lg-4 text-center">
-            <p class="m-0"><span class="fw-bold">Visible jusqu'à :</span> <%= @room.available_days %> jours avant</p>
+          <div class="col-12 col-md-6 text-center">
+            <p class="m-0"><span class="fw-bold">Dates réservables par défaut : </span> <%= @room.default_available_slots ? "Oui" : "Non" %></p>
+            <p class="m-0 fw-light">(hors créneaux spécifiques)</p>
           </div>
-          <div class="col-12 col-lg-4 text-center">
+          <div class="col-12 col-md-6 text-center">
+            <p class="m-0"><span class="fw-bold">Réservable jusqu'à :</span> <%= @room.available_days %> jours avant</p>
+          </div>
+        </div>
+
+        <div class="text-center pt-2">
+          <h5><%= link_to "Créneaux spécifiques", "#", class: "text-white" %></h5>
+        </div>
+
+        <div class="separator"></div>
+
+        <h4 class="text-center text-white">Nuitées</h4>
+
+        <div class="row py-2">
+          <div class="col-12 col-md-6 text-center">
             <p class="m-0"><span class="fw-bold">Nb de nuits minimum : </span> <%= @room.min_nights %></p>
             <p class="m-0 fw-light">(hors conditions saisonnières)</p>
           </div>
-          <div class="col-12 col-lg-4 text-center">
+          <div class="col-12 col-md-6 text-center">
             <p class="m-0"><span class="fw-bold">Nb de nuits maximum : </span> <%= @room.max_nights %></p>
           </div>
         </div>
