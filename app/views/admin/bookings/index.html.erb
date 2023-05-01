@@ -35,8 +35,8 @@
 
           <div class="card-booking-infos">
               <h2 class="text-blue"><%= booking.user.first_name %> <%= booking.user.last_name %></h2>
-              <p class="">Arrivée : <%= l(booking.arrival, format: "%A %d %B à %Hh").capitalize %></p>
-              <p class="">Départ : <%= l(booking.departure, format: "%A %d %B à %Hh").capitalize %></p>
+              <p class="">Arrivée : <%= l(booking.arrival, format: "%A %d %B %Y à %Hh").capitalize %></p>
+              <p class="">Départ : <%= l(booking.departure, format: "%A %d %B %Y à %Hh").capitalize %></p>
               <p class="">Nombre de personnes : <%= booking.guests_number %></p>
               <p class="">Nombre de nuits : <%= booking.nights %></p>
               <p class="">Prix total : <%= booking.booking_price %> €</p>

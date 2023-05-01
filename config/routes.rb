@@ -12,6 +12,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     root to: "admin#dashboard"
+
     resources :bookings, only: %i[index edit update destroy]
     resources :bookings, only: %i[show] do
       member do
@@ -19,9 +20,15 @@ Rails.application.routes.draw do
         patch :decline
       end
     end
+
     get "/slots", to: "admin#slots"
     get "/messages", to: "admin#messages"
+
     resources :rooms, only: %i[index show edit update]
+    resources :rooms, only: %i[show] do
+      resources :seasons
+    end
+
   end
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

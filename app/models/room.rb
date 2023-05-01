@@ -1,6 +1,7 @@
 class Room < ApplicationRecord
   has_many :bookings
   has_many :users, through: :bookings
+  has_many :seasons
   has_one :room_price
 
   validates :name, :description, :max_guests, presence: true

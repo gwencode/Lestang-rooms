@@ -103,7 +103,7 @@
           </div>
         </div>
 
-         <div class="separator"></div>
+        <div class="separator"></div>
 
         <h4 class="text-center text-white">Calendrier</h4>
 
@@ -120,6 +120,11 @@
             <p class="m-0"><span class="fw-bold">Nb de nuits maximum : </span> <%= @room.max_nights %></p>
           </div>
         </div>
+
+        <div class="text-center pt-2">
+          <h5><%= link_to "Conditions saisonnières", admin_room_seasons_path(@room), class: "text-white" %></h5>
+        </div>
+
 
       </div>
 
