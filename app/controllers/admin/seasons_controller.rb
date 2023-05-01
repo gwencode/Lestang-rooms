@@ -8,7 +8,7 @@ class Admin::SeasonsController < ApplicationController
       redirect_to(root_path)
     end
     policy_scope(Season)
-    @seasons = @room.seasons
+    @seasons = @room.seasons.order("start_date ASC")
   end
 
   def new

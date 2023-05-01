@@ -25,16 +25,15 @@ export default class extends Controller {
   }
 
   setDates() {
-    let dateStr = this.arrivalTarget.value
-    // console.log(dateStr)
+    let arrival = new Date(this.arrivalTarget.value);
+    let departure = new Date(this.departureTarget.value);
+    // console.log(arrival)
+    // console.log(departure)
+    // console.log(departure > arrival)
     let guests = parseInt(this.guestsTarget.value)
     // console.log(guests)
-    if (dateStr.length > 11) {
-      let arrival = dateStr.substring(0, 10);
-      let departure = dateStr.substring(14);
-      let date2 = new Date(departure);
-      let date1 = new Date(arrival);
-      let diff = date2.getTime() - date1.getTime();
+    if (departure > arrival) {
+      let diff = departure.getTime() - arrival.getTime();
       let nights = Math.ceil(diff / (1000 * 3600 * 24));
       if (nights >= 1) {
         const url =`/rooms/${id}?nights=${nights}&guests=${guests}`

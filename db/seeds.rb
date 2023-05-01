@@ -20,25 +20,33 @@ puts "Database cleaned!"
 
 ## Comment next lines after first time in production
 
-puts "Creating 2 admin users..."
+puts "Creating 3 admin users..."
 
 User.create(
-  email: "erle22@hotmail.fr",
-  password: "password",
+  email: ENV['ADMIN_EMAIL_1'].to_s,
+  password: ENV['ADMIN_PASSWORD_1'].to_s,
   first_name: "Erle",
   last_name: "Le Bris",
   admin: true
 )
 
 User.create(
-  email: "emilie.aubry59@gmail.com",
-  password: "password",
+  email: ENV['ADMIN_EMAIL_2'].to_s,
+  password: ENV['ADMIN_PASSWORD_2'].to_s,
   first_name: "Emilie",
   last_name: "Aubry",
   admin: true
 )
 
-puts "2 admin users created!"
+User.create(
+  email: ENV['ADMIN_EMAIL_3'].to_s,
+  password: ENV['ADMIN_PASSWORD_3'].to_s,
+  first_name: "Gwendal",
+  last_name: "Le Bris",
+  admin: true
+)
+
+puts "3 admin users created!"
 
 puts "Creating 2 normal users..."
 
@@ -51,9 +59,9 @@ User.create(
 )
 
 User.create(
-  email: "gwen@me.com",
+  email: "gireg@me.com",
   password: "password",
-  first_name: "Gwendal",
+  first_name: "Gireg",
   last_name: "Le Bris",
   admin: false
 )
@@ -167,7 +175,7 @@ puts "5 seasons created!"
 ### Finsih commenting lines after first time in production
 
 coco = User.find_by(first_name: "Corentin")
-gwen = User.find_by(first_name: "Gwendal")
+gireg = User.find_by(first_name: "Gireg")
 maison = Room.find_by(name: "La Maison")
 chambre = Room.find_by(name: "La Chambre")
 
@@ -176,59 +184,32 @@ puts "Creating 10 bookings..."
 booking1 = Booking.create(
   user: coco,
   room: maison,
-  arrival: DateTime.new(2023, 5, 1, 14, 0, 0),
-  departure: DateTime.new(2023, 5, 13, 12, 0, 0),
+  arrival: DateTime.new(2023, 5, 27, 14, 0, 0),
+  departure: DateTime.new(2023, 5, 28, 12, 0, 0),
   guests_number: 4,
   status: "acceptée"
 )
 
 booking2 = Booking.create(
-  user: gwen,
+  user: gireg,
   room: maison,
-  arrival: DateTime.new(2023, 5, 21, 14, 0, 0),
-  departure: DateTime.new(2023, 6, 9, 12, 0, 0),
-  guests_number: 8,
+  arrival: DateTime.new(2023, 7, 1, 14, 0, 0),
+  departure: DateTime.new(2023, 7, 2, 12, 0, 0),
+  guests_number: 7,
   status: "acceptée"
 )
 
 booking3 = Booking.create(
   user: coco,
-  room: chambre,
-  arrival: DateTime.new(2023, 4, 25, 18, 0, 0),
-  departure: DateTime.new(2023, 5, 1, 11, 0, 0),
-  guests_number: 2,
-  status: "acceptée"
+  room: maison,
+  arrival: DateTime.new(2023, 6, 1, 14, 0, 0),
+  departure: DateTime.new(2023, 6, 30, 12, 0, 0),
+  guests_number: 8,
+  status: "en attente"
 )
 
 booking4 = Booking.create(
-  user: gwen,
-  room: chambre,
-  arrival: DateTime.new(2023, 5, 5, 18, 0, 0),
-  departure: DateTime.new(2023, 5, 9, 11, 0, 0),
-  guests_number: 1,
-  status: "acceptée"
-)
-
-booking5 = Booking.create(
-  user: coco,
-  room: chambre,
-  arrival: DateTime.new(2023, 5, 12, 18, 0, 0),
-  departure: DateTime.new(2023, 5, 22, 11, 0, 0),
-  guests_number: 2,
-  status: "en attente"
-)
-
-booking6 = Booking.create(
-  user: gwen,
-  room: chambre,
-  arrival: DateTime.new(2023, 5, 26, 18, 0, 0),
-  departure: DateTime.new(2023, 5, 29, 11, 0, 0),
-  guests_number: 1,
-  status: "en attente"
-)
-
-booking7 = Booking.create(
-  user: gwen,
+  user: gireg,
   room: chambre,
   arrival: DateTime.new(2023, 5, 26, 18, 0, 0),
   departure: DateTime.new(2023, 5, 29, 11, 0, 0),
@@ -236,32 +217,59 @@ booking7 = Booking.create(
   status: "refusée"
 )
 
-booking8 = Booking.create(
-  user: gwen,
-  room: chambre,
-  arrival: DateTime.new(2023, 2, 20, 18, 0, 0),
-  departure: DateTime.new(2023, 2, 22, 11, 0, 0),
-  guests_number: 1,
-  status: "acceptée"
-)
+# booking4 = Booking.create(
+#   user: gireg,
+#   room: chambre,
+#   arrival: DateTime.new(2023, 5, 5, 18, 0, 0),
+#   departure: DateTime.new(2023, 5, 9, 11, 0, 0),
+#   guests_number: 1,
+#   status: "en attente"
+# )
 
-booking9 = Booking.create(
-  user: gwen,
-  room: chambre,
-  arrival: DateTime.new(2023, 6, 1, 18, 0, 0),
-  departure: DateTime.new(2023, 6, 30, 11, 0, 0),
-  guests_number: 1,
-  status: "en attente"
-)
+# booking5 = Booking.create(
+#   user: coco,
+#   room: chambre,
+#   arrival: DateTime.new(2023, 5, 12, 18, 0, 0),
+#   departure: DateTime.new(2023, 5, 22, 11, 0, 0),
+#   guests_number: 2,
+#   status: "en attente"
+# )
 
-booking10 = Booking.create(
-  user: coco,
-  room: maison,
-  arrival: DateTime.new(2023, 7, 1, 14, 0, 0),
-  departure: DateTime.new(2023, 7, 2, 12, 0, 0),
-  guests_number: 1,
-  status: "en attente"
-)
+# booking6 = Booking.create(
+#   user: gireg,
+#   room: chambre,
+#   arrival: DateTime.new(2023, 5, 26, 18, 0, 0),
+#   departure: DateTime.new(2023, 5, 29, 11, 0, 0),
+#   guests_number: 1,
+#   status: "en attente"
+# )
+
+# booking8 = Booking.create(
+#   user: gireg,
+#   room: chambre,
+#   arrival: DateTime.new(2023, 2, 20, 18, 0, 0),
+#   departure: DateTime.new(2023, 2, 22, 11, 0, 0),
+#   guests_number: 1,
+#   status: "en attente"
+# )
+
+# booking9 = Booking.create(
+#   user: gireg,
+#   room: chambre,
+#   arrival: DateTime.new(2023, 6, 1, 18, 0, 0),
+#   departure: DateTime.new(2023, 6, 30, 11, 0, 0),
+#   guests_number: 1,
+#   status: "en attente"
+# )
+
+# booking10 = Booking.create(
+#   user: coco,
+#   room: maison,
+#   arrival: DateTime.new(2023, 7, 1, 14, 0, 0),
+#   departure: DateTime.new(2023, 7, 2, 12, 0, 0),
+#   guests_number: 1,
+#   status: "en attente"
+# )
 
 puts "10 bookings created!"
 
