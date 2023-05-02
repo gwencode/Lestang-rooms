@@ -35,13 +35,21 @@ class Slot < ApplicationRecord
   end
 
   def update_second_slot
-    slot_maison = self
-    slot_chambre = self.class.find(id + 1)
-    slot_chambre.update(start_date: slot_maison.start_date, end_date: slot_maison.end_date) if slot_chambre
+    if self.class.find_by(id: id + 1)
+      slot_maison = self
+      slot_chambre = self.class.find_by(id: id + 1)
+      slot_chambre.update(start_date: slot_maison.start_date, end_date: slot_maison.end_date)
+    else
+      return
+    end
   end
 
   def destroy_second_slot
-    slot_chambre = self.class.find(id + 1)
-    slot_chambre.destroy if slot_chambre
+    if self.class.find_by(id: id + 1)
+      slot_chambre = self.class.find(id + 1)
+      slot_chambre&.destroy
+    else
+      return
+    end
   end
 end
