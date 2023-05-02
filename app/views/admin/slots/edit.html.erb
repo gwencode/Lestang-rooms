@@ -16,17 +16,18 @@
 
       <div class="text-center">
         <h2 class="px-1">Modifier le créneau : </h2>
-        <h4 class="text-white m-0"><%= l(@slot.start_date, format: "%d %B %Y") %> - <%= l(@slot.end_date, format: "%d %B %Y") %>  </h4>
-        <p class="m-0 <%= @slot.available ? "text-success" : "text-warning" %>"><%= @slot.available ? "Disponible" : "Indisponible" %> </p>
+        <h4 class="text-white m-0"><%= l(@slot.start_date, format: "%d %B") %> <span style="font-size: 0.5em">aprem</span> - <%= l(@slot.end_date, format: "%d %B %Y") %> <span style="font-size: 0.5em">matin</span> </h4>
+        <% notice = @room.name == "La Chambre" && @slot.start_date.hour == 14 ? "- maison disponible" : ""  %>
+        <p class="m-0 <%= @slot.available ? "text-success" : "text-warning" %>"><%= @slot.available ? "Disponible" : "Indisponible" %> <span class="text-success" style="font-size: 0.8em"><%= notice %></span></p>
       </div>
 
       <%= simple_form_for [:admin, @slot], url: admin_room_slot_path(@room, @slot) do |f| %>
-        <div class="row text-white py-3">
+        <div class="row text-white py-3 align-items-center">
             <div class="col-12 col-md-6 col-lg-4">
-              <%= f.input :start_date, as: :date, html5: true, label: "Début" %>
+              <%= f.input :start_date, as: :date, html5: true, label: "Début", hint: "Après-midi", hint_html: {class: "text-white fw-light"} %>
             </div>
             <div class="col-12 col-md-6 col-lg-4">
-              <%= f.input :end_date, as: :date, html5: true, label: "Fin" %>
+              <%= f.input :end_date, as: :date, html5: true, label: "Fin", hint: "Matin", hint_html: {class: "text-white fw-light"} %>
             </div>
             <div class="col-12 col-md-6 col-lg-4">
               <%= f.input :available, label: "Disponible" %>
@@ -39,6 +40,10 @@
 
       <% if @room.name == "La Maison" %>
         <p class="text-center fst-italic pt-3 m-0">A noter : Supprimer / modifier un créneau disponible pour la maison supprime / modifie automatiquement le même créneau indisponible pour la chambre</p>
+      <% end %>
+
+      <% if @room.name == "La Chambre" && @slot.start_date.hour == 14 %>
+        <p class="text-center fst-italic pt-3 m-0">A noter : Supprimer / modifier un créneau indisponible de la chambre ne supprime / modifie pas le créneau associé disponible de la maison</p>
       <% end %>
 
     </div>

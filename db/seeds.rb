@@ -173,6 +173,38 @@ Season.create(
 
 puts "5 seasons created!"
 
+puts "Creating slots for Bedroom..."
+
+slots = [
+  { start_date: DateTime.new(2023, 5, 4, 18, 0, 0), end_date: DateTime.new(2023, 5, 8, 11, 0, 0) },
+  { start_date: DateTime.new(2023, 5, 12, 18, 0, 0), end_date: DateTime.new(2023, 5, 13, 11, 0, 0) },
+  { start_date: DateTime.new(2023, 5, 21, 18, 0, 0), end_date: DateTime.new(2023, 5, 22, 11, 0, 0) },
+  { start_date: DateTime.new(2023, 5, 26, 18, 0, 0), end_date: DateTime.new(2023, 5, 27, 11, 0, 0) },
+  { start_date: DateTime.new(2023, 6, 11, 18, 0, 0), end_date: DateTime.new(2023, 6, 12, 11, 0, 0) },
+  { start_date: DateTime.new(2023, 6, 16, 18, 0, 0), end_date: DateTime.new(2023, 6, 17, 11, 0, 0) },
+  { start_date: DateTime.new(2023, 6, 18, 18, 0, 0), end_date: DateTime.new(2023, 6, 19, 11, 0, 0) },
+  { start_date: DateTime.new(2023, 6, 30, 18, 0, 0), end_date: DateTime.new(2023, 7, 1, 11, 0, 0) },
+  { start_date: DateTime.new(2023, 7, 2, 18, 0, 0), end_date: DateTime.new(2023, 7, 8, 11, 0, 0) },
+  { start_date: DateTime.new(2023, 7, 23, 18, 0, 0), end_date: DateTime.new(2023, 7, 25, 11, 0, 0) },
+  { start_date: DateTime.new(2023, 7, 31, 18, 0, 0), end_date: DateTime.new(2023, 8, 1, 11, 0, 0) },
+  { start_date: DateTime.new(2023, 8, 4, 18, 0, 0), end_date: DateTime.new(2023, 8, 5, 11, 0, 0) },
+  { start_date: DateTime.new(2023, 8, 11, 18, 0, 0), end_date: DateTime.new(2023, 8, 12, 11, 0, 0) },
+  { start_date: DateTime.new(2023, 8, 15, 18, 0, 0), end_date: DateTime.new(2023, 8, 17, 11, 0, 0) },
+  { start_date: DateTime.new(2023, 8, 25, 18, 0, 0), end_date: DateTime.new(2023, 8, 28, 11, 0, 0) },
+
+]
+
+slots.each do |slot|
+  Slot.create(
+    room: chambre,
+    start_date: slot[:start_date],
+    end_date: slot[:end_date],
+    available: false
+  )
+end
+
+puts "#{Slot.where(room_id: chambre.id).count} slots for bedroom created!"
+
 puts "Creating slots for House..."
 
 slots = [

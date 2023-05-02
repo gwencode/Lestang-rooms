@@ -17,16 +17,16 @@
                                 flatpickr_available_days_value: @room.available_days }) do |f| %>
       <div class="d-flex justify-content-between gap-3">
 
-        <%= f.input :arrival, as: :string, label: "Arrivée", required: false,
+        <%= f.input :arrival, as: :string, label: "Arrivée", label_html: { class: "fw-bold" }, required: false,
           input_html: { data:
           {
             flatpickr_target: "startTime",
             guests_target: "arrival",
             action: "change->guests#setDates"
-          }
+          },
         } %>
 
-        <%= f.input :departure, as: :string, label: "Départ", required: false,
+        <%= f.input :departure, as: :string, label: "Départ", label_html: { class: "fw-bold" }, required: false,
           input_html: { data:
             {
               flatpickr_target: "endTime",
