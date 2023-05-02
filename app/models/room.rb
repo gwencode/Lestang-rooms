@@ -7,26 +7,6 @@ class Room < ApplicationRecord
 
   validates :name, :description, :max_guests, presence: true
 
-  def arrivals_disabled
-    array = Booking.all.where(status: "acceptée").map do |booking|
-      {
-        from: booking.arrival - ((booking.arrival.hour + 4) * 3600),
-        to: booking.departure - ((booking.departure.hour + 4) * 3600)
-      }
-    end
-    array.sort_by { |slot| slot[:from] }
-  end
-
-  def departures_disabled
-    array = bookings.where(status: "acceptée").map do |booking|
-      {
-        from: booking.arrival + ((20 - booking.arrival.hour) * 3600),
-        to: booking.departure + ((20 - booking.departure.hour) * 3600)
-      }
-    end
-    array.sort_by { |slot| slot[:from] }
-  end
-
   def slots_enabled
     array = slots.where(available: true).map do |slot|
       {
@@ -34,6 +14,27 @@ class Room < ApplicationRecord
         to: slot.end_date - ((slot.end_date.hour + 4) * 3600)
       }
     end
+    array.sort_by { |slot| slot[:from] }
+  end
+
+  def slots_disabled
+    array = slots.where(available: false).map do |slot|
+      {
+        from: slot.start_date - ((slot.start_date.hour + 4) * 3600),
+        to: slot.end_date - ((slot.end_date.hour + 4) * 3600)
+      }
+    end
+    array.sort_by { |slot| slot[:from] }
+  end
+
+  def arrivals_disabled
+    array = Booking.all.where(status: "acceptée").map do |booking|
+      {
+        from: booking.arrival - ((booking.arrival.hour + 4) * 3600),
+        to: booking.departure - ((booking.departure.hour + 4) * 3600)
+      }
+    end
+    array += slots_disabled if slots_disabled
     array.sort_by { |slot| slot[:from] }
   end
 
@@ -62,6 +63,16 @@ class Room < ApplicationRecord
       end
     end
     return enables.sort_by { |slot| slot[:from] }
+  end
+
+  def departures_disabled
+    array = bookings.where(status: "acceptée").map do |booking|
+      {
+        from: booking.arrival + ((20 - booking.arrival.hour) * 3600),
+        to: booking.departure + ((20 - booking.departure.hour) * 3600)
+      }
+    end
+    array.sort_by { |slot| slot[:from] }
   end
 end
 

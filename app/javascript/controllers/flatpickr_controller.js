@@ -16,10 +16,12 @@ export default class extends Controller {
   }
 
   connect() {
-    console.log(this.arrivalsEnabledValue)
+    // console.log(this.arrivalsEnabledValue)
+    console.log(this.defaultAvailableSlotsValue)
     console.log(this.arrivalsDisabledValue)
 
-    if (this.defaultAvailableSlotsValue === true) {
+    if (this.defaultAvailableSlotsValue === false) {
+      console.log("if")
       flatpickr(this.startTimeTarget, {
         "locale": French,
         altInput: true,
@@ -27,10 +29,10 @@ export default class extends Controller {
         enable: this.arrivalsEnabledValue,
         minDate: "today",
         maxDate: new Date().fp_incr(this.availableDaysValue),
-        disable: this.arrivalsDisabledValue
       })
 
     } else {
+      console.log("else")
       flatpickr(this.startTimeTarget, {
         "locale": French,
         altInput: true,
@@ -38,7 +40,6 @@ export default class extends Controller {
         disable: this.arrivalsDisabledValue,
         minDate: "today",
         maxDate: new Date().fp_incr(this.availableDaysValue),
-        disable: this.arrivalsDisabledValue
       })
     }
 
