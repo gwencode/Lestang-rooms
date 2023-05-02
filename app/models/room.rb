@@ -38,6 +38,13 @@ class Room < ApplicationRecord
     array.sort_by { |slot| slot[:from] }
   end
 
+  def departures_disabled
+    array = arrivals_disabled.map do |slot|
+      {from: slot[:from] += 24 * 3600, to: slot[:to] += 24 * 3600}
+    end
+    array.sort_by { |slot| slot[:from] }
+  end
+
   def arrivals_enabled
     enables = slots_enabled
     disables = arrivals_disabled
@@ -68,16 +75,6 @@ class Room < ApplicationRecord
   def departures_enabled
     array = arrivals_enabled.map do |slot|
       {from: slot[:from] += 24 * 3600, to: slot[:to] += 24 * 3600}
-    end
-    array.sort_by { |slot| slot[:from] }
-  end
-
-  def departures_disabled
-    array = bookings.where(status: "acceptée").map do |booking|
-      {
-        from: booking.arrival + ((20 - booking.arrival.hour) * 3600),
-        to: booking.departure + ((20 - booking.departure.hour) * 3600)
-      }
     end
     array.sort_by { |slot| slot[:from] }
   end

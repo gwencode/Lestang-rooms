@@ -24,6 +24,7 @@ export default class extends Controller {
       console.log("if")
       console.log(this.arrivalsEnabledValue)
       console.log(this.departuresEnabledValue)
+
       flatpickr(this.startTimeTarget, {
         "locale": French,
         altInput: true,
@@ -46,6 +47,7 @@ export default class extends Controller {
     } else {
       console.log("else")
       console.log(this.arrivalsDisabledValue)
+
       flatpickr(this.startTimeTarget, {
         "locale": French,
         altInput: true,
@@ -53,6 +55,16 @@ export default class extends Controller {
         disable: this.arrivalsDisabledValue,
         minDate: "today",
         maxDate: new Date().fp_incr(this.availableDaysValue),
+      })
+
+      flatpickr(this.endTimeTarget, {
+        "locale": French,
+        altInput: true,
+        altFormat: "d/m/Y",
+        disable: this.departuresDisabledValue,
+        minDate: "today",
+        maxDate: new Date().fp_incr(this.availableDaysValue)
+        // enableTime: true
       })
     }
   }
