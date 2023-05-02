@@ -37,6 +37,10 @@
         </div>
       <% end %>
 
+      <% if @room.name == "La Maison" %>
+        <p class="text-center fst-italic pt-3 m-0">A noter : Supprimer / modifier un créneau disponible pour la maison supprime / modifie automatiquement le même créneau indisponible pour la chambre</p>
+      <% end %>
+
     </div>
 
   </div>

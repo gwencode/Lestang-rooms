@@ -8,7 +8,7 @@
 
     <div class="p-3" style="background-color: rgba(0, 0, 0, 0.6); position: relative;">
 
-    <h4 class="text-center text-white">Nouveau créneau pour <%= @room.name.downcase %></h4>
+      <h4 class="text-center text-white">Nouveau créneau pour <%= @room.name.downcase %></h4>
 
       <%= simple_form_for [:admin, @slot], url: admin_room_slots_path(@room) do |f| %>
         <div class="row text-white py-3">
@@ -22,10 +22,17 @@
               <%= f.input :available, label: "Disponible" %>
           </div>
         </div>
-        <div class="text-center">
+
+        <div class="text-center py-3">
           <%= f.submit "Nouveau créneau", class: "btn btn-light" %>
         </div>
       <% end %>
+
+      <% if @room.name == "La Maison" %>
+        <p class="text-center fst-italic pt-3 m-0">A noter : Un nouveau créneau disponible pour la maison crée automatiquement le même créneau indisponible pour la chambre</p>
+      <% end %>
+
+
     </div>
 
   </div>
