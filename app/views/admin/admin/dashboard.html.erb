@@ -1,35 +1,15 @@
 <div class="container py-3 row align-items-center dashboard">
 
-  <div class="col-12 col-md-6 py-3">
-    <%= link_to admin_bookings_path, class: "text-decoration-none" do %>
-      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= asset_path("admin/reserved.jpg") %>')">
-        Réservations
-      </div>
-    <% end %>
-  </div>
+  <% @dashboard_sections.each do |key, value| %>
 
-  <div class="col-12 col-md-6 py-3">
-    <%= link_to admin_slots_path, class: "text-decoration-none" do %>
-      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= asset_path("admin/calendar.jpg") %>')">
-        Créneaux disponibles
-      </div>
-    <% end %>
-  </div>
+    <div class="col-12 col-md-6 py-3 mx-auto">
+      <%= link_to value[:url].to_sym, class: "text-decoration-none" do %>
+        <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%=  asset_path(value[:asset]) %>')">
+          <%= key %>
+        </div>
+      <% end %>
+    </div>
 
-  <div class="col-12 col-md-6 py-3">
-    <%= link_to admin_rooms_path, class: "text-decoration-none" do %>
-      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= asset_path("La Chambre.png") %>')">
-        Mes logements
-      </div>
-    <% end %>
-  </div>
-
-  <div class="col-12 col-md-6 py-3">
-    <%= link_to admin_messages_path, class: "text-decoration-none" do %>
-      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= asset_path("admin/letters.jpg") %>')">
-        Messages
-      </div>
-    <% end %>
-  </div>
+  <% end %>
 
 </div>

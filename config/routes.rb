@@ -22,8 +22,7 @@ Rails.application.routes.draw do
     end
 
     get "/slots", to: "admin#slots"
-
-
+    get "/seasons", to: "admin#seasons"
     get "/messages", to: "admin#messages"
 
     resources :rooms, only: %i[index show edit update]

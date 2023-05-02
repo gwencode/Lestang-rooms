@@ -7,6 +7,10 @@ class AdminPolicy < ApplicationPolicy
     dashboard?
   end
 
+  def seasons?
+    dashboard?
+  end
+
   def messages?
     dashboard?
   end
