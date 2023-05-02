@@ -11,36 +11,27 @@ export default class extends Controller {
     arrivalsDisabled: Array,
     departuresDisabled: Array,
     defaultAvailableSlots: Boolean,
+    arrivalsEnabled: Array,
     availableDays: Number
   }
 
   connect() {
-    // console.log(this.arrivalsDisabledValue)
-    // console.log(this.departuresDisabledValue)
-    // console.log(this.defaultAvailableSlotsValue)
-    // console.log(this.availableDaysValue)
-
-    // flatpickr(this.startTimeTarget, {
-    //   enable: [
-    //     {
-    //       from: "today",
-    //       to: new Date().fp_incr(7) // 7 days from now
-    //     }
-    //   ]
-    // })
+    console.log(this.arrivalsEnabledValue)
+    console.log(this.arrivalsDisabledValue)
 
     flatpickr(this.startTimeTarget, {
       "locale": French,
       altInput: true,
       altFormat: "d/m/Y",
-      disable: this.arrivalsDisabledValue,
-      // Provide an id for the plugin to work
-      // plugins: [new rangePlugin({ input: "#departure"})],
+      enable: this.arrivalsEnabledValue,
       minDate: "today",
-      maxDate: new Date().fp_incr(this.availableDaysValue)
-
-      // enableTime: true
+      maxDate: new Date().fp_incr(this.availableDaysValue),
+      disable: this.arrivalsDisabledValue
     })
+
+    // flatpickr(this.startTimeTarget, {
+    //   disable: this.arrivalsDisabledValue,
+    // })
 
     flatpickr(this.endTimeTarget, {
       "locale": French,
@@ -52,4 +43,12 @@ export default class extends Controller {
       // enableTime: true
     })
   }
+
+  // flatpickr(this.startTimeTarget, {
+    // disable: this.arrivalsDisabledValue,
+    // // Provide an id for the plugin to work
+    // plugins: [new rangePlugin({ input: "#departure"})]
+    // enableTime: true
+  // })
+
 }
