@@ -28,10 +28,14 @@ class Admin::SlotsController < ApplicationController
     end
     authorize @slot
     if @slot.save
-      if Slot.find_by(id: @slot.id + 1)
-        redirect_to admin_room_slots_path, notice: "Créneaux ajoutés pour la maison et la chambre"
+      if @slot.room == Room.first
+        if Slot.find_by(id: @slot.id + 1)
+          redirect_to admin_room_slots_path, notice: "Créneaux ajoutés pour la maison et la chambre"
+        else
+          redirect_to admin_room_slots_path, alert: "Créneau créé pour la maison. ATTENTION : créneau pas créé pour la chambre"
+        end
       else
-        redirect_to admin_room_slots_path, alert: "Créneau créé pour la maison. ATTENTION : créneau pas créé pour la chambre"
+        redirect_to admin_room_slots_path, notice: "Créneau créé"
       end
     else
       redirect_to new_admin_room_slot_path(@room), alert: @slot.errors.full_messages.join(", ")
@@ -47,7 +51,7 @@ class Admin::SlotsController < ApplicationController
     authorize @slot
     if @slot.update(slot_params)
       @slot.update(start_date: @slot.start_date.change(hour: 14), end_date: @slot.end_date.change(hour: 12))
-      redirect_to admin_room_slots_path, notice: "Créneau modifié"
+      redirect_to admin_room_slots_path, notice: "Créneau(x) modifié(s)"
     else
       redirect_to edit_admin_room_slot_path(@room, @slot), alert: @slot.errors.full_messages.join(", ")
       return
@@ -57,7 +61,7 @@ class Admin::SlotsController < ApplicationController
   def destroy
     authorize @slot
     @slot.destroy
-    redirect_to admin_room_slots_path, notice: "Créneau supprimé"
+    redirect_to admin_room_slots_path, notice: "Créneau(x) supprimé(s)"
   end
 
   private

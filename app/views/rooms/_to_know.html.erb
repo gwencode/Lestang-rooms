@@ -13,12 +13,12 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <% if @room.name == "La Maison" %>
+          <% if @room == Room.first %>
             <%= render "rules_maison",
                 arrival_hour: arrival_hour,
                 departure_hour: departure_hour,
                 max_guests: max_guests %>
-          <% elsif @room.name == "La Chambre" %>
+          <% elsif @room == Room.last%>
             <%= render "rules_chambre",
                 arrival_hour: arrival_hour,
                 departure_hour: departure_hour,

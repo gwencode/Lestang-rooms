@@ -17,7 +17,7 @@
               <%= link_to edit_admin_room_slot_path(@room, slot), class: "text-decoration-none" do %>
                 <div>
                   <h4 class="text-white m-0"><%= l(slot.start_date, format: "%d %B") %> <span style="font-size: 0.5em">aprem</span> - <%= l(slot.end_date, format: "%d %B %Y") %> <span style="font-size: 0.5em">matin</span></h4>
-                  <% notice = @room.name == "La Chambre" && slot.start_date.hour == 14 ? "- maison disponible" : ""  %>
+                  <% notice = @room == Room.last && slot.start_date.hour == 14 ? "- maison disponible" : ""  %>
                   <p class="m-0 <%= slot.available ? "text-success" : "text-warning" %>"><%= slot.available ? "Disponible" : "Indisponible" %> <span class="text-success" style="font-size: 0.8em"><%= notice %></span></p>
                 </div>
               <% end %>
@@ -26,7 +26,12 @@
         </div>
 
         <div class="text-center py-3">
-          <h5 class="m-0"><%= link_to "Nouveau créneau", new_admin_room_slot_path(@room), class: "text-white" %></h5>
+          <h5 class="m-0"><%= link_to "Nouveau créneau", new_admin_room_slot_path(@room), class: "button-blue" %></h5>
+        </div>
+
+        <% other_room = @room == Room.first ? Room.last : Room.first%>
+        <div class="text-center py-3">
+          <%= link_to "Voir les créneaux de #{other_room.name.downcase}", admin_room_slots_path(other_room), class: "text-white fst-italic" %>
         </div>
 
       </div>

@@ -18,7 +18,7 @@
 <div class="short-equipment">
   <h5 class="fw-bold text-blue">Informations sur le logement</h5>
 
-  <% if @room.name == "La Chambre" %>
+  <% if @room == Room.last %>
     <p class="with-comment"><i class="fa-solid fa-couch" style="font-size: 0.9em"></i><span class="stuff">Certains espaces sont partagés</span></p>
     <p class="comment">Nous pouvons mettre à disposition une étagère du frigo si besoin.</p>
   <% end %>

@@ -27,9 +27,9 @@
       <%= link_to admin_booking_path(booking), class: "text-decoration-none text-black" do %>
         <div class="card-booking">
 
-          <% if booking.room.name == "La Maison" %>
+          <% if booking.room == Room.first %>
             <%= image_tag "#{booking.room.name}/maison.png" %>
-          <% elsif booking.room.name == "La Chambre" %>
+          <% elsif booking.room == Room.last %>
             <%= image_tag "#{booking.room.name}/chambre.png" %>
           <% end %>
 

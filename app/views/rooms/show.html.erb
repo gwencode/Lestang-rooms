@@ -18,9 +18,9 @@
   <div class="row">
 
     <div class="room-description col-12 col-lg-7 py-3">
-      <% if @room.name == "La Maison" %>
+      <% if @room == Room.first %>
         <%= render "short_description_maison" %>
-      <% elsif @room.name == "La Chambre" %>
+      <% elsif @room == Room.last %>
         <%= render "short_description_chambre" %>
       <% end %>
       <a href="" class="fw-bold text-black" data-bs-toggle="modal" data-bs-target="#descriptionModal">En savoir plus</a>
@@ -33,9 +33,9 @@
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-              <% if @room.name == "La Maison" %>
+              <% if @room == Room.first %>
                 <%= render "description_maison" %>
-              <% elsif @room.name == "La Chambre" %>
+              <% elsif @room == Room.last %>
                 <%= render "description_chambre" %>
               <% end %>
             </div>
@@ -63,9 +63,9 @@
 
     <div class="room-equipment col-12 col-lg-8 py-3">
       <h3 class="text-blue">Les équipements</h3>
-      <% if @room.name == "La Maison" %>
+      <% if @room == Room.first %>
         <%= render "short_equipment_maison" %>
-      <% elsif @room.name == "La Chambre" %>
+      <% elsif @room == Room.last %>
         <%= render "short_equipment_chambre" %>
       <% end %>
       <a href="" class="button-blue" data-bs-toggle="modal" data-bs-target="#equipmentModal">Afficher tous les équipements</a>
@@ -78,9 +78,9 @@
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-              <% if @room.name == "La Maison" %>
+              <% if @room == Room.first %>
                 <%= render "equipment_maison" %>
-              <% elsif @room.name == "La Chambre" %>
+              <% elsif @room == Room.last %>
                 <%= render "equipment_chambre" %>
               <% end %>
             </div>
@@ -91,10 +91,10 @@
     </div>
 
     <div class="the-plus p-3 col-12 col-lg-4">
-      <h3 class="text-blue">Les +</h3>
-      <% if @room.name == "La Maison" %>
+      <h3 class="text-blue">Les vrais +</h3>
+      <% if @room == Room.first %>
         <%= render "more_maison" %>
-      <% elsif @room.name == "La Chambre" %>
+      <% elsif @room == Room.last %>
         <%= render "more_chambre" %>
       <% end %>
     </div>

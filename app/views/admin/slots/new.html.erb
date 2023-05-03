@@ -24,11 +24,11 @@
         </div>
 
         <div class="text-center py-3">
-          <%= f.submit "Nouveau créneau", class: "btn btn-light" %>
+          <%= f.submit "Ajouter", class: "button-blue" %>
         </div>
       <% end %>
 
-      <% if @room.name == "La Maison" %>
+      <% if @room == Room.first %>
         <p class="text-center fst-italic pt-3 m-0">A noter : Un nouveau créneau disponible pour la maison crée automatiquement le même créneau indisponible pour la chambre</p>
       <% end %>
 
