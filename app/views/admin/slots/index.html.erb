@@ -32,49 +32,7 @@
 
       </div>
 
-      <div class="separator"></div>
-
-      <div class="p-3">
-        <%= simple_form_for([@room, @booking],
-                            url: room_bookings_path(@room),
-                            method: :post,
-                            data: { controller: 'flatpickr-admin',
-                                    flatpickr_admin_arrivals_disabled_value: @room.arrivals_disabled,
-                                    flatpickr_admin_departures_disabled_value: @room.departures_disabled,
-                                    flatpickr_admin_default_available_slots_value: @room.default_available_slots,
-                                    flatpickr_admin_arrivals_enabled_value: @room.arrivals_enabled,
-                                    flatpickr_admin_departures_enabled_value: @room.departures_enabled,
-                                    flatpickr_admin_available_days_value: @room.available_days }) do |f| %>
-          <h3 class="text-white text-center">Disponibilités</h3>
-          <div class="row">
-
-            <div class="col-12 col-md-6 text-center">
-              <%= f.input :arrival, as: :string, label: "Arrivée", label_html: { class: "fw-bold text-white" }, required: false,
-                input_html: { data:
-                {
-                  flatpickr_admin_target: "startTime"
-                },
-                class: "d-none"
-              } %>
-            </div>
-
-            <div class="col-12 col-md-6 text-center">
-              <%= f.input :departure, as: :string, label: "Départ", label_html: { class: "fw-bold text-white" }, required: false,
-                input_html: { data:
-                  {
-                    flatpickr_admin_target: "endTime",
-                  },
-                  class: "d-none"
-                }
-              %>
-            </div>
-
-          </div>
-
-        <% end %>
-      </div>
-
-      <div class="separator"></div>
+      <%= render partial: "admin/admin_calendar", locals: { room: @room, booking: @booking } %>
 
       <% other_room = @room == Room.first ? Room.last : Room.first%>
       <div class="text-center py-3">

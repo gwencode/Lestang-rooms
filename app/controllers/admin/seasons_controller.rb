@@ -9,6 +9,7 @@ class Admin::SeasonsController < ApplicationController
     end
     policy_scope(Season)
     @seasons = @room.seasons.order("start_date ASC")
+    @booking = Booking.new(room: @room)
   end
 
   def new
