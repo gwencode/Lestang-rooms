@@ -9,6 +9,7 @@ class Admin::SlotsController < ApplicationController
     end
     policy_scope(Slot)
     @slots = @room.slots.order("start_date ASC")
+    @booking = Booking.new(room: @room)
   end
 
   def new

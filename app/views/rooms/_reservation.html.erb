@@ -9,12 +9,12 @@
                         url: room_bookings_path(room),
                         method: :post,
                         data: { controller: 'flatpickr',
-                                flatpickr_arrivals_disabled_value: @room.arrivals_disabled,
-                                flatpickr_departures_disabled_value: @room.departures_disabled,
-                                flatpickr_default_available_slots_value: @room.default_available_slots,
-                                flatpickr_arrivals_enabled_value: @room.arrivals_enabled,
-                                flatpickr_departures_enabled_value: @room.departures_enabled,
-                                flatpickr_available_days_value: @room.available_days }) do |f| %>
+                                flatpickr_arrivals_disabled_value: room.arrivals_disabled,
+                                flatpickr_departures_disabled_value: room.departures_disabled,
+                                flatpickr_default_available_slots_value: room.default_available_slots,
+                                flatpickr_arrivals_enabled_value: room.arrivals_enabled,
+                                flatpickr_departures_enabled_value: room.departures_enabled,
+                                flatpickr_available_days_value: room.available_days }) do |f| %>
       <div class="d-flex justify-content-between gap-3">
 
         <%= f.input :arrival, as: :string, label: "Arrivée", label_html: { class: "fw-bold" }, required: false,
