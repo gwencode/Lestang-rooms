@@ -6,6 +6,8 @@ class Booking < ApplicationRecord
   validate :departure_after_arrival
   # validate :arrival_after_today
   validate :room_available
+  validate :house_slot_available, if: -> { room == Room.first }
+  validate :bedroom_slot_available, if: -> { room == Room.last }
 
   before_save :set_night_price, :set_nights, :set_duration, :set_reduction, :set_cleaning_fee, :set_booking_price
 
@@ -39,6 +41,26 @@ class Booking < ApplicationRecord
     room.bookings.excluding(self).where(status: "acceptée").each do |booking|
       if booking.arrival < departure && booking.departure > arrival
         errors.add(:room, "Le logement n'est pas disponible à ces dates")
+      end
+    end
+  end
+
+  def house_slot_available
+    return if arrival.blank? || departure.blank?
+
+    room.slots.where(available: true).each do |slot|
+      return true if slot.start_date <= arrival && arrival < slot.end_date && slot.start_date < departure && departure <= slot.end_date
+    end
+    errors.add(:room, "Le logement n'est pas disponible à ces dates")
+  end
+
+  def bedroom_slot_available
+    return if arrival.blank? || departure.blank?
+
+    room.slots.where(available: false).order("start_date ASC").each do |slot|
+      if arrival < slot.start_date &&  departure > slot.end_date
+        errors.add(:room, "Le logement n'est pas disponible à ces dates")
+        return false
       end
     end
   end
