@@ -5,17 +5,24 @@
   <h1>Conditions saisonnières</h1>
 </div>
 
-<div class="container row align-items-center dashboard">
+<div style="
+  background-image: url('<%= asset_path("admin/seasons.jpg") %>');
+  background-position: center;
+  background-size: cover">
 
-  <% Room.all.order("id ASC").each do |room| %>
+  <div class="container row align-items-center dashboard">
 
-    <div class="col-12 py-2">
-      <%= link_to admin_room_seasons_path(room), class: "text-decoration-none" do %>
-        <div class="card-category" style="max-width: 400px; margin-inline: auto; background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= asset_path("#{room.name}.png") %>')">
-          <%= room.name %>
-        </div>
-        <% end %>
-    </div>
+    <% Room.all.order("id ASC").each do |room| %>
 
-  <% end %>
+      <div class="col-12 py-2">
+        <%= link_to admin_room_seasons_path(room), class: "text-decoration-none" do %>
+          <div class="card-category" style="max-width: 400px; margin-inline: auto; background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= asset_path("#{room.name}.png") %>')">
+            <%= room.name %>
+          </div>
+          <% end %>
+      </div>
+
+    <% end %>
+  </div>
+
 </div>
