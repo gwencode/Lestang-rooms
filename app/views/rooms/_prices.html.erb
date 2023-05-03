@@ -1,6 +1,7 @@
 <div data-guests-target="prices" >
 
   <p class="d-none" data-guests-target="minNights"><%= min_nights %></p>
+  <p class="d-none" data-guests-target="maxNights"><%= max_nights %></p>
 
   <% if guests == room.room_price.medium_guests %>
     <% night_price =  room.room_price.night_price_medium_guests %>
@@ -20,7 +21,10 @@
     <% night_reduction = 0 %>
   <% end %>
 
-  <% if nights >= min_nights %>
+  <% if nights > max_nights %>
+    <p class="fst-italic fw-bold text-blue text-center m-0"><%= max_nights %> nuits maximum </p>
+
+  <% elsif nights >= min_nights %>
 
     <% if night_reduction.negative? %>
     <h5><span class="text-gray-line-through"><%= night_price %>€</span> <%= night_price + night_reduction %>€ par nuit</h5>
@@ -61,6 +65,6 @@
     </div>
 
   <% else %>
-    <p class="fst-italic text-info text-center m-0"><%= min_nights %> nuits minimum pour la période du <%= l(season_start, format: "%d %B") %> au <%= l(season_end, format: "%d %B %Y") %></p>
+    <p class="fst-italic fw-bold text-blue text-center m-0"><%= min_nights %> nuits minimum pour la période du <%= l(season_start, format: "%d %B") %> au <%= l(season_end, format: "%d %B %Y") %></p>
   <% end %>
 </div>

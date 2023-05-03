@@ -33,6 +33,7 @@ class RoomsController < ApplicationController
     @min_nights = 1
     @arrival = Date.today
     @departure = Date.today
+    @max_nights = @room.max_nights.positive? ? @room.max_nights : 9999
 
     if params[:nights].present?
       @nights = params[:nights].to_i
@@ -42,7 +43,12 @@ class RoomsController < ApplicationController
       @min_nights = check_seasons(arrival, departure)[:min_nights]
       @season_start = check_seasons(arrival, departure)[:start]
       @season_end = check_seasons(arrival, departure)[:end]
-      render partial: 'prices', locals: { room: @room, nights: @nights, guests: @guests, min_nights: @min_nights, season_start: @season_start, season_end: @season_end }
+      render partial: 'prices', locals: {
+        room: @room, nights: @nights,
+        guests: @guests, min_nights: @min_nights,
+        season_start: @season_start, season_end: @season_end,
+        max_nights: @max_nights
+      }
     end
   end
 

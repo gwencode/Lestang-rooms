@@ -11,7 +11,7 @@
                               flatpickr_admin_arrivals_enabled_value: room.arrivals_enabled,
                               flatpickr_admin_departures_enabled_value: room.departures_enabled,
                               flatpickr_admin_available_days_value: room.available_days }) do |f| %>
-    <h3 class="text-white text-center">Disponibilités</h3>
+    <h3 class="text-white text-center">Disponibilités de <%= room.name.downcase %></h3>
     <div class="row">
 
       <div class="col-12 col-md-6 text-center">
