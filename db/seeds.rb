@@ -100,7 +100,7 @@ chambre = Room.create(
   beds: 1,
   bathrooms: 1,
   min_nights: 1,
-  max_nights: 365,
+  max_nights: -1,
   available_days: 92,
   default_available_slots: true
 )

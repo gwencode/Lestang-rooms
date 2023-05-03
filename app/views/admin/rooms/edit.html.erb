@@ -16,7 +16,7 @@
           <div class="py-1">
             <h4 class="text-center"><u>Infos</u></h4>
             <div class="row">
-              <div class="col-12 col-sm-6 col-xl-3"><%= f.input :max_guests, label: "Nb de voyageurs maximum", hint: "Voyageurs de plus de 2 ans", required: false %></div>
+              <div class="col-12 col-sm-6 col-xl-3"><%= f.input :max_guests, label: "Nb de voyageurs maximum", hint: "Voyageurs de plus de 2 ans", hint_html: {class: "text-white fst-italic"}, required: false %></div>
               <div class="col-12 col-sm-6 col-xl-3"><%= f.input :bedrooms, label: "Nb de chambres" %></div>
               <div class="col-12 col-sm-6 col-xl-3"><%= f.input :beds, label: "Nb de lits" %></div>
               <div class="col-12 col-sm-6 col-xl-3"><%= f.input :bathrooms, label: "Nb de salles de bain" %></div>
@@ -32,16 +32,7 @@
             <h4 class="text-center"><u>Horaires</u></h4>
             <div class="row">
               <% { arrival_hour: "Arrivée", departure_hour: "Départ" }.each do |key, value| %>
-                <div class="col-12 col-md-6"><%= f.input key, label: value, hint: "Ecrire une phrase. Format de l'heure HH:MM" %></div>
-              <% end %>
-            </div>
-          </div>
-
-          <div class="py-1">
-            <h4 class="text-center"><u>Nb de nuits min / max</u></h4>
-            <div class="row">
-              <% { min_nights: "Nb de nuits minimum", max_nights: "Nb de nuits maximul" }.each do |key, value| %>
-                <div class="col-12 col-md-6"><%= f.input key, label: value %></div>
+                <div class="col-12 col-md-6"><%= f.input key, label: value, hint: "Ecrire une phrase. Format de l'heure HH:MM", hint_html: {class: "text-white fst-italic"} %></div>
               <% end %>
             </div>
           </div>
@@ -127,7 +118,7 @@
             <h4 class="text-center"><u>Calendrier</u></h4>
               <div class="row">
                 <div class="col-12 col-md-6 py-2">
-                  <%= f.input :default_available_slots, label: "Dates réservables par défaut", hint: "Hors créneaux spécifiques" %>
+                  <%= f.input :default_available_slots, label: "Dates réservables par défaut", hint: "(Hors créneaux spécifiques)", hint_html: {class: "text-white fst-italic"} %>
                 </div>
                 <div class="col-12 col-md-6 py-2">
                   <%= f.input :available_days, label: "Réservable jusqu'à ... jours avant" %>
@@ -139,10 +130,10 @@
             <h4 class="text-center"><u>Nuitées</u></h4>
               <div class="row">
                 <div class="col-12 col-md-6 py-2">
-                  <%= f.input :min_nights, label: "Nb de nuits minimum", hint: "Hors conditions saisonnières" %>
+                  <%= f.input :min_nights, label: "Nb de nuits minimum", hint: "Hors conditions saisonnières", hint_html: {class: "text-white fst-italic"} %>
                 </div>
                 <div class="col-12 col-md-6 py-2">
-                  <%= f.input :max_nights, label: "Nb de nuits maximum" %>
+                  <%= f.input :max_nights, label: "Nb de nuits maximum", hint: "Mettre -1 pour ne pas fixer de maximum", hint_html: {class: "text-white fst-italic"} %>
                 </div>
               </div>
             </div>

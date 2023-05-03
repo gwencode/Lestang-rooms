@@ -30,11 +30,19 @@ class RoomsController < ApplicationController
 
     @nights = 1
     @guests = 1
+    @min_nights = 1
+    @arrival = Date.today
+    @departure = Date.today
 
     if params[:nights].present?
       @nights = params[:nights].to_i
       @guests = params[:guests].to_i
-      render partial: 'prices', locals: { room: @room, nights: @nights, guests: @guests }
+      arrival = create_date_from_date_string(params[:arrival].to_s)
+      departure = create_date_from_date_string(params[:departure].to_s)
+      @min_nights = check_seasons(arrival, departure)[:min_nights]
+      @season_start = check_seasons(arrival, departure)[:start]
+      @season_end = check_seasons(arrival, departure)[:end]
+      render partial: 'prices', locals: { room: @room, nights: @nights, guests: @guests, min_nights: @min_nights, season_start: @season_start, season_end: @season_end }
     end
   end
 
@@ -42,5 +50,21 @@ class RoomsController < ApplicationController
 
   def set_room
     @room = Room.find(params[:id])
+  end
+
+  def create_date_from_date_string(date)
+    date_array = date.split("-")
+    Date.new(date_array[0].to_i, date_array[1].to_i, date_array[2].to_i)
+  end
+
+  def check_seasons(arrival, departure)
+    @room.seasons.each do |season|
+      season_start = Date.new(season.start_date.year, season.start_date.month, season.start_date.day)
+      season_end = Date.new(season.end_date.year, season.end_date.month, season.end_date.day)
+      if season_start <= arrival && season_end >= departure
+        return { min_nights: season.min_nights, start: season_start, end: season_end }
+      end
+    end
+    return { min_nights: @room.min_nights, start: nil, end: nil }
   end
 end

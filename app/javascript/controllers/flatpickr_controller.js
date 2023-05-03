@@ -17,14 +17,8 @@ export default class extends Controller {
   }
 
   connect() {
-    console.log(this.defaultAvailableSlotsValue)
-
 
     if (this.defaultAvailableSlotsValue === false) {
-      console.log("if")
-      console.log(this.arrivalsEnabledValue)
-      console.log(this.departuresEnabledValue)
-
       flatpickr(this.startTimeTarget, {
         "locale": French,
         altInput: true,
@@ -45,7 +39,6 @@ export default class extends Controller {
       })
 
     } else {
-      console.log("else")
       console.log(this.arrivalsDisabledValue)
 
       flatpickr(this.startTimeTarget, {

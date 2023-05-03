@@ -1,4 +1,7 @@
-<div data-guests-target="prices">
+<div data-guests-target="prices" >
+
+  <p class="d-none" data-guests-target="minNights"><%= min_nights %></p>
+
   <% if guests == room.room_price.medium_guests %>
     <% night_price =  room.room_price.night_price_medium_guests %>
   <% elsif guests == room.room_price.high_guests %>
@@ -17,41 +20,47 @@
     <% night_reduction = 0 %>
   <% end %>
 
-  <% if night_reduction.negative? %>
-  <h5><span class="text-gray-line-through"><%= night_price %>€</span> <%= night_price + night_reduction %>€ par nuit</h5>
+  <% if nights >= min_nights %>
+
+    <% if night_reduction.negative? %>
+    <h5><span class="text-gray-line-through"><%= night_price %>€</span> <%= night_price + night_reduction %>€ par nuit</h5>
+    <% else %>
+      <h5><%= night_price %>€ par nuit</h5>
+    <% end %>
+
+    <div class="d-flex justify-content-between">
+      <p><%= night_price %>€ x <%= nights %> <%= nights > 1 ? "nuits" : "nuit" %></p>
+      <p><%= night_price * nights %>€</p>
+    </div>
+
+    <% if night_reduction.negative? %>
+      <div class="d-flex justify-content-between">
+        <p>Location longue durée</p>
+        <p class="text-success fw-semibold"><%= night_reduction * nights %>€</p>
+      </div>
+    <% end %>
+
+    <% if nights >= room.room_price.high_cleaning_duration %>
+      <% cleaning_fee = room.room_price.high_cleaning_fee %>
+    <% elsif nights >= room.room_price.medium_cleaning_duration %>
+      <% cleaning_fee = room.room_price.medium_cleaning_fee %>
+    <% else nights <= room.room_price.small_cleaning_duration%>
+      <% cleaning_fee = room.room_price.small_cleaning_fee %>
+    <% end %>
+
+    <% if cleaning_fee.positive? %>
+      <div class="d-flex justify-content-between">
+        <p>Frais de ménage</p>
+        <p><%= cleaning_fee %>€</p>
+      </div>
+    <% end %>
+
+    <div class="d-flex justify-content-between">
+      <p class="fw-bold">Total</p>
+      <p class="fw-bold"><%= night_price * nights + night_reduction * nights + cleaning_fee %>€</p>
+    </div>
+
   <% else %>
-    <h5><%= night_price %>€ par nuit</h5>
-<% end %>
-
-  <div class="d-flex justify-content-between">
-    <p><%= night_price %>€ x <%= nights %> <%= nights > 1 ? "nuits" : "nuit" %></p>
-    <p><%= night_price * nights %>€</p>
-  </div>
-
-  <% if night_reduction.negative? %>
-    <div class="d-flex justify-content-between">
-      <p>Location longue durée</p>
-      <p class="text-success fw-semibold"><%= night_reduction * nights %>€</p>
-    </div>
+    <p class="fst-italic text-info text-center m-0"><%= min_nights %> nuits minimum pour la période du <%= l(season_start, format: "%d %B") %> au <%= l(season_end, format: "%d %B %Y") %></p>
   <% end %>
-
-  <% if nights >= room.room_price.high_cleaning_duration %>
-    <% cleaning_fee = room.room_price.high_cleaning_fee %>
-  <% elsif nights >= room.room_price.medium_cleaning_duration %>
-    <% cleaning_fee = room.room_price.medium_cleaning_fee %>
-  <% else nights <= room.room_price.small_cleaning_duration%>
-    <% cleaning_fee = room.room_price.small_cleaning_fee %>
-  <% end %>
-
-  <% if cleaning_fee.positive? %>
-    <div class="d-flex justify-content-between">
-      <p>Frais de ménage</p>
-      <p><%= cleaning_fee %>€</p>
-    </div>
-  <% end %>
-
-  <div class="d-flex justify-content-between">
-    <p class="fw-bold">Total</p>
-    <p class="fw-bold"><%= night_price * nights + night_reduction * nights + cleaning_fee %>€</p>
-  </div>
 </div>

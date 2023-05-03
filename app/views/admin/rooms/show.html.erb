@@ -46,18 +46,6 @@
 
         <div class="separator"></div>
 
-        <h4 class="text-center text-white">Nombre de nuits min / max</h4>
-        <div class="row py-2">
-          <div class="col-12 col-md-6 text-center">
-            <p class="m-0"><span class="fw-bold">Minimum :</span> <%= @room.min_nights %> nuit(s)</p>
-          </div>
-          <div class="col-12 col-md-6 text-center">
-            <p class="m-0"><span class="fw-bold">Maximum :</span> <%= @room.max_nights %> nuits</p>
-          </div>
-        </div>
-
-        <div class="separator"></div>
-
         <h4 class="text-center text-white">Prix</h4>
         <div class="row py-2">
           <div class="col-12 col-lg-4 text-center">
@@ -131,7 +119,7 @@
             <p class="m-0 fw-light">(hors conditions saisonnières)</p>
           </div>
           <div class="col-12 col-md-6 text-center">
-            <p class="m-0"><span class="fw-bold">Nb de nuits maximum : </span> <%= @room.max_nights %></p>
+            <p class="m-0"><span class="fw-bold">Nb de nuits maximum : </span> <%= @room.max_nights.negative? ? "pas de maximum" : @room.max_nights %></p>
           </div>
         </div>
 
