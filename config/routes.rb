@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   root to: "rooms#index"
 
   devise_for :users
+  # devise_for :users, controllers: { sessions: 'users/sessions', registrations: 'users/registrations' }
 
   resources :rooms, only: %i[show] do
     resources :bookings, only: [:create]

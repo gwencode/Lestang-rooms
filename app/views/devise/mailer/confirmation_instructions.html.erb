@@ -1,5 +1,17 @@
-<p>Bonjour <%= @resource.first_name.capitalize %>!</p>
+<p>Bonjour <%= @user.first_name.capitalize %>,</p>
+<p>Merci de votre intérêt pour notre logement ! </p>
 
-<p>Vous pouvez confirmer votre adresse email en cliquant sur le lien ci-dessous :</p>
+<p><strong>Valider votre adresse email en cliquant sur le lien ci-dessous :</strong></p>
+<p><strong><%= link_to 'Confirmer mon adresse email', confirmation_url(@resource, confirmation_token: @token) %></strong></p>
 
-<p><%= link_to 'Confirmer mon adresse email', confirmation_url(@resource, confirmation_token: @token) %></p>
+Rappel des informations fournies lors de votre inscription :
+<ul>
+  <li>Email : <%= @user.email%></li>
+  <li>Prénom : <%= @user.first_name.capitalize %></li>
+  <li>Nom : <%= @user.last_name.upcase %></li>
+</ul>
+
+
+<p>A bientôt !</p>
+
+<a href="https://residence-lestang.herokuapp.com/">residence-lestang.com</a>
