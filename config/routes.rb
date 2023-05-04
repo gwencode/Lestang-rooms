@@ -10,6 +10,7 @@ Rails.application.routes.draw do
 
   get "/localisation", to: "pages#localisation"
   get "/contact", to: "pages#contact"
+  post "/contact", to: "pages#message"
 
   namespace :admin do
     root to: "admin#dashboard"
