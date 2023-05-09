@@ -1,0 +1,42 @@
+<h2 class="text-blue text-center">Formulaire de contact</h2>
+
+<%= simple_form_for(user, url: contact_path, method: :post, data: { turbo: :false }) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <div class="row">
+      <div class="col-12 col-sm-6">
+        <%= f.input :first_name,
+                    required: true,
+                    label: "Prénom",
+                    autofocus: true,
+                    input_html: { autocomplete: "first_name" } %>
+      </div>
+      <div class="col-12 col-sm-6">
+        <%= f.input :last_name,
+                    required: true,
+                    label: "Nom",
+                    autofocus: true,
+                    input_html: { autocomplete: "last_name" } %>
+      </div>
+    </div>
+    <%= f.input :email,
+                required: true,
+                autofocus: true,
+                input_html: { autocomplete: "email" } %>
+
+    <div class="pb-2">
+      <%= label_tag :room, 'Votre question concerne : ', class: "form-label" %>
+      <%= select_tag :room, options_from_collection_for_select(rooms, :id , :name), class: "form-select" %>
+    </div>
+
+    <div class="pt-2">
+      <%= label_tag :message, 'Votre question :', class: "form-label" %>
+      <%= text_area_tag :message, nil, class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="form-actions py-3">
+    <%= f.button :submit, "Envoyer", class: "button-blue" %>
+  </div>
+<% end %>

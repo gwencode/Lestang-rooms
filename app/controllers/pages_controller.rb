@@ -13,6 +13,7 @@ class PagesController < ApplicationController
 
   def contact
     @user = current_user ? current_user : User.new
+    @rooms = Room.all
   end
 
   def message
@@ -22,10 +23,11 @@ class PagesController < ApplicationController
       user.first_name = user_params[:first_name]
       user.last_name = user_params[:last_name]
     end
+    room = Room.find(params[:room].to_i)
     message = params[:message]
     if user.email.present? && user.first_name.present? && user.last_name.present? && message.present?
-      MessageMailer.with(user: user, message: message).message_email.deliver_now
-      redirect_to root_path
+      MessageMailer.with(user: user, room: room, message: message).message_email.deliver_now
+      redirect_to root_path, notice: "Votre message a bien été envoyé."
     else
       render :contact, status: :unprocessable_entity
     end
