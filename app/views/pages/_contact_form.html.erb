@@ -30,10 +30,16 @@
       <%= select_tag :room, options_from_collection_for_select(rooms, :id , :name), class: "form-select" %>
     </div>
 
-    <div class="pt-2">
+    <div class="py-2">
       <%= label_tag :message, 'Votre question :', class: "form-label" %>
       <%= text_area_tag :message, nil, class: "form-control" %>
     </div>
+
+    <p class="fst-italic m-0">
+      En renseignant vos informations, vous acceptez le fait d'envoyer un e-mail à XXX@gmail.com avec les informations remplies.
+      Vous pouvez prendre connaissance de notre politique de confidentialité en cliquant ici.
+      <span class="text-danger fw-bold">TO DO</span>
+    </p>
   </div>
 
   <div class="form-actions py-3">
