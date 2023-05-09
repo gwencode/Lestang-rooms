@@ -15,13 +15,13 @@ RoomPrice.destroy_all
 Season.destroy_all
 Slot.destroy_all
 Room.destroy_all
-User.destroy_all
+# User.destroy_all
 
 puts "Database cleaned!"
 
 ## Comment next lines after first time in production
 
-puts "Creating 3 admin users..."
+# puts "Creating 3 admin users..."
 
 # User.create(
 #   email: ENV['ADMIN_EMAIL_1'].to_s,
@@ -39,35 +39,35 @@ puts "Creating 3 admin users..."
 #   admin: true
 # )
 
-User.create(
-  email: ENV['ADMIN_EMAIL_3'].to_s,
-  password: ENV['ADMIN_PASSWORD_3'].to_s,
-  first_name: "Gwendal",
-  last_name: "Le Bris",
-  admin: true
-)
+# User.create(
+#   email: ENV['ADMIN_EMAIL_3'].to_s,
+#   password: ENV['ADMIN_PASSWORD_3'].to_s,
+#   first_name: "Gwendal",
+#   last_name: "Le Bris",
+#   admin: true
+# )
 
-puts "3 admin users created!"
+# puts "3 admin users created!"
 
-puts "Creating 2 normal users..."
+# puts "Creating 2 normal users..."
 
-User.create(
-  email: "coco@me.com",
-  password: "password",
-  first_name: "Corentin",
-  last_name: "Le Bris",
-  admin: false
-)
+# User.create(
+#   email: "coco@me.com",
+#   password: "password",
+#   first_name: "Corentin",
+#   last_name: "Le Bris",
+#   admin: false
+# )
 
-User.create(
-  email: "gireg@me.com",
-  password: "password",
-  first_name: "Gireg",
-  last_name: "Le Bris",
-  admin: false
-)
+# User.create(
+#   email: "gireg@me.com",
+#   password: "password",
+#   first_name: "Gireg",
+#   last_name: "Le Bris",
+#   admin: false
+# )
 
-puts "2 normal users created!"
+# puts "2 normal users created!"
 
 puts "Creating 2 rooms..."
 
@@ -233,15 +233,16 @@ puts "#{Slot.where(room_id: maison.id).count} slots for house created!"
 
 ### Finsih commenting lines after first time in production
 
-coco = User.find_by(first_name: "Corentin")
-gireg = User.find_by(first_name: "Gireg")
+# coco = User.find_by(first_name: "Corentin")
+# gireg = User.find_by(first_name: "Gireg")
+gwen = User.find_by(first_name: "Gwendal")
 maison = Room.find_by(name: "La Maison")
 chambre = Room.find_by(name: "La Chambre")
 
 puts "Creating 10 bookings..."
 
 booking1 = Booking.create(
-  user: coco,
+  user: gwen,
   room: maison,
   arrival: DateTime.new(2023, 5, 27, 14, 0, 0),
   departure: DateTime.new(2023, 5, 28, 12, 0, 0),
@@ -250,7 +251,7 @@ booking1 = Booking.create(
 )
 
 booking2 = Booking.create(
-  user: gireg,
+  user: gwen,
   room: maison,
   arrival: DateTime.new(2023, 7, 1, 14, 0, 0),
   departure: DateTime.new(2023, 7, 2, 12, 0, 0),
@@ -259,7 +260,7 @@ booking2 = Booking.create(
 )
 
 booking3 = Booking.create(
-  user: coco,
+  user: gwen,
   room: maison,
   arrival: DateTime.new(2023, 6, 1, 14, 0, 0),
   departure: DateTime.new(2023, 6, 30, 12, 0, 0),
@@ -268,7 +269,7 @@ booking3 = Booking.create(
 )
 
 booking4 = Booking.create(
-  user: gireg,
+  user: gwen,
   room: chambre,
   arrival: DateTime.new(2023, 5, 26, 18, 0, 0),
   departure: DateTime.new(2023, 5, 29, 11, 0, 0),
@@ -277,7 +278,7 @@ booking4 = Booking.create(
 )
 
 # booking4 = Booking.create(
-#   user: gireg,
+#   user: gwen,
 #   room: chambre,
 #   arrival: DateTime.new(2023, 5, 5, 18, 0, 0),
 #   departure: DateTime.new(2023, 5, 9, 11, 0, 0),
@@ -286,7 +287,7 @@ booking4 = Booking.create(
 # )
 
 # booking5 = Booking.create(
-#   user: coco,
+#   user: gwen,
 #   room: chambre,
 #   arrival: DateTime.new(2023, 5, 12, 18, 0, 0),
 #   departure: DateTime.new(2023, 5, 22, 11, 0, 0),
@@ -295,7 +296,7 @@ booking4 = Booking.create(
 # )
 
 # booking6 = Booking.create(
-#   user: gireg,
+#   user: gwen,
 #   room: chambre,
 #   arrival: DateTime.new(2023, 5, 26, 18, 0, 0),
 #   departure: DateTime.new(2023, 5, 29, 11, 0, 0),
@@ -304,7 +305,7 @@ booking4 = Booking.create(
 # )
 
 # booking8 = Booking.create(
-#   user: gireg,
+#   user: gwen,
 #   room: chambre,
 #   arrival: DateTime.new(2023, 2, 20, 18, 0, 0),
 #   departure: DateTime.new(2023, 2, 22, 11, 0, 0),
@@ -313,7 +314,7 @@ booking4 = Booking.create(
 # )
 
 # booking9 = Booking.create(
-#   user: gireg,
+#   user: gwen,
 #   room: chambre,
 #   arrival: DateTime.new(2023, 6, 1, 18, 0, 0),
 #   departure: DateTime.new(2023, 6, 30, 11, 0, 0),
@@ -322,7 +323,7 @@ booking4 = Booking.create(
 # )
 
 # booking10 = Booking.create(
-#   user: coco,
+#   user: gwen,
 #   room: maison,
 #   arrival: DateTime.new(2023, 7, 1, 14, 0, 0),
 #   departure: DateTime.new(2023, 7, 2, 12, 0, 0),

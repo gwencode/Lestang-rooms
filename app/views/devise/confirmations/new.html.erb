@@ -1,20 +1,30 @@
-<h2>Resend confirmation instructions</h2>
+<div class="devise-background">
+  <div class="container col-12 col-md-8 col-lg-6 devise-form">
+    <h2 class="text-blue pt-3">Renvoyer l'email de confirmation</h2>
 
-<%= simple_form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
-  <%= f.error_notification %>
-  <%= f.full_error :confirmation_token %>
+    <%= simple_form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
+      <%= f.error_notification %>
+      <%= f.full_error :confirmation_token %>
 
-  <div class="form-inputs">
-    <%= f.input :email,
-                required: true,
-                autofocus: true,
-                value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email),
-                input_html: { autocomplete: "email" } %>
+      <div class="form-inputs">
+        <%= f.input :email,
+                  required: true,
+                  autofocus: true,
+                  value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email),
+                  input_html: { autocomplete: "email" } %>
+      </div>
+
+      <div class="form-actions mb-3">
+        <%= f.button :submit, "Renvoyer email de confirmation", class: "button-blue" %>
+      </div>
+    <% end %>
+
+    <div class="separator my-5"></div>
+    <h3 class="text-blue">Autres actions</h3>
+    <div class="row justify-content-between">
+      <div class="col-12 col-md-6 p-3"><%= link_to "Se connecter", new_user_session_path, class: "button-dark" %></div>
+      <div class="col-12 col-md-6 p-3"><%= link_to "Créer un compte", new_user_registration_path, class: "button-dark" %></div>
+    </div>
+      <div class="mx-auto p-3"><%= link_to "Mot de passe oublié ?", new_password_path(resource_name), class: "button-dark" %></div>
   </div>
-
-  <div class="form-actions">
-    <%= f.button :submit, "Resend confirmation instructions" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>
