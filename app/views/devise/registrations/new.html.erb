@@ -42,9 +42,16 @@
       </div>
     <% end %>
 
+    <div class="separator"></div>
     <div class="py-2">
       <h5 class="text-blue">Vous avez déjà un compte?</h5>
       <%= link_to "Se connecter", new_user_session_path, class: "button-dark" %>
+    </div>
+
+    <div class="separator"></div>
+    <div class="py-2">
+      <h5 class="text-blue">Mot de passe oublié ?</h5>
+      <%= link_to "Nouveau mot de passe", new_password_path(resource_name), class: "button-dark" %>
     </div>
 
   </div>
