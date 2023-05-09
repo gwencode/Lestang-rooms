@@ -18,11 +18,11 @@ fr:
       confirmation_instructions:
         subject: "Résidence Lestang - Confirmer votre compte"
       reset_password_instructions:
-        subject: "Instructions pour changer le mot de passe"
+        subject: "Résidence Lestang - Instructions pour changer le mot de passe"
       unlock_instructions:
-        subject: "Instructions pour déverrouiller le compte"
+        subject: "Résidence Lestang - Instructions pour déverrouiller le compte"
       email_changed:
-        subject: "Votre adresse e-mail a été modifiée avec succès"
+        subject: "Résidence Lestang - Votre adresse e-mail a été modifiée avec succès"
       password_change:
         subject: "Votre mot de passe a été modifié avec succès"
     omniauth_callbacks:
