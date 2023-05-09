@@ -26,6 +26,13 @@ class BookingsController < ApplicationController
     @bookings = policy_scope(Booking).order(created_at: :desc)
   end
 
+  def show
+    @booking = Booking.find(params[:id])
+    authorize @booking, :show?
+
+    @room = @booking.room
+  end
+
   private
 
   def booking_params

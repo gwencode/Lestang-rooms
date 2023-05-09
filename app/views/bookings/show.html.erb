@@ -1,0 +1,66 @@
+<div class="container-fluid container background-back-link">
+  <%= link_to raw("<i class='fa-solid fa-arrow-left-long'></i> <span>Retour</span>"), :back, class: "back-link" %>
+</div>
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url('<%= asset_path("#{@room.name}.png") %>')">
+
+  <div class="container">
+    <div class="py-3" style="background-color: rgba(0, 0, 0, 0.4); position: relative;">
+
+      <%= link_to "", id: "message-icon-user" do %>
+        <i class="fa-regular fa-message"></i>
+      <% end %>
+
+      <h2 class="px-5">Ma réservation de <%= @room.name.downcase %></h2>
+
+      <div class="row py-3">
+
+        <div class="col-12 col-md-6 text-center">
+          <p><span class="fw-bold">Arrivée :</span> <%= l(@booking.arrival, format: "%A %d %B à %Hh").capitalize %></p>
+          <p><span class="fw-bold">Départ :</span> <%= l(@booking.departure, format: "%A %d %B à %Hh").capitalize %></p>
+        </div>
+
+        <div class="col-12 col-md-6 text-center">
+          <p><span class="fw-bold">Nombre de personnes :</span> <%= @booking.guests_number %></p>
+          <p><span class="fw-bold">Prix total :</span> <%= @booking.booking_price %> €</p>
+        </div>
+
+      </div>
+
+      <% if @booking.status == "acceptée" %>
+        <h3 class="text-success text-center"><i class="fa-regular fa-circle-check"></i> Réservation confirmée</h3>
+      <% elsif @booking.status == "en attente" %>
+        <h3 class="text-warning text-center">
+          <i class="fa-solid fa-clock-rotate-left"></i>
+          Réservation en attente
+        </h3>
+      <% elsif @booking.status == "refusée" %>
+        <h3 class="text-danger text-center"><i class="fa-regular fa-circle-xmark"></i> Réservation refusée</h3>
+      <% end %>
+
+      <div class="my-3 p-3 mx-auto col-12 col-sm-10 col-md-8 col-lg-6 col-xl-5">
+        <h3 class="text-center text-white"><u>Détail du prix</u></h3>
+        <div class="d-flex justify-content-between">
+          <p><%= @booking.night_price %> € x <%= @booking.nights %> nuits</p>
+          <p><%= @booking.basic_price %> €</p>
+        </div>
+        <% if @booking.reduction.negative? %>
+          <div class="d-flex justify-content-between">
+            <p><%= @reduction_sentence %> : </p>
+            <p class="text-success"><%= @booking.reduction %> €</p>
+          </div>
+        <% end %>
+        <div class="d-flex justify-content-between">
+          <p>Frais de ménage</p>
+          <p><%= @booking.cleaning_fee %> €</p>
+        </div>
+        <div class="d-flex justify-content-between">
+          <p class="fw-bold m-0">Total</p>
+          <p class="fw-bold m-0"><%= @booking.booking_price %> €</p>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+</div>

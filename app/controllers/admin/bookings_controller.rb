@@ -14,6 +14,11 @@ class Admin::BookingsController < ApplicationController
   end
 
   def show
+    if request.path.start_with?("/admin") && !current_user.admin
+      flash[:alert] = "Accès non autorisé."
+      redirect_to(root_path)
+    end
+
     authorize @booking
 
     @room = @booking.room

@@ -1,6 +1,6 @@
 class BookingPolicy < ApplicationPolicy
   def show?
-    user.admin
+    true
   end
 
   def update?
