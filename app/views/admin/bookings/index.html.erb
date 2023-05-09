@@ -24,25 +24,25 @@
 
   <div class="row">
 
-  <% @bookings.each do |booking| %>
-    <div class="my-4 col-12 col-lg-6">
-      <%= link_to admin_booking_path(booking), class: "text-decoration-none text-black" do %>
-        <div class="card-booking">
+    <% @bookings.each do |booking| %>
+      <div class="my-4 col-12 col-lg-6">
+        <%= link_to admin_booking_path(booking), class: "text-decoration-none text-black" do %>
+          <div class="card-booking">
 
-          <% if booking.room == Room.first %>
-            <%= image_tag "#{booking.room.name}/maison.png" %>
-          <% elsif booking.room == Room.last %>
-            <%= image_tag "#{booking.room.name}/chambre.png" %>
-          <% end %>
+            <% if booking.room == Room.first %>
+              <%= image_tag "#{booking.room.name}/maison.png" %>
+            <% elsif booking.room == Room.last %>
+              <%= image_tag "#{booking.room.name}/chambre.png" %>
+            <% end %>
 
-          <div class="card-booking-infos">
+            <div class="card-booking-infos">
               <h2 class="text-blue"><%= booking.user.first_name %> <%= booking.user.last_name %></h2>
-              <p class="">Arrivée : <%= l(booking.arrival, format: "%A %d %B %Y à %Hh").capitalize %></p>
-              <p class="">Départ : <%= l(booking.departure, format: "%A %d %B %Y à %Hh").capitalize %></p>
-              <p class="">Nombre de personnes : <%= booking.guests_number %></p>
-              <p class="">Nombre de nuits : <%= booking.nights %></p>
-              <p class="">Prix total : <%= booking.booking_price %> €</p>
-              <p class="">Email : <%= booking.user.email %></p>
+              <p class=""><strong>Arrivée :</strong> <%= l(booking.arrival, format: "%A %d %B %Y à %Hh").capitalize %></p>
+              <p class=""><strong>Départ :</strong> <%= l(booking.departure, format: "%A %d %B %Y à %Hh").capitalize %></p>
+              <p class=""><strong>Nombre de personnes :</strong> <%= booking.guests_number %></p>
+              <p class=""><strong>Nombre de nuits :</strong> <%= booking.nights %></p>
+              <p class=""><strong>Prix total :</strong> <%= booking.booking_price %> €</p>
+              <p class=""><strong>Email :</strong> <%= booking.user.email %></p>
               <% if booking.status == "acceptée" %>
                 <i class="fa-regular fa-circle-check text-success"></i>
               <% elsif booking.status == "en attente" %>
@@ -50,16 +50,15 @@
               <% elsif booking.status == "refusée" %>
                 <i class="fa-regular fa-circle-xmark text-danger"></i>
               <% end %>
-          </div>
+            </div>
 
-        </div>
-      <% end %>
-    </div>
-  <% end %>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
 
   </div>
 
-    <h4 class="text-center text-blue">Montal total : <%= @total_price %> €</h4>
-
+  <h4 class="text-center text-blue">Montal total : <%= @total_price %> €</h4>
 
 </div>

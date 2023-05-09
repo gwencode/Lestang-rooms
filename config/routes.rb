@@ -5,8 +5,10 @@ Rails.application.routes.draw do
   # devise_for :users, controllers: { sessions: 'users/sessions', registrations: 'users/registrations' }
 
   resources :rooms, only: %i[show] do
-    resources :bookings, only: [:create]
+    resources :bookings, only: %i[create]
   end
+
+  resources :bookings, only: %i[index show]
 
   get "/localisation", to: "pages#localisation"
   get "/contact", to: "pages#contact"

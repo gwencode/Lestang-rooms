@@ -22,6 +22,10 @@ class BookingsController < ApplicationController
     end
   end
 
+  def index
+    @bookings = policy_scope(Booking).order(created_at: :desc)
+  end
+
   private
 
   def booking_params
