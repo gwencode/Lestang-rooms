@@ -1,27 +1,34 @@
-<h2>Change your password</h2>
+<div class="devise-background">
+  <div class="container col-12 col-md-8 col-lg-6 devise-form">
+    <h2 class="text-blue pt-3">Changer votre mot de passe</h2>
 
-<%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
-  <%= f.error_notification %>
+    <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
+      <%= f.error_notification %>
 
-  <%= f.input :reset_password_token, as: :hidden %>
-  <%= f.full_error :reset_password_token %>
+      <%= f.input :reset_password_token, as: :hidden %>
+      <%= f.full_error :reset_password_token %>
 
-  <div class="form-inputs">
-    <%= f.input :password,
-                label: "New password",
-                required: true,
-                autofocus: true,
-                hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
-                input_html: { autocomplete: "new-password" } %>
-    <%= f.input :password_confirmation,
-                label: "Confirm your new password",
-                required: true,
-                input_html: { autocomplete: "new-password" } %>
+      <div class="form-inputs">
+        <%= f.input :password,
+                    label: "Nouveau mot de passe",
+                    required: true,
+                    autofocus: true,
+                    hint: ("#{@minimum_password_length} caractères minimum" if @minimum_password_length),
+                    input_html: { autocomplete: "new-password" } %>
+        <%= f.input :password_confirmation,
+                    label: "Confirmez votre nouveau mot de passe",
+                    required: true,
+                    input_html: { autocomplete: "new-password" } %>
+      </div>
+
+      <div class="form-actions mb-3">
+        <%= f.button :submit, "Changer mot de passe", class: "button-blue" %>
+      </div>
+    <% end %>
+
+    <div class="separator my-5"></div>
+    <h3 class="text-blue">Autres actions</h3>
+    <div class="mx-auto p-3"><%= link_to "Se connecter", new_user_session_path, class: "button-dark" %></div>
+    <div class="mx-auto p-3"><%= link_to "Email de confirmation de compte non reçu ?", new_confirmation_path(resource_name), class: "button-dark" %></div>
   </div>
-
-  <div class="form-actions">
-    <%= f.button :submit, "Change my password" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>
