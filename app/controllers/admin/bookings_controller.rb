@@ -22,7 +22,6 @@ class Admin::BookingsController < ApplicationController
     authorize @booking
 
     @room = @booking.room
-    @room_price = @room.room_price
     @reduction_sentence = reduction_sentence(@booking) if @booking.reduction.negative?
   end
 

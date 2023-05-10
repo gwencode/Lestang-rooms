@@ -1,6 +1,6 @@
 <div class="container py-3" >
   <h1 class="text-blue text-center">Mes réservations</h1>
-  <div class="row">
+  <div class="row mx-0">
 
     <% @bookings.each do |booking| %>
       <%= link_to booking_path(booking), class: "text-decoration-none text-black" do %>
@@ -27,7 +27,7 @@
               <i class="fa-regular fa-circle-xmark text-danger"></i>
             <% end %>
             <div class="text-center">
-              <a href="" class="text-black">Voir le détail</a>
+              <p class="text-black text-decoration-underline">Voir le détail</a>
             </div>
           </div>
 

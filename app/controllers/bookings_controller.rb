@@ -14,7 +14,7 @@ class BookingsController < ApplicationController
     @booking.user = current_user
 
     if @booking.save
-      redirect_to root_path, notice: "Votre demande de réservation a bien été envoyée"
+      redirect_to booking_path(@booking), notice: "Votre demande de réservation a bien été envoyée"
       # flash[:notice] = "Votre demande de réservation a bien été envoyée"
     else
       redirect_to room_path(@booking.room), alert: @booking.errors.messages.values.join(", ")
@@ -31,6 +31,8 @@ class BookingsController < ApplicationController
     authorize @booking, :show?
 
     @room = @booking.room
+
+    @reduction_sentence = reduction_sentence(@booking) if @booking.reduction.negative?
   end
 
   private
@@ -45,6 +47,19 @@ class BookingsController < ApplicationController
       { arrival: 14, departure: 12 }
     when "La Chambre"
       { arrival: 18, departure: 11 }
+    end
+  end
+
+  def reduction_sentence(booking)
+    case booking.duration
+    when "high"
+      "Réduction location longue durée"
+    when "medium"
+      "Réduction location moyenne durée"
+    when "week"
+      "Réduction location à la semaine"
+    else
+      ""
     end
   end
 end
