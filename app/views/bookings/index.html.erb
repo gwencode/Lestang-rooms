@@ -1,6 +1,10 @@
 <div class="container py-3" >
   <h1 class="text-blue text-center">Mes réservations</h1>
-  <div class="row mx-0">
+  <div class="row mx-0" id="index-user-bookings">
+
+    <% if @bookings.empty? %>
+      <p class="text-center">Vous n'avez pas de réservation en cours</p>
+    <% end %>
 
     <% @bookings.each do |booking| %>
       <%= link_to booking_path(booking), class: "text-decoration-none text-black" do %>

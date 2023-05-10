@@ -1,0 +1,15 @@
+Résidence Lestang - Demande de réservation pour <%= @room.name %>
+=================================================================
+
+Coordonnées du demandeur :
+- Prénom : <%= @user.first_name %>
+- Nom : <%= @user.last_name %>
+- Email : <%= @user.email %>
+
+Détails :
+- Arrivée : <%= l(@booking.arrival, format: "%A %d %B à %Hh").capitalize %>
+- Départ : <%= l(@booking.departure, format: "%A %d %B à %Hh").capitalize %>
+- Nombre de personnes : <%= @booking.guests_number %>
+- Prix total : <%= @booking.booking_price %> €
+
+<%= link_to "Gérer mes réservations", admin_bookings_url %>

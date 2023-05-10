@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h4>Résidence Lestang - Demande de réservation pour <%= @room.name %></h4>
+    <p><strong>Coordonnées du demandeur :</strong></p>
+    <ul>
+      <li>Prénom : <%= @user.first_name %></li>
+      <li>Nom : <%= @user.last_name %></li>
+      <li>Email : <%= @user.email %></li>
+    </ul>
+    <p><strong>Détails :</strong></p>
+    <ul>
+      <li>Arrivée : <%= l(@booking.arrival, format: "%A %d %B à %Hh").capitalize %></li>
+      <li>Départ : <%= l(@booking.departure, format: "%A %d %B à %Hh").capitalize %></li>
+      <li>Nombre de personnes : <%= @booking.guests_number %></li>
+      <li>Prix total : <%= @booking.booking_price %> €</li>
+    </ul>
+
+    <p><%= link_to "Gérer mes réservations", admin_bookings_url %></p>
+  </body>
+</html>

@@ -1,5 +1,6 @@
 class BookingsController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[create]
+  before_action :set_user, only: %i[index show]
 
   def create
     @booking = Booking.new(booking_params)
@@ -16,6 +17,8 @@ class BookingsController < ApplicationController
     if @booking.save
       redirect_to booking_path(@booking), notice: "Votre demande de réservation a bien été envoyée"
       # flash[:notice] = "Votre demande de réservation a bien été envoyée"
+      MessageMailer.with(booking: @booking).booking_pending_admin_email.deliver_now
+      MessageMailer.with(booking: @booking).booking_pending_user_email.deliver_now
     else
       redirect_to room_path(@booking.room), alert: @booking.errors.messages.values.join(", ")
       return
@@ -23,7 +26,8 @@ class BookingsController < ApplicationController
   end
 
   def index
-    @bookings = policy_scope(Booking).order(created_at: :desc)
+    # @bookings = policy_scope(Booking).order(created_at: :desc)
+    @bookings = policy_scope(Booking).where(user: @user).order(created_at: :desc)
   end
 
   def show
@@ -36,6 +40,10 @@ class BookingsController < ApplicationController
   end
 
   private
+
+  def set_user
+    @user = current_user
+  end
 
   def booking_params
     params.require(:booking).permit(:arrival, :departure, :guests_number)
