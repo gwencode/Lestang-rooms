@@ -30,6 +30,9 @@
     <% @users.each do |user| %>
 
       <div class="card-user my-3">
+        <%= link_to edit_admin_user_path(user), class: "admin-users-icon", id: "edit" do %>
+          <i class="fa-solid fa-pen-to-square"></i>
+        <% end %>
         <div class="card-user-infos">
           <h2><%= user.first_name.capitalize %> <%= user.last_name.upcase %></h2>
           <p>Email : <%= user.email %></p>

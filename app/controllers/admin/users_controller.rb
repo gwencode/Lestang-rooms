@@ -1,4 +1,6 @@
 class Admin::UsersController < ApplicationController
+  before_action :set_user, only: %i[edit update destroy]
+
   def index
     unless current_user.admin
       flash[:alert] = "Accès non autorisé."
@@ -13,6 +15,12 @@ class Admin::UsersController < ApplicationController
     end
   end
 
+  def edit
+    authorize @user
+  end
+
+  private
+
   def filter_users(users)
     case params[:filter]
     when "with-booking"
@@ -22,5 +30,9 @@ class Admin::UsersController < ApplicationController
     else
       users
     end
+  end
+
+  def set_user
+    @user = User.find(params[:id])
   end
 end

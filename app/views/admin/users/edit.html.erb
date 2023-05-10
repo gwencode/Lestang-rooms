@@ -1,0 +1,35 @@
+<div class="container-fluid container background-back-link">
+  <%= link_to raw("<i class='fa-solid fa-arrow-left-long'></i> <span>Retour</span>"), admin_users_path, class: "back-link" %>
+</div>
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url('<%= asset_path("admin/people.jpg") %>')">
+
+  <div class="container">
+    <div class="py-3" style="background-color: rgba(0, 0, 0, 0.4);">
+
+      <h3 class="px-5 text-center text-white">Modifier l'utilisateur</h3>
+
+      <div class="div p-3 text-white">
+
+        <%= simple_form_for [:admin, @user], url: admin_user_path(@user) do |f| %>
+          <div class="row">
+            <div class="col-12 col-md-4">
+              <%= f.input :first_name, label: 'Prénom' %>
+            </div>
+            <div class="col-12 col-md-4">
+              <%= f.input :last_name, label: 'Nom' %>
+            </div>
+            <div class="col-12 col-md-4">
+              <%= f.input :email, label: 'Email' %>
+            </div>
+          </div>
+          <div class="py-3 d-flex justify-content-center">
+            <%= f.submit "Modifier", class: "button-blue" %>
+          </div>
+        <% end %>
+
+      </div>
+
+    </div>
+  </div>
+
+</div>
