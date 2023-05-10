@@ -8,6 +8,13 @@ class MessageMailer < ActionMailer::Base
     mail(to: 'gwendal.lebris@hotmail.fr', subject: 'Nouveau message depuis le site Résidence Lestang')
   end
 
+  def contact_user_email
+    @user = params[:user]
+    @room = params[:room]
+    @message = params[:message]
+    mail(to: @user.email, subject: 'Résidence Lestang - Demande de renseignements envoyée')
+  end
+
   def booking_pending_admin_email
     @booking = params[:booking]
     @room = @booking.room

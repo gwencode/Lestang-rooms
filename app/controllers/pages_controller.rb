@@ -27,6 +27,7 @@ class PagesController < ApplicationController
     message = params[:message]
     if user.email.present? && user.first_name.present? && user.last_name.present? && message.present?
       MessageMailer.with(user: user, room: room, message: message).contact_admin_email.deliver_now
+      MessageMailer.with(user: user, room: room, message: message).contact_user_email.deliver_now
       redirect_to root_path, notice: "Votre message a bien été envoyé."
     else
       render :contact, status: :unprocessable_entity
