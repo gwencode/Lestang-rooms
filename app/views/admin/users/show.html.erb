@@ -14,7 +14,21 @@
       <p class="text-center text-white">Email : <%= @user.email %></p>
       <div class="p-3 row">
         <h4 class="text-center text-white text-decoration-underline">Réservations</h4>
+
+        <% if @bookings.empty? %>
+          <p class="text-center text-white">Aucune réservation</p>
+        <% end %>
+
         <%= render "admin/bookings/cards_bookings", bookings: @bookings %>
+
+      </div>
+
+      <div class="text-center">
+        <%= link_to admin_user_path(@user),
+                  data: {turbo_method: :delete, turbo_confirm: "Supprimer cet utilisateur ?"},
+                  class: "admin-delete-icon" do %>
+          <i class='fa-solid fa-trash-can'></i>
+        <% end %>
       </div>
 
     </div>

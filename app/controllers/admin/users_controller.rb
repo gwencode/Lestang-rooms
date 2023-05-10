@@ -35,6 +35,12 @@ class Admin::UsersController < ApplicationController
     end
   end
 
+  def destroy
+    authorize @user
+    @user.destroy
+    redirect_to admin_users_path, notice: "L'utilisateur a bien été supprimé"
+  end
+
   private
 
   def filter_users(users)

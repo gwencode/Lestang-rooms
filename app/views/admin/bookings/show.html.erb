@@ -80,7 +80,7 @@
       <div class="text-center">
         <%= link_to admin_booking_path(@booking),
                   data: {turbo_method: :delete, turbo_confirm: "Supprimer cette réservation ?"},
-                  id: "admin-delete-booking" do %>
+                  class: "admin-delete-icon" do %>
           <i class='fa-solid fa-trash-can'></i>
         <% end %>
       </div>
