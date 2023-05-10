@@ -45,21 +45,3 @@
   right: 8px;
   top: 8px;
 }
-
-// Icons for admin users
-
-.admin-users-icon {
-  position: absolute;
-  font-size: 16px;
-  text-decoration: none;
-  color: $blue;
-
-  &#edit {
-    right: 8px;
-    top: 8px;
-  }
-
-  &:hover {
-    color: $dark-blue;
-  }
-}

@@ -12,14 +12,11 @@
 
         <%= simple_form_for [:admin, @user], url: admin_user_path(@user) do |f| %>
           <div class="row">
-            <div class="col-12 col-md-4">
+            <div class="col-12 col-sm-6">
               <%= f.input :first_name, label: 'Prénom' %>
             </div>
-            <div class="col-12 col-md-4">
+            <div class="col-12 col-sm-6">
               <%= f.input :last_name, label: 'Nom' %>
-            </div>
-            <div class="col-12 col-md-4">
-              <%= f.input :email, label: 'Email' %>
             </div>
           </div>
           <div class="py-3 d-flex justify-content-center">
