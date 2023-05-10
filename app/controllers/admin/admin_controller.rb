@@ -23,6 +23,10 @@ class Admin::AdminController < ApplicationController
       "Messages" => {
         url: "admin_messages",
         asset: "admin/letters.jpg"
+      },
+      "Utilisateurs" => {
+        url: "admin_users",
+        asset: "admin/people.jpg"
       }
     }
   end
