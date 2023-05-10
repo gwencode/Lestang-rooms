@@ -13,6 +13,19 @@
     <%= link_to "N'ayant pas réservé", admin_users_path(filter: "no-booking"), class: "fw-bold text-black" %>
   </div>
 
+  <div class="row justify-content-center">
+  <div class="col-sm-8 my-3">
+    <%= form_with url: admin_users_path, method: :get, class: "d-flex" do %>
+      <%= text_field_tag :query,
+            params[:query],
+            class: "form-control me-3",
+            placeholder: "Entrez un nom"
+        %>
+      <%= submit_tag "Chercher", name: "", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>
+
   <div class="card-users">
     <% @users.each do |user| %>
 

@@ -6,6 +6,11 @@ class Admin::UsersController < ApplicationController
     end
     users = policy_scope(User).where(admin: false)
     @users = filter_users(users).order("first_name ASC")
+
+    if params[:query].present?
+      sql_subquery = "first_name ILIKE :query OR last_name ILIKE :query"
+      @users = @users.where(sql_subquery, query: "%#{params[:query]}%")
+    end
   end
 
   def filter_users(users)
