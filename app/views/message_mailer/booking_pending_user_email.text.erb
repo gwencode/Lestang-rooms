@@ -1,0 +1,15 @@
+Résidence Lestang - Demande de réservation envoyée
+==================================================
+
+Votre demande de réservation a bien été envoyée.
+
+Rappel de votre demande :
+- Logement : <%= @room.name %>
+- Arrivée : <%= l(@booking.arrival, format: "%A %d %B à %Hh").capitalize %>
+- Départ : <%= l(@booking.departure, format: "%A %d %B à %Hh").capitalize %>
+- Nombre de personnes : <%= @booking.guests_number %>
+- Prix total : <%= @booking.booking_price %> €
+
+<%= link_to "Voir ma réservation", booking_url(@booking) %>
+
+Merci de votre intérêt pour notre logement et à bientôt !

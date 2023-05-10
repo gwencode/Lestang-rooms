@@ -1,7 +1,7 @@
 class MessageMailer < ActionMailer::Base
   default from: ENV['SENDMAIL_USERNAME']
 
-  def contact_email
+  def contact_admin_email
     @user = params[:user]
     @room = params[:room]
     @message = params[:message]
