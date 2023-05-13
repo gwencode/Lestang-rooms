@@ -14,6 +14,8 @@ Rails.application.routes.draw do
   get "/contact", to: "pages#contact"
   post "/contact", to: "pages#message"
 
+  resources :chatrooms, only: %i[index show create]
+
   namespace :admin do
     root to: "admin#dashboard"
 
