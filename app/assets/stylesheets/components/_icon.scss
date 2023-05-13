@@ -31,6 +31,16 @@
   }
 }
 
+.admin-delete-review-icon {
+  font-size: 16px;
+  text-decoration: none;
+  color: $blue;
+
+  &:hover {
+    color: red;
+  }
+}
+
 #expand:hover {
   cursor: pointer;
 }

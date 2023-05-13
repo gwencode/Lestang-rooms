@@ -25,6 +25,11 @@
     <div class="px-3">
       <p><%= review.content %></p>
       <p class="fw-light"><%= review.author %></p>
+      <%= link_to admin_review_path(review),
+                  data: {turbo_method: :delete, turbo_confirm: "Supprimer cet avis ?"},
+                  class: "admin-delete-review-icon" do %>
+        <i class='fa-solid fa-trash-can'></i>
+      <% end %>
       <div class="separator"></div>
     </div>
   <% end %>
