@@ -27,6 +27,10 @@ class Admin::AdminController < ApplicationController
       "Utilisateurs" => {
         url: "admin_users",
         asset: "admin/people.jpg"
+      },
+      "Avis" => {
+        url: "admin_reviews",
+        asset: "admin/reviews.jpg"
       }
     }
   end
