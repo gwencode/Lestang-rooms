@@ -7,6 +7,20 @@ class Admin::ReviewsController < ApplicationController
       redirect_to(root_path)
     end
     @reviews = policy_scope(Review).order("created_at ASC")
+    @review = Review.new
+  end
+
+  def create
+    @review = Review.new(review_params)
+    authorize @review
+    if @review.save
+      redirect_to admin_reviews_path, notice: "Avis ajouté"
+    else
+      alert = @review.errors.messages.values.join(" ")
+      @reviews = policy_scope(Review).order("created_at ASC")
+      @review = Review.new
+      redirect_to admin_reviews_path, alert: alert
+    end
   end
 
   def edit
