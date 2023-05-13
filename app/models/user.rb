@@ -8,6 +8,8 @@ class User < ApplicationRecord
 
   has_many :bookings, dependent: :destroy
   has_many :rooms, through: :bookings
+  has_many :messages, dependent: :destroy
+  has_many :chatrooms, through: :messages
 
   validates :first_name, :last_name, :email, presence: true
 end
