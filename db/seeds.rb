@@ -21,7 +21,7 @@ puts "Database cleaned!"
 
 ## Comment next lines after first time in production
 
-puts "Creating 3 admin users..."
+puts "Creating 2 admin users..."
 
 User.create(
   email: ENV['ADMIN_EMAIL_1'].to_s,
@@ -34,20 +34,12 @@ User.create(
 User.create(
   email: ENV['ADMIN_EMAIL_2'].to_s,
   password: ENV['ADMIN_PASSWORD_2'].to_s,
-  first_name: "Emilie",
-  last_name: "Aubry",
-  admin: true
-)
-
-User.create(
-  email: ENV['ADMIN_EMAIL_3'].to_s,
-  password: ENV['ADMIN_PASSWORD_3'].to_s,
   first_name: "Gwendal",
   last_name: "Le Bris",
   admin: true
 )
 
-puts "3 admin users created!"
+puts "2 admin users created!"
 
 # puts "Creating 2 normal users..."
 

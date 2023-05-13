@@ -129,7 +129,7 @@ class Admin::BookingsController < ApplicationController
   def redirect_if_update(booking, status)
     if booking.update(status: status)
       redirect_to admin_booking_path(booking)
-      MessageMailer.with(booking: booking).booking_status_email.deliver_now
+      MessageMailer.with(booking: booking, tel_admin: ENV['TEL_ADMIN']).booking_status_email.deliver_now
     else
       flash.now[:alert] = booking.errors.messages.values.first.first.to_s
       render :show, status: :unprocessable_entity

@@ -31,6 +31,7 @@ class MessageMailer < ActionMailer::Base
 
   def booking_status_email
     @booking = params[:booking]
+    @tel_admin = params[:tel_admin]
     @room = @booking.room
     @user = @booking.user
     @status = @booking.status

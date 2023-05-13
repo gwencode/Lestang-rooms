@@ -18,6 +18,7 @@
     <p><%= link_to "Voir ma réservation", booking_url(@booking) %></p>
 
     <% if @status == "acceptée" %>
+      <p>Voici nos coordonnées pour nous contacter : <%= @tel_admin %> </p>
       <p>Merci et à bientôt !</p>
     <% elsif @status == "refusée" %>
       <p>Nous sommes désolés, mais votre demande n'a pas pu être acceptée.</p>
