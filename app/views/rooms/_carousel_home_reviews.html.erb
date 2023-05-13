@@ -3,8 +3,9 @@
     <div id="carouselHomeReviews" class="carousel carousel-dark slide" data-bs-ride="carousel">
       <div class="carousel-indicators">
         <button type="button" data-bs-target="#carouselHomeReviews" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-        <button type="button" data-bs-target="#carouselHomeReviews" data-bs-slide-to="1" aria-label="Slide 2"></button>
-        <button type="button" data-bs-target="#carouselHomeReviews" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        <% (1..@reviews.count - 1).each do |index| %>
+          <button type="button" data-bs-target="#carouselHomeReviews" data-bs-slide-to="<%= index %>" aria-label="Slide <%= index + 1 %>"></button>
+        <% end %>
       </div>
       <div class="carousel-inner text-center" data-carousel-height-target="carousel">
         <div class="carousel-item active" data-bs-interval="12000" data-carousel-height-target="item">
