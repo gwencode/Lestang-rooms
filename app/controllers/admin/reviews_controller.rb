@@ -23,17 +23,16 @@ class Admin::ReviewsController < ApplicationController
     end
   end
 
-  def edit
-    authorize @review
-  end
-
   def update
     authorize @review
 
     if @review.update(review_params)
       redirect_to admin_reviews_path, notice: "Avis modifié"
     else
-      render :edit, status: :unprocessable_entity
+      alert = @review.errors.messages.values.join(" ")
+      @reviews = policy_scope(Review).order("created_at ASC")
+      @review = Review.new
+      redirect_to admin_reviews_path, alert: alert
     end
   end
 

@@ -13,6 +13,9 @@ application.register("carousel-height", CarouselHeightController)
 import CollapseController from "./collapse_controller"
 application.register("collapse", CollapseController)
 
+import EditReviewController from "./edit_review_controller"
+application.register("edit-review", EditReviewController)
+
 import FlatpickrAdminController from "./flatpickr_admin_controller"
 application.register("flatpickr-admin", FlatpickrAdminController)
 
