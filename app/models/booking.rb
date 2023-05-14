@@ -1,6 +1,7 @@
 class Booking < ApplicationRecord
   belongs_to :user
   belongs_to :room
+  has_one :chatroom, dependent: :destroy
 
   validates :arrival, :departure, :guests_number, :status, presence: true
   validate :departure_after_arrival

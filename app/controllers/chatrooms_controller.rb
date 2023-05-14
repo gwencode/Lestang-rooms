@@ -1,10 +1,10 @@
 class ChatroomsController < ApplicationController
-  # def index
-  #   @user = current_user
-  #   @chatrooms = Chatroom
-  # end
-
   def show
     @chatroom = Chatroom.find(params[:id])
+    authorize @chatroom
+    @message = Message.new
+    @booking = @chatroom.booking
+    @room = @booking.room
+    @user = current_user
   end
 end

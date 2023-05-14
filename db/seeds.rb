@@ -26,8 +26,8 @@ puts "Creating 2 admin users..."
 User.create(
   email: ENV['ADMIN_EMAIL_1'].to_s,
   password: ENV['ADMIN_PASSWORD_1'].to_s,
-  first_name: "Erle",
-  last_name: "Le Bris",
+  first_name: "Emilie",
+  last_name: "et Erlé",
   admin: true
 )
 

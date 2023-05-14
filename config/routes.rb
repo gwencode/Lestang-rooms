@@ -8,13 +8,18 @@ Rails.application.routes.draw do
     resources :bookings, only: %i[create]
   end
 
-  resources :bookings, only: %i[index show]
+  resources :bookings, only: %i[index show] do
+    resources :chatrooms, only: %i[show] do
+      resources :messages, only: :create
+    end
+    resources :chatrooms, only: %i[create]
+  end
 
   get "/localisation", to: "pages#localisation"
   get "/contact", to: "pages#contact"
   post "/contact", to: "pages#message"
 
-  resources :chatrooms, only: %i[index show create]
+  resources :chatrooms, only: %i[index]
 
   namespace :admin do
     root to: "admin#dashboard"
