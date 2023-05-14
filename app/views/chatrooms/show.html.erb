@@ -1,35 +1,37 @@
 <div class="container-fluid container background-back-link">
-  <%= link_to raw("<i class='fa-solid fa-arrow-left-long'></i> <span>Retour</span>"), booking_path(@booking), class: "back-link" %>
+  <% if current_user.admin == true %>
+    <%= link_to raw("<i class='fa-solid fa-arrow-left-long'></i> <span>Retour</span>"), admin_booking_path(@booking), class: "back-link blue" %>
+  <% else %>
+    <%= link_to raw("<i class='fa-solid fa-arrow-left-long'></i> <span>Retour</span>"), booking_path(@booking), class: "back-link blue" %>
+  <% end %>
 </div>
-<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url('<%= asset_path("#{@room.name}.png") %>')">
 
-  <div class="container">
-    <div class="py-3" style="background-color: rgba(0, 0, 0, 0.4); position: relative;">
-      <% receiver_name = @user.admin ? "#{@booking.user.first_name} #{@booking.user.last_name}" : "#{User.where(admin: true).first.first_name} #{User.where(admin: true).first.last_name}" %>
-      <h2 class="px-5">Messages avec <%= receiver_name %></h2>
+<% receiver_name = @user.admin ? "#{@booking.user.first_name} #{@booking.user.last_name}" : "#{User.where(admin: true).first.first_name} #{User.where(admin: true).first.last_name}" %>
+<h2 class="py-3 px-5 text-center text-blue">Messages avec <%= receiver_name %></h2>
 
-      <div class="p-3">
-        <% @chatroom.messages.each do |message| %>
-          <p class="fw-light"><%= message.user.first_name %></p>
-          <p><%= message.content %></p>
-        <% end %>
-      </div>
+<div class="container chatroom"
+  data-controller="chatroom"
+  data-chatroom-chatroom-id-value="<%= @chatroom.id %>">
 
-      <div class="p-3">
-        <%= simple_form_for([@chatroom, @message],
-                                    url: booking_chatroom_messages_path(@booking, @chatroom),
-                                    method: :post,
-                                  html: {class: "d-flex"}) do |f| %>
-
-          <%= f.input :content, as: :text,
-            label: false,
-            placeholder: "Ecrivez un message...",
-            wrapper_html: {class: "flex-grow-1"}
-          %>
-          <%= f.submit "Envoyer", class: "btn btn-primary mb-3" %>
-        <% end %>
-      </div>
-    </div>
+  <div class="p-3 messages" data-chatroom-target="messages">
+    <% @chatroom.messages.each do |message| %>
+      <%= render "messages/message", message: message %>
+    <% end %>
   </div>
 
+  <div class="p-3">
+    <%= simple_form_for([@chatroom, @message],
+                        url: booking_chatroom_messages_path(@booking, @chatroom),
+                        method: :post,
+                        html: { data: { action: "turbo:submit-end->chatroom#resetForm" }, class: "d-flex"}) do |f|
+    %>
+
+      <%= f.input :content, as: :text,
+        label: false,
+        placeholder: "Ecrivez un message...",
+        wrapper_html: {class: "flex-grow-1"}
+      %>
+      <%= f.submit "Envoyer", class: "btn btn-primary mb-3" %>
+    <% end %>
+  </div>
 </div>

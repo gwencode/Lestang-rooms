@@ -6,7 +6,7 @@
   <div class="container">
     <div class="py-3" style="background-color: rgba(0, 0, 0, 0.4); position: relative;">
 
-      <%= link_to "", id: "message-icon-user" do %>
+      <%= link_to booking_chatroom_path(@booking, @booking.chatroom), id: "message-icon-user" do %>
         <i class="fa-regular fa-message"></i>
       <% end %>
 

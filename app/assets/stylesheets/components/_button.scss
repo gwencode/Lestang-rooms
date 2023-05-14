@@ -87,6 +87,14 @@
   position: absolute;
   left: 12px;
   top: 12px;
+
+  &.blue {
+    color: $blue;
+
+    &:hover {
+      color: $dark-blue;
+    }
+  }
 }
 
 .button-red-medium {

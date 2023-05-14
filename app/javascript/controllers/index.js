@@ -10,6 +10,9 @@ application.register("bookings-filter", BookingsFilterController)
 import CarouselHeightController from "./carousel_height_controller"
 application.register("carousel-height", CarouselHeightController)
 
+import ChatroomController from "./chatroom_controller"
+application.register("chatroom", ChatroomController)
+
 import CollapseController from "./collapse_controller"
 application.register("collapse", CollapseController)
 
