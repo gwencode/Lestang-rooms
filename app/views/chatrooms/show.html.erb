@@ -7,7 +7,7 @@
 </div>
 
 <% receiver_name = current_user.admin ? "#{@booking.user.first_name} #{@booking.user.last_name}" : "#{User.where(admin: true).first.first_name} #{User.where(admin: true).first.last_name}" %>
-<h2 class="py-3 px-5 text-center text-blue">Messages avec <%= receiver_name %></h2>
+<h2 class="p-5 text-center text-blue">Messages avec <%= receiver_name %></h2>
 
 <div class="container chatroom"
   data-controller="chatroom"
@@ -28,15 +28,18 @@
     <%= simple_form_for([@chatroom, @message],
                         url: booking_chatroom_messages_path(@booking, @chatroom),
                         method: :post,
-                        html: { data: { action: "turbo:submit-end->chatroom#resetForm" }, class: "d-flex"}) do |f|
+                        html: { data: { action: "turbo:submit-end->chatroom#resetForm" }, class: "d-flex gap-3"}) do |f|
     %>
-
-      <%= f.input :content, as: :text,
-        label: false,
-        placeholder: "Ecrivez un message...",
-        wrapper_html: {class: "flex-grow-1"}
-      %>
-      <%= f.submit "Envoyer", class: "btn btn-primary mb-3" %>
+      <div id="send-message-div">
+        <%= f.input :content, as: :text,
+          label: false,
+          placeholder: "...",
+          wrapper_html: {class: "flex-grow-1", id: "send-message-input"}
+        %>
+        <%= button_tag(type: 'submit', class: "btn btn-primary mb-3", id: "send-message-button") do %>
+          <i class='fa-solid fa-circle-arrow-right'></i>
+        <% end %>
+      </div>
     <% end %>
   </div>
 </div>

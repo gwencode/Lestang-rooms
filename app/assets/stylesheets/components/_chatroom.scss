@@ -1,7 +1,7 @@
 .chatroom {
   background: white;
   margin-top: 9px;
-  height: calc(100vh - 75px);
+  height: calc(100vh - 190px);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -27,6 +27,26 @@
       margin-bottom: 0;
     }
   }
+}
+
+#send-message-div {
+  position: relative;
+  width: 100%;
+
+  textarea.form-control {
+    max-height: 50vh;
+  }
+}
+
+#send-message-input {
+  width: 90%;
+}
+
+#send-message-button {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 6%;
 }
 
 // To style the wrapping div
