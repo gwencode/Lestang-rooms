@@ -6,16 +6,21 @@
   <% end %>
 </div>
 
-<% receiver_name = @user.admin ? "#{@booking.user.first_name} #{@booking.user.last_name}" : "#{User.where(admin: true).first.first_name} #{User.where(admin: true).first.last_name}" %>
+<% receiver_name = current_user.admin ? "#{@booking.user.first_name} #{@booking.user.last_name}" : "#{User.where(admin: true).first.first_name} #{User.where(admin: true).first.last_name}" %>
 <h2 class="py-3 px-5 text-center text-blue">Messages avec <%= receiver_name %></h2>
 
 <div class="container chatroom"
   data-controller="chatroom"
-  data-chatroom-chatroom-id-value="<%= @chatroom.id %>">
+  data-chatroom-chatroom-id-value="<%= @chatroom.id %>"
+  data-chatroom-current-user-id-value="<%= current_user.id %>">
 
   <div class="p-3 messages" data-chatroom-target="messages">
     <% @chatroom.messages.each do |message| %>
-      <%= render "messages/message", message: message %>
+      <div class="message-row d-flex <%= message.sender?(current_user) ? 'justify-content-end' : 'justify-content-start' %>">
+        <div class="<%= message.sender?(current_user) ? 'sender-style' : 'receiver-style' %>">
+          <%= render "messages/message", message: message %>
+        </div>
+      </div>
     <% end %>
   </div>
 

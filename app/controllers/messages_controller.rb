@@ -9,7 +9,8 @@ class MessagesController < ApplicationController
     if @message.save
       ChatroomChannel.broadcast_to(
         @chatroom,
-        render_to_string(partial: "message", locals: {message: @message})
+        message: render_to_string(partial: "message", locals: {message: @message}),
+        sender_id: current_user.id
       )
       head :ok
       # redirect_to booking_chatroom_path(@chatroom.booking, @chatroom)

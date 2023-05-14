@@ -5,6 +5,5 @@ class ChatroomsController < ApplicationController
     @message = Message.new
     @booking = @chatroom.booking
     @room = @booking.room
-    @user = current_user
   end
 end
