@@ -1,7 +1,6 @@
 <div id="message-<%= message.id %>">
-  <p>
-    <span class="fw-bold"><%= message.user.first_name %></span>
-    <span class="fst-italic"><%= message.created_at.strftime("%a %b %e at %l:%M %p") %></span>
-  </p>
   <p><%= message.content %></p>
+  <p class="message-date">
+    <%= l(message.created_at, format: "%d/%m/%y - %H:%M") %>
+  </p>
 </div>

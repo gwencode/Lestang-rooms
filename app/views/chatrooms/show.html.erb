@@ -1,20 +1,21 @@
 <div class="container-fluid container background-back-link">
-  <% if current_user.admin == true %>
-    <%= link_to raw("<i class='fa-solid fa-arrow-left-long'></i> <span>Retour</span>"), admin_booking_path(@booking), class: "back-link blue" %>
+ <% if current_user.admin == true %>
+    <%= link_to raw("<i class='fa-solid fa-circle-arrow-left'></i>"), admin_booking_path(@booking), class: "back-link" %>
   <% else %>
-    <%= link_to raw("<i class='fa-solid fa-arrow-left-long'></i> <span>Retour</span>"), booking_path(@booking), class: "back-link blue" %>
+    <%= link_to raw("<i class='fa-solid fa-circle-arrow-left'></i>"), booking_path(@booking), class: "back-link" %>
   <% end %>
 </div>
+<div class="py-4 px-5 header-blue">
+  <% receiver_name = current_user.admin ? "#{@booking.user.first_name} #{@booking.user.last_name}" : "#{User.where(admin: true).first.first_name} #{User.where(admin: true).first.last_name} (hôtes)" %>
+  <h2 class="text-center text-white m-0">Messages avec <%= receiver_name %></h2>
+</div>
 
-<% receiver_name = current_user.admin ? "#{@booking.user.first_name} #{@booking.user.last_name}" : "#{User.where(admin: true).first.first_name} #{User.where(admin: true).first.last_name}" %>
-<h2 class="p-5 text-center text-blue">Messages avec <%= receiver_name %></h2>
-
-<div class="container chatroom"
+<div class="chatroom"
   data-controller="chatroom"
   data-chatroom-chatroom-id-value="<%= @chatroom.id %>"
   data-chatroom-current-user-id-value="<%= current_user.id %>">
 
-  <div class="p-3 messages" data-chatroom-target="messages">
+  <div class="py-2 messages container" data-chatroom-target="messages">
     <% @chatroom.messages.each do |message| %>
       <div class="message-row d-flex <%= message.sender?(current_user) ? 'justify-content-end' : 'justify-content-start' %>">
         <div class="<%= message.sender?(current_user) ? 'sender-style' : 'receiver-style' %>">
@@ -24,22 +25,24 @@
     <% end %>
   </div>
 
-  <div class="my-3" id="send-message-area">
-    <%= simple_form_for([@chatroom, @message],
-                        url: booking_chatroom_messages_path(@booking, @chatroom),
-                        method: :post,
-                        html: { data: { action: "turbo:submit-end->chatroom#resetForm" }, class: "d-flex gap-3"}) do |f|
-    %>
-      <div id="send-message-div">
-        <%= f.input :content, as: :text,
-          label: false,
-          placeholder: "...",
-          wrapper_html: {class: "flex-grow-1", id: "send-message-input", data: { chatroom_target: "message", action: "keyup->chatroom#revealButton" } }
-        %>
-        <%= button_tag(type: 'submit', class: "d-none", id: "send-message-button", data: { chatroom_target: "button" } ) do %>
-          <i class="fa-solid fa-circle-arrow-up"></i>
-        <% end %>
-      </div>
-    <% end %>
+  <div class="p-3" id="send-message-area">
+    <div class="container">
+      <%= simple_form_for([@chatroom, @message],
+                          url: booking_chatroom_messages_path(@booking, @chatroom),
+                          method: :post,
+                          html: { data: { action: "turbo:submit-end->chatroom#resetForm" }, class: "d-flex gap-3"}) do |f|
+      %>
+        <div id="send-message-div">
+          <%= f.input :content, as: :text,
+            label: false,
+            placeholder: "...",
+            wrapper_html: {class: "flex-grow-1", id: "send-message-input", data: { chatroom_target: "message", action: "keyup->chatroom#revealButton" } }
+          %>
+          <%= button_tag(type: 'submit', class: "d-none", id: "send-message-button", data: { chatroom_target: "button" } ) do %>
+            <i class="fa-solid fa-circle-arrow-up"></i>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
   </div>
 </div>
