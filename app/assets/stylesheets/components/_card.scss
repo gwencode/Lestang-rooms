@@ -99,6 +99,9 @@
   display: flex;
   align-items: center;
   position: relative;
+  a {
+    width: 100%;
+  }
 }
 
 .card-user h2 {
@@ -117,4 +120,10 @@
 
 .card-user .card-user-infos {
   padding: 16px;
+}
+
+// Cards messages
+
+.card-message {
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }

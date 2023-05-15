@@ -1,5 +1,5 @@
 <div class="container-fluid container background-back-link">
-  <%= link_to raw("<i class='fa-solid fa-arrow-left-long'></i> <span>Dashboard</span>"), admin_root_path, class: "back-link" %>
+  <%= link_to raw("<i class='fa-solid fa-circle-arrow-left'></i>"), admin_root_path, class: "back-link" %>
 </div>
 
 <div class="p-5 header-blue">
@@ -14,22 +14,22 @@
   </div>
 
   <div class="row justify-content-center">
-  <div class="col-sm-8 my-3">
-    <%= form_with url: admin_users_path, method: :get, class: "d-flex" do %>
-      <%= text_field_tag :query,
-            params[:query],
-            class: "form-control me-3",
-            placeholder: "Entrez un nom"
-        %>
-      <%= submit_tag "Chercher", name: "", class: "btn btn-primary" %>
-    <% end %>
+    <div class="col-sm-8 my-3">
+      <%= form_with url: admin_users_path, method: :get, class: "d-flex" do %>
+        <%= text_field_tag :query,
+              params[:query],
+              class: "form-control me-3",
+              placeholder: "Entrez un nom"
+          %>
+        <%= submit_tag "Chercher", name: "", class: "btn btn-primary" %>
+      <% end %>
+    </div>
   </div>
-</div>
 
   <div class="card-users">
     <% @users.each do |user| %>
-      <%= link_to admin_user_path(user), class: "text-decoration-none text-black" do %>
-        <div class="card-user my-3">
+      <div class="card-user my-3">
+        <%= link_to admin_user_path(user), class: "text-decoration-none text-black" do %>
           <div class="card-user-infos">
             <h2><%= user.first_name.capitalize %> <%= user.last_name.upcase %></h2>
             <p>Email : <%= user.email %></p>
@@ -47,8 +47,8 @@
               <p>Aucune réservation</p>
             <% end %>
           </div>
-        </div>
-      <% end %>
+        <% end %>
+      </div>
 
     <% end %>
   </div>

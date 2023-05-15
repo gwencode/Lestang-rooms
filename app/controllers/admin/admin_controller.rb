@@ -45,5 +45,6 @@ class Admin::AdminController < ApplicationController
 
   def messages
     authorize :admin
+    @chatrooms = policy_scope(Chatroom).order(created_at: :desc)
   end
 end

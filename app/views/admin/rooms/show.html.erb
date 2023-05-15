@@ -1,5 +1,5 @@
 <div class="container-fluid container background-back-link">
-  <%= link_to raw("<i class='fa-solid fa-arrow-left-long'></i> <span>Retour</span>"), :back, class: "back-link" %>
+  <%= link_to raw("<i class='fa-solid fa-circle-arrow-left'></i>"), admin_rooms_path, class: "back-link" %>
 </div>
 
 <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url('<%= asset_path("#{@room.name}.png") %>')">
@@ -106,7 +106,7 @@
         </div>
 
         <div class="text-center pt-2">
-          <h5><%= link_to "Créneaux spécifiques", admin_room_slots_path(@room), class: "text-white" %></h5>
+          <h5 class="fst-italic"><%= link_to "Voir Créneaux Spécifiques", admin_room_slots_path(@room), class: "text-white" %></h5>
         </div>
 
         <div class="separator"></div>
@@ -124,7 +124,7 @@
         </div>
 
         <div class="text-center pt-2">
-          <h5><%= link_to "Conditions saisonnières", admin_room_seasons_path(@room), class: "text-white" %></h5>
+          <h5 class="fst-italic"><%= link_to "Voir Conditions Saisonnières", admin_room_seasons_path(@room), class: "text-white" %></h5>
         </div>
 
 
