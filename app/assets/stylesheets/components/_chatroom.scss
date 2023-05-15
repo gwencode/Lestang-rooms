@@ -116,3 +116,11 @@
   font-style: italic;
   margin-bottom: 0;
 }
+
+#last-message {
+  white-space: nowrap; /* Empêche le texte de se retourner à la ligne */
+  overflow: hidden; /* Masque le contenu dépassant de la largeur du conteneur */
+  text-overflow: ellipsis; /* Affiche les trois petits points pour indiquer le troncage */
+  width: 100%;
+  opacity: 1;
+}

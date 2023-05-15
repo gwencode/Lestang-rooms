@@ -1,8 +1,8 @@
 <div class="container-fluid container background-back-link">
  <% if current_user.admin == true %>
-    <%= link_to raw("<i class='fa-solid fa-circle-arrow-left'></i>"), admin_booking_path(@booking), class: "back-link" %>
+    <%= link_to raw("<i class='fa-solid fa-circle-arrow-left'></i>"), admin_messages_path, class: "back-link" %>
   <% else %>
-    <%= link_to raw("<i class='fa-solid fa-circle-arrow-left'></i>"), booking_path(@booking), class: "back-link" %>
+    <%= link_to raw("<i class='fa-solid fa-circle-arrow-left'></i>"), messages_path, class: "back-link" %>
   <% end %>
 </div>
 <div class="py-4 px-5 header-blue">

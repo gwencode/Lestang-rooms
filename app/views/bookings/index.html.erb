@@ -1,6 +1,13 @@
-<div class="container py-3" >
-  <h1 class="text-blue text-center">Mes réservations</h1>
-  <div class="row mx-0" id="index-user-bookings">
+<div class="container-fluid container background-back-link">
+  <%= link_to raw("<i class='fa-solid fa-circle-arrow-left'></i>"), root_path, class: "back-link" %>
+</div>
+
+<div class="p-5 header-blue">
+  <h1 class="px-5">Mes réservations</h1>
+</div>
+
+<div class="container py-3" style="min-height: 60vh;">
+  <div class="row mx-0">
 
     <% if @bookings.empty? %>
       <p class="text-center">Vous n'avez pas de réservation en cours</p>

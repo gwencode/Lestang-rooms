@@ -45,6 +45,10 @@ class Admin::AdminController < ApplicationController
 
   def messages
     authorize :admin
-    @chatrooms = policy_scope(Chatroom).order(created_at: :desc)
+
+    chatrooms_with_messages = policy_scope(Chatroom).joins(:messages).order('messages.created_at DESC').uniq
+    chatrooms_without_messages = policy_scope(Chatroom).left_outer_joins(:messages).where(messages: { id: nil }).order(created_at: :desc)
+
+    @chatrooms = chatrooms_with_messages.union(chatrooms_without_messages)
   end
 end

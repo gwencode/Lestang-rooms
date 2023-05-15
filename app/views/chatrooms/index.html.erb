@@ -1,19 +1,18 @@
 <div class="container-fluid container background-back-link">
-  <%= link_to raw("<i class='fa-solid fa-circle-arrow-left'></i>"), admin_root_path, class: "back-link" %>
+  <%= link_to raw("<i class='fa-solid fa-circle-arrow-left'></i>"), root_path, class: "back-link" %>
 </div>
 
 <div class="p-5 header-blue">
   <h1 class="px-5">Messages</h1>
 </div>
 
-<div class="container py-3" style="min-height: 56vh;">
+<div class="container py-3" style="min-height: 60vh;">
   <div class="card-users">
     <% @chatrooms.each do |chatroom| %>
       <div class="card-user my-3">
         <%= link_to booking_chatroom_path(chatroom.booking, chatroom), class: "text-decoration-none text-black" do %>
           <div class="card-user-infos">
-            <% user = chatroom.booking.user %>
-            <% header = "#{user.first_name.capitalize} #{user.last_name.upcase} - #{chatroom.booking.room.name}" %>
+            <% header = "#{chatroom.booking.room.name}" %>
             <div class="d-flex justify-content-start gap-1 align-items-center flex-wrap">
               <h2><%= header %></h2>
               <h6>

@@ -14,12 +14,12 @@ Rails.application.routes.draw do
     end
     resources :chatrooms, only: %i[create]
   end
+  # resources :chatrooms, only: %i[index]
+  get "/messages", to: "chatrooms#index"
 
   get "/localisation", to: "pages#localisation"
   get "/contact", to: "pages#contact"
   post "/contact", to: "pages#message"
-
-  resources :chatrooms, only: %i[index]
 
   namespace :admin do
     root to: "admin#dashboard"
