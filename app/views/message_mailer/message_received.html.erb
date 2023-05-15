@@ -4,7 +4,7 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <h4>Résidence Lestang - Nouveau message de <%= @sender.first_name.capitalize %> <%= @sender.last_name.upcase %></h4>
+    <h4>Résidence Lestang - Nouveau message de <%= @sender.first_name.capitalize %> <%= @sender.admin ? @sender.last_name : @sender.last_name.upcase %></h4>
     <p><strong>Vous avez reçu un nouveau message :</strong></p>
     <p><%= @message.content %></p>
 
