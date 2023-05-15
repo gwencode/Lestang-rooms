@@ -39,7 +39,7 @@ export default class extends Controller {
       })
 
     } else {
-      console.log(this.arrivalsDisabledValue)
+      // console.log(this.arrivalsDisabledValue)
 
       flatpickr(this.startTimeTarget, {
         "locale": French,

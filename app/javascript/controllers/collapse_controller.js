@@ -6,7 +6,7 @@ export default class extends Controller {
   }
 
   hide() {
-    console.log(this.element)
+    // console.log(this.element)
     this.element.classList.add("d-none")
   }
 }

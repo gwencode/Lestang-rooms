@@ -4,12 +4,6 @@
 
 import { application } from "./application"
 
-import BookingsFilterController from "./bookings_filter_controller"
-application.register("bookings-filter", BookingsFilterController)
-
-import CarouselHeightController from "./carousel_height_controller"
-application.register("carousel-height", CarouselHeightController)
-
 import ChatroomController from "./chatroom_controller"
 application.register("chatroom", ChatroomController)
 
@@ -36,3 +30,6 @@ application.register("image-gallery", ImageGalleryController)
 
 import MapController from "./map_controller"
 application.register("map", MapController)
+
+import UpButtonController from "./up_button_controller"
+application.register("up-button", UpButtonController)

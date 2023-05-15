@@ -1,5 +1,5 @@
 <div class="carousel-background-reviews py-3">
-  <div class="container" data-controller="carousel-height">
+  <div class="container">
     <div id="carouselHomeReviews" class="carousel carousel-dark slide" data-bs-ride="carousel">
       <div class="carousel-indicators">
         <button type="button" data-bs-target="#carouselHomeReviews" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -7,13 +7,13 @@
           <button type="button" data-bs-target="#carouselHomeReviews" data-bs-slide-to="<%= index %>" aria-label="Slide <%= index + 1 %>"></button>
         <% end %>
       </div>
-      <div class="carousel-inner text-center" data-carousel-height-target="carousel">
-        <div class="carousel-item active" data-bs-interval="12000" data-carousel-height-target="item">
+      <div class="carousel-inner text-center">
+        <div class="carousel-item active" data-bs-interval="12000">
           <p><%= reviews.first.content %></p>
           <p class="fw-light m-0"><%= reviews.first.author %></p>
         </div>
         <% reviews.drop(1).each do |review| %>
-          <div class="carousel-item" data-bs-interval="12000"  data-carousel-height-target="item">
+          <div class="carousel-item" data-bs-interval="12000" >
             <p><%= review.content %></p>
             <p class="fw-light m-0"><%= review.author %></p>
           </div>
