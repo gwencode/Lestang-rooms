@@ -24,7 +24,7 @@
     <% end %>
   </div>
 
-  <div class="p-3">
+  <div class="my-3" id="send-message-area">
     <%= simple_form_for([@chatroom, @message],
                         url: booking_chatroom_messages_path(@booking, @chatroom),
                         method: :post,
@@ -34,10 +34,10 @@
         <%= f.input :content, as: :text,
           label: false,
           placeholder: "...",
-          wrapper_html: {class: "flex-grow-1", id: "send-message-input"}
+          wrapper_html: {class: "flex-grow-1", id: "send-message-input", data: { chatroom_target: "message", action: "keyup->chatroom#revealButton" } }
         %>
-        <%= button_tag(type: 'submit', class: "btn btn-primary mb-3", id: "send-message-button") do %>
-          <i class='fa-solid fa-circle-arrow-right'></i>
+        <%= button_tag(type: 'submit', class: "d-none", id: "send-message-button", data: { chatroom_target: "button" } ) do %>
+          <i class="fa-solid fa-circle-arrow-up"></i>
         <% end %>
       </div>
     <% end %>

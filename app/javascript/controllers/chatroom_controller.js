@@ -4,7 +4,7 @@ import { createConsumer } from "@rails/actioncable"
 // Connects to data-controller="chatroom"
 export default class extends Controller {
   static values = { chatroomId: Number, currentUserId: Number }
-  static targets = ["messages"]
+  static targets = ["messages", "message", "button"]
 
   connect() {
     this.channel = createConsumer().subscriptions.create(
@@ -12,7 +12,6 @@ export default class extends Controller {
       { received: data => this.#insertMessageAndScrollDown(data) }
     )
     this.messagesTarget.scrollTo(0, this.messagesTarget.scrollHeight)
-    // console.log(`Subscribe to the chatroom with the id ${this.chatroomIdValue}.`)
   }
 
   disconnect() {
@@ -54,4 +53,11 @@ export default class extends Controller {
     return currentUserIsSender ? "sender-style" : "receiver-style"
   }
 
+  revealButton() {
+    if (this.messageTarget.firstElementChild.value.length === 0) {
+      this.buttonTarget.classList.add("d-none")
+    } else {
+      this.buttonTarget.classList.remove("d-none")
+    }
+  }
 }

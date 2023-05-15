@@ -15,7 +15,8 @@ class MessagesController < ApplicationController
       head :ok
       # redirect_to booking_chatroom_path(@chatroom.booking, @chatroom)
     else
-      render "chatrooms/show", status: :unprocessable_entity
+      # render "chatrooms/show", status: :unprocessable_entity
+      redirect_to booking_chatroom_path(@chatroom.booking, @chatroom), alert: "Le message ne peut être vide"
     end
 
     # if @message.save

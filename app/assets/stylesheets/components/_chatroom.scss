@@ -29,6 +29,10 @@
   }
 }
 
+#send-message-area {
+  background-color: $beige;
+}
+
 #send-message-div {
   position: relative;
   width: 100%;
@@ -40,6 +44,7 @@
 
 #send-message-input {
   width: 90%;
+  margin: 0 !important;
 }
 
 #send-message-button {
@@ -47,6 +52,35 @@
   right: 0;
   bottom: 0;
   width: 6%;
+  background-color: transparent;
+  border: none;
+  font-size: 1.5rem;
+  color: $dark-blue;
+  padding: 0 !important;
+}
+
+@media (min-width: 576px) {
+  #send-message-input {
+    width: 93%;
+  }
+  #send-message-button {
+    width: 5%;
+  }
+}
+
+@media (min-width: 992px) {
+  #send-message-input {
+    width: 95%;
+  }
+  #send-message-button {
+    width: 3%;
+  }
+}
+
+@media (min-width: 1200px) {
+  #send-message-input {
+    width: 96%;
+  }
 }
 
 // To style the wrapping div
@@ -58,7 +92,7 @@
 // To style the message itself
 .sender-style, .receiver-style {
   width: 70%;
-  max-width: 400px;
+  max-width: 500px;
   border-radius: 4px;
   padding: 8px;
   min-height: 80px;
