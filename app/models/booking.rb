@@ -2,6 +2,7 @@ class Booking < ApplicationRecord
   belongs_to :user
   belongs_to :room
   has_one :chatroom, dependent: :destroy
+  has_many :messages, through: :chatroom
 
   validates :arrival, :departure, :guests_number, :status, presence: true
   validate :departure_after_arrival
@@ -11,6 +12,7 @@ class Booking < ApplicationRecord
   validate :bedroom_slot_available, if: -> { room == Room.last }
 
   before_save :set_night_price, :set_nights, :set_duration, :set_reduction, :set_cleaning_fee, :set_booking_price
+  after_create :create_chatroom
 
   def basic_price
     nights * night_price
@@ -120,5 +122,9 @@ class Booking < ApplicationRecord
 
   def set_booking_price
     self.booking_price = basic_price + reduction + cleaning_fee
+  end
+
+  def create_chatroom
+    Chatroom.create(booking: self)
   end
 end

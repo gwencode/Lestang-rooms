@@ -5,7 +5,7 @@ class MessageMailer < ActionMailer::Base
     @user = params[:user]
     @room = params[:room]
     @message = params[:message]
-    mail(to: 'gwendal.lebris@hotmail.fr', subject: 'Nouveau message depuis le site Résidence Lestang')
+    mail(to: ENV['ADMIN_EMAIL_1'], subject: 'Nouveau message depuis le site Résidence Lestang')
   end
 
   def contact_user_email
@@ -19,7 +19,7 @@ class MessageMailer < ActionMailer::Base
     @booking = params[:booking]
     @room = @booking.room
     @user = @booking.user
-    mail(to: 'gwendal.lebris@hotmail.fr', subject: "Résidence Lestang - Demande de réservation pour #{@room.name}")
+    mail(to: ENV['ADMIN_EMAIL_1'], subject: "Résidence Lestang - Demande de réservation pour #{@room.name}")
   end
 
   def booking_pending_user_email
