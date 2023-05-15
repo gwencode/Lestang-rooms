@@ -15,9 +15,8 @@ class MessagesController < ApplicationController
       head :ok
       # redirect_to booking_chatroom_path(@chatroom.booking, @chatroom)
 
-      # CHANGE .last by .first !!!!!
-      receiver = current_user.admin ? @chatroom.booking.user : User.where(admin: true).last
-      sender = current_user.admin ? User.where(admin: true).last : @chatroom.booking.user
+      receiver = current_user.admin ? @chatroom.booking.user : User.where(admin: true).first
+      sender = current_user.admin ? User.where(admin: true).first : @chatroom.booking.user
       MessageMailer.with(
         message: @message,
         receiver: receiver,
