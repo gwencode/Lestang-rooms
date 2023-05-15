@@ -14,6 +14,16 @@ class MessagesController < ApplicationController
       )
       head :ok
       # redirect_to booking_chatroom_path(@chatroom.booking, @chatroom)
+
+      # CHANGE .last by .first !!!!!
+      receiver = current_user.admin ? @chatroom.booking.user : User.where(admin: true).last
+      sender = current_user.admin ? User.where(admin: true).last : @chatroom.booking.user
+      MessageMailer.with(
+        message: @message,
+        receiver: receiver,
+        sender: sender,
+        booking: @chatroom.booking
+      ).message_received.deliver_now
     else
       # render "chatrooms/show", status: :unprocessable_entity
       redirect_to booking_chatroom_path(@chatroom.booking, @chatroom), alert: "Le message ne peut être vide"

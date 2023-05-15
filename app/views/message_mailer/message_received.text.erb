@@ -1,0 +1,16 @@
+Résidence Lestang - Nouveau message de <%= @sender.first_name.capitalize %> <%= @sender.last_name.upcase %>
+==================================================
+
+Vous avez reçu un nouveau message :
+
+<%= @message.content %>
+
+Rappel de la réservation :
+- Logement : <%= @booking.room.name %>
+- Arrivée : <%= l(@booking.arrival, format: "%A %d %B à %Hh").capitalize %>
+- Départ : <%= l(@booking.departure, format: "%A %d %B à %Hh").capitalize %>
+- Nombre de personnes : <%= @booking.guests_number %>
+- Prix total : <%= @booking.booking_price %> €
+- Statut : <%= @booking.status %>
+
+<%= link_to "Cliquez ici pour lui répondre", booking_chatroom_url(@booking, @booking.chatroom) %>

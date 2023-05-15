@@ -37,4 +37,15 @@ class MessageMailer < ActionMailer::Base
     @status = @booking.status
     mail(to: @user.email, subject: "Résidence Lestang - Demande de réservation #{@status}")
   end
+
+  def message_received
+    @message = params[:message]
+    @receiver = params[:receiver]
+    @sender = params[:sender]
+    @booking = params[:booking]
+    mail(
+      to: @receiver.email,
+      subject: "Résidence Lestang - Nouveau message de #{@sender.first_name.capitalize} #{@sender.last_name.upcase}"
+    )
+  end
 end
