@@ -6,7 +6,7 @@
       <div class="carousel-item active" data-bs-interval="10000">
         <div class="d-flex justify-content-center gap-4">
           <% first_two_home_images.each do |image_path| %>
-            <%= image_tag image_path, alt: "", class: "carousel-home-img" %>
+            <%= image_tag image_path, alt: "", class: "carousel-home-img", loading: "lazy" %>
           <% end %>
         </div>
       </div>
@@ -15,7 +15,7 @@
         <div class="carousel-item" data-bs-interval="10000">
           <div class="d-flex justify-content-center gap-4">
             <% image_paths.each do |image_path| %>
-              <%= image_tag image_path, alt: "", class: "carousel-home-img" %>
+              <%= image_tag image_path, alt: "", class: "carousel-home-img", loading: "lazy" %>
             <% end %>
           </div>
         </div>

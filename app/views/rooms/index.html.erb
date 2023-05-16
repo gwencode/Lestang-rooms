@@ -37,7 +37,7 @@
 
 <div class="container">
   <div class="d-flex align-items-center py-3 my-3 row">
-    <%= image_tag "#{@maison.name}/maison.png", alt: "", class: "col-12 col-lg-6 order-lg-2 images-room-little-screen" %>
+    <%= image_tag "#{@maison.name}/maison.png", alt: "", class: "col-12 col-lg-6 order-lg-2 images-room-little-screen", loading: "lazy" %>
     <div class="text-center col-12 col-lg-6 order-lg-1">
       <h1 class="h1-blue-no-margin"><%= @maison.name %></h1>
       <div class="separator"></div>
@@ -47,7 +47,7 @@
   </div>
 
   <div class="d-flex align-items-center py-3 my-3 row">
-    <%= image_tag "#{@chambre.name}/chambre.png", alt: "", class: "col-12 col-lg-6 images-room-little-screen" %>
+    <%= image_tag "#{@chambre.name}/chambre.png", alt: "", class: "col-12 col-lg-6 images-room-little-screen", loading: "lazy" %>
     <div class="text-center col-12 col-lg-6">
       <h1 class="h1-blue-no-margin"><%= @chambre.name %></h1>
       <div class="separator"></div>
@@ -71,7 +71,7 @@
     <div class="separator"></div>
    <div class="gallery" data-controller="image-gallery" data-image-gallery-target="gallery">
       <% @gallery_images.each do |image| %>
-        <%= image_tag image, alt: "", class: "gallery-image img-thumbnail", data: { image_gallery_target: "image", action: "click->image-gallery#expandImage" } %>
+        <%= image_tag image, alt: "", class: "gallery-image img-thumbnail", loading: "lazy", data: { image_gallery_target: "image", action: "click->image-gallery#expandImage" } %>
       <% end %>
     </div>
   </div>

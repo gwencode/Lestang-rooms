@@ -1,7 +1,7 @@
 <% sleep_images.each_with_index do |image_path, index| %>
   <div class="card-sleep col-12 col-md-6 col-lg-4 col-xl-3 p-0">
     <i class="fa-solid fa-expand" id="expand" data-bs-toggle="modal" data-bs-target=<%= "#sleepImageModal-#{index}" %>></i>
-    <%= image_tag "#{image_path}", alt: "" %>
+    <%= image_tag "#{image_path}", alt: "", loading: "lazy" %>
     <div class="card-sleep-infos">
       <% if index + 1 <= 2 %>
         <h6>Chambre <%= index + 1 %></h6>
@@ -26,7 +26,7 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body text-center">
-          <%= image_tag "#{image_path}", alt: "", style: "max-width: 100%"%>
+          <%= image_tag "#{image_path}", alt: "", style: "max-width: 100%", loading: "lazy"%>
         </div>
       </div>
     </div>
