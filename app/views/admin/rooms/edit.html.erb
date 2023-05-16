@@ -92,15 +92,15 @@
             <h4 class="text-center"><u>Frais de ménage</u></h4>
              <% [{
                 small_cleaning_duration: { label: "Nb de jours ménage faible durée", number: @room.room_price.small_cleaning_duration },
-                small_cleaning_fee: { label: "Frais de ménage faible durée en €", number: @room.room_price.small_cleaning_duration }
+                small_cleaning_fee: { label: "Frais de ménage faible durée en €", number: @room.room_price.small_cleaning_fee }
                 },
                 {
                 medium_cleaning_duration: { label: "Nb de jours ménage moyenne durée", number: @room.room_price.medium_cleaning_duration },
-                medium_cleaning_fee: { label: "Frais de ménage moyenne durée en €", number: @room.room_price.medium_cleaning_duration }
+                medium_cleaning_fee: { label: "Frais de ménage moyenne durée en €", number: @room.room_price.medium_cleaning_fee }
                 },
                 {
                 high_cleaning_duration: { label: "Nb de jours ménage longue durée", number: @room.room_price.high_cleaning_duration },
-                high_cleaning_fee: { label: "Frais de ménage longue durée en €", number: @room.room_price.high_cleaning_duration }
+                high_cleaning_fee: { label: "Frais de ménage longue durée en €", number: @room.room_price.high_cleaning_fee }
                 }
               ].each do |hash| %>
               <div class="row">
