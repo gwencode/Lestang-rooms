@@ -63,6 +63,9 @@ fr:
         start_date: La date de début
         end_date: La date de fin
         min_nights: Nombre de nuits minimum
+      review:
+        author: Auteur
+        content: Contenu
   simple_form:
     "yes": 'Oui'
     "no": 'Non'

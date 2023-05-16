@@ -16,7 +16,7 @@ class Admin::ReviewsController < ApplicationController
     if @review.save
       redirect_to admin_reviews_path, notice: "Avis ajouté"
     else
-      alert = @review.errors.messages.values.join(" ")
+      alert = @review.errors.full_messages.join(". ")
       @reviews = policy_scope(Review).order("created_at ASC")
       @review = Review.new
       redirect_to admin_reviews_path, alert: alert
@@ -29,7 +29,7 @@ class Admin::ReviewsController < ApplicationController
     if @review.update(review_params)
       redirect_to admin_reviews_path, notice: "Avis modifié"
     else
-      alert = @review.errors.messages.values.join(" ")
+      alert = @review.errors.full_messages.join(". ")
       @reviews = policy_scope(Review).order("created_at ASC")
       @review = Review.new
       redirect_to admin_reviews_path, alert: alert
