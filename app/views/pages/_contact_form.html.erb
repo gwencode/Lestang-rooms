@@ -27,12 +27,12 @@
                 input_html: { autocomplete: "email" } %>
 
     <div class="pb-2">
-      <%= label_tag :room, 'Votre question concerne : ', class: "form-label" %>
+      <%= label_tag :room, 'Votre question concerne *', class: "form-label" %>
       <%= select_tag :room, options_from_collection_for_select(rooms, :id , :name), class: "form-select" %>
     </div>
 
     <div class="py-2">
-      <%= label_tag :message, 'Votre question :', class: "form-label" %>
+      <%= label_tag :message, 'Votre question *', class: "form-label" %>
       <%= text_area_tag :message, nil, class: "form-control" %>
     </div>
 

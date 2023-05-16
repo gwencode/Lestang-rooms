@@ -30,7 +30,9 @@ class PagesController < ApplicationController
       MessageMailer.with(user: user, room: room, message: message).contact_user_email.deliver_now
       redirect_to root_path, notice: "Votre message a bien été envoyé."
     else
-      render :contact, status: :unprocessable_entity
+      @user = current_user ? current_user : User.new
+      @rooms = Room.all
+      redirect_to contact_path, alert: "Veuillez remplir tous les champs."
     end
   end
 
