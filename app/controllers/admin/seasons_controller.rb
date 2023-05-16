@@ -25,8 +25,8 @@ class Admin::SeasonsController < ApplicationController
       @season.update(start_date: @season.start_date.change(hour: 14), end_date: @season.end_date.change(hour: 12))
       redirect_to admin_room_seasons_path, notice: "Condition ajoutée"
     else
-      redirect_to new_admin_room_season_path(@room), alert: @season.errors.full_messages.join(", ")
-      return
+      flash[:alert] = @season.errors.full_messages.join(". ")
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -40,8 +40,8 @@ class Admin::SeasonsController < ApplicationController
       @season.update(start_date: @season.start_date.change(hour: 14), end_date: @season.end_date.change(hour: 12))
       redirect_to admin_room_seasons_path, notice: "Condition modifiée"
     else
-      redirect_to edit_admin_room_season_path(@room, @season), alert: @season.errors.full_messages.join(", ")
-      return
+      flash[:alert] = @season.errors.full_messages.join(". ")
+      render :edit, status: :unprocessable_entity
     end
   end
 

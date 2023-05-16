@@ -10,7 +10,7 @@ class Season < ApplicationRecord
     return if end_date.blank? || start_date.blank?
 
     if end_date <= start_date
-      errors.add(:end_date, "La date de fin doit être après la date de début")
+      errors.add(:end_date, "doit être après la date de début")
     end
   end
 
@@ -18,7 +18,7 @@ class Season < ApplicationRecord
     return if min_nights.blank?
 
     if min_nights < 1
-      errors.add(:min_nights, "Le nombre de nuits minimum doit être supérieur à 0")
+      errors.add(:min_nights, "doit être supérieur à 0")
     end
   end
 

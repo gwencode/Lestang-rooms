@@ -20,16 +20,18 @@ class Admin::SlotsController < ApplicationController
   def create
     @slot = Slot.new(slot_params)
     @slot.room = @room
-    if @slot.room == Room.first
-      @slot.start_date = @slot.start_date.change(hour: 14)
-      @slot.end_date = @slot.end_date.change(hour: 12)
-    else
-      @slot.start_date = @slot.start_date.change(hour: 18)
-      @slot.end_date = @slot.end_date.change(hour: 11)
+    if @slot.start_date && @slot.end_date
+      if @room == Room.first
+        @slot.start_date = @slot.start_date.change(hour: 14)
+        @slot.end_date = @slot.end_date.change(hour: 12)
+      else
+        @slot.start_date = @slot.start_date.change(hour: 18)
+        @slot.end_date = @slot.end_date.change(hour: 11)
+      end
     end
     authorize @slot
     if @slot.save
-      if @slot.room == Room.first
+      if @room == Room.first
         if Slot.find_by(id: @slot.id + 1)
           redirect_to admin_room_slots_path, notice: "Créneaux ajoutés pour la maison et la chambre"
         else
@@ -39,8 +41,8 @@ class Admin::SlotsController < ApplicationController
         redirect_to admin_room_slots_path, notice: "Créneau créé"
       end
     else
-      redirect_to new_admin_room_slot_path(@room), alert: @slot.errors.full_messages.join(", ")
-      return
+      flash[:alert] = @slot.errors.full_messages.join(". ")
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -54,8 +56,8 @@ class Admin::SlotsController < ApplicationController
       @slot.update(start_date: @slot.start_date.change(hour: 14), end_date: @slot.end_date.change(hour: 12))
       redirect_to admin_room_slots_path, notice: "Créneau(x) modifié(s)"
     else
-      redirect_to edit_admin_room_slot_path(@room, @slot), alert: @slot.errors.full_messages.join(", ")
-      return
+      flash[:alert] = @slot.errors.full_messages.join(". ")
+      render :edit, status: :unprocessable_entity
     end
   end
 

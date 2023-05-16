@@ -55,6 +55,14 @@ fr:
         medium_cleaning_fee: Frais de ménage moyenne durée
         high_cleaning_duration: Nb de jours ménage longue durée
         high_cleaning_fee: Frais de ménage longue durée
+      slot:
+        start_date: La date de début
+        end_date: La date de fin
+        available: Disponible
+      season:
+        start_date: La date de début
+        end_date: La date de fin
+        min_nights: Nombre de nuits minimum
   simple_form:
     "yes": 'Oui'
     "no": 'Non'

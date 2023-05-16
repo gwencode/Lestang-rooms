@@ -14,7 +14,7 @@ class Slot < ApplicationRecord
     return if end_date.blank? || start_date.blank?
 
     if end_date <= start_date
-      errors.add(:end_date, "La date de fin doit être après la date de début")
+      errors.add(:end_date, "doit être après la date de début")
     end
   end
 
