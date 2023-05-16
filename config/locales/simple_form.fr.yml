@@ -19,6 +19,24 @@ fr:
           max_nights: Nombre de nuits maximum
           available_days: Jours disponibles
           default_available_slots: Réservable par défaut
+        room_price:
+          night_price: Prix de base / nuit
+          medium_guests: Nb moyen de voyageurs
+          night_price_medium_guests: Prix / nuit (Nb moyen de voyageurs)
+          high_guests: Nb élevé de voyageurs
+          night_price_high_guests: Prix / nuit (Nb élevé de voyageurs)
+          week_duration: Nb de nuits semaine
+          week_reduction: Réduction semaine / nuit
+          medium_duration: Nb de nuits moyenne durée
+          medium_reduction: Réduction moyenne durée / nuit
+          high_duration: Nb de nuits longue durée
+          high_reduction: Réduction longue durée / nuit
+          small_cleaning_duration: Nb de jours ménage faible durée
+          small_cleaning_fee: Frais de ménage faible durée
+          medium_cleaning_duration: Nb de jours ménage moyenne durée
+          medium_cleaning_fee: Frais de ménage moyenne durée
+          high_cleaning_duration: Nb de jours ménage longue durée
+          high_cleaning_fee: Frais de ménage longue durée
   simple_form:
     "yes": 'Oui'
     "no": 'Non'
