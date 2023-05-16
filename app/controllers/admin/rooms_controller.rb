@@ -43,7 +43,8 @@ class Admin::RoomsController < ApplicationController
         render :edit, status: :unprocessable_entity
       end
     else
-      redirect_to edit_admin_room_path(@room), alert: @room.room_price.errors.full_messages.join('. ')
+      flash.now[:alert] = @room.room_price.errors.full_messages.join('. ')
+      render :edit, status: :unprocessable_entity
     end
   end
 

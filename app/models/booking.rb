@@ -6,7 +6,7 @@ class Booking < ApplicationRecord
 
   validates :arrival, :departure, :guests_number, :status, presence: true
   validate :departure_after_arrival
-  # validate :arrival_after_today
+  validate :arrival_after_today
   validate :room_available
   validate :house_slot_available, if: -> { room == Room.first }
   validate :bedroom_slot_available, if: -> { room == Room.last }
@@ -26,7 +26,7 @@ class Booking < ApplicationRecord
     return if arrival.blank?
 
     if arrival < DateTime.now
-      errors.add(:arrival, "La date d'arrivée doit être après aujourd'hui")
+      errors.add(:arrival, "doit être après aujourd'hui")
     end
   end
 
@@ -34,7 +34,7 @@ class Booking < ApplicationRecord
     return if departure.blank? || arrival.blank?
 
     if departure <= arrival
-      errors.add(:departure, "La date de départ doit être après la date d'arrivée")
+      errors.add(:departure, "doit être après la date d'arrivée")
     end
   end
 
@@ -43,7 +43,7 @@ class Booking < ApplicationRecord
 
     room.bookings.excluding(self).where(status: "acceptée").each do |booking|
       if booking.arrival < departure && booking.departure > arrival
-        errors.add(:room, "Le logement n'est pas disponible à ces dates")
+        errors.add(:room, "n'est pas disponible à ces dates")
       end
     end
   end
@@ -54,7 +54,7 @@ class Booking < ApplicationRecord
     room.slots.where(available: true).each do |slot|
       return true if slot.start_date <= arrival && arrival < slot.end_date && slot.start_date < departure && departure <= slot.end_date
     end
-    errors.add(:room, "Le logement n'est pas disponible à ces dates")
+    errors.add(:room, "n'est pas disponible à ces dates")
   end
 
   def bedroom_slot_available
@@ -62,7 +62,7 @@ class Booking < ApplicationRecord
 
     room.slots.where(available: false).order("start_date ASC").each do |slot|
       if arrival < slot.start_date &&  departure > slot.end_date
-        errors.add(:room, "Le logement n'est pas disponible à ces dates")
+        errors.add(:room, "n'est pas disponible à ces dates")
         return false
       end
     end

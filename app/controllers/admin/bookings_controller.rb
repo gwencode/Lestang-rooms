@@ -37,14 +37,7 @@ class Admin::BookingsController < ApplicationController
     if @booking.update(booking_params)
       redirect_to admin_booking_path(@booking), notice: "Réservation modifiée"
     else
-      flash.now[:alert] = ""
-      if @booking.errors.messages.values.count > 1
-        @booking.errors.messages.values.each_with_index do |message, index|
-          flash.now[:alert] += "#{index + 1}. #{message.first.to_s}. "
-        end
-      else
-        flash.now[:alert] = @booking.errors.messages.values.first.first.to_s
-      end
+      flash.now[:alert] = @booking.errors.full_messages.join('. ')
       render :edit, status: :unprocessable_entity
     end
   end
