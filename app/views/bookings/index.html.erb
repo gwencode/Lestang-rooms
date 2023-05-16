@@ -17,9 +17,9 @@
       <div class="card-booking my-3 mx-auto">
 
         <% if booking.room == Room.first %>
-          <%= image_tag "#{booking.room.name}/maison.png" %>
+          <%= image_tag "#{booking.room.name}/maison.png", loading: "lazy" %>
         <% elsif booking.room == Room.last %>
-          <%= image_tag "#{booking.room.name}/chambre.png" %>
+          <%= image_tag "#{booking.room.name}/chambre.png", loading: "lazy" %>
         <% end %>
 
         <div class="card-booking-infos">
