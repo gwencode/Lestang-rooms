@@ -1,4 +1,11 @@
 fr:
+  activerecord:
+    attributes:
+        user:
+          first_name: Prénom
+          last_name: Nom
+          password: Mot de passe
+          password_confirmation: Mot de passe confirmé
   simple_form:
     "yes": 'Oui'
     "no": 'Non'
@@ -11,7 +18,10 @@ fr:
     error_notification:
       default_message: "Erreur, veuillez vérifier vos réponses"
     # # Labels and hints examples
-    # labels:
+    labels:
+      user:
+        last_name: "Nom"
+        password: "Mot de passe"
     #   place:
     #     name: "Nom"
     #     photo: "Photo"
