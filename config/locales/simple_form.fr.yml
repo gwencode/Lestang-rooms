@@ -6,6 +6,19 @@ fr:
           last_name: Nom
           password: Mot de passe
           password_confirmation: Mot de passe confirmé
+        room:
+          name: Nom
+          description: Description
+          max_guests: Voyageurs maximum
+          arrival_hour: Heure d'arrivée
+          departure_hour: Heure de départ
+          bedrooms: Chambres
+          beds: Lits
+          bathrooms: Salles de bain
+          min_nights: Nombre de nuits minimum
+          max_nights: Nombre de nuits maximum
+          available_days: Jours disponibles
+          default_available_slots: Réservable par défaut
   simple_form:
     "yes": 'Oui'
     "no": 'Non'

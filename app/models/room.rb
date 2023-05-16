@@ -6,6 +6,9 @@ class Room < ApplicationRecord
   has_one :room_price
 
   validates :name, :description, :max_guests, presence: true
+  validates :bedrooms, :beds, :bathrooms, presence: true
+  validates :arrival_hour, :departure_hour, presence: true
+  validates :min_nights, :max_nights, :available_days, presence: true
 
   def slots_enabled
     array = slots.where(available: true).map do |slot|
