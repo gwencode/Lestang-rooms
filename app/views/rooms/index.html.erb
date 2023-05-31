@@ -69,11 +69,30 @@
   <div class="text-center py-3">
     <h1 class="h1-blue-no-margin">Toutes les photos</h1>
     <div class="separator"></div>
-   <div class="gallery" data-controller="image-gallery" data-image-gallery-target="gallery">
-      <% @gallery_images.each do |image| %>
-        <%= image_tag image, alt: "", class: "gallery-image img-thumbnail", loading: "lazy", data: { image_gallery_target: "image", action: "click->image-gallery#expandImage" } %>
-      <% end %>
+    <div data-controller="image-gallery">
+
+      <div class="gallery-little-screen">
+        <% @gallery_images.each do |image| %>
+          <%= image_tag image, alt: "", class: "gallery-little-screen-image img-thumbnail", loading: "lazy", data: { image_gallery_target: "image", action: "click->image-gallery#expandImage" } %>
+        <% end %>
+      </div>
+
+      <div class="gallery-large-screen">
+        <%= render "carousel_gallery_large_screen", gallery_images: @gallery_images %>
+      </div>
+
     </div>
   </div>
 
 </div>
+
+<%# TRY JS GALLERY %>
+<%# <div class="text-center py-3">
+    <h1 class="h1-blue-no-margin">Toutes les photos</h1>
+    <div class="separator"></div>
+    <div class="gallery" data-controller="image-gallery" data-image-gallery-target="gallery">
+      <% @gallery_images.each do |image| %>
+        <%# <%= image_tag image, alt: "", class: "gallery-image img-thumbnail", loading: "lazy", data: { image_gallery_target: "image", action: "click->image-gallery#expandImage" } %>
+      <%# <% end %>
+    <%# </div> %>
+<%# </div>  %>
