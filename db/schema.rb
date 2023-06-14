@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_14_073900) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_14_132549) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -30,6 +30,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_14_073900) do
     t.integer "reduction", default: 0
     t.integer "cleaning_fee", default: 0
     t.text "comment", default: ""
+    t.boolean "paid", default: false
+    t.string "checkout_session_id"
     t.index ["room_id"], name: "index_bookings_on_room_id"
     t.index ["user_id"], name: "index_bookings_on_user_id"
   end
