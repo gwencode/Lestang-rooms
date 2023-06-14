@@ -12,6 +12,8 @@ Rails.application.routes.draw do
     member do
       patch :payment
     end
+    resources :payments, only: :new
+
     resources :chatrooms, only: %i[show] do
       resources :messages, only: :create
     end

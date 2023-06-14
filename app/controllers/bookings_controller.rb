@@ -40,14 +40,21 @@ class BookingsController < ApplicationController
   end
 
   def payment
+    authorize @booking, :payment?
+
     session = Stripe::Checkout::Session.create(
       payment_method_types: ["card"],
       line_items: [{
-        name: "#{@booking.room.name}, du #{@booking.arrival} au #{@booking.departure}",
-        amount: @booking.booking_price * 100,
-        currency: "eur",
+        price_data: {
+          currency: "eur",
+          product_data: {
+            name: "#{@booking.room.name}, du #{@booking.arrival} au #{@booking.departure}"
+          },
+          unit_amount: @booking.booking_price * 100
+        },
         quantity: 1
       }],
+      mode: "payment",
       success_url: booking_url(@booking),
       cancel_url: booking_url(@booking)
     )
