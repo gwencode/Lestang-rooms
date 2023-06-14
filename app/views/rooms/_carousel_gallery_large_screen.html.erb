@@ -1,11 +1,11 @@
 <div id="carousel-gallery-large-screen" class="carousel carousel-dark slide my-3" data-bs-ride="true">
   <div class="carousel-inner text-center">
     <div class="carousel-item active">
-      <%= image_tag "#{@gallery_images.first}", alt: "", class: "img-room-carousel img-thumbnail", loading: "lazy", data: { image_gallery_target: "image", action: "click->image-gallery#expandImage" } %>
+      <%= image_tag "#{@gallery_images.first}", alt: "", class: "img-room-carousel img-thumbnail gallery-image", loading: "lazy", data: { image_gallery_target: "image", action: "click->image-gallery#expandImage" } %>
     </div>
     <% @gallery_images.drop(1).each do |image_path| %>
       <div class="carousel-item text-center">
-        <%= image_tag "#{image_path}", alt: "", class: "img-room-carousel img-thumbnail", loading: "lazy", data: { image_gallery_target: "image", action: "click->image-gallery#expandImage" } %>
+        <%= image_tag "#{image_path}", alt: "", class: "img-room-carousel img-thumbnail gallery-image", loading: "lazy", data: { image_gallery_target: "image", action: "click->image-gallery#expandImage" } %>
       </div>
     <% end %>
   </div>

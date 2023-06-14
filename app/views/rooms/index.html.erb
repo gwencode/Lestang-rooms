@@ -73,7 +73,7 @@
 
       <div class="gallery-little-screen">
         <% @gallery_images.each do |image| %>
-          <%= image_tag image, alt: "", class: "gallery-little-screen-image img-thumbnail", loading: "lazy", data: { image_gallery_target: "image", action: "click->image-gallery#expandImage" } %>
+          <%= image_tag image, alt: "", class: "gallery-little-screen-image img-thumbnail gallery-image", loading: "lazy", data: { image_gallery_target: "image", action: "click->image-gallery#expandImage" } %>
         <% end %>
       </div>
 
