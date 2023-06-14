@@ -55,6 +55,7 @@ class BookingsController < ApplicationController
         quantity: 1
       }],
       mode: "payment",
+      customer_email: current_user.email,
       success_url: booking_url(@booking),
       cancel_url: booking_url(@booking)
     )

@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row py-4">
     <div class="col-md-3">
-      <%= image_tag "#{@booking.room.name}/maison.png", alt: "", width: "100" %>
+      <%= image_tag "#{@booking.room.name}.png", alt: "", width: "100" %>
     </div>
     <div class="col">
       <h1>Récapitulatif</h1>
@@ -23,6 +23,18 @@
           <p><%= @booking.night_price %></p>
           <p><%= @booking.booking_price %></p>
         </div>
+        <button id="pay" class="button-blue">Payer</button>
+
+        <script src="https://js.stripe.com/v3/"></script>
+        <script>
+          const paymentButton = document.getElementById('pay');
+          paymentButton.addEventListener('click', () => {
+            const stripe = Stripe('<%= ENV['STRIPE_PUBLISHABLE_KEY'] %>');
+            stripe.redirectToCheckout({
+              sessionId: '<%= @booking.checkout_session_id %>'
+            });
+          });
+        </script>
     </div>
   </div>
 </div>
