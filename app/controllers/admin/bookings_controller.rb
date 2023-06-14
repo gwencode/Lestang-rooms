@@ -75,8 +75,10 @@ class Admin::BookingsController < ApplicationController
       bookings.where("arrival > ?", DateTime.now).where(status: "acceptée").order("arrival ASC")
     when "past"
       bookings.where("departure < ?", DateTime.now).order("departure DESC")
-    when "acceptée"
-      bookings.where(status: "acceptée").order("departure DESC")
+    when "payées"
+      bookings.where(status: "acceptée", paid: true).order("departure DESC")
+    when "à payer"
+      bookings.where(status: "acceptée", paid: false).order("departure DESC")
     when "en attente"
       bookings.where(status: "en attente").order("arrival ASC")
     when "refusée"

@@ -35,6 +35,7 @@ class MessageMailer < ActionMailer::Base
     @room = @booking.room
     @user = @booking.user
     @status = @booking.status
+    @paid = @booking.paid
     mail(to: @user.email, subject: "Résidence Lestang - Demande de réservation #{@status}")
   end
 

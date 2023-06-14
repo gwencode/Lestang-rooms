@@ -13,13 +13,14 @@
     <%= link_to "Passées", admin_bookings_path(filter: "past"), class: "btn btn-primary button-medium" %>
   </div>
   <div class="d-flex justify-content-around py-2">
-    <%= link_to "Acceptées", admin_bookings_path(filter: "acceptée"), class: "btn btn-success button-medium" %>
+    <%= link_to "Payées", admin_bookings_path(filter: "payées"), class: "btn btn-success button-medium" %>
+    <%= link_to "A payer", admin_bookings_path(filter: "à payer"), class: "btn btn-info button-medium" %>
     <%= link_to "En attente", admin_bookings_path(filter: "en attente"), class: "btn btn-warning button-medium" %>
-    <%= link_to "Refusées", admin_bookings_path(filter: "refusée"), class: "btn btn-danger button-medium" %>
   </div>
   <div class="d-flex justify-content-around py-2">
-    <%= link_to "Maison", admin_bookings_path(filter: "house"), class: "btn btn-info button-medium" %>
-    <%= link_to "Chambre", admin_bookings_path(filter: "bedroom"), class: "btn btn-info button-medium" %>
+    <%= link_to "Refusées", admin_bookings_path(filter: "refusée"), class: "btn btn-danger button-medium" %>
+    <%= link_to "Maison", admin_bookings_path(filter: "house"), class: "btn btn-secondary button-medium" %>
+    <%= link_to "Chambre", admin_bookings_path(filter: "bedroom"), class: "btn btn-secondary button-medium" %>
   </div>
 
   <div class="row">
