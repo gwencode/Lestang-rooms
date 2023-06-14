@@ -48,7 +48,7 @@ class BookingsController < ApplicationController
         price_data: {
           currency: "eur",
           product_data: {
-            name: "#{@booking.room.name}, du #{l(@booking.arrival, format: "%A %d %B").capitalize} au #{l(@booking.departure, format: "%A %d %B").capitalize}"
+            name: "#{@booking.room.name}, du #{l(@booking.arrival, format: "%A %d %B")} au #{l(@booking.departure, format: "%A %d %B")}",
           },
           unit_amount: @booking.booking_price * 100
         },
