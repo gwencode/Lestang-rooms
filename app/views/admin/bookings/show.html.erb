@@ -33,7 +33,14 @@
       </div>
 
       <% if @booking.status == "acceptée" %>
-        <h3 class="text-success text-center"><i class="fa-regular fa-circle-check"></i> Réservation confirmée</h3>
+        <% if @booking.paid %>
+          <h3 class="text-success text-center"><i class="fa-regular fa-circle-check"></i> Réservation confirmée</h3>
+        <% else %>
+          <h3 class="text-info text-center">
+            <i class="fa-regular fa-credit-card"></i>
+            Réservation en attente de paiement
+          </h3>
+        <% end %>
       <% elsif @booking.status == "en attente" %>
         <h3 class="text-warning text-center">
           <i class="fa-solid fa-clock-rotate-left"></i>

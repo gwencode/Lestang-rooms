@@ -9,11 +9,18 @@ Rails.application.routes.draw do
   end
 
   resources :bookings, only: %i[index show] do
+    member do
+      patch :payment
+    end
+    resources :payments, only: :new
+
     resources :chatrooms, only: %i[show] do
       resources :messages, only: :create
     end
     resources :chatrooms, only: %i[create]
   end
+
+  mount StripeEvent::Engine, at: '/webhook'
 
   # resources :chatrooms, only: %i[index]
   get "/messages", to: "chatrooms#index"

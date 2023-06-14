@@ -18,6 +18,12 @@
     <p><%= link_to "Voir ma réservation", booking_url(@booking) %></p>
 
     <% if @status == "acceptée" %>
+      <% unless @paid %>
+        <p>
+          <strong>Attention, votre réservation ne sera définitive qu'après le paiement :</strong>
+          <%= link_to "Payer ma réservation", new_booking_payment_url(@booking) %>
+        </p>
+      <% end %>
       <p>Voici nos coordonnées pour nous contacter : <%= @tel_admin %> </p>
       <p>Merci et à bientôt !</p>
     <% elsif @status == "refusée" %>

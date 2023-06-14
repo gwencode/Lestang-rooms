@@ -1,6 +1,7 @@
 class BookingsController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[create]
   before_action :set_user, only: %i[index show]
+  before_action :set_booking, only: %i[show payment]
 
   def create
     @booking = Booking.new(booking_params)
@@ -31,18 +32,46 @@ class BookingsController < ApplicationController
   end
 
   def show
-    @booking = Booking.find(params[:id])
     authorize @booking, :show?
 
     @room = @booking.room
 
-    @reduction_sentence = reduction_sentence(@booking) if @booking.reduction.negative?
+    @reduction_sentence = @booking.reduction_sentence if @booking.reduction.negative?
+  end
+
+  def payment
+    authorize @booking, :payment?
+
+    session = Stripe::Checkout::Session.create(
+      payment_method_types: ["card"],
+      line_items: [{
+        price_data: {
+          currency: "eur",
+          product_data: {
+            name: "#{@booking.room.name}, du #{l(@booking.arrival, format: "%A %d %B")} au #{l(@booking.departure, format: "%A %d %B")}",
+          },
+          unit_amount: @booking.booking_price * 100
+        },
+        quantity: 1
+      }],
+      mode: "payment",
+      customer_email: current_user.email,
+      success_url: booking_url(@booking),
+      cancel_url: booking_url(@booking)
+    )
+
+    @booking.update(checkout_session_id: session.id)
+    redirect_to new_booking_payment_path(@booking)
   end
 
   private
 
   def set_user
     @user = current_user
+  end
+
+  def set_booking
+    @booking = Booking.find(params[:id])
   end
 
   def booking_params
@@ -55,19 +84,6 @@ class BookingsController < ApplicationController
       { arrival: 14, departure: 12 }
     when "La Chambre"
       { arrival: 18, departure: 11 }
-    end
-  end
-
-  def reduction_sentence(booking)
-    case booking.duration
-    when "high"
-      "Réduction location longue durée"
-    when "medium"
-      "Réduction location moyenne durée"
-    when "week"
-      "Réduction location à la semaine"
-    else
-      ""
     end
   end
 end

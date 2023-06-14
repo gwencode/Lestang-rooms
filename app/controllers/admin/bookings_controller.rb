@@ -23,7 +23,7 @@ class Admin::BookingsController < ApplicationController
     authorize @booking
 
     @room = @booking.room
-    @reduction_sentence = reduction_sentence(@booking) if @booking.reduction.negative?
+    @reduction_sentence = @booking.reduction_sentence if @booking.reduction.negative?
   end
 
   def edit
@@ -75,8 +75,10 @@ class Admin::BookingsController < ApplicationController
       bookings.where("arrival > ?", DateTime.now).where(status: "acceptée").order("arrival ASC")
     when "past"
       bookings.where("departure < ?", DateTime.now).order("departure DESC")
-    when "acceptée"
-      bookings.where(status: "acceptée").order("departure DESC")
+    when "payées"
+      bookings.where(status: "acceptée", paid: true).order("departure DESC")
+    when "à payer"
+      bookings.where(status: "acceptée", paid: false).order("departure DESC")
     when "en attente"
       bookings.where(status: "en attente").order("arrival ASC")
     when "refusée"
@@ -126,19 +128,6 @@ class Admin::BookingsController < ApplicationController
     else
       flash.now[:alert] = booking.errors.messages.values.first.first.to_s
       render :show, status: :unprocessable_entity
-    end
-  end
-
-  def reduction_sentence(booking)
-    case booking.duration
-    when "high"
-      "Réduction location longue durée"
-    when "medium"
-      "Réduction location moyenne durée"
-    when "week"
-      "Réduction location à la semaine"
-    else
-      ""
     end
   end
 end
