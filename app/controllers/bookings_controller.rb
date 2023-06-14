@@ -1,6 +1,7 @@
 class BookingsController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[create]
   before_action :set_user, only: %i[index show]
+  before_action :set_booking, only: %i[show payment]
 
   def create
     @booking = Booking.new(booking_params)
@@ -31,7 +32,6 @@ class BookingsController < ApplicationController
   end
 
   def show
-    @booking = Booking.find(params[:id])
     authorize @booking, :show?
 
     @room = @booking.room
@@ -39,10 +39,31 @@ class BookingsController < ApplicationController
     @reduction_sentence = reduction_sentence(@booking) if @booking.reduction.negative?
   end
 
+  def payment
+    session = Stripe::Checkout::Session.create(
+      payment_method_types: ["card"],
+      line_items: [{
+        name: "#{@booking.room.name}, du #{@booking.arrival} au #{@booking.departure}",
+        amount: @booking.booking_price * 100,
+        currency: "eur",
+        quantity: 1
+      }],
+      success_url: booking_url(@booking),
+      cancel_url: booking_url(@booking)
+    )
+
+    @booking.update(checkout_session_id: session.id)
+    redirect_to new_booking_payment_path(@booking)
+  end
+
   private
 
   def set_user
     @user = current_user
+  end
+
+  def set_booking
+    @booking = Booking.find(params[:id])
   end
 
   def booking_params

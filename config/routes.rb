@@ -9,6 +9,9 @@ Rails.application.routes.draw do
   end
 
   resources :bookings, only: %i[index show] do
+    member do
+      patch :payment
+    end
     resources :chatrooms, only: %i[show] do
       resources :messages, only: :create
     end
