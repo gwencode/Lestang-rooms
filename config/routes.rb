@@ -20,6 +20,8 @@ Rails.application.routes.draw do
     resources :chatrooms, only: %i[create]
   end
 
+  mount StripeEvent::Engine, at: '/webhook'
+
   # resources :chatrooms, only: %i[index]
   get "/messages", to: "chatrooms#index"
 
