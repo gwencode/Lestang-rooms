@@ -1,40 +1,37 @@
-<div class="container">
-  <div class="row py-4">
-    <div class="col-md-3">
-      <%= image_tag "#{@booking.room.name}.png", alt: "", width: "100" %>
-    </div>
-    <div class="col">
-      <h1>Récapitulatif</h1>
-      <div class="separator"></div>
-      <div class="row">
-        <div class="col">
-          <p>Arrivée</p>
-          <p>Départ</p>
-          <p>Nombre de nuits</p>
-          <p>Nombre de personnes</p>
-          <p>Prix par nuit</p>
-          <p>Total</p>
-        </div>
-        <div class="col">
-          <p><%= @booking.arrival.strftime("%d/%m/%Y") %></p>
-          <p><%= @booking.departure.strftime("%d/%m/%Y") %></p>
-          <p><%= @booking.nights %></p>
-          <p><%= @booking.guests_number %></p>
-          <p><%= @booking.night_price %></p>
-          <p><%= @booking.booking_price %></p>
-        </div>
-        <button id="pay" class="button-blue">Payer</button>
-
-        <script src="https://js.stripe.com/v3/"></script>
-        <script>
-          const paymentButton = document.getElementById('pay');
-          paymentButton.addEventListener('click', () => {
-            const stripe = Stripe('<%= ENV['STRIPE_PUBLISHABLE_KEY'] %>');
-            stripe.redirectToCheckout({
-              sessionId: '<%= @booking.checkout_session_id %>'
-            });
-          });
-        </script>
+<div class="container payment-review py-3">
+  <h1 class="text-blue text-center">Récapitulatif de votre réservation</h1>
+  <div class="separator"></div>
+  <div class="d-flex align-items-center py-3 row">
+    <%= image_tag "#{@booking.room.name}.png", alt: "", class: "col-12 col-lg-6 images-room-little-screen", loading: "lazy" %>
+    <div class="col-12 col-lg-6 text-center">
+      <div class="m-3">
+        <p>Logement réservé : <%= @booking.room.name %></p>
+        <p>Arrivée : <%= l(@booking.arrival, format: "%A %d %B à %Hh").capitalize %></p>
+        <p>Départ : <%= l(@booking.departure, format: "%A %d %B à %Hh").capitalize %></p>
+        <p>Nombre de personnes : <%= @booking.guests_number %></p>
+        <p><%= @booking.night_price %> € x <%= @booking.nights %> <%= @booking.nights > 1 ? "nuits" : "nuit" %> : <%= @booking.basic_price %> €</p>
+        <% if @booking.reduction.negative? %>
+          <p><%= @reduction_sentence %> : <span class="text-success fw-bold"><%= @booking.reduction %> €</span></p>
+        <% end %>
+        <% if @booking.cleaning_fee.positive? %>
+          <p>Frais de ménage : <%= @booking.cleaning_fee %> €</p>
+        <% end %>
+        <p class="fw-bold">Total : <%= @booking.booking_price %> €</p>
+        <button id="pay" class="button-blue">Payer ma réservation</button>
+      </div>
     </div>
   </div>
 </div>
+
+
+
+<script src="https://js.stripe.com/v3/"></script>
+<script>
+  const paymentButton = document.getElementById('pay');
+  paymentButton.addEventListener('click', () => {
+    const stripe = Stripe('<%= ENV['STRIPE_PUBLISHABLE_KEY'] %>');
+    stripe.redirectToCheckout({
+      sessionId: '<%= @booking.checkout_session_id %>'
+    });
+  });
+</script>

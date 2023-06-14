@@ -68,6 +68,19 @@ class Booking < ApplicationRecord
     end
   end
 
+  def reduction_sentence
+    case duration
+    when "high"
+      "Réduction location longue durée"
+    when "medium"
+      "Réduction location moyenne durée"
+    when "week"
+      "Réduction location à la semaine"
+    else
+      ""
+    end
+  end
+
   private
 
   def set_night_price

@@ -36,7 +36,7 @@ class BookingsController < ApplicationController
 
     @room = @booking.room
 
-    @reduction_sentence = reduction_sentence(@booking) if @booking.reduction.negative?
+    @reduction_sentence = @booking.reduction_sentence if @booking.reduction.negative?
   end
 
   def payment
@@ -84,19 +84,6 @@ class BookingsController < ApplicationController
       { arrival: 14, departure: 12 }
     when "La Chambre"
       { arrival: 18, departure: 11 }
-    end
-  end
-
-  def reduction_sentence(booking)
-    case booking.duration
-    when "high"
-      "Réduction location longue durée"
-    when "medium"
-      "Réduction location moyenne durée"
-    when "week"
-      "Réduction location à la semaine"
-    else
-      ""
     end
   end
 end
