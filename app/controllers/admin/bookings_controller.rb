@@ -66,7 +66,7 @@ class Admin::BookingsController < ApplicationController
   end
 
   def booking_params
-    params.require(:booking).permit(:arrival, :departure, :guests_number, :status, :comment)
+    params.require(:booking).permit(:arrival, :departure, :guests_number, :status, :comment, :paid, :refund, :refund_amount)
   end
 
   def filter_bookings(bookings)

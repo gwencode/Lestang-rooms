@@ -72,6 +72,10 @@
 
       </div>
 
+      <% if @booking.refund %>
+        <h5 class="text-yellow text-center"><i class="fa-solid fa-money-bill-transfer"></i> Remboursement effectué : <%= @booking.refund_amount %> € </h5>
+      <% end %>
+
     </div>
   </div>
 

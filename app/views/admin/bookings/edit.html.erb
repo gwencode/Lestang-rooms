@@ -20,6 +20,11 @@
             <div class="col-12 col-md-6"><%= f.input :status, label: "Statut", collection: ["acceptée", "en attente", "refusée"] %></div>
           </div>
           <div class="row">
+            <div class="col-12 col-md-4"><%= f.input :paid, label: "Payée" %></div>
+            <div class="col-12 col-md-4"><%= f.input :refund, label: "Remboursée" %></div>
+            <div class="col-12 col-md-4"><%= f.input :refund_amount, label: "Montant remboursé" %></div>
+          </div>
+          <div class="row">
             <div class="col-12 col-md-4">
               <%= label_tag :first_name, 'Prénom', class: "form-label" %>
               <%= text_field_tag :first_name, @booking.user.first_name, class: "form-control" %>
