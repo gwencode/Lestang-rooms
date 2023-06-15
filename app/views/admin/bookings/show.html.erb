@@ -75,6 +75,10 @@
 
       </div>
 
+      <% if @booking.refund %>
+        <h5 class="text-yellow text-center m-0"><i class="fa-solid fa-money-bill-transfer"></i> Remboursement effectué : <%= @booking.refund_amount %> € </h5>
+      <% end %>
+
       <div class="my-3 p-3 mx-auto col-12 col-sm-10 col-md-8 col-lg-6 col-xl-5 text-center">
         <h5 class="text-white"><u>Commentaires</u></h5>
         <% if @booking.comment.empty? %>

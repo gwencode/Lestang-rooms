@@ -66,7 +66,7 @@ class Admin::BookingsController < ApplicationController
   end
 
   def booking_params
-    params.require(:booking).permit(:arrival, :departure, :guests_number, :status, :comment)
+    params.require(:booking).permit(:arrival, :departure, :guests_number, :status, :comment, :paid, :refund, :refund_amount)
   end
 
   def filter_bookings(bookings)
@@ -97,7 +97,7 @@ class Admin::BookingsController < ApplicationController
   end
 
   def total_price(bookings)
-    bookings.sum(:booking_price)
+    bookings.sum(:booking_price) - bookings.sum(:refund_amount)
   end
 
   def title

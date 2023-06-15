@@ -28,6 +28,9 @@
           <% elsif booking.status == "refusée" %>
             <i class="fa-regular fa-circle-xmark text-danger"></i>
           <% end %>
+          <% if booking.refund %>
+            <i class="fa-solid fa-money-bill-transfer text-yellow refund-icon"></i>
+          <% end %>
         </div>
 
       </div>

@@ -40,6 +40,11 @@
           <% elsif booking.status == "refusée" %>
             <i class="fa-regular fa-circle-xmark text-danger"></i>
           <% end %>
+
+          <% if booking.refund %>
+            <i class="fa-solid fa-money-bill-transfer text-yellow refund-icon"></i>
+          <% end %>
+
           <div class="text-center">
             <p><%= link_to "Voir le détail", booking_path(booking), class: "text-black" %></p>
           </div>
