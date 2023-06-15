@@ -31,11 +31,12 @@
           <h3 class="text-success text-center"><i class="fa-regular fa-circle-check"></i> Réservation confirmée</h3>
         <% else %>
           <h3 class="text-info text-center">
-            <i class="fa-regular fa-credit-card"></i>
+            <i class="fa-solid fa-triangle-exclamation"></i>
             Réservation en attente de paiement
           </h3>
+          <p class="fw-light fst-italic text-center px-3">Attention, votre réservation ne sera définitive qu'après le paiement</p>
           <div class="text-center">
-            <%= link_to "Payer", payment_booking_path(@booking), data: {turbo_method: :patch}, class: "button-blue" %>
+            <%= link_to "Payer ma réservation", payment_booking_path(@booking), data: {turbo_method: :patch}, class: "button-blue" %>
           </div>
         <% end %>
       <% elsif @booking.status == "en attente" %>
@@ -43,6 +44,7 @@
           <i class="fa-solid fa-clock-rotate-left"></i>
           Réservation en attente
         </h3>
+        <p class="fw-light fst-italic text-center px-3">Vous pourrez payer la réservation une fois acceptée par les propriétaires</p>
       <% elsif @booking.status == "refusée" %>
         <h3 class="text-danger text-center"><i class="fa-regular fa-circle-xmark"></i> Réservation refusée</h3>
       <% end %>
