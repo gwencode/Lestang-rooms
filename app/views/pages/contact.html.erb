@@ -1,5 +1,5 @@
 <div class="p-3 header-blue">
-  <h1 class="my-3">Contact & Paiement</h1>
+  <h1 class="my-3">Contact</h1>
 </div>
 
 <div class="container">
@@ -15,15 +15,11 @@
     <p>Pour toute question avant votre demande de réservation, vous pouvez nous contacter via le formulaire de contact.</p>
   </div>
 
+  <h2 class="text-blue text-center">Formulaire de contact</h2>
+  <div class="separator"></div>
   <div class="row">
-
-    <div class="col-12 col-lg-6 p-2">
+    <div class="col-12 col-lg-6 p-2 mx-auto">
       <%= render "contact_form", user: @user, rooms: @rooms %>
-    </div>
-
-    <div class="col-12 col-lg-6 p-2">
-      <h2 class="text-blue text-center">Paiement en ligne</h2>
-      <div class="separator"></div>
     </div>
   </div>
 
