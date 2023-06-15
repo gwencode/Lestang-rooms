@@ -4,7 +4,7 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <h4>Résidence Lestang - Demande de réservation <%= @status %></h4>
+    <h3>Résidence Lestang - Demande de réservation <%= @status %></h3>
     <p>Votre demande de réservation a été <%= @status %>.</p>
     <p><strong>Rappel de votre demande : </strong></p>
     <ul>
@@ -19,10 +19,10 @@
 
     <% if @status == "acceptée" %>
       <% unless @paid %>
-        <p>
+        <h4>
           <strong>Attention, votre réservation ne sera définitive qu'après le paiement :</strong>
-          <%= link_to "Payer ma réservation", new_booking_payment_url(@booking) %>
-        </p>
+          <%= link_to "Payer ma réservation", booking_url(@booking) %>
+        </h4>
       <% end %>
       <p>Voici nos coordonnées pour nous contacter : <%= @tel_admin %> </p>
       <p>Merci et à bientôt !</p>

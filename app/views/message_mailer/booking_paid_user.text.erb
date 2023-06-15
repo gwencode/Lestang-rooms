@@ -1,0 +1,39 @@
+    <h3></h3>
+    <p></p>
+    <p><strong></strong></p>
+    <ul>
+      <li>Logement : <%= @room.name %></li>
+      <li>Arrivée : <%= l(@booking.arrival, format: "%A %d %B à %Hh").capitalize %></li>
+      <li>Départ : <%= l(@booking.departure, format: "%A %d %B à %Hh").capitalize %></li>
+      <li>Nombre de personnes : <%= @booking.guests_number %></li>
+      <li>Prix total : <%= @booking.booking_price %> €</li>
+    </ul>
+
+    <p></p>
+
+    <p></p>
+
+    <p>
+
+    </p>
+
+    <p>Merci et à bientôt !</p>
+
+
+Résidence Lestang - Confirmation de paiement
+=================================================================
+
+Votre réservation est payée et confirmée.
+
+Rappel de votre réservation :
+- Logement : <%= @room.name %>
+- Arrivée : <%= l(@booking.arrival, format: "%A %d %B à %Hh").capitalize %>
+- Départ : <%= l(@booking.departure, format: "%A %d %B à %Hh").capitalize %>
+- Nombre de personnes : <%= @booking.guests_number %>
+- Prix total : <%= @booking.booking_price %> €
+
+<%= link_to "Voir ma réservation", booking_url(@booking) %>
+
+Vous allez recevoir un email avec votre reçu bancaire.
+
+N'hésitez pas à nous contacter pour toute question : <%= link_to "Nous envoyer un message", booking_chatroom_url(@booking, @booking.chatroom) %>

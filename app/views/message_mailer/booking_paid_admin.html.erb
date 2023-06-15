@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h3>Résidence Lestang - Paiement reçu de <%= @user.email %></h3>
+    <p><%= @user.first_name.capitalize %> <%= @user.last_name.upcase %> a payé sa réervation :</p>
+    <ul>
+      <li>Logement : <%= @room.name %></li>
+      <li>Arrivée : <%= l(@booking.arrival, format: "%A %d %B à %Hh").capitalize %></li>
+      <li>Départ : <%= l(@booking.departure, format: "%A %d %B à %Hh").capitalize %></li>
+      <li>Nombre de personnes : <%= @booking.guests_number %></li>
+      <li>Prix total : <%= @booking.booking_price %> €</li>
+    </ul>
+
+    <p><%= link_to "Gérer mes réservations", admin_bookings_url %></p>
+
+    <p><%= link_to "Gérer les paiements", "https://dashboard.stripe.com/dashboard" %></p>
+
+  </body>
+</html>
