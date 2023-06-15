@@ -49,4 +49,18 @@ class MessageMailer < ActionMailer::Base
       subject: "Résidence Lestang - Nouveau message de #{@sender.first_name.capitalize} #{@sender.last_name.upcase}"
     )
   end
+
+  def booking_paid_user
+    @booking = params[:booking]
+    @room = @booking.room
+    @user = @booking.user
+    mail(to: @user.email, subject: "Résidence Lestang - Confirmation de paiement")
+  end
+
+  def booking_paid_admin
+    @booking = params[:booking]
+    @room = @booking.room
+    @user = @booking.user
+    mail(to: ENV['ADMIN_EMAIL_1'], subject: "Résidence Lestang - Paiement reçu de #{@user.email}")
+  end
 end
