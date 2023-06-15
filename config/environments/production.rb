@@ -1,9 +1,7 @@
 require "active_support/core_ext/integer/time"
 
 Rails.application.configure do
-  host = "https://residence-lestang.com"
-
-  config.action_mailer.default_url_options = { host: host }
+  config.action_mailer.default_url_options = { host: "https://residence-lestang.com" }
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.
@@ -78,7 +76,7 @@ Rails.application.configure do
   config.action_mailer.smtp_settings = {
     address: 'smtp.gmail.com',
     port: 587,
-    domain: host,
+    domain: "residence-lestang.com",
     user_name: ENV['SENDMAIL_USERNAME'],
     password: ENV['SENDMAIL_PASSWORD'],
     authentication: 'plain',
