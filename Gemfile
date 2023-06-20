@@ -55,6 +55,7 @@ gem "simple_form", github: "heartcombo/simple_form"
 gem "pundit"
 gem 'stripe'
 gem 'stripe_event'
+gem 'local_time', '~> 2.1'
 
 # Rails Locale Data Repository
 gem 'rails-i18n'
