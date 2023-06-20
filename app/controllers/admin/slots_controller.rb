@@ -74,7 +74,7 @@ class Admin::SlotsController < ApplicationController
   end
 
   def slot_params
-    params.require(:slot).permit(:start_date, :end_date, :available)
+    params.require(:slot).permit(:start_date, :end_date, :available, :airbnb_booking)
   end
 
   def set_slot

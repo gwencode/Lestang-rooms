@@ -22,8 +22,10 @@ class Slot < ApplicationRecord
     return if end_date.blank? || start_date.blank?
 
     room.slots.excluding(self).each do |slot|
-      if slot.start_date < end_date && slot.end_date > start_date
-        errors.add(:créneau, "non disponible à ces dates")
+      unless self.airbnb_booking
+        if slot.start_date < end_date && slot.end_date > start_date
+          errors.add(:créneau, "non disponible à ces dates")
+        end
       end
     end
   end
