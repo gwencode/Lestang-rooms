@@ -1,6 +1,6 @@
 <div id="message-<%= message.id %>">
   <p><%= message.content %></p>
   <p class="message-date">
-    <%= l(message.created_at, format: "%d/%m/%y - %H:%M") %>
+    <%= local_time(message.created_at, format: "%d/%m/%y - %H:%M") %>
   </p>
 </div>
