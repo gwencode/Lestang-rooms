@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_15_110514) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_20_115022) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -122,6 +122,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_15_110514) do
     t.boolean "available", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "airbnb_booking", default: false
     t.index ["room_id"], name: "index_slots_on_room_id"
   end
 

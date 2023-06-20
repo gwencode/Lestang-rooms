@@ -18,7 +18,12 @@
                 <div>
                   <h4 class="text-white m-0"><%= l(slot.start_date, format: "%d %B") %> <span style="font-size: 0.5em">aprem</span> - <%= l(slot.end_date, format: "%d %B %Y") %> <span style="font-size: 0.5em">matin</span></h4>
                   <% notice = @room == Room.last && slot.start_date.hour == 14 ? "- maison disponible" : ""  %>
-                  <p class="m-0 <%= slot.available ? "text-success" : "text-warning" %>"><%= slot.available ? "Disponible" : "Indisponible" %> <span class="text-success" style="font-size: 0.8em"><%= notice %></span></p>
+                  <% airbnb = slot.airbnb_booking ? "- réservation airbnb" : ""  %>
+                  <p class="m-0 <%= slot.available ? "text-success" : "text-warning" %>">
+                    <%= slot.available ? "Disponible" : "Indisponible" %>
+                    <span class="text-success" style="font-size: 0.8em"><%= notice %></span>
+                    <span class="text-info" style="font-size: 0.8em"><%= airbnb %></span>
+                  </p>
                 </div>
               <% end %>
             </div>

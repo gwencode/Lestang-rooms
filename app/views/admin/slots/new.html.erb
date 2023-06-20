@@ -12,14 +12,17 @@
 
       <%= simple_form_for [:admin, @slot], url: admin_room_slots_path(@room) do |f| %>
         <div class="row text-white py-3 align-items-center">
-            <div class="col-12 col-md-6 col-lg-4">
-              <%= f.input :start_date, as: :date, html5: true, label: "Début", hint: "Après-midi", hint_html: {class: "text-white fw-light"}  %>
-            </div>
-            <div class="col-12 col-md-6 col-lg-4">
-              <%= f.input :end_date, as: :date, html5: true, label: "Fin", hint: "Matin", hint_html: {class: "text-white fw-light"} %>
-            </div>
-            <div class="col-12 col-md-6 col-lg-4">
-              <%= f.input :available, label: "Disponible" %>
+          <div class="col-12 col-md-6 col-lg-3">
+            <%= f.input :start_date, as: :date, html5: true, label: "Début", hint: "Après-midi", hint_html: {class: "text-white fw-light"}  %>
+          </div>
+          <div class="col-12 col-md-6 col-lg-3">
+            <%= f.input :end_date, as: :date, html5: true, label: "Fin", hint: "Matin", hint_html: {class: "text-white fw-light"} %>
+          </div>
+          <div class="col-12 col-md-6 col-lg-3">
+            <%= f.input :available, label: "Disponible" %>
+          </div>
+          <div class="col-12 col-md-6 col-lg-3">
+            <%= f.input :airbnb_booking, label: "Réservation Airbnb" %>
           </div>
         </div>
 
