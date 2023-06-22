@@ -1,23 +1,5 @@
 // Specific CSS for your home-page
 
-.header {
-  background-image: asset-url("header.jpg");
-  background-size: cover;
-  background-position: center;
-  padding: 11vh 0;
-  width: 100%;
-  text-align: center;
-
-  .header-text {
-    color: white;
-    margin: 0;
-    padding: 8px 0;
-    background-color: rgba(255, 255, 255, 0.2);
-    font-weight: bold;
-    text-shadow: 1px 1px 2px black;
-  }
-}
-
 .h1-blue-no-margin {
   color: $blue;
   margin-bottom: 0;
