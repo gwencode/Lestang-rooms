@@ -15,6 +15,7 @@ class Admin::SlotsController < ApplicationController
   def new
     @slot = Slot.new
     authorize @slot
+    # Comment change to repush
   end
 
   def create
