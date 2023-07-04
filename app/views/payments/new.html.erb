@@ -2,7 +2,7 @@
   <h1 class="text-blue text-center">Récapitulatif de votre réservation</h1>
   <div class="separator"></div>
   <div class="d-flex align-items-center py-3 row">
-    <%= image_tag "#{@booking.room.name}.png", alt: "", class: "col-12 col-lg-6 images-room-little-screen", loading: "lazy" %>
+    <%= image_tag "#{@booking.room.name}.png", alt: "Hébergements Toulouse - #{@booking.room.name}", class: "col-12 col-lg-6 images-room-little-screen", loading: "lazy" %>
     <div class="col-12 col-lg-6 text-center">
       <div class="m-3">
         <p>Logement réservé : <%= @booking.room.name %></p>

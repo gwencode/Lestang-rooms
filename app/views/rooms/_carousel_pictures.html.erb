@@ -9,11 +9,11 @@
   </div>
   <div class="carousel-inner text-center">
     <div class="carousel-item active">
-      <%= image_tag "#{@gallery_images.first}", alt: "", class: "img-room-carousel", loading: "lazy" %>
+      <%= image_tag "#{@gallery_images.first}", alt: "Hébergements Toulouse - #{Room.find(id).name}", class: "img-room-carousel", loading: "lazy" %>
     </div>
     <% @gallery_images.drop(1).each do |image_path| %>
       <div class="carousel-item text-center">
-        <%= image_tag "#{image_path}", alt: "", class: "img-room-carousel", loading: "lazy" %>
+        <%= image_tag "#{image_path}", alt: "Hébergements Toulouse - #{Room.find(id).name}", class: "img-room-carousel", loading: "lazy" %>
       </div>
     <% end %>
   </div>
