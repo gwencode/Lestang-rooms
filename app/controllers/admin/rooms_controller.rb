@@ -55,7 +55,7 @@ class Admin::RoomsController < ApplicationController
   end
 
   def set_room
-    @room = Room.find(params[:id])
+    @room = Room.friendly.find(params[:id])
   end
 
   def room_params

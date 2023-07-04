@@ -56,6 +56,7 @@ gem "pundit"
 gem 'stripe'
 gem 'stripe_event'
 gem 'local_time', '~> 2.1'
+gem 'friendly_id', '~> 5.4.0'
 
 # Rails Locale Data Repository
 gem 'rails-i18n'
