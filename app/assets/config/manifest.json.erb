@@ -1,0 +1,17 @@
+{
+  "background_color": "white",
+  "description": "Vous cherchez un hébergement confortable et convivial à Toulouse ? Découvrez notre maison complète ou notre chambre chez l'habitant, situées à proximité immédiate de cette ville historique.",
+  "display": "fullscreen",
+  "name": "Résidence Lestang",
+  "icons": [
+    <% files = Dir.entries(Rails.root.join("app/assets/images/logo_icons/")).select {|f| !File.directory? f} %>
+    <% files.each_with_index do |file, index| %>
+      <% match = file.match(/.+-(?<size>\d{2,3}x\d{2,3}).png/) %>
+      {
+        "src": "<%= image_path "icons/#{file}" %>",
+        "sizes": "<%= match && match[:size] %>",
+        "type": "image/png"
+      }<%= "," unless (files.size - 1) == index %>
+    <% end %>
+  ]
+}
