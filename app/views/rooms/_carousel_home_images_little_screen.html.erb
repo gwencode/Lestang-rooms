@@ -9,12 +9,12 @@
   <div class="carousel-inner">
 
     <div class="carousel-item active" data-bs-interval="10000">
-      <%= image_tag home_images.first, alt: "", class: "d-block carousel-home-img", loading: "lazy" %>
+      <%= image_tag home_images.first, alt: "Hébergements Toulouse", class: "d-block carousel-home-img", loading: "lazy" %>
     </div>
 
     <% home_images.drop(1).each do |image_path|  %>
       <div class="carousel-item" data-bs-interval="10000">
-        <%= image_tag image_path, alt: "", class: "d-block carousel-home-img", loading: "lazy" %>
+        <%= image_tag image_path, alt: "Hébergements Toulouse", class: "d-block carousel-home-img", loading: "lazy" %>
       </div>
     <% end %>
 
