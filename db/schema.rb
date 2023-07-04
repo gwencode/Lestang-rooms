@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_20_115022) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_04_123215) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -103,6 +103,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_20_115022) do
     t.integer "max_nights"
     t.integer "available_days", default: 0
     t.boolean "default_available_slots", default: false
+    t.string "slug"
+    t.index ["slug"], name: "index_rooms_on_slug", unique: true
   end
 
   create_table "seasons", force: :cascade do |t|

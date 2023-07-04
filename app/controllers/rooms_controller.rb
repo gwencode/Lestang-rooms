@@ -55,7 +55,7 @@ class RoomsController < ApplicationController
   private
 
   def set_room
-    @room = Room.find(params[:id])
+    @room = Room.friendly.find(params[:id])
   end
 
   def create_date_from_date_string(date)

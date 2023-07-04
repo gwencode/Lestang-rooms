@@ -1,4 +1,7 @@
 class Room < ApplicationRecord
+  extend FriendlyId
+  friendly_id :name, use: :slugged
+
   has_many :bookings
   has_many :users, through: :bookings
   has_many :seasons

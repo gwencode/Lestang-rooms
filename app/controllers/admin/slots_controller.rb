@@ -71,7 +71,7 @@ class Admin::SlotsController < ApplicationController
   private
 
   def set_room
-    @room = Room.find(params[:room_id])
+    @room = Room.friendly.find(params[:room_id])
   end
 
   def slot_params
