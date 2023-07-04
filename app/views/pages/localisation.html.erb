@@ -4,8 +4,8 @@
 
 <div class="container py-3">
   <h3 class="text-blue">Saint-Jean, Occitanie, France</h3>
-  <p>A proximité immédiate du Domaine de Preissac (moins de 2km en voiture et environ 15-20min à pied).</p>
-  <p>Quartier résidentiel à proximité immédiate du Lac de la Tuilerie.</p>
+  <p>A proximité immédiate du <a href="https://www.domainedepreissac.fr/" class="text-blue text-decoration-none" target="_blank">Domaine de Preissac</a> (moins de 2km en voiture et environ 15-20min à pied).</p>
+  <p>Quartier résidentiel à proximité immédiate du <a href="https://www.visorando.com/randonnee-lac-de-la-tuilerie-saint-jean.html" class="text-blue text-decoration-none" target="_blank">Lac de la Tuilerie</a>.</p>
 
   <div class="py-3">
     <div id ="map"
@@ -40,19 +40,19 @@
 
         <div class="col-12 col-md-6 col-lg-12">
           <ul class="my-0 px-3">
-            <li><strong>Aéroport :</strong> 20min</li>
-            <li><strong>Gare TGV :</strong> 20min</li>
-            <li><strong>Domaine de Preissac :</strong> 2km</li>
-            <li><strong>Lac de la Tuilerie :</strong> 500m</li>
+            <li><a href="https://www.toulouse.aeroport.fr/" class="link-black-bold" target="_blank">Aéroport :</a> 20min</li>
+            <li><a href="https://www.garesetconnexions.sncf/fr/gares-services/toulouse-matabiau" class="link-black-bold" target="_blank">Gare TGV :</a> 20min</li>
+            <li><a href="https://www.domainedepreissac.fr/" class="link-black-bold" target="_blank">Domaine de Preissac :</a> 2km</li>
+            <li><a href="https://www.visorando.com/randonnee-lac-de-la-tuilerie-saint-jean.html" class="link-black-bold" target="_blank">Lac de la Tuilerie :</a> 500m</li>
           </ul>
         </div>
 
         <div class="col-12 col-md-6 col-lg-12">
           <ul class="my-0 px-3">
-            <li><strong>Capitole :</strong> 20min</li>
-            <li><strong>Stade Ernest Wallon :</strong> 15min</li>
-            <li><strong>Cité de l'Espace :</strong> 15min</li>
-            <li><strong>Parc des Expositions : </strong> 20min</li>
+            <li><a href="https://fr.wikipedia.org/wiki/Capitole_de_Toulouse" class="link-black-bold" target="_blank">Capitole :</a> 20min</li>
+            <li><a href="https://www.stadetoulousain.fr/ernest-wallon" class="link-black-bold" target="_blank">Stade Ernest Wallon :</a> 15min</li>
+            <li><a href="https://www.cite-espace.com/" class="link-black-bold" target="_blank">Cité de l'Espace :</a> 15min</li>
+            <li><a href="https://meett.fr/" class="link-black-bold" target="_blank">Parc des Expositions :</a> 20min</li>
           </ul>
         </div>
 
@@ -62,10 +62,50 @@
 
     </div>
 
-  </div>
+    <div class="text-center py-4">
+      <%= link_to "réservez maintenant".upcase, contact_path, class: "button-blue" %>
+    </div>
 
-  <div class="text-center py-4">
-    <%= link_to "réservez maintenant".upcase, contact_path, class: "button-blue" %>
+    <div class="row">
+
+      <% path = "localisation/Hébergements-Toulouse-localisation-" %>
+      <div class="col-12 col-md-6 col-lg-4 p-2">
+        <a href="https://www.visorando.com/randonnee-lac-de-la-tuilerie-saint-jean.html" target="_blank">
+          <%= image_tag "#{path}01-Lac-Tuilerie", alt: "Hébergements Toulouse - Résidence Lestang - Lac Tuilerie", loading: "lazy", class:"w-100" %>
+        </a>
+      </div>
+      <div class="col-12 col-md-6 col-lg-4 p-2">
+        <a href="https://fr.wikipedia.org/wiki/Capitole_de_Toulouse" target="_blank">
+          <%= image_tag "#{path}02-Capitole", alt: "Hébergements Toulouse - Résidence Lestang - Capitole", loading: "lazy", class:"w-100" %>
+        </a>
+      </div>
+      <div class="col-12 col-md-6 col-lg-4 p-2">
+        <a href="https://www.stadetoulousain.fr/ernest-wallon" target="_blank">
+          <%= image_tag "#{path}03-Stade-Ernest-Wallon", alt: "Hébergements Toulouse - Résidence Lestang - Stade-Ernest-Wallon", loading: "lazy", class:"w-100" %>
+        </a>
+      </div>
+      <div class="col-12 col-md-6 col-lg-4 p-2">
+        <a href="https://www.cite-espace.com/" target="_blank">
+          <%= image_tag "#{path}04-Cité-Espace", alt: "Hébergements Toulouse - Résidence Lestang - Cité Espace", loading: "lazy", class:"w-100" %>
+        </a>
+      </div>
+      <div class="col-12 col-md-6 col-lg-4 p-2">
+        <a href="https://www.domainedepreissac.fr/" target="_blank">
+          <%= image_tag "#{path}05-Domaine-Preissac", alt: "Hébergements Toulouse - Résidence Lestang - Domaine Preissac", loading: "lazy", class:"w-100" %>
+        </a>
+      </div>
+      <div class="col-12 col-md-6 col-lg-4 p-2">
+        <%= image_tag "#{path}06-Aéroport-Gare", alt: "Hébergements Toulouse - Résidence Lestang - Aéroport et Gare", loading: "lazy", class:"w-100" %>
+      </div>
+      <div class="col-12 col-md-6 col-lg-4 p-2">
+      <a href="https://meett.fr/" target="_blank">
+        <%= image_tag "#{path}07-Parc-Expositions", alt: "Hébergements Toulouse - Résidence Lestang - Parc Expositions", loading: "lazy", class:"w-100" %>
+      </a>
+      </div>
+
+
+    </div>
+
   </div>
 
 </div>
