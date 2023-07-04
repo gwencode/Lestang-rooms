@@ -6,7 +6,7 @@
     <div class="separator"></div>
     <p id="introduction">
       Vous cherchez un hébergement <strong>confortable et convivial</strong> à Toulouse ?
-      Découvrez notre <strong>maison complète </strong>ou notre <strong>chambre chez l'habitant</strong>, situées à proximité immédiate de cette ville historique.
+      Découvrez notre <%= link_to "maison complète", room_path(@maison), class: "link-black-bold" %> ou notre <%= link_to "chambre chez l'habitant", room_path(@chambre), class: "link-black-bold" %>, situées à proximité immédiate de cette ville historique.
     </p>
   </div>
 
@@ -29,8 +29,8 @@
     <div>
       <h5 class="text-blue" id="subtitle-home">Que vous soyez en ville pour un voyage d'affaires, une escapade romantique ou simplement pour explorer la région, voici ce que nous proposons :</h5>
       <div class="separator"></div>
-      <p>- Soit, la <strong>maison entière</strong> privative située dans un quartier calme et verdoyant, avec jusque 8 couchages</p>
-      <p>- Soit, la <strong>chambre</strong> privative située dans ce logement partagé avec les propriétaires, avec 2 couchages</p>
+      <p>- Soit, la <%= link_to "maison entière", room_path(@maison), class: "link-black-bold" %> privative située dans un quartier calme et verdoyant, avec jusque 8 couchages</p>
+      <p>- Soit, la <%= link_to "chambre", room_path(@chambre), class: "link-black-bold" %> privative située dans ce logement partagé avec les propriétaires, avec 2 couchages</p>
     </div>
   </div>
 </div>
