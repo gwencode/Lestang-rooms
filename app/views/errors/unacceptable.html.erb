@@ -1,0 +1,15 @@
+<% content_for :meta_title, "La modification que vous souhaitiez a été rejetée. (422)" %>
+<% content_for :meta_description, "Vous avez peut-être essayé de modifier quelque chose auquel vous n'aviez pas accès." %>
+
+<div class="header-error">
+  <div class="header-text-error">
+    <h1>Erreur 422</h1>
+    <% if current_user %>
+      <h2>Désolé <%= current_user.first_name %>, la modification que vous souhaitiez a été rejetée.</h2>
+    <% else %>
+      <h2>La modification que vous souhaitiez a été rejetée.</h2>
+    <% end %>
+    <p>Vous avez peut-être essayé de modifier quelque chose auquel vous n'aviez pas accès.</p>
+  </div>
+  <button class="button-blue"><a href="/" class="text-white text-decoration-none">Retournez à la page d'accueil</a></button>
+</div>

@@ -16,6 +16,32 @@
   }
 }
 
+  .header-error {
+    background-image: url("/images/lestang.jpg");
+    background-size: cover;
+    background-position: center;
+    padding: 1vh 0;
+    width: 100vw;
+    height: 80vh;
+    text-align: center;
+
+    .header-text-error {
+      color: white;
+      margin: 25vh 0 16px 0;
+      padding: 16px;
+      background-color: rgba(255, 255, 255, 0.3);
+      font-weight: bold;
+      text-shadow: 3px 0px 7px black, -3px 0px 7px black, 0px 4px 7px black;
+
+      h1 {
+        font-size: 2em;
+      }
+      h2 {
+        font-size: 1.5em;
+      }
+    }
+  }
+
 .header-blue {
   background-color: $blue;
   text-align: center;

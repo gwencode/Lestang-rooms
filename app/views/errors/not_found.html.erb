@@ -1,0 +1,15 @@
+<% content_for :meta_title, "La page que vous cherchez n'existe pas (404)" %>
+<% content_for :meta_description, "Il se peut que vous ayez mal saisi l'adresse ou que la page ait été déplacée." %>
+
+<div class="header-error">
+  <div class="header-text-error">
+    <h1>Erreur 404</h1>
+    <% if current_user %>
+      <h2>Désolé <%= current_user.first_name %>, la page que vous recherchez n'existe pas.</h2>
+    <% else %>
+      <h2>La page que vous recherchez n'existe pas.</h2>
+    <% end %>
+    <p>Il se peut que vous ayez mal saisi l'adresse ou que la page ait été déplacée.</p>
+  </div>
+  <button class="button-blue"><a href="/" class="text-white text-decoration-none">Retournez à la page d'accueil</a></button>
+</div>
