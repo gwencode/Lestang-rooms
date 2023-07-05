@@ -2,6 +2,8 @@ class RoomsController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[index show]
   before_action :set_room, only: [:show]
 
+  add_breadcrumb "Accueil", :root_path
+
   def index
     policy_scope(Room)
     @maison = Room.first
@@ -50,6 +52,8 @@ class RoomsController < ApplicationController
         max_nights: @max_nights
       }
     end
+
+    add_breadcrumb @room.name, room_path(@room)
   end
 
   private

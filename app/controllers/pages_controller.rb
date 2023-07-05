@@ -9,11 +9,15 @@ class PagesController < ApplicationController
         marker_html: render_to_string(partial: "marker")
         }
       ]
+
+    add_breadcrumb "Localisation", :localisation_path
   end
 
   def contact
     @user = current_user ? current_user : User.new
     @rooms = Room.all
+
+    add_breadcrumb "Contact", :contact_path
   end
 
   def message
