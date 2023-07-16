@@ -66,7 +66,7 @@
           <p><%= @booking.cleaning_fee %> €</p>
         </div>
         <div class="d-flex justify-content-between">
-          <p>Frais bancaires (<%= @room.bank_fees%> %)</p>
+          <p>Frais bancaires (<%= @room.bank_fees%> %)*</p>
           <p><%= @booking.bank_fees %> €</p>
         </div>
         <div class="d-flex justify-content-between">
@@ -74,7 +74,7 @@
           <p class="fw-bold"><%= @booking.total_price %> €</p>
         </div>
         <div class="d-flex justify-content-between">
-          <p class="fst-italic m-0">Caution (non encaissée)</p>
+          <p class="fst-italic m-0">Caution**</p>
           <p class="fst-italic m-0"><%= @booking.caution %> €</p>
         </div>
 
@@ -83,6 +83,9 @@
       <% if @booking.refund %>
         <h5 class="text-yellow text-center"><i class="fa-solid fa-money-bill-transfer"></i> Remboursement effectué : <%= @booking.refund_amount %> € </h5>
       <% end %>
+
+      <p class="fst-italic text-center" style="font-size: 14px">* Frais bancaires non remboursées en cas d'annulation</p>
+      <p class="fst-italic text-center" style="font-size: 14px">** Une emprunte bancaire non encaissée sera demandée</p>
 
     </div>
   </div>
