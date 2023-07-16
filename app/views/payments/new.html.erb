@@ -16,7 +16,8 @@
         <% if @booking.cleaning_fee.positive? %>
           <p>Frais de ménage : <%= @booking.cleaning_fee %> €</p>
         <% end %>
-        <p class="fw-bold">Total : <%= @booking.booking_price %> €</p>
+        <p>Frais bancaires : <%= @booking.bank_fees %> €</p>
+        <p class="fw-bold">Total : <%= @booking.total_price %> €</p>
         <button id="pay" class="button-blue">Payer ma réservation</button>
       </div>
     </div>
