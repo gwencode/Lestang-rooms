@@ -50,7 +50,7 @@ class BookingsController < ApplicationController
           product_data: {
             name: "#{@booking.room.name}, du #{l(@booking.arrival, format: "%A %d %B")} au #{l(@booking.departure, format: "%A %d %B")}",
           },
-          unit_amount: @booking.total_price * 100
+          unit_amount: (@booking.total_price * 100).round
         },
         quantity: 1
       }],
