@@ -28,7 +28,7 @@
           <p class=""><strong>Départ :</strong> <%= l(booking.departure, format: "%A %d %B %Y à %Hh").capitalize %></p>
           <p class=""><strong>Nombre de personnes :</strong> <%= booking.guests_number %></p>
           <p class=""><strong>Nombre de nuits :</strong> <%= booking.nights %></p>
-          <p class=""><strong>Prix :</strong> <%= booking.booking_price %> €</p>
+          <p class=""><strong>Prix :</strong> <%= booking.total_price %> €</p>
           <% if booking.status == "acceptée" %>
             <% if booking.paid %>
               <i class="fa-regular fa-circle-check text-success"></i>

@@ -11,7 +11,7 @@ class Booking < ApplicationRecord
   validate :house_slot_available, if: -> { room == Room.first }
   validate :bedroom_slot_available, if: -> { room == Room.last }
 
-  before_save :set_night_price, :set_nights, :set_duration, :set_reduction, :set_cleaning_fee, :set_booking_price, :set_bank_fees, :set_caution
+  before_save :set_night_price, :set_nights, :set_duration, :set_reduction, :set_cleaning_fee, :set_booking_price, :set_bank_fees, :set_caution, :set_total_price
   after_create :create_chatroom
 
   def basic_price
@@ -24,6 +24,10 @@ class Booking < ApplicationRecord
 
   def calculate_bank_fees
     set_bank_fees
+  end
+
+  def calculate_total_price
+    set_total_price
   end
 
   def calculate_caution
@@ -147,6 +151,10 @@ class Booking < ApplicationRecord
 
   def set_bank_fees
     self.bank_fees = (booking_price * room.bank_fees * 0.01).round(2)
+  end
+
+  def set_total_price
+    self.total_price = booking_price + bank_fees
   end
 
   def set_caution

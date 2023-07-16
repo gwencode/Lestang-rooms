@@ -35,6 +35,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_16_150119) do
     t.boolean "refund", default: false
     t.integer "refund_amount"
     t.float "bank_fees", default: 0.0
+    t.float "total_price", default: 0.0
     t.integer "caution", default: 0
     t.index ["room_id"], name: "index_bookings_on_room_id"
     t.index ["user_id"], name: "index_bookings_on_user_id"

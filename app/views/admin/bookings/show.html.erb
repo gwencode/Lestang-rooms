@@ -69,8 +69,12 @@
           <p><%= @booking.cleaning_fee %> €</p>
         </div>
         <div class="d-flex justify-content-between">
+          <p>Frais bancaires (<%= @room.bank_fees%> %)</p>
+          <p><%= @booking.bank_fees %> €</p>
+        </div>
+        <div class="d-flex justify-content-between">
           <p class="fw-bold m-0">Total</p>
-          <p class="fw-bold m-0"><%= @booking.booking_price %> €</p>
+          <p class="fw-bold m-0"><%= @booking.total_price %> €</p>
         </div>
 
       </div>
