@@ -73,8 +73,12 @@
           <p><%= @booking.bank_fees %> €</p>
         </div>
         <div class="d-flex justify-content-between">
-          <p class="fw-bold m-0">Total</p>
-          <p class="fw-bold m-0"><%= @booking.total_price %> €</p>
+          <p class="fw-bold">Total</p>
+          <p class="fw-bold"><%= @booking.total_price %> €</p>
+        </div>
+        <div class="d-flex justify-content-between">
+          <p class="fst-italic m-0">Caution (non encaissée)</p>
+          <p class="fst-italic m-0"><%= @booking.caution %> €</p>
         </div>
 
       </div>
