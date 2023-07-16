@@ -37,8 +37,15 @@ class Booking < ApplicationRecord
   def arrival_after_today
     return if arrival.blank?
 
-    if arrival < DateTime.now
-      errors.add(:arrival, "doit être après aujourd'hui")
+    # if arrival < DateTime.now
+    #   errors.add(:arrival, "doit être après aujourd'hui")
+    # end
+
+    today_start = DateTime.now.beginning_of_day
+    today_end = DateTime.now.end_of_day
+
+    if arrival < today_start || (DateTime.now.hour >= 18 && arrival < today_end)
+      errors.add(:arrival, "doit être après aujourd'hui (et réservation à faire avant 18h pour le soir même)")
     end
   end
 

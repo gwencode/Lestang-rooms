@@ -20,7 +20,7 @@ class BookingsController < ApplicationController
       MessageMailer.with(booking: @booking).booking_pending_admin_email.deliver_now
       MessageMailer.with(booking: @booking).booking_pending_user_email.deliver_now
     else
-      redirect_to room_path(@booking.room), alert: @booking.errors.messages.values.join(", ")
+      redirect_to room_path(@booking.room), alert: @booking.errors.full_messages.join(". ")
       return
     end
   end
