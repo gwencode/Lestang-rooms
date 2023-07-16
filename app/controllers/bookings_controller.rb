@@ -11,7 +11,6 @@ class BookingsController < ApplicationController
     @booking.room = Room.friendly.find(params[:room_id])
     @booking.arrival = @booking.arrival.change(hour: set_hour[:arrival])
     @booking.departure = @booking.departure.change(hour: set_hour[:departure])
-    # @booking.booking_price = @booking.calculate_booking_price
     @booking.status = "en attente"
     @booking.user = current_user
 
