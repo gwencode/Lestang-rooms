@@ -69,6 +69,8 @@ class Admin::RoomsController < ApplicationController
                                  :min_nights,
                                  :max_nights,
                                  :available_days,
-                                 :default_available_slots)
+                                 :default_available_slots,
+                                 :bank_fees,
+                                 :caution)
   end
 end

@@ -58,6 +58,14 @@
             <p class="m-0"><span class="fw-bold">Prix (<%= @room.room_price.high_guests %> voyageurs) :</span> <%= @room.room_price.night_price_high_guests %>€ / nuit</p>
           </div>
         </div>
+        <div class="row py-2">
+          <div class="col-12 col-lg-6 text-center">
+            <p class="m-0"><span class="fw-bold">Frais bancaires :</span> <%= @room.bank_fees %>%</p>
+          </div>
+          <div class="col-12 col-lg-6 text-center">
+            <p class="m-0"><span class="fw-bold">Caution :</span> <%= @room.caution %>€</p>
+          </div>
+        </div>
 
         <div class="separator"></div>
 

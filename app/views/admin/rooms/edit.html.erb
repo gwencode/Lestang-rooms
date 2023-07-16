@@ -60,6 +60,14 @@
                 <% end %>
               </div>
             <% end %>
+            <div class="row">
+              <div class="col-12 col-md-6 py-2">
+                <%= f.input :bank_fees, label: "Frais bancaires (%)", hint: "Exemple : 2,5 (avec une virgule)", hint_html: {class: "text-white fst-italic"} %>
+              </div>
+              <div class="col-12 col-md-6 py-2">
+                <%= f.input :caution, label: "Caution en €" %>
+              </div>
+            </div>
           </div>
 
           <div class="py-2">
