@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_04_123215) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_16_150119) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -34,6 +34,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_04_123215) do
     t.string "checkout_session_id"
     t.boolean "refund", default: false
     t.integer "refund_amount"
+    t.float "bank_fees", default: 0.0
+    t.float "total_price", default: 0.0
+    t.integer "caution", default: 0
     t.index ["room_id"], name: "index_bookings_on_room_id"
     t.index ["user_id"], name: "index_bookings_on_user_id"
   end
@@ -104,6 +107,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_04_123215) do
     t.integer "available_days", default: 0
     t.boolean "default_available_slots", default: false
     t.string "slug"
+    t.float "bank_fees", default: 0.0
+    t.integer "caution", default: 0
     t.index ["slug"], name: "index_rooms_on_slug", unique: true
   end
 

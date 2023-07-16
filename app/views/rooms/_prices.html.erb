@@ -60,8 +60,21 @@
     <% end %>
 
     <div class="d-flex justify-content-between">
+      <p>Frais bancaires (<%= room.bank_fees %> %) </p>
+      <% booking_price =  night_price * nights + night_reduction * nights + cleaning_fee %>
+      <% bank_fees = (booking_price * room.bank_fees * 0.01).round(2) %>
+      <p><%= bank_fees %>€</p>
+    </div>
+
+    <div class="d-flex justify-content-between">
       <p class="fw-bold">Total</p>
-      <p class="fw-bold"><%= night_price * nights + night_reduction * nights + cleaning_fee %>€</p>
+      <p class="fw-bold"><%= booking_price + bank_fees %>€</p>
+    </div>
+
+
+    <div class="d-flex justify-content-between">
+      <p class="fst-italic">Caution (non encaissée)</p>
+      <p class="fst-italic"><%= room.caution %>€</p>
     </div>
 
   <% else %>
