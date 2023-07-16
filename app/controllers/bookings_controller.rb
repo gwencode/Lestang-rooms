@@ -57,7 +57,10 @@ class BookingsController < ApplicationController
       mode: "payment",
       customer_email: current_user.email,
       success_url: booking_url(@booking),
-      cancel_url: booking_url(@booking)
+      cancel_url: booking_url(@booking),
+      payment_intent_data: {
+        setup_future_usage: "off_session"
+      }
     )
 
     @booking.update(checkout_session_id: session.id)
