@@ -6,7 +6,7 @@ Résidence Lestang - Paiement reçu de <%= @user.email %>
 - Arrivée : <%= l(@booking.arrival, format: "%A %d %B à %Hh").capitalize %>
 - Départ : <%= l(@booking.departure, format: "%A %d %B à %Hh").capitalize %>
 - Nombre de personnes : <%= @booking.guests_number %>
-- Prix total : <%= @booking.booking_price %> €
+- Prix total : <%= @booking.total_price %> €
 
 <%= link_to "Gérer mes réservations", admin_bookings_url %>
 

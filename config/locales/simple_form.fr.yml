@@ -16,6 +16,7 @@ fr:
         room: Le logement
         status: Le statut
         booking_price: Montant de la réservation
+        total_price: Montant total de la réservation
         night_price: Prix par nuit
         nights: Nombre de nuits
         duration: Durée de la réservation

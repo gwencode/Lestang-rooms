@@ -60,7 +60,7 @@
     <% end %>
 
     <div class="d-flex justify-content-between">
-      <p>Frais bancaires (<%= room.bank_fees %> %) </p>
+      <p>Frais bancaires (<%= room.bank_fees %> %)*</p>
       <% booking_price =  night_price * nights + night_reduction * nights + cleaning_fee %>
       <% bank_fees = (booking_price * room.bank_fees * 0.01).round(2) %>
       <p><%= bank_fees %>€</p>
@@ -76,6 +76,8 @@
       <p class="fst-italic">Caution (non encaissée)</p>
       <p class="fst-italic"><%= room.caution %>€</p>
     </div>
+
+    <p class="fst-italic" style="font-size: 14px">* Frais bancaires non remboursés en cas d'annulation</p>
 
   <% else %>
     <p class="fst-italic fw-bold text-blue text-center m-0"><%= min_nights %> nuits minimum pour la période du <%= l(season_start, format: "%d %B") %> au <%= l(season_end, format: "%d %B %Y") %></p>

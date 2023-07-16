@@ -6,7 +6,7 @@
       <li>Arrivée : <%= l(@booking.arrival, format: "%A %d %B à %Hh").capitalize %></li>
       <li>Départ : <%= l(@booking.departure, format: "%A %d %B à %Hh").capitalize %></li>
       <li>Nombre de personnes : <%= @booking.guests_number %></li>
-      <li>Prix total : <%= @booking.booking_price %> €</li>
+      <li>Prix total : <%= @booking.total_price %> €</li>
     </ul>
 
     <p></p>
@@ -30,7 +30,7 @@ Rappel de votre réservation :
 - Arrivée : <%= l(@booking.arrival, format: "%A %d %B à %Hh").capitalize %>
 - Départ : <%= l(@booking.departure, format: "%A %d %B à %Hh").capitalize %>
 - Nombre de personnes : <%= @booking.guests_number %>
-- Prix total : <%= @booking.booking_price %> €
+- Prix total : <%= @booking.total_price %> €
 
 <%= link_to "Voir ma réservation", booking_url(@booking) %>
 
