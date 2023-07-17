@@ -1,6 +1,9 @@
 <div class="container payment-review py-3">
-  <h1 class="text-blue text-center">Récapitulatif de votre réservation</h1>
-  <div class="separator"></div>
+  <header>
+    <h1 class="text-blue text-center">Récapitulatif de votre réservation</h1>
+    <div class="separator"></div>
+  </header>
+
   <div class="d-flex align-items-center py-3 row">
     <%= image_tag "#{@booking.room.name}.png", alt: "Hébergements Toulouse - Résidence Lestang - #{@booking.room.name}", class: "col-12 col-lg-6 images-room-little-screen", loading: "lazy" %>
     <div class="col-12 col-lg-6 text-center">

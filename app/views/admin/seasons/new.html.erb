@@ -8,7 +8,9 @@
 
     <div class="p-3" style="background-color: rgba(0, 0, 0, 0.6); position: relative;">
 
-    <h4 class="text-center text-white">Nouvelle condition saisonnière pour <%= @room.name.downcase %></h4>
+    <header>
+      <h4 class="text-center text-white">Nouvelle condition saisonnière pour <%= @room.name.downcase %></h4>
+    </header>
 
       <%= simple_form_for [:admin, @season], url: admin_room_seasons_path(@room) do |f| %>
         <div class="row text-white py-3">

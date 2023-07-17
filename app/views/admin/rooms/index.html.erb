@@ -1,9 +1,11 @@
 <div class="container-fluid container background-back-link">
   <%= link_to raw("<i class='fa-solid fa-circle-arrow-left'></i>"), admin_root_path, class: "back-link" %>
 </div>
-<div class="p-5 header-blue">
+
+<header class="p-5 header-blue">
   <h1>Mes logements</h1>
-</div>
+</header>
+
 <div class="container">
   <div class="d-flex align-items-center py-3 my-3 row">
     <%= image_tag "#{@maison.name}/maison.png", alt: "Hébergements Toulouse - Résidence Lestang - #{@maison.name}", class: "col-12 col-lg-6 order-lg-2 images-room-little-screen", loading: "lazy" %>

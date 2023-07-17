@@ -10,8 +10,11 @@
         <i class="fa-solid fa-pen-to-square"></i>
       <% end %>
 
-      <h3 class="px-5 text-center text-white"><%= @user.first_name.capitalize %> <%= @user.last_name.upcase %></h3>
-      <p class="text-center text-white">Email : <%= @user.email %></p>
+      <header>
+        <h3 class="px-5 text-center text-white"><%= @user.first_name.capitalize %> <%= @user.last_name.upcase %></h3>
+        <p class="text-center text-white">Email : <%= @user.email %></p>
+      </header>
+
       <div class="p-3 row">
         <h4 class="text-center text-white text-decoration-underline">Réservations</h4>
 

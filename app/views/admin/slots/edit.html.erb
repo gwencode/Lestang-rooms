@@ -14,12 +14,12 @@
                 class: "text-decoration-none text-white",
                 style: "font-size: 24px; position: absolute; right: 12px; top: 8px" %>
 
-      <div class="text-center">
+      <header class="text-center">
         <h2 class="px-4">Modifier le créneau : </h2>
         <h4 class="text-white m-0"><%= l(@slot.start_date, format: "%d %B") %> <span style="font-size: 0.5em">aprem</span> - <%= l(@slot.end_date, format: "%d %B %Y") %> <span style="font-size: 0.5em">matin</span> </h4>
         <% notice = @room == Room.last && @slot.start_date.hour == 14 ? "- maison disponible" : ""  %>
         <p class="m-0 <%= @slot.available ? "text-success" : "text-warning" %>"><%= @slot.available ? "Disponible" : "Indisponible" %> <span class="text-success" style="font-size: 0.8em"><%= notice %></span></p>
-      </div>
+      </header>
 
       <%= simple_form_for [:admin, @slot], url: admin_room_slot_path(@room, @slot) do |f| %>
         <div class="row text-white py-3 align-items-center">

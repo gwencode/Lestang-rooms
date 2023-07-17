@@ -1,6 +1,8 @@
 <div class="devise-background">
   <div class="container col-12 col-md-6 col-lg-4 devise-form">
-    <h2 class="text-blue">Se connecter</h2>
+    <header>
+      <h2 class="text-blue">Se connecter</h2>
+    </header>
 
     <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name), data: {turbo: false}) do |f| %>
       <div class="form-inputs">

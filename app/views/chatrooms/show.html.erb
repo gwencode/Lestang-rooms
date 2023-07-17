@@ -5,10 +5,11 @@
     <%= link_to raw("<i class='fa-solid fa-circle-arrow-left'></i>"), messages_path, class: "back-link" %>
   <% end %>
 </div>
-<div class="py-4 px-5 header-blue">
+
+<header class="py-4 px-5 header-blue">
   <% receiver_name = current_user.admin ? "#{@booking.user.first_name} #{@booking.user.last_name}" : "#{User.where(admin: true).first.first_name} #{User.where(admin: true).first.last_name} (hôtes)" %>
   <h2 class="text-center text-white m-0">Messages avec <%= receiver_name %></h2>
-</div>
+</header>
 
 <div class="chatroom"
   data-controller="chatroom"

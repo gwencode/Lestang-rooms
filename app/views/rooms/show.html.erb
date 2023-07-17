@@ -2,7 +2,7 @@
 <% content_for :meta_description, @room.description %>
 <% content_for :meta_image, "#{@room.name}.png" %>
 
-<div class="p-3 header-blue">
+<header class="p-3 header-blue">
   <h1><%= @room.name %></h1>
   <div id="room-details">
     <p class="m-0"><%= @room.max_guests > 1 ? "#{@room.max_guests} voyageurs" : "1 voyageur"%> maximum</p>
@@ -13,7 +13,7 @@
     <p class="m-0">|</p>
     <p class="m-0"><%= @room.bathrooms > 1 ? "#{@room.bathrooms} salles de bain" : "1 salle de bain"%></p>
   </div>
-</div>
+</header>
 
 <div class="container">
 
