@@ -41,6 +41,17 @@ class BookingsController < ApplicationController
   def payment
     authorize @booking, :payment?
 
+    # Créer un client dans Stripe
+    customer = Stripe::Customer.create({
+      payment_method: params[:payment_method_id],
+      email: current_user.email,
+      name: "#{current_user.first_name} #{current_user.last_name}",
+      invoice_settings: {
+        default_payment_method: params[:payment_method_id]
+      }
+    })
+
+    # Associer le client au paiement
     session = Stripe::Checkout::Session.create(
       payment_method_types: ["card"],
       line_items: [{
@@ -54,7 +65,8 @@ class BookingsController < ApplicationController
         quantity: 1
       }],
       mode: "payment",
-      customer_email: current_user.email,
+      # customer_email: current_user.email,
+      customer: customer.id,
       success_url: booking_url(@booking),
       cancel_url: booking_url(@booking),
       payment_intent_data: {
