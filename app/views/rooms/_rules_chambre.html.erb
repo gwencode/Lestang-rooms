@@ -4,7 +4,7 @@
 <div class="equipment">
   <h5 class="fw-bold text-blue">Qui peut séjourner dans le logement ?</h5>
   <p><i class="fa-solid fa-users"></i><span class="stuff"><%= max_guests %> voyageurs maximum</span></p>
-  <p><i class="fa-solid fa-paw"></i><span class="stuff indisponible">Pas d'animaux</span></p>
+  <p><i class="fa-solid fa-paw"></i>Pas d'animaux</p>
 </div>
 
 <div class="equipment">
@@ -15,12 +15,12 @@
   <p class="comment">22:00 - 08:00</p>
   <p><i class="fa-solid fa-door-closed"></i><span class="stuff">Arrivée autonome avec serrure numérique</span></p>
   <p><i class="fa-solid fa-camera"></i><span class="stuff">Photographie commerciale autorisée</span></p>
-  <p><%= image_tag "icons/party.png", alt: "Hébergements Toulouse - Résidence Lestang - Icône règlement", width: 18 %><span class="stuff indisponible">Pas de fête ni de soirée</span></p>
-  <p><i class="fa-solid fa-smoking"></i><span class="stuff indisponible">Non fumeur</span></p>
 </div>
 
 <div class="equipment">
   <h5 class="fw-bold text-blue">Règles supplémentaires</h5>
   <p><i class="fa-solid fa-credit-card"></i><span class="stuff">Caution de <%= caution %>€ (non encaissée)</span></p>
-  <p><i class="fa-solid fa-users"></i><span class="stuff indisponible">Les personnes non inscrites dans la réservation sont interdites.</span></p>
+  <p><%= image_tag "icons/party.png", alt: "Hébergements Toulouse - Résidence Lestang - Icône règlement", width: 18 %>Pas de fête ni de soirée</p>
+  <p><i class="fa-solid fa-smoking"></i>Non fumeur</p>
+  <p><i class="fa-solid fa-users"></i>Les personnes non inscrites dans la réservation sont interdites.</p>
 </div>
