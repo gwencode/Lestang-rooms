@@ -17,12 +17,14 @@
             <%= render "rules_maison",
                 arrival_hour: arrival_hour,
                 departure_hour: departure_hour,
-                max_guests: max_guests %>
+                max_guests: max_guests,
+                caution: @room.caution %>
           <% elsif @room == Room.last%>
             <%= render "rules_chambre",
                 arrival_hour: arrival_hour,
                 departure_hour: departure_hour,
-                max_guests: max_guests %>
+                max_guests: max_guests,
+                caution: @room.caution %>
           <% end %>
         </div>
       </div>
