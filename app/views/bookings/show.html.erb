@@ -3,7 +3,7 @@
 </div>
 <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url('<%= asset_path("#{@room.name}.png") %>')">
 
-  <div class="container">
+  <main class="container">
     <div class="py-3" style="background-color: rgba(0, 0, 0, 0.4); position: relative;">
 
       <%= link_to booking_chatroom_path(@booking, @booking.chatroom), id: "message-icon-user" do %>
@@ -90,6 +90,6 @@
       <p class="fst-italic text-center" style="font-size: 14px">** Une caution non encaissée sera demandée</p>
 
     </div>
-  </div>
+  </main>
 
 </div>

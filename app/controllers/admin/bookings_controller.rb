@@ -97,7 +97,7 @@ class Admin::BookingsController < ApplicationController
   end
 
   def total_price(bookings)
-    bookings.sum(:booking_price) - bookings.sum(:refund_amount)
+    bookings.sum(:total_price) - bookings.sum(:refund_amount)
   end
 
   def title

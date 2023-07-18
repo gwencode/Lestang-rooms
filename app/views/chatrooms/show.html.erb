@@ -11,7 +11,7 @@
   <h2 class="text-center text-white m-0">Messages avec <%= receiver_name %></h2>
 </header>
 
-<div class="chatroom"
+<main class="chatroom"
   data-controller="chatroom"
   data-chatroom-chatroom-id-value="<%= @chatroom.id %>"
   data-chatroom-current-user-id-value="<%= current_user.id %>">
@@ -46,4 +46,4 @@
       <% end %>
     </div>
   </div>
-</div>
+</main>
