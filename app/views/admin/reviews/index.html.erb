@@ -7,7 +7,7 @@
 </header>
 
 <main class="container py-3 text-center" >
-  <div class="py-3">
+  <section id="add-review" class="py-3">
     <h3 class="text-blue">Ajouter un avis</h3>
     <%= simple_form_for(@review,
                       url: admin_reviews_path(@review),
@@ -17,32 +17,33 @@
       <%= f.input :room_id, label: false, collection: Room.all.map{ |r| [r.name, r.id] }, include_blank: false %>
       <%= f.button :submit, "Ajouter", class: "button-blue" %>
     <% end %>
-  </div>
+  </section>
 
   <div class="separator"></div>
 
-  <% @reviews.each do |review| %>
-    <div class="px-3" data-controller="edit-review">
-      <p><%= review.content %></p>
-      <p class="fw-light"><%= review.author %></p>
-      <i class='fa-regular fa-pen-to-square admin-edit-review-icon' data-action="click->edit-review#displayForm"></i>
-      <%= link_to admin_review_path(review),
-                  data: {turbo_method: :delete, turbo_confirm: "Supprimer cet avis ?"},
-                  class: "admin-delete-review-icon" do %>
-        <i class='fa-solid fa-trash-can'></i>
-      <% end %>
-      <div class="d-none" data-edit-review-target="form">
-        <%= simple_form_for(review,
-                      url: admin_review_path(review),
-                      method: :patch) do |f| %>
-          <%= f.input :content, as: :text, label: false, placeholder: "Contenu de l'avis", required: true %>
-          <%= f.input :author, label: false, placeholder: "Auteur - date", required: true %>
-          <%= f.input :room_id, label: false, collection: Room.all.map{ |r| [r.name, r.id] }, include_blank: false %>
-          <%= f.button :submit, "Modifier", class: "button-blue" %>
+  <section id="admin-reviews">
+    <% @reviews.each do |review| %>
+      <article class="px-3" data-controller="edit-review">
+        <p><%= review.content %></p>
+        <p class="fw-light"><%= review.author %></p>
+        <i class='fa-regular fa-pen-to-square admin-edit-review-icon' data-action="click->edit-review#displayForm"></i>
+        <%= link_to admin_review_path(review),
+                    data: {turbo_method: :delete, turbo_confirm: "Supprimer cet avis ?"},
+                    class: "admin-delete-review-icon" do %>
+          <i class='fa-solid fa-trash-can'></i>
         <% end %>
-      </div>
-
-      <div class="separator"></div>
-    </div>
-  <% end %>
+        <div class="d-none" data-edit-review-target="form">
+          <%= simple_form_for(review,
+                        url: admin_review_path(review),
+                        method: :patch) do |f| %>
+            <%= f.input :content, as: :text, label: false, placeholder: "Contenu de l'avis", required: true %>
+            <%= f.input :author, label: false, placeholder: "Auteur - date", required: true %>
+            <%= f.input :room_id, label: false, collection: Room.all.map{ |r| [r.name, r.id] }, include_blank: false %>
+            <%= f.button :submit, "Modifier", class: "button-blue" %>
+          <% end %>
+        </div>
+        <div class="separator"></div>
+      </article>
+    <% end %>
+  </section>
 </main>

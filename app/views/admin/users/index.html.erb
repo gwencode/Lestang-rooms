@@ -7,13 +7,13 @@
 </header>
 
 <main class="container py-3" style="min-height: 60vh;">
-  <div class="d-flex justify-content-around py-2">
+  <section id="filter-users" class="d-flex justify-content-around py-2">
     <%= link_to "Tous", admin_users_path, class: "fw-bold text-black" %>
     <%= link_to "Ayant réservé", admin_users_path(filter: "with-booking"), class: "fw-bold text-black" %>
     <%= link_to "N'ayant pas réservé", admin_users_path(filter: "no-booking"), class: "fw-bold text-black" %>
-  </div>
+  </section>
 
-  <div class="row justify-content-center">
+  <section id="search-users" class="row justify-content-center">
     <div class="col-sm-8 my-3">
       <%= form_with url: admin_users_path, method: :get, class: "d-flex" do %>
         <%= text_field_tag :query,
@@ -24,9 +24,9 @@
         <%= submit_tag "Chercher", name: "", class: "btn btn-primary" %>
       <% end %>
     </div>
-  </div>
+  </section>
 
-  <div class="card-users">
+  <section id="card-users">
     <% @users.each do |user| %>
       <div class="card-user my-3">
         <%= link_to admin_user_path(user), class: "text-decoration-none text-black" do %>
@@ -51,6 +51,6 @@
       </div>
 
     <% end %>
-  </div>
+  </section>
 
 </main>
