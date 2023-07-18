@@ -13,7 +13,7 @@
 
       <div class="px-3">
 
-        <div class="row">
+        <section id="admin-seasons" class="row">
           <% @seasons.each do |season| %>
             <div class="col-12 col-md-6 py-2">
               <%= link_to edit_admin_room_season_path(@room, season), class: "text-decoration-none" do %>
@@ -24,18 +24,18 @@
               <% end %>
             </div>
           <% end %>
-        </div>
+        </section>
 
-        <div class="text-center py-3">
+        <section id="admin-new-season" class="text-center py-3">
           <h5 class="m-0"><%= link_to "Ajouter une condition", new_admin_room_season_path(@room), class: "button-blue" %></h5>
-        </div>
+        </section>
 
         <%= render partial: "admin/admin_calendar", locals: { room: @room, booking: @booking } %>
 
         <% other_room = @room == Room.first ? Room.last : Room.first%>
-        <div class="text-center py-3">
+        <aside id="admin-seasons-other-room" class="text-center py-3">
           <%= link_to "Voir les conditions saisonnières de #{other_room.name.downcase}", admin_room_seasons_path(other_room), class: "text-white fst-italic" %>
-        </div>
+        </aside>
 
       </div>
 
