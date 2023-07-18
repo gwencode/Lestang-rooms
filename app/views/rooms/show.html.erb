@@ -17,11 +17,11 @@
 
 <main class="container">
 
-  <%= render "carousel_pictures", id: @room.id %>
+  <%= render "carousel_pictures", room: @room %>
 
   <div class="row">
 
-    <div class="room-description col-12 col-lg-7 py-3">
+    <section class="room-description col-12 col-lg-7 py-3">
       <% if @room == Room.first %>
         <%= render "short_description_maison" %>
       <% elsif @room == Room.last %>
@@ -48,28 +48,28 @@
       </div>
 
 
-    </div>
+    </section>
 
-    <div class="dates p-3 col-12 col-lg-5">
+    <section id="reservation" class="p-3 col-12 col-lg-5">
       <%= render "reservation", room: @room,
         booking: @booking, nights: @nights,
         guests: @guests, min_nights: @min_nights,
         season_start: @season_start, season_end: @season_end,
         max_nights: @max_nights %>
-    </div>
+    </section>
 
   </div>
 
-  <div class="py-3">
+  <section id="where-you-sleep" class="py-3">
     <h3 class="text-blue">Où vous dormirez</h3>
     <div class="row sleep">
       <%= render "sleep", sleep_images: @sleep_images %>
     </div>
-  </div>
+  </section>
 
   <div class="row">
 
-    <div class="room-equipment col-12 col-lg-8 py-3">
+    <section id="equipments" class="room-equipment col-12 col-lg-8 py-3">
       <h3 class="text-blue">Les équipements</h3>
       <% if @room == Room.first %>
         <%= render "short_equipment_maison" %>
@@ -96,20 +96,20 @@
         </div>
       </div>
 
-    </div>
+    </section>
 
-    <div class="the-plus p-3 col-12 col-lg-4">
+    <section id="the-plus" class="p-3 col-12 col-lg-4">
       <h3 class="text-blue">Les vrais +</h3>
       <% if @room == Room.first %>
         <%= render "more_maison" %>
       <% elsif @room == Room.last %>
         <%= render "more_chambre" %>
       <% end %>
-    </div>
+    </section>
 
   </div>
 
-  <div class="py-3">
+  <section id="to-know-more" class="py-3">
     <h3 class="text-blue"><%= "à".upcase %> savoir</h3>
     <div class="row to-know">
       <%= render "to_know",
@@ -117,7 +117,7 @@
         departure_hour: @room.departure_hour,
         max_guests: @room.max_guests %>
     </div>
-  </div>
+  </section>
 
   <div class="text-center py-4">
     <%= link_to "réservez maintenant".upcase, contact_path, class: "button-blue" %>
