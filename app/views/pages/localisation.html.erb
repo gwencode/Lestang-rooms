@@ -3,21 +3,23 @@
 </header>
 
 <main class="container py-3">
-  <h3 class="text-blue">Saint-Jean, Occitanie, France</h3>
-  <p>A proximité immédiate du <a href="https://www.domainedepreissac.fr/" class="text-blue text-decoration-none" target="_blank">Domaine de Preissac</a> (moins de 2km en voiture et environ 15-20min à pied).</p>
-  <p>Quartier résidentiel à proximité immédiate du <a href="https://www.visorando.com/randonnee-lac-de-la-tuilerie-saint-jean.html" class="text-blue text-decoration-none" target="_blank">Lac de la Tuilerie</a>.</p>
+  <section id="localisation-infos">
+    <h3 class="text-blue">Saint-Jean, Occitanie, France</h3>
+    <p>A proximité immédiate du <a href="https://www.domainedepreissac.fr/" class="text-blue text-decoration-none" target="_blank">Domaine de Preissac</a> (moins de 2km en voiture et environ 15-20min à pied).</p>
+    <p>Quartier résidentiel à proximité immédiate du <a href="https://www.visorando.com/randonnee-lac-de-la-tuilerie-saint-jean.html" class="text-blue text-decoration-none" target="_blank">Lac de la Tuilerie</a>.</p>
 
-  <div class="py-3">
-    <div id ="map"
-         data-controller="map"
-         data-map-markers-value="<%= @markers.to_json %>"
-         data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+    <div class="py-3">
+      <div id ="map"
+          data-controller="map"
+          data-map-markers-value="<%= @markers.to_json %>"
+          data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+      </div>
     </div>
-  </div>
+  </section>
 
-  <div class="row py-3">
+  <section id="moving-around-nearby" class="row py-3">
 
-    <div class="col-12 col-lg-7">
+    <article id="moving-around" class="col-12 col-lg-7">
       <h3 class="text-blue">Se déplacer</h3>
       <p>
         Pour rejoindre le centre ville de Toulouse, vous pouvez utiliser :
@@ -31,9 +33,9 @@
           Lire la suite
         </a>
       </p>
-    </div>
+    </article>
 
-    <div class="col-12 col-lg-5">
+    <article id="nearby" class="col-12 col-lg-5">
       <h3 class="text-blue">A proximité*</h3>
 
       <div class="row">
@@ -60,52 +62,52 @@
 
       <p class="text-muted small mt-2">* hors période de pointe </p>
 
+    </article>
+
+
+  </section>
+
+  <div class="text-center py-4">
+    <%= link_to "réservez maintenant".upcase, contact_path, class: "button-blue" %>
+  </div>
+
+  <section id="nearby-gallery" class="row justify-content-center">
+
+    <% path = "localisation/Hébergements-Toulouse-localisation-" %>
+    <div class="col-12 col-md-6 col-lg-4 p-2">
+      <a href="https://www.visorando.com/randonnee-lac-de-la-tuilerie-saint-jean.html" target="_blank">
+        <%= image_tag "#{path}01-Lac-Tuilerie.png", alt: "Hébergements Toulouse - Résidence Lestang - Lac Tuilerie", loading: "lazy", class:"w-100" %>
+      </a>
     </div>
-
-    <div class="text-center py-4">
-      <%= link_to "réservez maintenant".upcase, contact_path, class: "button-blue" %>
+    <div class="col-12 col-md-6 col-lg-4 p-2">
+      <a href="https://fr.wikipedia.org/wiki/Capitole_de_Toulouse" target="_blank">
+        <%= image_tag "#{path}02-Capitole.png", alt: "Hébergements Toulouse - Résidence Lestang - Capitole", loading: "lazy", class:"w-100" %>
+      </a>
     </div>
-
-    <div class="row">
-
-      <% path = "localisation/Hébergements-Toulouse-localisation-" %>
-      <div class="col-12 col-md-6 col-lg-4 p-2">
-        <a href="https://www.visorando.com/randonnee-lac-de-la-tuilerie-saint-jean.html" target="_blank">
-          <%= image_tag "#{path}01-Lac-Tuilerie.png", alt: "Hébergements Toulouse - Résidence Lestang - Lac Tuilerie", loading: "lazy", class:"w-100" %>
-        </a>
-      </div>
-      <div class="col-12 col-md-6 col-lg-4 p-2">
-        <a href="https://fr.wikipedia.org/wiki/Capitole_de_Toulouse" target="_blank">
-          <%= image_tag "#{path}02-Capitole.png", alt: "Hébergements Toulouse - Résidence Lestang - Capitole", loading: "lazy", class:"w-100" %>
-        </a>
-      </div>
-      <div class="col-12 col-md-6 col-lg-4 p-2">
-        <a href="https://www.stadetoulousain.fr/ernest-wallon" target="_blank">
-          <%= image_tag "#{path}03-Stade-Ernest-Wallon.png", alt: "Hébergements Toulouse - Résidence Lestang - Stade-Ernest-Wallon", loading: "lazy", class:"w-100" %>
-        </a>
-      </div>
-      <div class="col-12 col-md-6 col-lg-4 p-2">
-        <a href="https://www.cite-espace.com/" target="_blank">
-          <%= image_tag "#{path}04-Cité-Espace.png", alt: "Hébergements Toulouse - Résidence Lestang - Cité Espace", loading: "lazy", class:"w-100" %>
-        </a>
-      </div>
-      <div class="col-12 col-md-6 col-lg-4 p-2">
-        <a href="https://www.domainedepreissac.fr/" target="_blank">
-          <%= image_tag "#{path}05-Domaine-Preissac.png", alt: "Hébergements Toulouse - Résidence Lestang - Domaine Preissac", loading: "lazy", class:"w-100" %>
-        </a>
-      </div>
-      <div class="col-12 col-md-6 col-lg-4 p-2">
-        <%= image_tag "#{path}06-Aéroport-Gare.png", alt: "Hébergements Toulouse - Résidence Lestang - Aéroport et Gare", loading: "lazy", class:"w-100" %>
-      </div>
-      <div class="col-12 col-md-6 col-lg-4 p-2">
+    <div class="col-12 col-md-6 col-lg-4 p-2">
+      <a href="https://www.stadetoulousain.fr/ernest-wallon" target="_blank">
+        <%= image_tag "#{path}03-Stade-Ernest-Wallon.png", alt: "Hébergements Toulouse - Résidence Lestang - Stade-Ernest-Wallon", loading: "lazy", class:"w-100" %>
+      </a>
+    </div>
+    <div class="col-12 col-md-6 col-lg-4 p-2">
+      <a href="https://www.cite-espace.com/" target="_blank">
+        <%= image_tag "#{path}04-Cité-Espace.png", alt: "Hébergements Toulouse - Résidence Lestang - Cité Espace", loading: "lazy", class:"w-100" %>
+      </a>
+    </div>
+    <div class="col-12 col-md-6 col-lg-4 p-2">
+      <a href="https://www.domainedepreissac.fr/" target="_blank">
+        <%= image_tag "#{path}05-Domaine-Preissac.png", alt: "Hébergements Toulouse - Résidence Lestang - Domaine Preissac", loading: "lazy", class:"w-100" %>
+      </a>
+    </div>
+    <div class="col-12 col-md-6 col-lg-4 p-2">
+      <%= image_tag "#{path}06-Aéroport-Gare.png", alt: "Hébergements Toulouse - Résidence Lestang - Aéroport et Gare", loading: "lazy", class:"w-100" %>
+    </div>
+    <div class="col-12 col-md-6 col-lg-4 p-2">
       <a href="https://meett.fr/" target="_blank">
         <%= image_tag "#{path}07-Parc-Expositions.png", alt: "Hébergements Toulouse - Résidence Lestang - Parc Expositions", loading: "lazy", class:"w-100" %>
       </a>
-      </div>
-
-
     </div>
 
-  </div>
+  </section>
 
 </main>
