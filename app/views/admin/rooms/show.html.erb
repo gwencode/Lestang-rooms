@@ -16,127 +16,137 @@
       </header>
 
       <div class="pt-3 px-2">
-        <h4 class="text-center text-white">Infos</h4>
-        <div id="room-details">
-          <p class="m-0"><%= @room.max_guests > 1 ? "#{@room.max_guests} voyageurs" : "1 voyageur"%> maximum</p>
-          <p class="m-0">|</p>
-          <p class="m-0"><%= @room.bedrooms > 1 ? "#{@room.bedrooms} chambres" : "1 chambre"%></p>
-          <p class="m-0">|</p>
-          <p class="m-0"><%= @room.beds > 1 ? "#{@room.beds} lits" : "1 lit"%></p>
-          <p class="m-0">|</p>
-          <p class="m-0"><%= @room.bathrooms > 1 ? "#{@room.bathrooms} salles de bain" : "1 salle de bain"%></p>
-        </div>
+
+        <section id="admin-room-infos">
+          <h4 class="text-center text-white">Infos</h4>
+          <div id="room-details">
+            <p class="m-0"><%= @room.max_guests > 1 ? "#{@room.max_guests} voyageurs" : "1 voyageur"%> maximum</p>
+            <p class="m-0">|</p>
+            <p class="m-0"><%= @room.bedrooms > 1 ? "#{@room.bedrooms} chambres" : "1 chambre"%></p>
+            <p class="m-0">|</p>
+            <p class="m-0"><%= @room.beds > 1 ? "#{@room.beds} lits" : "1 lit"%></p>
+            <p class="m-0">|</p>
+            <p class="m-0"><%= @room.bathrooms > 1 ? "#{@room.bathrooms} salles de bain" : "1 salle de bain"%></p>
+          </div>
+        </section>
 
         <div class="separator"></div>
 
-        <div class="text-center text-white">
+        <section id="admin-room-description" class="text-center text-white">
           <h4 class="text-white">Description <span class="fw-light">(page d'accueil)</span></h4>
           <p class="mx-auto px-3 col-12 col-md-10"><%= @room.description%></p>
-        </div>
+        </section>
 
         <div class="separator"></div>
 
-        <h4 class="text-center text-white">Horaires</h4>
-        <div class="row py-2">
-          <div class="col-12 col-md-6 text-center">
-            <p class="m-0"><span class="fw-bold">Heure d'arrivée :</span> <%= @room.arrival_hour %></p>
+        <section id="admin-room-hours">
+          <h4 class="text-center text-white">Horaires</h4>
+          <div class="row py-2">
+            <div class="col-12 col-md-6 text-center">
+              <p class="m-0"><span class="fw-bold">Heure d'arrivée :</span> <%= @room.arrival_hour %></p>
+            </div>
+            <div class="col-12 col-md-6 text-center">
+              <p class="m-0"><span class="fw-bold">Heure de départ :</span> <%= @room.departure_hour %></p>
+            </div>
           </div>
-          <div class="col-12 col-md-6 text-center">
-            <p class="m-0"><span class="fw-bold">Heure de départ :</span> <%= @room.departure_hour %></p>
-          </div>
-        </div>
+        </section>
 
         <div class="separator"></div>
 
-        <h4 class="text-center text-white">Prix</h4>
-        <div class="row py-2">
-          <div class="col-12 col-lg-4 text-center">
-            <p class="m-0"><span class="fw-bold">Prix de base :</span> <%= @room.room_price.night_price %>€ / nuit</p>
+        <section id="admin-room-prices">
+          <h4 class="text-center text-white">Prix</h4>
+          <div class="row py-2">
+            <div class="col-12 col-lg-4 text-center">
+              <p class="m-0"><span class="fw-bold">Prix de base :</span> <%= @room.room_price.night_price %>€ / nuit</p>
+            </div>
+            <div class="col-12 col-lg-4 text-center">
+              <p class="m-0"><span class="fw-bold">Prix (<%= @room.room_price.medium_guests %> voyageurs) :</span> <%= @room.room_price.night_price_medium_guests %>€ / nuit</p>
+            </div>
+            <div class="col-12 col-lg-4 text-center">
+              <p class="m-0"><span class="fw-bold">Prix (<%= @room.room_price.high_guests %> voyageurs) :</span> <%= @room.room_price.night_price_high_guests %>€ / nuit</p>
+            </div>
           </div>
-          <div class="col-12 col-lg-4 text-center">
-            <p class="m-0"><span class="fw-bold">Prix (<%= @room.room_price.medium_guests %> voyageurs) :</span> <%= @room.room_price.night_price_medium_guests %>€ / nuit</p>
+          <div class="row py-2">
+            <div class="col-12 col-lg-6 text-center">
+              <p class="m-0"><span class="fw-bold">Frais bancaires :</span> <%= @room.bank_fees %>%</p>
+            </div>
+            <div class="col-12 col-lg-6 text-center">
+              <p class="m-0"><span class="fw-bold">Caution :</span> <%= @room.caution %>€</p>
+            </div>
           </div>
-          <div class="col-12 col-lg-4 text-center">
-            <p class="m-0"><span class="fw-bold">Prix (<%= @room.room_price.high_guests %> voyageurs) :</span> <%= @room.room_price.night_price_high_guests %>€ / nuit</p>
-          </div>
-        </div>
-        <div class="row py-2">
-          <div class="col-12 col-lg-6 text-center">
-            <p class="m-0"><span class="fw-bold">Frais bancaires :</span> <%= @room.bank_fees %>%</p>
-          </div>
-          <div class="col-12 col-lg-6 text-center">
-            <p class="m-0"><span class="fw-bold">Caution :</span> <%= @room.caution %>€</p>
-          </div>
-        </div>
+        </section>
 
         <div class="separator"></div>
 
-        <h4 class="text-center text-white">Réductions</h4>
-
-        <div class="row py-2">
-          <div class="col-12 col-lg-4 text-center">
-            <p class="m-0"><span class="fw-bold">A partir de <%= @room.room_price.week_duration %> nuits :</span> <%= @room.room_price.week_reduction %>€ / nuit</p>
+        <section id="admin-room-reductions">
+          <h4 class="text-center text-white">Réductions</h4>
+          <div class="row py-2">
+            <div class="col-12 col-lg-4 text-center">
+              <p class="m-0"><span class="fw-bold">A partir de <%= @room.room_price.week_duration %> nuits :</span> <%= @room.room_price.week_reduction %>€ / nuit</p>
+            </div>
+            <div class="col-12 col-lg-4 text-center">
+              <p class="m-0"><span class="fw-bold">A partir de <%= @room.room_price.medium_duration %> nuits :</span> <%= @room.room_price.medium_reduction %>€ / nuit</p>
+            </div>
+            <div class="col-12 col-lg-4 text-center">
+              <p class="m-0"><span class="fw-bold">A partir de <%= @room.room_price.high_duration %> nuits :</span> <%= @room.room_price.high_reduction %>€ / nuit</p>
+            </div>
           </div>
-          <div class="col-12 col-lg-4 text-center">
-            <p class="m-0"><span class="fw-bold">A partir de <%= @room.room_price.medium_duration %> nuits :</span> <%= @room.room_price.medium_reduction %>€ / nuit</p>
-          </div>
-          <div class="col-12 col-lg-4 text-center">
-            <p class="m-0"><span class="fw-bold">A partir de <%= @room.room_price.high_duration %> nuits :</span> <%= @room.room_price.high_reduction %>€ / nuit</p>
-          </div>
-        </div>
+        </section>
 
         <div class="separator"></div>
 
-        <h4 class="text-center text-white">Frais de ménage</h4>
-
-        <div class="row py-2">
-          <div class="col-12 col-lg-4 text-center">
-            <p class="m-0"><span class="fw-bold"><%= @room.room_price.small_cleaning_duration %> nuits ou moins : </span> <%= @room.room_price.small_cleaning_fee %>€</p>
+        <section id="admin-room-cleaning-fees">
+          <h4 class="text-center text-white">Frais de ménage</h4>
+          <div class="row py-2">
+            <div class="col-12 col-lg-4 text-center">
+              <p class="m-0"><span class="fw-bold"><%= @room.room_price.small_cleaning_duration %> nuits ou moins : </span> <%= @room.room_price.small_cleaning_fee %>€</p>
+            </div>
+            <div class="col-12 col-lg-4 text-center">
+              <p class="m-0"><span class="fw-bold">A partir de <%= @room.room_price.medium_cleaning_duration %> nuits :</span> <%= @room.room_price.medium_cleaning_fee %>€</p>
+            </div>
+            <div class="col-12 col-lg-4 text-center">
+              <p class="m-0"><span class="fw-bold">A partir de <%= @room.room_price.high_cleaning_duration %> nuits :</span> <%= @room.room_price.high_cleaning_fee %>€</p>
+            </div>
           </div>
-          <div class="col-12 col-lg-4 text-center">
-            <p class="m-0"><span class="fw-bold">A partir de <%= @room.room_price.medium_cleaning_duration %> nuits :</span> <%= @room.room_price.medium_cleaning_fee %>€</p>
-          </div>
-          <div class="col-12 col-lg-4 text-center">
-            <p class="m-0"><span class="fw-bold">A partir de <%= @room.room_price.high_cleaning_duration %> nuits :</span> <%= @room.room_price.high_cleaning_fee %>€</p>
-          </div>
-        </div>
+        </section>
 
         <div class="separator"></div>
 
-        <h4 class="text-center text-white">Calendrier</h4>
-
-        <div class="row py-2">
-          <div class="col-12 col-md-6 text-center">
-            <p class="m-0"><span class="fw-bold">Dates réservables par défaut : </span> <%= @room.default_available_slots ? "Oui" : "Non" %></p>
-            <p class="m-0 fw-light">(hors créneaux spécifiques)</p>
+        <section id="admin-room-calendar">
+          <h4 class="text-center text-white">Calendrier</h4>
+          <div class="row py-2">
+            <div class="col-12 col-md-6 text-center">
+              <p class="m-0"><span class="fw-bold">Dates réservables par défaut : </span> <%= @room.default_available_slots ? "Oui" : "Non" %></p>
+              <p class="m-0 fw-light">(hors créneaux spécifiques)</p>
+            </div>
+            <div class="col-12 col-md-6 text-center">
+              <p class="m-0"><span class="fw-bold">Réservable jusqu'à :</span> <%= @room.available_days %> jours avant</p>
+            </div>
           </div>
-          <div class="col-12 col-md-6 text-center">
-            <p class="m-0"><span class="fw-bold">Réservable jusqu'à :</span> <%= @room.available_days %> jours avant</p>
-          </div>
-        </div>
 
-        <div class="text-center pt-2">
-          <h5 class="fst-italic"><%= link_to "Voir Créneaux Spécifiques", admin_room_slots_path(@room), class: "text-white" %></h5>
-        </div>
+          <div class="text-center pt-2">
+            <h5 class="fst-italic"><%= link_to "Voir Créneaux Spécifiques", admin_room_slots_path(@room), class: "text-white" %></h5>
+          </div>
+        </section>
 
         <div class="separator"></div>
 
-        <h4 class="text-center text-white">Nuitées</h4>
-
-        <div class="row py-2">
-          <div class="col-12 col-md-6 text-center">
-            <p class="m-0"><span class="fw-bold">Nb de nuits minimum : </span> <%= @room.min_nights %></p>
-            <p class="m-0 fw-light">(hors conditions saisonnières)</p>
+        <section id="admin-room-nights">
+          <h4 class="text-center text-white">Nuitées</h4>
+          <div class="row py-2">
+            <div class="col-12 col-md-6 text-center">
+              <p class="m-0"><span class="fw-bold">Nb de nuits minimum : </span> <%= @room.min_nights %></p>
+              <p class="m-0 fw-light">(hors conditions saisonnières)</p>
+            </div>
+            <div class="col-12 col-md-6 text-center">
+              <p class="m-0"><span class="fw-bold">Nb de nuits maximum : </span> <%= @room.max_nights.negative? ? "pas de maximum" : @room.max_nights %></p>
+            </div>
           </div>
-          <div class="col-12 col-md-6 text-center">
-            <p class="m-0"><span class="fw-bold">Nb de nuits maximum : </span> <%= @room.max_nights.negative? ? "pas de maximum" : @room.max_nights %></p>
+
+          <div class="text-center pt-2">
+            <h5 class="fst-italic"><%= link_to "Voir Conditions Saisonnières", admin_room_seasons_path(@room), class: "text-white" %></h5>
           </div>
-        </div>
-
-        <div class="text-center pt-2">
-          <h5 class="fst-italic"><%= link_to "Voir Conditions Saisonnières", admin_room_seasons_path(@room), class: "text-white" %></h5>
-        </div>
-
+        </section>
 
       </div>
 
