@@ -1,31 +1,31 @@
 <%= render "header" %>
 
 <main>
-  <div class="container">
+  <section id="introduction" class="container">
     <div class="text-center py-4">
       <h2 class="h2-blue-no-margin px-4">Hébergements proches de Toulouse</h2>
       <div class="separator"></div>
-      <p id="introduction">
+      <p>
         Vous cherchez un hébergement <strong>confortable et convivial</strong> à Toulouse ?
         Découvrez notre <%= link_to "maison complète", room_path(@maison), class: "link-black-bold" %> ou notre <%= link_to "chambre chez l'habitant", room_path(@chambre), class: "link-black-bold" %>, situées à proximité immédiate de cette ville historique.
       </p>
     </div>
 
-  </div>
+  </section>
 
-  <div class="carousel-home-images-large-screen carousel-background-home-images">
+  <section class="carousel-home-images-large-screen carousel-background-home-images">
     <div class="container">
       <%= render "carousel_home_images_large_screen", first_two_home_images: @first_two_home_images, last_two_home_images: @last_two_home_images %>
     </div>
-  </div>
+  </section>
 
-  <div class="carousel-home-images-little-screen">
+  <section class="carousel-home-images-little-screen">
     <div class="container">
       <%= render "carousel_home_images_little_screen", home_images: @home_images %>
     </div>
-  </div>
+  </section>
 
-  <div class="container">
+  <section id="website-description" class="container">
     <div class="text-center py-3">
       <div>
         <h5 class="text-blue" id="subtitle-home">Que vous soyez en ville pour un voyage d'affaires, une escapade romantique ou simplement pour explorer la région, voici ce que nous proposons :</h5>
@@ -34,10 +34,10 @@
         <p>- Soit, la <%= link_to "chambre", room_path(@chambre), class: "link-black-bold" %> privative située dans ce logement partagé avec les propriétaires, avec 2 couchages</p>
       </div>
     </div>
-  </div>
+  </section>
 
-  <div class="container">
-    <div class="d-flex align-items-center py-3 my-3 row">
+  <section id="rooms-description" class="container">
+    <article id="house-description" class="d-flex align-items-center py-3 my-3 row">
       <%= image_tag "#{@maison.name}.png", alt: "Hébergements Toulouse - Résidence Lestang - Maison", class: "col-12 col-lg-6 order-lg-2 images-room-little-screen", loading: "lazy" %>
       <div class="text-center col-12 col-lg-6 order-lg-1">
         <h2 class="h2-blue-no-margin"><%= @maison.name %></h2>
@@ -45,9 +45,9 @@
         <p class="home-rooms-description"><%= @maison.description%></p>
         <%= link_to "VOIR LA MAISON", room_path(@maison), class: "button-blue" %>
       </div>
-    </div>
+    </article>
 
-    <div class="d-flex align-items-center py-3 my-3 row">
+    <article id="bedroom-description" class="d-flex align-items-center py-3 my-3 row">
       <%= image_tag "#{@chambre.name}.png", alt: "Hébergements Toulouse - Résidence Lestang - Chambre", class: "col-12 col-lg-6 images-room-little-screen", loading: "lazy" %>
       <div class="text-center col-12 col-lg-6">
         <h2 class="h2-blue-no-margin"><%= @chambre.name %></h2>
@@ -55,13 +55,13 @@
         <p class="home-rooms-description"><%= @chambre.description %></p>
         <%= link_to "VOIR LA CHAMBRE", room_path(@chambre), class: "button-blue" %>
       </div>
-    </div>
+    </article>
 
-  </div>
+  </section>
 
   <%= render "carousel_home_reviews", reviews: @reviews %>
 
-  <div class="container">
+  <section id="gallery" class="container">
 
     <div class="text-center py-4">
       <%= link_to "réservez maintenant".upcase, contact_path, class: "button-blue" %>
@@ -85,7 +85,7 @@
       </div>
     </div>
 
-  </div>
+  </section>
 </main>
 
 <%# TRY JS GALLERY %>
