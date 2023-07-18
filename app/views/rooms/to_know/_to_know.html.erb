@@ -14,13 +14,13 @@
         </div>
         <div class="modal-body">
           <% if @room == Room.first %>
-            <%= render "rules_maison",
+            <%= render "rooms/to_know/rules_maison",
                 arrival_hour: arrival_hour,
                 departure_hour: departure_hour,
                 max_guests: max_guests,
                 caution: @room.caution %>
           <% elsif @room == Room.last%>
-            <%= render "rules_chambre",
+            <%= render "rooms/to_know/rules_chambre",
                 arrival_hour: arrival_hour,
                 departure_hour: departure_hour,
                 max_guests: max_guests,
@@ -49,7 +49,7 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <%= render "security" %>
+          <%= render "rooms/to_know/security" %>
         </div>
       </div>
     </div>
@@ -60,7 +60,11 @@
 <article id="cancellation" class="col-12 col-lg-4 short-equipment">
   <p class="fw-bold">Conditions d'annulation</p>
   <ul class="ps-3">
-    <li class="mb-3">Annulation gratuite pendant 48 heures <br><span class="fw-light" style="font-size: 0.8em;">Hors frais bancaires et sauf si réservation dans les 48 heures avant la location</span></li>
+    <li class="mb-3">
+      Annulation gratuite pendant 48 heures
+      <br>
+      <aside class="fw-light" style="font-size: 0.8em;">Hors frais bancaires et sauf si réservation dans les 48 heures avant la location</aside>
+    </li>
     <li class="mb-3">Jusque J-7 : Remboursement de 50 %</li>
     <li>Entre J-7 et le jour J : Aucun remboursement</li>
   </ul>

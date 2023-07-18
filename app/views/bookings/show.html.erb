@@ -85,14 +85,14 @@
 
       </section>
 
-      <section id="booking-other-infos">
+      <aside id="booking-other-infos">
         <% if @booking.refund %>
           <h5 class="text-yellow text-center"><i class="fa-solid fa-money-bill-transfer"></i> Remboursement effectué : <%= @booking.refund_amount %> € </h5>
         <% end %>
 
         <p class="fst-italic text-center" style="font-size: 14px">* Frais bancaires non remboursées en cas d'annulation</p>
         <p class="fst-italic text-center" style="font-size: 14px">** Une caution non encaissée sera demandée</p>
-      </section>
+      </aside>
 
     </div>
   </main>

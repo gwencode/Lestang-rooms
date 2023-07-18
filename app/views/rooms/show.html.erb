@@ -17,15 +17,15 @@
 
 <main class="container">
 
-  <%= render "carousel_pictures", room: @room %>
+  <%= render "rooms/carousels/carousel_pictures", room: @room %>
 
   <div class="row">
 
     <section class="room-description col-12 col-lg-7 py-3">
       <% if @room == Room.first %>
-        <%= render "short_description_maison" %>
+        <%= render "rooms/descriptions/short_description_maison" %>
       <% elsif @room == Room.last %>
-        <%= render "short_description_chambre" %>
+        <%= render "rooms/descriptions/short_description_chambre" %>
       <% end %>
       <a href="" class="fw-bold text-black" data-bs-toggle="modal" data-bs-target="#descriptionModal">En savoir plus</a>
 
@@ -38,9 +38,9 @@
             </div>
             <div class="modal-body">
               <% if @room == Room.first %>
-                <%= render "description_maison" %>
+                <%= render "rooms/descriptions/description_maison" %>
               <% elsif @room == Room.last %>
-                <%= render "description_chambre" %>
+                <%= render "rooms/descriptions/description_chambre" %>
               <% end %>
             </div>
           </div>
@@ -72,9 +72,9 @@
     <section id="equipments" class="room-equipment col-12 col-lg-8 py-3">
       <h3 class="text-blue">Les équipements</h3>
       <% if @room == Room.first %>
-        <%= render "short_equipment_maison" %>
+        <%= render "rooms/equipments/short_equipment_maison" %>
       <% elsif @room == Room.last %>
-        <%= render "short_equipment_chambre" %>
+        <%= render "rooms/equipments/short_equipment_chambre" %>
       <% end %>
       <a href="" class="button-blue" data-bs-toggle="modal" data-bs-target="#equipmentModal">Afficher tous les équipements</a>
 
@@ -87,9 +87,9 @@
             </div>
             <div class="modal-body">
               <% if @room == Room.first %>
-                <%= render "equipment_maison" %>
+                <%= render "rooms/equipments/equipment_maison" %>
               <% elsif @room == Room.last %>
-                <%= render "equipment_chambre" %>
+                <%= render "rooms/equipments/equipment_chambre" %>
               <% end %>
             </div>
           </div>
@@ -101,9 +101,9 @@
     <section id="the-plus" class="p-3 col-12 col-lg-4">
       <h3 class="text-blue">Les vrais +</h3>
       <% if @room == Room.first %>
-        <%= render "more_maison" %>
+        <%= render "rooms/the_plus/the_plus_maison" %>
       <% elsif @room == Room.last %>
-        <%= render "more_chambre" %>
+        <%= render "rooms/the_plus/the_plus_chambre" %>
       <% end %>
     </section>
 
@@ -112,7 +112,7 @@
   <section id="to-know-more" class="py-3">
     <h3 class="text-blue"><%= "à".upcase %> savoir</h3>
     <div class="row to-know">
-      <%= render "to_know",
+      <%= render "rooms/to_know/to_know",
         arrival_hour: @room.arrival_hour,
         departure_hour: @room.departure_hour,
         max_guests: @room.max_guests %>

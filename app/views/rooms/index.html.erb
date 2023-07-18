@@ -15,13 +15,13 @@
 
   <section class="carousel-home-images-large-screen carousel-background-home-images">
     <div class="container">
-      <%= render "carousel_home_images_large_screen", first_two_home_images: @first_two_home_images, last_two_home_images: @last_two_home_images %>
+      <%= render "rooms/carousels/carousel_home_images_large_screen", first_two_home_images: @first_two_home_images, last_two_home_images: @last_two_home_images %>
     </div>
   </section>
 
   <section class="carousel-home-images-little-screen">
     <div class="container">
-      <%= render "carousel_home_images_little_screen", home_images: @home_images %>
+      <%= render "rooms/carousels/carousel_home_images_little_screen", home_images: @home_images %>
     </div>
   </section>
 
@@ -37,29 +37,10 @@
   </section>
 
   <section id="rooms-description" class="container">
-    <article id="house-description" class="d-flex align-items-center py-3 my-3 row">
-      <%= image_tag "#{@maison.name}.png", alt: "Hébergements Toulouse - Résidence Lestang - Maison", class: "col-12 col-lg-6 order-lg-2 images-room-little-screen", loading: "lazy" %>
-      <div class="text-center col-12 col-lg-6 order-lg-1">
-        <h2 class="h2-blue-no-margin"><%= @maison.name %></h2>
-        <div class="separator"></div>
-        <p class="home-rooms-description"><%= @maison.description%></p>
-        <%= link_to "VOIR LA MAISON", room_path(@maison), class: "button-blue" %>
-      </div>
-    </article>
-
-    <article id="bedroom-description" class="d-flex align-items-center py-3 my-3 row">
-      <%= image_tag "#{@chambre.name}.png", alt: "Hébergements Toulouse - Résidence Lestang - Chambre", class: "col-12 col-lg-6 images-room-little-screen", loading: "lazy" %>
-      <div class="text-center col-12 col-lg-6">
-        <h2 class="h2-blue-no-margin"><%= @chambre.name %></h2>
-        <div class="separator"></div>
-        <p class="home-rooms-description"><%= @chambre.description %></p>
-        <%= link_to "VOIR LA CHAMBRE", room_path(@chambre), class: "button-blue" %>
-      </div>
-    </article>
-
+    <%= render "shared/rooms_description", maison: @maison, chambre: @chambre %>
   </section>
 
-  <%= render "carousel_home_reviews", reviews: @reviews %>
+  <%= render "rooms/carousels/carousel_home_reviews", reviews: @reviews %>
 
   <section id="gallery" class="container">
 
@@ -79,7 +60,7 @@
         </div>
 
         <div class="gallery-large-screen">
-          <%= render "carousel_gallery_large_screen", gallery_images: @gallery_images %>
+          <%= render "rooms/carousels/carousel_gallery_large_screen", gallery_images: @gallery_images %>
         </div>
 
       </div>
