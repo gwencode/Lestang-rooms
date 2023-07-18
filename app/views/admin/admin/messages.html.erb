@@ -2,39 +2,4 @@
   <%= link_to raw("<i class='fa-solid fa-circle-arrow-left'></i>"), admin_root_path, class: "back-link" %>
 </div>
 
-<div class="p-5 header-blue">
-  <h1 class="px-5">Messages</h1>
-</div>
-
-<main class="container py-3" style="min-height: 56vh;">
-  <div class="card-users">
-    <% @chatrooms.each do |chatroom| %>
-      <div class="card-user my-3">
-        <%= link_to booking_chatroom_path(chatroom.booking, chatroom), class: "text-decoration-none text-black" do %>
-          <div class="card-user-infos">
-            <% user = chatroom.booking.user %>
-            <% header = "#{user.first_name.capitalize} #{user.last_name.upcase} - #{chatroom.booking.room.name}" %>
-            <div class="d-flex justify-content-start gap-1 align-items-center flex-wrap">
-              <h2><%= header %></h2>
-              <h6>
-                <%= l(chatroom.booking.arrival, format: "(%d/%m -") %>
-                <%= l(chatroom.booking.departure, format: "%d/%m/%y)") %>
-              </h6>
-            </div>
-            <% if chatroom.messages.count.positive? %>
-              <div class="d-flex justify-content-between">
-                <p><%= chatroom.messages.count %> <%= chatroom.messages.count > 1 ? "messages" : "message" %> </p>
-                <p><%= l(chatroom.messages.last.created_at, format: "%d/%m/%y - %H:%M") %></p>
-              </div>
-              <p id="last-message"><%= chatroom.messages.last.content %></p>
-            <% else %>
-              <p>Aucun message</p>
-            <% end %>
-          </div>
-        <% end %>
-      </div>
-
-    <% end %>
-  </div>
-
-</main>
+<%= render "shared/messages", chatrooms: @chatrooms %>
