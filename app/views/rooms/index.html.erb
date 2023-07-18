@@ -37,7 +37,7 @@
   </section>
 
   <section id="rooms-description" class="container">
-    <%= render "shared/rooms_description", maison: @maison, chambre: @chambre %>
+    <%= render "shared/rooms_description", maison: @maison, chambre: @chambre, path_maison: room_path(@maison), path_chambre: room_path(@chambre) %>
   </section>
 
   <%= render "rooms/carousels/carousel_home_reviews", reviews: @reviews %>

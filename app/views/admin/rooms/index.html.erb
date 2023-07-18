@@ -7,5 +7,5 @@
 </header>
 
 <main class="container">
-  <%= render "shared/rooms_description", maison: @maison, chambre: @chambre %>
+  <%= render "shared/rooms_description", maison: @maison, chambre: @chambre, path_maison: admin_room_path(@maison), path_chambre: admin_room_path(@chambre) %>
 </main>

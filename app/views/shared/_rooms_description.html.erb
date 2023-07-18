@@ -4,7 +4,7 @@
     <h2 class="h2-blue-no-margin"><%= maison.name %></h2>
     <div class="separator"></div>
     <p class="home-rooms-description"><%= maison.description%></p>
-    <%= link_to "VOIR LA MAISON", room_path(maison), class: "button-blue" %>
+    <%= link_to "VOIR LA MAISON", path_maison, class: "button-blue" %>
   </div>
 </article>
 
@@ -14,6 +14,6 @@
     <h2 class="h2-blue-no-margin"><%= chambre.name %></h2>
     <div class="separator"></div>
     <p class="home-rooms-description"><%= chambre.description %></p>
-    <%= link_to "VOIR LA CHAMBRE", room_path(chambre), class: "button-blue" %>
+    <%= link_to "VOIR LA CHAMBRE", path_chambre, class: "button-blue" %>
   </div>
 </article>
