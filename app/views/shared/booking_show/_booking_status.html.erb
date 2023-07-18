@@ -1,0 +1,32 @@
+  <section id="booking-status">
+    <% if booking.status == "acceptée" %>
+      <% if booking.paid %>
+        <h3 class="text-success text-center"><i class="fa-regular fa-circle-check"></i> Réservation confirmée</h3>
+      <% else %>
+        <h3 class="text-info text-center">
+          <i class="fa-solid fa-triangle-exclamation"></i>
+          Réservation en attente de paiement
+        </h3>
+        <% if !current_user.admin %>
+          <p class="fw-light fst-italic text-center px-3">Attention, votre réservation ne sera définitive qu'après le paiement</p>
+          <div class="text-center">
+            <%= link_to "Payer ma réservation", payment_booking_path(booking), data: {turbo_method: :patch}, class: "button-blue" %>
+          </div>
+        <% end %>
+      <% end %>
+    <% elsif booking.status == "en attente" %>
+      <h3 class="text-warning text-center">
+        <i class="fa-solid fa-clock-rotate-left"></i>
+        Réservation en attente
+        <% if current_user.admin %>
+          <%= link_to raw("<i class='fa-regular fa-circle-check'></i>"), accept_admin_booking_path(booking), data: {turbo_method: :patch, turbo_confirm: "Confirmer la réservation?"}, class: "text-decoration-none text-success px-3"%>
+          <%= link_to raw("<i class='fa-regular fa-circle-xmark'></i>"), decline_admin_booking_path(booking), data: {turbo_method: :patch, turbo_confirm: "Refuser la réservation?"}, class: 'text-decoration-none text-danger'%>
+        <% end %>
+      </h3>
+      <% if !current_user.admin %>
+        <p class="fw-light fst-italic text-center px-3">Vous pourrez payer la réservation une fois acceptée par les propriétaires</p>
+      <% end %>
+    <% elsif booking.status == "refusée" %>
+      <h3 class="text-danger text-center"><i class="fa-regular fa-circle-xmark"></i> Réservation refusée</h3>
+    <% end %>
+  </section>

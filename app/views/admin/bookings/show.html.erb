@@ -5,109 +5,39 @@
 
   <main class="container">
     <div class="py-3" style="background-color: rgba(0, 0, 0, 0.4); position: relative;">
-
-      <%= link_to edit_admin_booking_path(@booking), class: "admin-icon", id: "edit" do %>
-        <i class="fa-solid fa-pen-to-square"></i>
-      <% end %>
-
-      <%= link_to booking_chatroom_path(@booking, @booking.chatroom), class: "admin-icon", id: "message" do %>
-        <i class="fa-regular fa-message"></i>
-      <% end %>
-
       <header>
+        <%= link_to edit_admin_booking_path(@booking), class: "admin-icon", id: "edit" do %>
+          <i class="fa-solid fa-pen-to-square"></i>
+        <% end %>
+        <%= link_to booking_chatroom_path(@booking, @booking.chatroom), class: "admin-icon", id: "message" do %>
+          <i class="fa-regular fa-message"></i>
+        <% end %>
         <h2 class="px-5">Réservation de <%= @booking.user.first_name %> <%= @booking.user.last_name %></h2>
+
       </header>
 
-      <div class="row py-3">
+      <%= render "shared/booking_show/booking_recap", booking: @booking %>
 
-        <div class="col-12 col-md-6 text-center">
-          <p><span class="fw-bold">Logement réservé :</span> <%= @room.name %></p>
-          <p><span class="fw-bold">Arrivée :</span> <%= l(@booking.arrival, format: "%A %d %B à %Hh").capitalize %></p>
-          <p><span class="fw-bold">Départ :</span> <%= l(@booking.departure, format: "%A %d %B à %Hh").capitalize %></p>
-        </div>
+      <%= render "shared/booking_show/booking_status", booking: @booking %>
 
-        <div class="col-12 col-md-6 text-center">
-          <p><span class="fw-bold">Nombre de personnes :</span> <%= @booking.guests_number %></p>
-          <p><span class="fw-bold">Prix total :</span> <%= @booking.total_price %> €</p>
-          <p><span class="fw-bold">Email :</span> <%= @booking.user.email %></p>
-        </div>
+      <%= render "shared/booking_show/booking_prices", booking: @booking, room: @room, reduction_sentence: @reduction_sentence %>
 
-      </div>
-
-      <% if @booking.status == "acceptée" %>
-        <% if @booking.paid %>
-          <h3 class="text-success text-center"><i class="fa-regular fa-circle-check"></i> Réservation confirmée</h3>
-        <% else %>
-          <h3 class="text-info text-center">
-            <i class="fa-solid fa-triangle-exclamation"></i>
-            Réservation en attente de paiement
-          </h3>
-        <% end %>
-      <% elsif @booking.status == "en attente" %>
-        <h3 class="text-warning text-center">
-          <i class="fa-solid fa-clock-rotate-left"></i>
-          Réservation en attente
-          <%= link_to raw("<i class='fa-regular fa-circle-check'></i>"), accept_admin_booking_path(@booking), data: {turbo_method: :patch, turbo_confirm: "Confirmer la réservation?"}, class: "text-decoration-none text-success px-3"%>
-          <%= link_to raw("<i class='fa-regular fa-circle-xmark'></i>"), decline_admin_booking_path(@booking), data: {turbo_method: :patch, turbo_confirm: "Refuser la réservation?"}, class: 'text-decoration-none text-danger'%>
-        </h3>
-      <% elsif @booking.status == "refusée" %>
-        <h3 class="text-danger text-center"><i class="fa-regular fa-circle-xmark"></i> Réservation refusée</h3>
-      <% end %>
-
-      <div class="my-3 p-3 mx-auto col-12 col-sm-10 col-md-8 col-lg-6 col-xl-5">
-        <h3 class="text-center text-white"><u>Détail du prix</u></h3>
-        <div class="d-flex justify-content-between">
-          <p><%= @booking.night_price %> € x <%= @booking.nights %> nuits</p>
-          <p><%= @booking.basic_price %> €</p>
-        </div>
-        <% if @booking.reduction.negative? %>
-          <div class="d-flex justify-content-between">
-            <p><%= @reduction_sentence %> : </p>
-            <p class="text-success"><%= @booking.reduction %> €</p>
-          </div>
-        <% end %>
-        <div class="d-flex justify-content-between">
-          <p>Frais de ménage</p>
-          <p><%= @booking.cleaning_fee %> €</p>
-        </div>
-        <div class="d-flex justify-content-between">
-          <p>Frais bancaires (<%= @room.bank_fees%> %)*</p>
-          <p><%= @booking.bank_fees %> €</p>
-        </div>
-        <div class="d-flex justify-content-between">
-          <p class="fw-bold">Total</p>
-          <p class="fw-bold"><%= @booking.total_price %> €</p>
-        </div>
-        <div class="d-flex justify-content-between">
-          <p class="fst-italic m-0">Caution**</p>
-          <p class="fst-italic m-0"><%= @booking.caution %> €</p>
-        </div>
-
-      </div>
-
-      <% if @booking.refund %>
-        <h5 class="text-yellow text-center m-0"><i class="fa-solid fa-money-bill-transfer"></i> Remboursement effectué : <%= @booking.refund_amount %> € </h5>
-      <% end %>
-
-      <p class="fst-italic text-center" style="font-size: 14px">* Frais bancaires non remboursées en cas d'annulation</p>
-      <p class="fst-italic text-center" style="font-size: 14px">** Une caution non encaissée sera demandée</p>
-
-      <div class="my-3 p-3 mx-auto col-12 col-sm-10 col-md-8 col-lg-6 col-xl-5 text-center">
+      <aside id="admin-booking-comments" class="my-3 p-3 mx-auto col-12 col-sm-10 col-md-8 col-lg-6 col-xl-5 text-center">
         <h5 class="text-white"><u>Commentaires</u></h5>
         <% if @booking.comment.empty? %>
           <p class="m-0">Pas de commentaires</p>
         <% else %>
           <p class="m-0"><%= @booking.comment %></p>
         <% end %>
-      </div>
+      </aside>
 
-      <div class="text-center">
+      <section id="admin-booking-delete" class="text-center">
         <%= link_to admin_booking_path(@booking),
                   data: {turbo_method: :delete, turbo_confirm: "Supprimer cette réservation ?"},
                   class: "admin-delete-icon" do %>
           <i class='fa-solid fa-trash-can'></i>
         <% end %>
-      </div>
+      </section>
 
     </div>
   </main>

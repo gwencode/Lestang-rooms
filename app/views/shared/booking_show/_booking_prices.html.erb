@@ -1,0 +1,38 @@
+<section id="booking-prices" class="my-3 p-3 mx-auto col-12 col-sm-10 col-md-8 col-lg-6 col-xl-5">
+  <h3 class="text-center text-white"><u>Détail du prix</u></h3>
+  <div class="d-flex justify-content-between">
+    <p><%= booking.night_price %> € x <%= booking.nights %> <%= booking.nights > 1 ? "nuits" : "nuit" %></p>
+    <p><%= booking.basic_price %> €</p>
+  </div>
+  <% if booking.reduction.negative? %>
+    <div class="d-flex justify-content-between">
+      <p><%= reduction_sentence %> : </p>
+      <p class="text-success"><%= booking.reduction %> €</p>
+    </div>
+  <% end %>
+  <div class="d-flex justify-content-between">
+    <p>Frais de ménage</p>
+    <p><%= booking.cleaning_fee %> €</p>
+  </div>
+  <div class="d-flex justify-content-between">
+    <p>Frais bancaires (<%= room.bank_fees%> %)*</p>
+    <p><%= booking.bank_fees %> €</p>
+  </div>
+  <div class="d-flex justify-content-between">
+    <p class="fw-bold">Total</p>
+    <p class="fw-bold"><%= booking.total_price %> €</p>
+  </div>
+  <div class="d-flex justify-content-between">
+    <p class="fst-italic m-0">Caution**</p>
+    <p class="fst-italic m-0"><%= booking.caution %> €</p>
+  </div>
+</section>
+
+<aside id="booking-other-infos">
+  <% if booking.refund %>
+    <h5 class="text-yellow text-center"><i class="fa-solid fa-money-bill-transfer"></i> Remboursement effectué : <%= booking.refund_amount %> € </h5>
+  <% end %>
+
+  <p class="fst-italic text-center" style="font-size: 14px">* Frais bancaires non remboursées en cas d'annulation</p>
+  <p class="fst-italic text-center" style="font-size: 14px">** Une caution non encaissée sera demandée</p>
+</aside>
