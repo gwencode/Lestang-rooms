@@ -45,7 +45,7 @@ class Booking < ApplicationRecord
     today_end = DateTime.now.end_of_day
     now = DateTime.now
     now_french = now.in_time_zone("Europe/Paris")
-    if arrival < today_start || (now_french >= 18 && arrival < today_end)
+    if arrival < today_start || (now_french.hour >= 18 && arrival < today_end)
       errors.add(:arrival, "doit être après aujourd'hui (et réservation à faire avant 18h pour le soir même)")
     end
   end
