@@ -21,32 +21,38 @@
         <p class="m-0 <%= @slot.available ? "text-success" : "text-warning" %>"><%= @slot.available ? "Disponible" : "Indisponible" %> <span class="text-success" style="font-size: 0.8em"><%= notice %></span></p>
       </header>
 
-      <%= simple_form_for [:admin, @slot], url: admin_room_slot_path(@room, @slot) do |f| %>
-        <div class="row text-white py-3 align-items-center">
-          <div class="col-12 col-md-6 col-lg-3">
-            <%= f.input :start_date, as: :date, html5: true, label: "Début", hint: "Après-midi", hint_html: {class: "text-white fst-italic"} %>
+      <section id="edit-season-form">
+        <%= simple_form_for [:admin, @slot], url: admin_room_slot_path(@room, @slot) do |f| %>
+          <div class="row text-white py-3 align-items-center">
+            <div class="col-12 col-md-6 col-lg-3">
+              <%= f.input :start_date, as: :date, html5: true, label: "Début", hint: "Après-midi", hint_html: {class: "text-white fst-italic"} %>
+            </div>
+            <div class="col-12 col-md-6 col-lg-3">
+              <%= f.input :end_date, as: :date, html5: true, label: "Fin", hint: "Matin", hint_html: {class: "text-white fst-italic"} %>
+            </div>
+            <div class="col-12 col-md-6 col-lg-3">
+              <%= f.input :available, label: "Disponible" %>
+            </div>
+            <div class="col-12 col-md-6 col-lg-3">
+              <%= f.input :airbnb_booking, label: "Réservation Airbnb" %>
+            </div>
           </div>
-          <div class="col-12 col-md-6 col-lg-3">
-            <%= f.input :end_date, as: :date, html5: true, label: "Fin", hint: "Matin", hint_html: {class: "text-white fst-italic"} %>
+          <div class="text-center">
+            <%= f.submit "Modifier", class: "btn btn-light" %>
           </div>
-          <div class="col-12 col-md-6 col-lg-3">
-            <%= f.input :available, label: "Disponible" %>
-          </div>
-          <div class="col-12 col-md-6 col-lg-3">
-            <%= f.input :airbnb_booking, label: "Réservation Airbnb" %>
-          </div>
-        </div>
-        <div class="text-center">
-          <%= f.submit "Modifier", class: "btn btn-light" %>
-        </div>
-      <% end %>
+        <% end %>
+      </section>
 
       <% if @room == Room.first %>
-        <p class="text-center fst-italic pt-3 m-0">A noter : Supprimer / modifier un créneau disponible pour la maison supprime / modifie automatiquement le même créneau indisponible pour la chambre</p>
+        <aside>
+          <p class="text-center fst-italic pt-3 m-0">A noter : Supprimer / modifier un créneau disponible pour la maison supprime / modifie automatiquement le même créneau indisponible pour la chambre</p>
+        </aside>
       <% end %>
 
       <% if @room == Room.last && @slot.start_date.hour == 14 %>
-        <p class="text-center fst-italic pt-3 m-0">A noter : Supprimer / modifier un créneau indisponible de la chambre ne supprime / modifie pas le créneau associé disponible de la maison</p>
+        <aside>
+          <p class="text-center fst-italic pt-3 m-0">A noter : Supprimer / modifier un créneau indisponible de la chambre ne supprime / modifie pas le créneau associé disponible de la maison</p>
+        </aside>
       <% end %>
 
     </div>
