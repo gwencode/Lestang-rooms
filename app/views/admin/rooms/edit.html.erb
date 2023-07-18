@@ -15,7 +15,7 @@
 
         <%= simple_form_for [:admin, @room], url: admin_room_path(@room) do |f| %>
 
-          <div class="py-1">
+          <section id="admin-room-infos-edit" class="py-1">
             <h4 class="text-center"><u>Infos</u></h4>
             <div class="row">
               <div class="col-12 col-sm-6 col-xl-3"><%= f.input :max_guests, label: "Nb de voyageurs maximum", hint: "Voyageurs de plus de 2 ans", hint_html: {class: "text-white fst-italic"}, required: false %></div>
@@ -23,23 +23,23 @@
               <div class="col-12 col-sm-6 col-xl-3"><%= f.input :beds, label: "Nb de lits" %></div>
               <div class="col-12 col-sm-6 col-xl-3"><%= f.input :bathrooms, label: "Nb de salles de bain" %></div>
             </div>
-          </div>
+          </section>
 
-          <div class="py-1">
+          <section id="admin-room-infos-description" class="py-1">
             <h4 class="text-center"><u>Description</u></h4>
             <%= f.input :description, label: false, as: :text, input_html: { class: "long-input" } %>
-          </div>
+          </section>
 
-          <div class="py-1">
+          <section id="admin-room-hours-edit" class="py-1">
             <h4 class="text-center"><u>Horaires</u></h4>
             <div class="row">
               <% { arrival_hour: "Arrivée", departure_hour: "Départ" }.each do |key, value| %>
                 <div class="col-12 col-md-6"><%= f.input key, label: value, hint: "Ecrire une phrase. Format de l'heure HH:MM", hint_html: {class: "text-white fst-italic"} %></div>
               <% end %>
             </div>
-          </div>
+          </section>
 
-          <div class="py-1">
+          <section id="admin-room-prices-edit" class="py-1">
             <h4 class="text-center"><u>Prix</u></h4>
             <% [{
                 night_price: { label: "Prix de base / nuit en €", number: @room.room_price.night_price }
@@ -70,9 +70,9 @@
                 <%= f.input :caution, label: "Caution en €" %>
               </div>
             </div>
-          </div>
+          </section>
 
-          <div class="py-2">
+          <section id="admin-room-reductions-edit" class="py-2">
             <h4 class="text-center"><u>Réductions</u></h4>
             <% [{
                 week_duration: { label: "Nb de nuits semaine", number: @room.room_price.week_duration },
@@ -96,9 +96,9 @@
                 <% end %>
               </div>
             <% end %>
-          </div>
+          </section>
 
-          <div class="py-2">
+          <section id="admin-room-cleaning-fees-edit" class="py-2">
             <h4 class="text-center"><u>Frais de ménage</u></h4>
              <% [{
                 small_cleaning_duration: { label: "Nb de jours ménage faible durée", number: @room.room_price.small_cleaning_duration },
@@ -122,35 +122,35 @@
                 <% end %>
               </div>
             <% end %>
-          </div>
+          </section>
 
-           <div class="py-2">
+          <section id="admin-room-calendar-edit" class="py-2">
             <h4 class="text-center"><u>Calendrier</u></h4>
-              <div class="row">
-                <div class="col-12 col-md-6 py-2">
-                  <%= f.input :default_available_slots, label: "Dates réservables par défaut", hint: "(Hors créneaux spécifiques)", hint_html: {class: "text-white fst-italic"} %>
-                </div>
-                <div class="col-12 col-md-6 py-2">
-                  <%= f.input :available_days, label: "Réservable jusqu'à ... jours avant" %>
-                </div>
+            <div class="row">
+              <div class="col-12 col-md-6 py-2">
+                <%= f.input :default_available_slots, label: "Dates réservables par défaut", hint: "(Hors créneaux spécifiques)", hint_html: {class: "text-white fst-italic"} %>
+              </div>
+              <div class="col-12 col-md-6 py-2">
+                <%= f.input :available_days, label: "Réservable jusqu'à ... jours avant" %>
               </div>
             </div>
+          </section>
 
-           <div class="py-2">
+          <section id="admin-room-nights-edit" class="py-2">
             <h4 class="text-center"><u>Nuitées</u></h4>
-              <div class="row">
-                <div class="col-12 col-md-6 py-2">
-                  <%= f.input :min_nights, label: "Nb de nuits minimum", hint: "Hors conditions saisonnières", hint_html: {class: "text-white fst-italic"} %>
-                </div>
-                <div class="col-12 col-md-6 py-2">
-                  <%= f.input :max_nights, label: "Nb de nuits maximum", hint: "Mettre -1 pour ne pas fixer de maximum", hint_html: {class: "text-white fst-italic"} %>
-                </div>
+            <div class="row">
+              <div class="col-12 col-md-6 py-2">
+                <%= f.input :min_nights, label: "Nb de nuits minimum", hint: "Hors conditions saisonnières", hint_html: {class: "text-white fst-italic"} %>
+              </div>
+              <div class="col-12 col-md-6 py-2">
+                <%= f.input :max_nights, label: "Nb de nuits maximum", hint: "Mettre -1 pour ne pas fixer de maximum", hint_html: {class: "text-white fst-italic"} %>
               </div>
             </div>
+          </section>
 
-          <div class="py-3 d-flex justify-content-center">
+          <section id="admin-room-submit-edit" class="py-3 d-flex justify-content-center">
             <%= f.submit "Modifier", class: "button-blue" %>
-          </div>
+          </section>
         <% end %>
 
       </div>
