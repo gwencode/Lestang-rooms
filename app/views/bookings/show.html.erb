@@ -14,7 +14,7 @@
         <h2 class="px-5">Ma réservation de <%= @room.name.downcase %></h2>
       </header>
 
-      <div class="row py-3">
+      <section id="booking-recap" class="row py-3">
 
         <div class="col-12 col-md-6 text-center">
           <p><span class="fw-bold">Arrivée :</span> <%= l(@booking.arrival, format: "%A %d %B à %Hh").capitalize %></p>
@@ -26,32 +26,35 @@
           <p><span class="fw-bold">Prix total :</span> <%= @booking.total_price %> €</p>
         </div>
 
-      </div>
+      </section>
 
-      <% if @booking.status == "acceptée" %>
-        <% if @booking.paid %>
-          <h3 class="text-success text-center"><i class="fa-regular fa-circle-check"></i> Réservation confirmée</h3>
-        <% else %>
-          <h3 class="text-info text-center">
-            <i class="fa-solid fa-triangle-exclamation"></i>
-            Réservation en attente de paiement
+      <section id="booking-status">
+        <% if @booking.status == "acceptée" %>
+          <% if @booking.paid %>
+            <h3 class="text-success text-center"><i class="fa-regular fa-circle-check"></i> Réservation confirmée</h3>
+          <% else %>
+            <h3 class="text-info text-center">
+              <i class="fa-solid fa-triangle-exclamation"></i>
+              Réservation en attente de paiement
+            </h3>
+            <p class="fw-light fst-italic text-center px-3">Attention, votre réservation ne sera définitive qu'après le paiement</p>
+            <div class="text-center">
+              <%= link_to "Payer ma réservation", payment_booking_path(@booking), data: {turbo_method: :patch}, class: "button-blue" %>
+            </div>
+          <% end %>
+        <% elsif @booking.status == "en attente" %>
+          <h3 class="text-warning text-center">
+            <i class="fa-solid fa-clock-rotate-left"></i>
+            Réservation en attente
           </h3>
-          <p class="fw-light fst-italic text-center px-3">Attention, votre réservation ne sera définitive qu'après le paiement</p>
-          <div class="text-center">
-            <%= link_to "Payer ma réservation", payment_booking_path(@booking), data: {turbo_method: :patch}, class: "button-blue" %>
-          </div>
+          <p class="fw-light fst-italic text-center px-3">Vous pourrez payer la réservation une fois acceptée par les propriétaires</p>
+        <% elsif @booking.status == "refusée" %>
+          <h3 class="text-danger text-center"><i class="fa-regular fa-circle-xmark"></i> Réservation refusée</h3>
         <% end %>
-      <% elsif @booking.status == "en attente" %>
-        <h3 class="text-warning text-center">
-          <i class="fa-solid fa-clock-rotate-left"></i>
-          Réservation en attente
-        </h3>
-        <p class="fw-light fst-italic text-center px-3">Vous pourrez payer la réservation une fois acceptée par les propriétaires</p>
-      <% elsif @booking.status == "refusée" %>
-        <h3 class="text-danger text-center"><i class="fa-regular fa-circle-xmark"></i> Réservation refusée</h3>
-      <% end %>
+      </section>
 
-      <div class="my-3 p-3 mx-auto col-12 col-sm-10 col-md-8 col-lg-6 col-xl-5">
+
+      <section id="booking-prices" class="my-3 p-3 mx-auto col-12 col-sm-10 col-md-8 col-lg-6 col-xl-5">
         <h3 class="text-center text-white"><u>Détail du prix</u></h3>
         <div class="d-flex justify-content-between">
           <p><%= @booking.night_price %> € x <%= @booking.nights %> <%= @booking.nights > 1 ? "nuits" : "nuit" %></p>
@@ -80,14 +83,16 @@
           <p class="fst-italic m-0"><%= @booking.caution %> €</p>
         </div>
 
-      </div>
+      </section>
 
-      <% if @booking.refund %>
-        <h5 class="text-yellow text-center"><i class="fa-solid fa-money-bill-transfer"></i> Remboursement effectué : <%= @booking.refund_amount %> € </h5>
-      <% end %>
+      <section id="booking-other-infos">
+        <% if @booking.refund %>
+          <h5 class="text-yellow text-center"><i class="fa-solid fa-money-bill-transfer"></i> Remboursement effectué : <%= @booking.refund_amount %> € </h5>
+        <% end %>
 
-      <p class="fst-italic text-center" style="font-size: 14px">* Frais bancaires non remboursées en cas d'annulation</p>
-      <p class="fst-italic text-center" style="font-size: 14px">** Une caution non encaissée sera demandée</p>
+        <p class="fst-italic text-center" style="font-size: 14px">* Frais bancaires non remboursées en cas d'annulation</p>
+        <p class="fst-italic text-center" style="font-size: 14px">** Une caution non encaissée sera demandée</p>
+      </section>
 
     </div>
   </main>
