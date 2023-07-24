@@ -24,7 +24,7 @@
             <% if chatroom.messages.count.positive? %>
               <div class="d-flex justify-content-between">
                 <p><%= chatroom.messages.count %> <%= chatroom.messages.count > 1 ? "messages" : "message" %> </p>
-                <p><%= l(chatroom.messages.last.created_at, format: "%d/%m/%y - %H:%M") %></p>
+                <p><%= local_time(chatroom.messages.last.created_at, format: "%d/%m/%y - %H:%M") %></p>
               </div>
               <p id="last-message"><%= chatroom.messages.last.content %></p>
             <% else %>
