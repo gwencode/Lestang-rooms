@@ -40,7 +40,7 @@
 
       <%= turbo_frame_tag 'recaptcha' do %>
         <div class="mb-3 row">
-          <%= recaptcha_v3 action: 'signup', site_key: ENV['RECAPTCHA_KEY_V3'], turbolinks: true %>
+          <%= recaptcha_v3 action: 'signup', site_key: ENV['RECAPTCHA_SITE_KEY_V3'], turbolinks: true %>
         </div>
       <% end %>
 
