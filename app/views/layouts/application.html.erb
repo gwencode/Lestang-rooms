@@ -48,7 +48,9 @@
     <% else %>
       <%= render "shared/navbar" %>
     <% end %>
-    <%= render "shared/flashes" %>
+    <%= turbo_frame_tag :flashes do %>
+      <%= render "shared/flashes" %>
+    <% end %>
     <%# <%= render_breadcrumbs :separator => ' / '%>
     <%= yield %>
       <div data-controller="up-button">
