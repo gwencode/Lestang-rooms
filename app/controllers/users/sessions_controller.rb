@@ -29,14 +29,10 @@ class Users::SessionsController < Devise::SessionsController
 
   def validate_recaptchas
     v3_verify = verify_recaptcha(action: 'login',
-                                 minimum_score: 1,
+                                 minimum_score: 0.9,
                                  secret_key: ENV['RECAPTCHA_SECRET_KEY_V3'])
     v2_verify = verify_recaptcha(secret_key: ENV['RECAPTCHA_SECRET_KEY_V2'])
 
-    p "_________________________________________________________"
-    p "v3_verify: #{v3_verify}"
-    p "v2_verify: #{v2_verify}"
-    p "_________________________________________________________"
     return if v3_verify || v2_verify
 
     self.resource = resource_class.new sign_in_params
