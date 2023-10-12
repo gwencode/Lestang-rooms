@@ -30,6 +30,9 @@ class PagesController < ApplicationController
     room = Room.friendly.find(params[:room].to_i)
     message = params[:message]
     v2_verify = verify_recaptcha(secret_key: ENV['RECAPTCHA_SECRET_KEY_V2'])
+    p "_________________________________________________________"
+    p "v2_verify: #{v2_verify}"
+    p "_________________________________________________________"
 
     if user.email.blank? || user.first_name.blank? || user.last_name.blank? || message.blank?
       @user = current_user || User.new
