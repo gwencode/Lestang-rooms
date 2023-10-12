@@ -17,6 +17,10 @@
         <%= f.input :remember_me, label: "Se souvenir de moi", as: :boolean if devise_mapping.rememberable? %>
       </div>
 
+      <%= turbo_frame_tag 'recaptchas' do %>
+        <%= recaptcha_v3(action: 'login', site_key: ENV['RECAPTCHA_SITE_KEY_V3']) %>
+      <% end %>
+
       <div class="form-actions mb-3">
         <%= f.button :submit, "Connexion", class: "button-blue" %>
       </div>

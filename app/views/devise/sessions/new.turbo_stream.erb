@@ -1,0 +1,3 @@
+<%= turbo_stream.replace :recaptchas do %>
+  <div class='my-4 d-flex justify-content-center' id='recaptchaV2' data-controller='load-recaptcha-v2' data-load-recaptcha-v2-site-key-value=<%= ENV['RECAPTCHA_SITE_KEY_V2'] %>></div>
+<% end %>

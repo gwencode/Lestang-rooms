@@ -28,12 +28,12 @@ application.register("hello", HelloController)
 import ImageGalleryController from "./image_gallery_controller"
 application.register("image-gallery", ImageGalleryController)
 
+// Captcha V2 replacing captcha V3
+import LoadRecaptchaV2 from "./load_recaptcha_v2_controller"
+application.register("load-recaptcha-v2", LoadRecaptchaV2)
+
 import MapController from "./map_controller"
 application.register("map", MapController)
-
-// Captcha V2 replacing captcha V3
-// import RecaptchaV2 from "./recaptcha_v2_controller"
-// application.register("recaptcha-v2", RecaptchaV2)
 
 import UpButtonController from "./up_button_controller"
 application.register("up-button", UpButtonController)
