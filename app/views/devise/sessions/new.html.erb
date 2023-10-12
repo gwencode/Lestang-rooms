@@ -4,14 +4,14 @@
       <h2 class="text-blue">Se connecter</h2>
     </header>
 
-    <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name), data: {turbo: false}) do |f| %>
+    <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
       <div class="form-inputs">
         <%= f.input :email,
                     required: false,
+                    label: "Email",
                     autofocus: true,
                     input_html: { autocomplete: "email" } %>
         <%= f.input :password,
-                    required: false,
                     label: "Mot de passe",
                     input_html: { autocomplete: "current-password" } %>
         <%= f.input :remember_me, label: "Se souvenir de moi", as: :boolean if devise_mapping.rememberable? %>
