@@ -1,4 +1,4 @@
-<%= simple_form_for(user, url: contact_path, method: :post, data: { turbo: :false }) do |f| %>
+<%= simple_form_for(user, url: contact_path, method: :post) do |f| %>
   <%= f.error_notification %>
 
   <div class="form-inputs">
@@ -37,9 +37,11 @@
       En renseignant vos informations, vous acceptez le fait d'envoyer un e-mail à notre adresse <span class="text-blue text-decoration-underline">etrebil.ee30@gmail.com</span> avec les informations remplies.
     </p>
   </div>
-  <div class="pt-3 d-flex justify-content-center ">
-    <%= recaptcha_tags site_key: ENV['RECAPTCHA_SITE_KEY_V2'] %>
-  </div>
+
+  <%= turbo_frame_tag 'recaptchas' do %>
+    <%= recaptcha_v3(action: 'contact', site_key: ENV['RECAPTCHA_SITE_KEY_V3']) %>
+  <% end %>
+
   <div class="form-actions py-3 d-flex justify-content-center">
     <%= f.button :submit, "Envoyer", class: "button-blue" %>
   </div>

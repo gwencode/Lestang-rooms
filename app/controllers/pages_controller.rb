@@ -29,31 +29,35 @@ class PagesController < ApplicationController
     end
     room = Room.friendly.find(params[:room].to_i)
     message = params[:message]
-    v2_verify = verify_recaptcha(secret_key: ENV['RECAPTCHA_SECRET_KEY_V2'])
-    p "_________________________________________________________"
-    p "v2_verify: #{v2_verify}"
-    p "_________________________________________________________"
 
     if user.email.blank? || user.first_name.blank? || user.last_name.blank? || message.blank?
-      @user = current_user || User.new
+      @user = user
       @rooms = Room.all
-      redirect_to contact_path, alert: "Veuillez remplir tous les champs."
-    elsif v2_verify
+      render :contact
+    elsif validate_recaptchas
       MessageMailer.with(user: user, room: room, message: message).contact_admin_email.deliver_now
       MessageMailer.with(user: user, room: room, message: message).contact_user_email.deliver_now
       redirect_to root_path, notice: "Votre message a bien été envoyé."
     else
-      redirect_to contact_path, alert: "Veuillez cocher le captcha."
+      render :contact_form
     end
 
-    # Captcha v3
-    # v3_verify = verify_recaptcha action: 'message', minimum_score: 0.7, secret_key: ENV['RECAPTCHA_SECRET_KEY_V3']
-    # if (v3_verify || v2_verify) && user.email.present? && user.first_name.present? && user.last_name.present? && message.present?
   end
 
   private
 
   def user_params
     params.require(:user).permit(:email, :first_name, :last_name)
+  end
+
+  def validate_recaptchas
+    v3_verify = verify_recaptcha(action: 'contact',
+                                 minimum_score: 0.9,
+                                 secret_key: ENV['RECAPTCHA_SECRET_KEY_V3'])
+    v2_verify = verify_recaptcha(secret_key: ENV['RECAPTCHA_SECRET_KEY_V2'])
+
+    return v3_verify || v2_verify
+    # self.resource = resource_class.new sign_in_params
+    # respond_with_navigational(resource) { render :new }
   end
 end
