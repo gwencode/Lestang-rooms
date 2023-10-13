@@ -45,7 +45,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def validate_recaptchas
     v3_verify = verify_recaptcha(action: 'signup',
-                                 minimum_score: 0.7,
+                                 minimum_score: 0.9,
                                  secret_key: ENV['RECAPTCHA_SECRET_KEY_V3'])
     v2_verify = verify_recaptcha(secret_key: ENV['RECAPTCHA_SECRET_KEY_V2'])
 
