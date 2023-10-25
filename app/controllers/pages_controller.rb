@@ -52,7 +52,7 @@ class PagesController < ApplicationController
 
   def validate_recaptchas
     v3_verify = verify_recaptcha(action: 'contact',
-                                 minimum_score: 0.9,
+                                 minimum_score: 0.7,
                                  secret_key: ENV['RECAPTCHA_SECRET_KEY_V3'])
     v2_verify = verify_recaptcha(secret_key: ENV['RECAPTCHA_SECRET_KEY_V2'])
 
