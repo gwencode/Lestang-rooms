@@ -4,7 +4,6 @@
       <h2 class="text-blue">Créer un compte</h2>
     </header>
     <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-      <%= f.error_notification %>
 
       <div class="form-inputs">
         <div class="row">
@@ -37,10 +36,6 @@
                     label: "Confirmer mot de passe",
                     input_html: { autocomplete: "new-password" } %>
       </div>
-
-      <%= turbo_frame_tag 'recaptchas' do %>
-        <%= recaptcha_v3(action: 'signup', site_key: ENV['RECAPTCHA_SITE_KEY_V3']) %>
-      <% end %>
 
       <div class="form-actions mb-3">
         <%= f.button :submit, "Créer un compte", class: "button-blue" %>
