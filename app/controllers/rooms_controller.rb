@@ -1,6 +1,7 @@
 class RoomsController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[index show]
   before_action :set_room, only: [:show]
+  before_action :set_index_contents, only: [:index]
 
   add_breadcrumb "Accueil", :root_path
 
@@ -17,9 +18,6 @@ class RoomsController < ApplicationController
 
     gallery_files = Dir.glob(Rails.root.join('app', 'assets', 'images', "home", 'gallery', '*.{jpg,jpeg,png,PNG,gif}'))
     @gallery_images = gallery_files.map { |image_path| "home/gallery/#{File.basename(image_path)}" }
-
-    @home_title_content = Content.find_by(name: "home_title")
-    @introduction_description_content = Content.find_by(name: "introduction_description")
   end
 
   def show
@@ -79,5 +77,12 @@ class RoomsController < ApplicationController
       end
     end
     return { min_nights: @room.min_nights, start: nil, end: nil }
+  end
+
+  def set_index_contents
+    @home_title_content = Content.find_by(name: "home_title")
+    @introduction_description_content = Content.find_by(name: "introduction_description")
+    @subtitle_home_title_content = Content.find_by(name: "subtitle_home_title")
+    @subtitle_home_description_content = Content.find_by(name: "subtitle_home_description")
   end
 end

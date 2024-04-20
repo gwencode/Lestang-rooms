@@ -1,3 +1,5 @@
+Content.destroy_all
+
 puts "Creating contents..."
 
 Content.create(
@@ -9,6 +11,18 @@ Content.create(
   name: "introduction_description",
   html: "Vous cherchez un hébergement <strong>confortable et convivial</strong> à Toulouse ?
   Découvrez notre maison complète ou nos chambres chez l'habitant situées à proximité immédiate de cette ville historique."
+)
+
+Content.create(
+  name: "subtitle_home_title",
+  html: "Que vous soyez en ville pour un voyage d'affaires, une escapade romantique ou simplement pour explorer la région, voici ce que nous proposons :"
+)
+
+Content.create(
+  name: "subtitle_home_description",
+  html:
+    "- Soit, la maison entière privative située dans un quartier calme et verdoyant, avec jusque 8 couchages
+    - Soit, les 2 chambres privatives situées dans ce logement partagé avec les propriétaires, avec 2 couchages chacune"
 )
 
 puts "#{Content.count} contents created!"
