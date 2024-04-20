@@ -1,0 +1,5 @@
+<% if policy(room).edit? %>
+  <%= link_to admin_edit_descriptions_path(room), class: "" do %>
+    <i class="fa-solid fa-pen-to-square"></i>
+  <% end %>
+<% end %>

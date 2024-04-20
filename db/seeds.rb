@@ -40,12 +40,131 @@
 #   <strong>- votre voiture :</strong> possibilité de la garer dans un des innombrables parking en centre ville ou dans un des parking relais d'une station de métro. L'accès parking est inclus dans le ticket de métro, il faut juste penser à le garder avec soi quand on quitte le parking. <strong>Attention,</strong> Tisseo n'accepte pas que l'on laisse sa voiture toute la nuit sur un de leurs parkings et facture la prestation."
 # )
 
-puts "#{Content.count} contents created!"
+# puts "#{Content.count} contents created!"
 
 # Room.first.update(description: "En séjournant dans notre maison, vous pourrez profiter d'un cadre de vie chaleureux et convivial, avec une décoration soignée qui reflète notre personnalité et notre style de vie. Notre maison est équipée de tout ce dont vous aurez besoin pour passer un séjour confortable, notamment une cuisine entièrement équipée, une salle de bains moderne et des chambres confortables.")
 # Room.last.update(description: "Nous proposons deux chambres confortables, lumineuses et climatisées, équipées d'un lit Queen size et d'un dressing pour ranger vos effets personnels. Vous aurez également accès à une salle de bain privative ainsi qu'au reste des parties communes partagées avec nous.")
 
 # Room.last.update(slug: "les-chambres")
+
+# Room.first.update(description_title: "Un logement tranquille avec jardin et terrasse")
+# Room.first.update(detailed_short_description:
+#   "<p>
+#     Bienvenue dans notre charmante maison située dans un <strong>quartier calme et verdoyant.</strong>
+#     <br>Cette maison est notre résidence principale, mais lorsque nous sommes en déplacement, nous aimons la partager avec des voyageurs en quête de confort et de tranquillité.
+#     <br>En séjournant dans notre maison, vous pourrez profiter d'un <strong>cadre de vie chaleureux et convivial,</strong> avec une décoration soignée qui reflète notre personnalité et notre style de vie.
+#   </p>
+#   <p class='text-blue fw-bold'>A noter</p>
+#   <ul>
+#     <li>Personnes non prévues dans la réservation interdites</li>
+#     <li>Fêtes interdites</li>
+#     <li>Animaux interdits</li>
+#   </ul>
+#   "
+# )
+# Room.first.update(detailed_long_description:
+#   "
+#   <p>
+#   Bienvenue dans notre charmante maison située dans un <strong>quartier calme et verdoyant.</strong>
+#   <br>Cette maison est notre résidence principale, mais lorsque nous sommes en déplacement, nous aimons la partager avec des voyageurs en quête de confort et de tranquillité.
+#   <br>En séjournant dans notre maison, vous pourrez profiter d'un <strong>cadre de vie chaleureux et convivial,</strong> avec une décoration soignée qui reflète notre personnalité et notre style de vie.
+# </p>
+# <br/>
+# <p class='text-blue fw-bold'>Le logement</p>
+# <br/>
+# <ul>
+#   <li><strong>Maison entière</strong> située dans un quartier calme et verdoyant</li>
+#   <li><strong>Arrivée autonome</strong></li>
+#   <li><strong>Climatisation</strong> pour se sentir au frais même quand il fait chaud</li>
+#   <li><strong>8 couchages</strong> : 2 chambres avec lits Queen size, 1 chambre avec un matelas Queen size au sol et 1 canapé lit double convertible dans le séjour</li>
+#   <li><strong>Parking sécurisé</strong></li>
+#   <li><strong>Wifi internet haut débit / fibre</strong></li>
+#   <li><strong>Ordinateur et vidéoprojecteur</strong> équipé d'un <strong>chromecast</strong> pour se divertir</li>
+#   <li><strong>Imprimante</strong> pour scanner, copier et imprimer vos documents</li>
+#   <li><strong>Kit de repassage</strong> pour éviter les robes ou chemises froissés</li>
+#   <li><strong>Cuisiné équipée</strong> pour jouer les chefs étoilés et savourer la gastronomie Toulousaine</li>
+#   <li><strong>Machine à laver & étendoir</strong> (intérieur et extérieur) pour avoir des vêtements propres en toutes circonstances</li>
+#   <li><strong>Machine à café, thé</strong> sont présents afin de se sentir comme à la maison</li>
+#   <li><strong>Jardin et terrasse</strong> pour profiter des journées ensoleillées</li>
+# </ul>
+# <br/>
+# <p class='text-blue fw-bold'>Accès des voyageurs</p>
+# <br/>
+# <p>Notre maison est équipée de tout ce dont vous aurez besoin pour passer un séjour confortable, notamment une cuisine entièrement équipée, une salle de bains moderne et des chambres confortables.
+#   <br>La maison dispose également d'un jardin paisible, parfait pour se détendre et profiter du soleil pendant les jours chauds d'été. Vous pourrez également explorer les environs et découvrir les nombreux restaurants, bars et attractions touristiques à proximité.
+# </p>
+# <br/>
+# <p class='text-blue fw-bold'>Autres remarques</p>
+# <br/>
+# <ul>
+#   <li>Personnes non prévues dans la réservation interdites</li>
+#   <li>Fêtes interdites</li>
+#   <li>Animaux interdits</li>
+# </ul>
+#   "
+# )
+
+# Room.last.update(description_title: "Deux chambres privées dans notre logement")
+# Room.last.update(detailed_short_description:
+#   "<p>Bienvenue chez nous !
+#   <br>Nous sommes un couple chaleureux et accueillant, et nous sommes ravis de vous accueillir chez nous.
+#   <br>Notre maison est située dans un quartier paisible, à proximité des transports en commun et des commodités.
+#   <br>Nous proposons deux chambres confortables et lumineuses, équipée chacune d'un lit Queensize.
+#   <br>Vous aurez également accès à une salle de bain moderne, ainsi qu'à notre cuisine et salon où vous pourrez préparer vos repas et partager des moments de convivialité avec nous.
+# </p>
+#   "
+# )
+# Room.last.update(detailed_long_description:
+#   "<p>Bienvenue chez nous !
+#   <br>Nous sommes un couple chaleureux et accueillant, et nous sommes ravis de vous accueillir chez nous.
+#   <br>Notre maison est située dans un quartier paisible, à proximité des transports en commun et des commodités.
+#   <br>Nous proposons deux chambres confortables et lumineuses, équipée chacune d'un lit Queensize.
+#   <br>Vous aurez également accès à une salle de bain moderne, ainsi qu'à notre cuisine et salon où vous pourrez préparer vos repas et partager des moments de convivialité avec nous.
+#   </p>
+#   <br/>
+#   <p class='text-blue fw-bold'>Le logement</p>
+#   <br/>
+#   <ul>
+#     <li><strong>2 chambres</strong> situées dans un quartier calme et verdoyant</li>
+#     <li><strong>4 couchages</strong> avec 2 lits Queen Size</li>
+#     <li><strong>1 salle de bain</strong> privative</li>
+#     <li><strong>Climatisation</strong> pour se sentir au frais même quand il fait chaud</li>
+#   </ul>
+#   <br/>
+#   <p class='text-blue fw-bold'>Partagés avec les hôtes</p>
+#   <br/>
+#   <ul>
+#     <li><strong>Arrivée autonome</strong></li>
+#     <li><strong>Place de stationnement</strong> juste devant la maison avec possibilité de se garer sur le <strong>parking sécurisé</strong> si besoin</li>
+#     <li><strong>Wifi internet haut débit / fibre</strong></li>
+#     <li><strong>Ordinateur et vidéoprojecteur</strong> équipé d'un <strong>chromecast</strong> pour se divertir</li>
+#     <li><strong>Imprimante</strong> pour scanner, copier et imprimer vos documents</li>
+#     <li><strong>Salle de yoga</strong> pour vous détendre (musique et diffuseur d'huile essentielle)</li>
+#     <li><strong>Kit de repassage</strong> pour éviter les robes ou chemises froissés</li>
+#     <li><strong>Cuisiné équipée</strong> pour jouer les chefs étoilés et savourer la gastronomie Toulousaine</li>
+#     <li><strong>Machine à laver & étendoir</strong> (intérieur et extérieur) pour avoir des vêtements propres en toutes circonstances</li>
+#     <li><strong>Machine à café, thé</strong> sont présents afin de se sentir comme à la maison</li>
+#     <li><strong>Jardin et terrasse</strong> pour profiter des journées ensoleillées</li>
+#   </ul>
+#   <br/>
+#   <p class='text-blue fw-bold'>Accès des voyageurs</p>
+#   <br/>
+#   <ul>
+#     <li>Chambres privatives à l'étage avec salle de bain attenante.</li>
+#     <li>Parties communes en RdC (salon, cuisine, terrasse, jardin).</li>
+#   </ul>
+#   <br/>
+#   <p class='text-blue fw-bold'>Autres remarques</p>
+#   <br/>
+#   <ul>
+#     <li>Situé à 100m de la ligne 73 se rendant à une station de métro pour ne pas s'encombrer d'une voiture en ville (fonctionne de 6h à 21h)</li>
+#     <li>Situé à 400m du lac de la Tuilerie</li>
+#     <li>Situé à 500m d'un maître Artisan Boulanger d'exception</li>
+#     <li>Situé à 15 min de la cité de l'Espace</li>
+#     <li>Situé à 20 min du Capitole</li>
+#   </ul>
+#   "
+# )
 
 ### End of next production
 

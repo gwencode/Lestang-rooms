@@ -22,11 +22,12 @@
   <div class="row">
 
     <section class="room-description col-12 col-lg-7 py-3">
-      <% if @room == Room.first %>
-        <%= render "rooms/descriptions/short_description_maison" %>
-      <% elsif @room == Room.last %>
-        <%= render "rooms/descriptions/short_description_chambre" %>
-      <% end %>
+      <div class="d-flex justify-content-between">
+        <h3 class="text-dark-blue"><%= @room.description_title %></h3>
+        <%= render "admin/rooms/edit_descriptions_icon", room: @room %>
+      </div>
+      <%= @room.detailed_short_description %>
+      <br/>
       <a href="" class="fw-bold text-black" data-bs-toggle="modal" data-bs-target="#descriptionModal">En savoir plus</a>
 
       <!-- Modal -->
@@ -37,16 +38,12 @@
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-              <% if @room == Room.first %>
-                <%= render "rooms/descriptions/description_maison" %>
-              <% elsif @room == Room.last %>
-                <%= render "rooms/descriptions/description_chambre" %>
-              <% end %>
+              <h3 class="text-dark-blue"><%= @room.description_title %></h3>
+              <%= @room.detailed_long_description %>
             </div>
           </div>
         </div>
       </div>
-
 
     </section>
 

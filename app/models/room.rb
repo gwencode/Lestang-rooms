@@ -2,6 +2,9 @@ class Room < ApplicationRecord
   extend FriendlyId
   friendly_id :name, use: :slugged
   has_rich_text :description
+  has_rich_text :description_title
+  has_rich_text :detailed_short_description
+  has_rich_text :detailed_long_description
 
   has_many :bookings
   has_many :users, through: :bookings

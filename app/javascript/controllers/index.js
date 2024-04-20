@@ -7,9 +7,6 @@ import { application } from "./application"
 import ChatroomController from "./chatroom_controller"
 application.register("chatroom", ChatroomController)
 
-import CollapseController from "./collapse_controller"
-application.register("collapse", CollapseController)
-
 import EditReviewController from "./edit_review_controller"
 application.register("edit-review", EditReviewController)
 

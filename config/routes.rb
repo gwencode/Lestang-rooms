@@ -49,6 +49,8 @@ Rails.application.routes.draw do
     get "/messages", to: "admin#messages"
 
     resources :rooms, only: %i[index show edit update]
+    get "/rooms/:id/edit_descriptions", to: "rooms#edit_descriptions", as: "edit_descriptions"
+    patch "/rooms/:id/update_descriptions", to: "rooms#update_descriptions", as: "update_descriptions"
     resources :rooms, only: %i[show] do
       resources :seasons, except: %i[show]
       resources :slots
