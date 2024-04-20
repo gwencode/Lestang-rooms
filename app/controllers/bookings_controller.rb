@@ -93,10 +93,10 @@ class BookingsController < ApplicationController
   end
 
   def set_hour
-    case @booking.room.name
-    when "La Maison"
+    case @booking.room
+    when Room.first
       { arrival: 14, departure: 12 }
-    when "La Chambre"
+    when Room.last
       { arrival: 18, departure: 11 }
     end
   end
