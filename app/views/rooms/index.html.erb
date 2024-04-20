@@ -3,11 +3,12 @@
 <main>
   <section id="introduction" class="container">
     <div class="text-center py-4">
-      <h2 class="h2-blue-no-margin px-4">Hébergements proches de Toulouse</h2>
+      <h2 class="h2-blue-no-margin px-4"><%= @home_title_content.html %></h2>
+      <%= render "edit_content", content: @home_title_content %>
       <div class="separator"></div>
       <p>
-        Vous cherchez un hébergement <strong>confortable et convivial</strong> à Toulouse ?
-        Découvrez notre <%= link_to "maison complète", room_path(@maison), class: "link-black-bold" %> ou notre <%= link_to "chambre chez l'habitant", room_path(@chambre), class: "link-black-bold" %>, situées à proximité immédiate de cette ville historique.
+        <%= @introduction_description_content.html %>
+        <%= render "edit_content", content: @introduction_description_content %>
       </p>
     </div>
 

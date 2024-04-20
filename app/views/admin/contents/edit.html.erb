@@ -1,0 +1,7 @@
+<h1> Modifier ce contenu</h1>
+
+<%= simple_form_for @content, url: admin_content_path(@content) do |f| %>
+  <%= f.rich_text_area :html %>
+  <%# <%= f.rich_text_area :html, input_html: { class: "long-input" } %>
+  <%= f.submit %>
+<% end %>
