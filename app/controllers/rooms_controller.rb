@@ -17,6 +17,9 @@ class RoomsController < ApplicationController
 
     gallery_files = Dir.glob(Rails.root.join('app', 'assets', 'images', "home", 'gallery', '*.{jpg,jpeg,png,PNG,gif}'))
     @gallery_images = gallery_files.map { |image_path| "home/gallery/#{File.basename(image_path)}" }
+
+    @home_title_content = Content.find_by(name: "home_title")
+    @introduction_description_content = Content.find_by(name: "introduction_description")
   end
 
   def show
