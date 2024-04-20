@@ -6,7 +6,7 @@
         <% if booking.room == Room.first %>
           <%= image_tag "#{booking.room.name}/maison.png", alt: "Hébergements Toulouse - Résidence Lestang - #{booking.room.name}", loading: "lazy" %>
         <% elsif booking.room == Room.last %>
-          <%= image_tag "#{booking.room.name}/chambre.png", alt:"Hébergements Toulouse - Résidence Lestang - #{booking.room.name}", loading: "lazy" %>
+          <%= image_tag "#{booking.room.name}/chambre.JPG", alt:"Hébergements Toulouse - Résidence Lestang - #{booking.room.name}", loading: "lazy" %>
         <% end %>
 
         <div class="card-booking-infos">

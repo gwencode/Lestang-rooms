@@ -32,11 +32,13 @@ class Admin::SlotsController < ApplicationController
     end
     authorize @slot
     if @slot.save
+      first_room_name = Room.first.name.downcase
+      last_room_name = Room.last.name.downcase
       if @room == Room.first
         if Slot.find_by(id: @slot.id + 1)
-          redirect_to admin_room_slots_path, notice: "Créneaux ajoutés pour la maison et la chambre"
+          redirect_to admin_room_slots_path, notice: "Créneaux ajoutés pour #{first_room_name} et pour #{last_room_name}"
         else
-          redirect_to admin_room_slots_path, alert: "Créneau créé pour la maison. ATTENTION : créneau pas créé pour la chambre"
+          redirect_to admin_room_slots_path, alert: "Créneau créé pour #{first_room_name}. ATTENTION : créneau pas créé pour #{last_room_name}"
         end
       else
         redirect_to admin_room_slots_path, notice: "Créneau créé"

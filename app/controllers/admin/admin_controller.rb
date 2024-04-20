@@ -6,7 +6,7 @@ class Admin::AdminController < ApplicationController
     @dashboard_sections = {
       "Mes logements" => {
         url: "admin_rooms",
-        asset: "La Chambre.png"
+        asset: "Les Chambres.png"
       },
       "Réservations" => {
         url: "admin_bookings",

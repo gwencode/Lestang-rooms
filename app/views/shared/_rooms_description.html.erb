@@ -4,16 +4,16 @@
     <h2 class="h2-blue-no-margin"><%= maison.name %></h2>
     <div class="separator"></div>
     <p class="home-rooms-description"><%= maison.description%></p>
-    <%= link_to "VOIR LA MAISON", path_maison, class: "button-blue" %>
+    <%= link_to "VOIR #{Room.first.name.upcase}", path_maison, class: "button-blue" %>
   </div>
 </article>
 
 <article id="bedroom-description" class="d-flex align-items-center py-3 my-3 row">
-  <%= image_tag "#{chambre.name}.png", alt: "Hébergements Toulouse - Résidence Lestang - Chambre", class: "col-12 col-lg-6 images-room-little-screen", loading: "lazy" %>
+  <%= image_tag "Les Chambres.png", alt: "Hébergements Toulouse - Résidence Lestang - Chambre", class: "col-12 col-lg-6 images-room-little-screen", loading: "lazy" %>
   <div class="text-center col-12 col-lg-6">
     <h2 class="h2-blue-no-margin"><%= chambre.name %></h2>
     <div class="separator"></div>
     <p class="home-rooms-description"><%= chambre.description %></p>
-    <%= link_to "VOIR LA CHAMBRE", path_chambre, class: "button-blue" %>
+    <%= link_to "VOIR #{Room.last.name.upcase}", path_chambre, class: "button-blue" %>
   </div>
 </article>

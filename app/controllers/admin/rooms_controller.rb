@@ -59,7 +59,8 @@ class Admin::RoomsController < ApplicationController
   end
 
   def room_params
-    params.require(:room).permit(:description,
+    params.require(:room).permit(:name,
+                                 :description,
                                  :max_guests,
                                  :arrival_hour,
                                  :departure_hour,

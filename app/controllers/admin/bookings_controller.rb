@@ -84,9 +84,9 @@ class Admin::BookingsController < ApplicationController
     when "refusée"
       bookings.where(status: "refusée").order("departure DESC")
     when "house"
-      bookings.where(room: Room.find_by(name: "La Maison")).order("departure DESC")
+      bookings.where(room: Room.find(Room.first.id)).order("departure DESC")
     when "bedroom"
-      bookings.where(room: Room.find_by(name: "La Chambre")).order("departure DESC")
+      bookings.where(room: Room.find(Room.last.id)).order("departure DESC")
     else
       bookings.order("departure DESC")
     end
@@ -117,7 +117,7 @@ class Admin::BookingsController < ApplicationController
     when "house"
       "Réservations de la maison"
     when "bedroom"
-      "Réservations de la chambre"
+      "Réservations des chambres"
     else
       "Toutes les réservations"
     end

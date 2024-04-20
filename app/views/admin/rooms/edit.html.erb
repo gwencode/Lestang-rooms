@@ -2,7 +2,7 @@
   <%= link_to raw("<i class='fa-solid fa-circle-arrow-left'></i>"), admin_room_path(@room), class: "back-link" %>
 </div>
 
-<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url('<%= asset_path("#{@room.name}.png") %>')">
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url('<%= asset_path("Les Chambres.png") %>')">
 
   <main class="container">
     <div class="py-3" style="background-color: rgba(0, 0, 0, 0.7);">
@@ -14,7 +14,7 @@
       <div class="div p-3 text-white">
 
         <%= simple_form_for [:admin, @room], url: admin_room_path(@room) do |f| %>
-
+          <%= f.input :name, label: "Nom" %>
           <section id="admin-room-infos-edit" class="py-1">
             <h4 class="text-center"><u>Infos</u></h4>
             <div class="row">

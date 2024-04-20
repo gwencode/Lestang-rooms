@@ -85,7 +85,7 @@ puts "Database cleaned!"
 # description_chambre = "Nous proposons une chambre confortable, lumineuse et climatisée, équipée d'un lit Queen size et d'une commode pour ranger vos effets personnels. Vous aurez également accès au reste des parties communes partagées avec nous."
 
 # chambre = Room.create(
-#   name: "La Chambre",
+#   name: "Les Chambres",
 #   description: description_chambre,
 #   max_guests: 2,
 #   arrival_hour: "entre 18:00 et 22:00",

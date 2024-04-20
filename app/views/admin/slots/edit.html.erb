@@ -45,13 +45,13 @@
 
       <% if @room == Room.first %>
         <aside>
-          <p class="text-center fst-italic pt-3 m-0">A noter : Supprimer / modifier un créneau disponible pour la maison supprime / modifie automatiquement le même créneau indisponible pour la chambre</p>
+          <p class="text-center fst-italic pt-3 m-0">A noter : Supprimer / modifier un créneau disponible pour la maison supprime / modifie automatiquement le même créneau indisponible pour les chambres</p>
         </aside>
       <% end %>
 
       <% if @room == Room.last && @slot.start_date.hour == 14 %>
         <aside>
-          <p class="text-center fst-italic pt-3 m-0">A noter : Supprimer / modifier un créneau indisponible de la chambre ne supprime / modifie pas le créneau associé disponible de la maison</p>
+          <p class="text-center fst-italic pt-3 m-0">A noter : Supprimer / modifier un créneau indisponible des chambres ne supprime / modifie pas le créneau associé disponible de la maison</p>
         </aside>
       <% end %>
 
