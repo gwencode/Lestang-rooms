@@ -2,6 +2,8 @@ class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[localisation contact message]
 
   def localisation
+    @localisation_infos_content = Content.find_by(name: "localisation_infos")
+    @moving_around_content = Content.find_by(name: "moving_around")
     @markers = [
       { lat: 43.668226,
         lng: 1.498332,

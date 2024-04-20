@@ -10,10 +10,10 @@
 # )
 
 # Content.create(
-#   name: "introduction_description",
-#   html: "Vous cherchez un hébergement <strong>confortable et convivial</strong> à Toulouse ?
-#   Découvrez notre maison complète ou nos chambres chez l'habitant situées à proximité immédiate de cette ville historique."
-# )
+  #   name: "introduction_description",
+  #   html: "Vous cherchez un hébergement <strong>confortable et convivial</strong> à Toulouse ?
+  #   Découvrez notre maison complète ou nos chambres chez l'habitant situées à proximité immédiate de cette ville historique."
+  # )
 
 # Content.create(
 #   name: "subtitle_home_title",
@@ -27,11 +27,23 @@
 #     - Soit, les 2 chambres privatives situées dans ce logement partagé avec les propriétaires, avec 2 couchages chacune"
 # )
 
+# Content.create(
+#   name: "localisation_infos",
+#   html: "A proximité immédiate du <a href='https://www.domainedepreissac.fr/' class='text-blue text-decoration-none' target='_blank'>Domaine de Preissac</a> (moins de 2km en voiture et environ 15-20min à pied).
+#   <br></br><br></br>Quartier résidentiel à proximité immédiate du <a href='https://www.visorando.com/randonnee-lac-de-la-tuilerie-saint-jean.html' class='text-blue text-decoration-none' target='_blank'>Lac de la Tuilerie</a>."
+# )
 
-# puts "#{Content.count} contents created!"
+# Content.create(
+#   name: "moving_around",
+#   html: "Pour rejoindre le centre ville de Toulouse, vous pouvez utiliser :
+#   <strong>- le bus :</strong> terminus de la ligne 73 (de 6h à 21h) se situant à 100m de la maison et vous conduisant au terminus de la ligne de métro B « Borderouge ».
+#   <strong>- votre voiture :</strong> possibilité de la garer dans un des innombrables parking en centre ville ou dans un des parking relais d'une station de métro. L'accès parking est inclus dans le ticket de métro, il faut juste penser à le garder avec soi quand on quitte le parking. <strong>Attention,</strong> Tisseo n'accepte pas que l'on laisse sa voiture toute la nuit sur un de leurs parkings et facture la prestation."
+# )
 
-Room.first.update(description: "En séjournant dans notre maison, vous pourrez profiter d'un cadre de vie chaleureux et convivial, avec une décoration soignée qui reflète notre personnalité et notre style de vie. Notre maison est équipée de tout ce dont vous aurez besoin pour passer un séjour confortable, notamment une cuisine entièrement équipée, une salle de bains moderne et des chambres confortables.")
-Room.last.update(description: "Nous proposons deux chambres confortables, lumineuses et climatisées, équipées d'un lit Queen size et d'un dressing pour ranger vos effets personnels. Vous aurez également accès à une salle de bain privative ainsi qu'au reste des parties communes partagées avec nous.")
+puts "#{Content.count} contents created!"
+
+# Room.first.update(description: "En séjournant dans notre maison, vous pourrez profiter d'un cadre de vie chaleureux et convivial, avec une décoration soignée qui reflète notre personnalité et notre style de vie. Notre maison est équipée de tout ce dont vous aurez besoin pour passer un séjour confortable, notamment une cuisine entièrement équipée, une salle de bains moderne et des chambres confortables.")
+# Room.last.update(description: "Nous proposons deux chambres confortables, lumineuses et climatisées, équipées d'un lit Queen size et d'un dressing pour ranger vos effets personnels. Vous aurez également accès à une salle de bain privative ainsi qu'au reste des parties communes partagées avec nous.")
 
 # Room.last.update(slug: "les-chambres")
 
