@@ -1,31 +1,42 @@
-Content.destroy_all
+### Add to next production
 
-puts "Creating contents..."
+# Content.destroy_all
 
-Content.create(
-  name: "home_title",
-  html: "Hébergements proches de Toulouse"
-)
+# puts "Creating contents..."
 
-Content.create(
-  name: "introduction_description",
-  html: "Vous cherchez un hébergement <strong>confortable et convivial</strong> à Toulouse ?
-  Découvrez notre maison complète ou nos chambres chez l'habitant situées à proximité immédiate de cette ville historique."
-)
+# Content.create(
+#   name: "home_title",
+#   html: "Hébergements proches de Toulouse"
+# )
 
-Content.create(
-  name: "subtitle_home_title",
-  html: "Que vous soyez en ville pour un voyage d'affaires, une escapade romantique ou simplement pour explorer la région, voici ce que nous proposons :"
-)
+# Content.create(
+#   name: "introduction_description",
+#   html: "Vous cherchez un hébergement <strong>confortable et convivial</strong> à Toulouse ?
+#   Découvrez notre maison complète ou nos chambres chez l'habitant situées à proximité immédiate de cette ville historique."
+# )
 
-Content.create(
-  name: "subtitle_home_description",
-  html:
-    "- Soit, la maison entière privative située dans un quartier calme et verdoyant, avec jusque 8 couchages
-    - Soit, les 2 chambres privatives situées dans ce logement partagé avec les propriétaires, avec 2 couchages chacune"
-)
+# Content.create(
+#   name: "subtitle_home_title",
+#   html: "Que vous soyez en ville pour un voyage d'affaires, une escapade romantique ou simplement pour explorer la région, voici ce que nous proposons :"
+# )
 
-puts "#{Content.count} contents created!"
+# Content.create(
+#   name: "subtitle_home_description",
+#   html:
+#     "- Soit, la maison entière privative située dans un quartier calme et verdoyant, avec jusque 8 couchages
+#     - Soit, les 2 chambres privatives situées dans ce logement partagé avec les propriétaires, avec 2 couchages chacune"
+# )
+
+
+# puts "#{Content.count} contents created!"
+
+Room.first.update(description: "En séjournant dans notre maison, vous pourrez profiter d'un cadre de vie chaleureux et convivial, avec une décoration soignée qui reflète notre personnalité et notre style de vie. Notre maison est équipée de tout ce dont vous aurez besoin pour passer un séjour confortable, notamment une cuisine entièrement équipée, une salle de bains moderne et des chambres confortables.")
+Room.last.update(description: "Nous proposons deux chambres confortables, lumineuses et climatisées, équipées d'un lit Queen size et d'un dressing pour ranger vos effets personnels. Vous aurez également accès à une salle de bain privative ainsi qu'au reste des parties communes partagées avec nous.")
+
+# Room.last.update(slug: "les-chambres")
+
+### End of next production
+
 
 # puts "Cleaning database..."
 # # Review.destroy_all

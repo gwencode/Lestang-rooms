@@ -27,7 +27,7 @@
 
           <section id="admin-room-infos-description" class="py-1">
             <h4 class="text-center"><u>Description</u></h4>
-            <%= f.input :description, label: false, as: :text, input_html: { class: "long-input" } %>
+            <%= f.rich_text_area :description %>
           </section>
 
           <section id="admin-room-hours-edit" class="py-1">

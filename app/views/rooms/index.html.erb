@@ -32,8 +32,10 @@
         <h5 class="text-blue" id="subtitle-home"><%= @subtitle_home_title_content.html %></h5>
         <%= render "admin/contents/edit_content_icon", content: @subtitle_home_title_content %>
         <div class="separator"></div>
-       <%= @subtitle_home_description_content.html %>
-       <%= render "admin/contents/edit_content_icon", content: @subtitle_home_description_content %>
+        <p>
+          <%= @subtitle_home_description_content.html %>
+          <%= render "admin/contents/edit_content_icon", content: @subtitle_home_description_content %>
+        </p>
       </div>
     </div>
   </section>
