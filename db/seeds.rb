@@ -40,6 +40,36 @@
 #   <strong>- votre voiture :</strong> possibilité de la garer dans un des innombrables parking en centre ville ou dans un des parking relais d'une station de métro. L'accès parking est inclus dans le ticket de métro, il faut juste penser à le garder avec soi quand on quitte le parking. <strong>Attention,</strong> Tisseo n'accepte pas que l'on laisse sa voiture toute la nuit sur un de leurs parkings et facture la prestation."
 # )
 
+# Content.create(
+#   name: "before_booking_title",
+#   html: "Avant de réserver"
+# )
+
+# Content.create(
+  #   name: "before_booking_description",
+  #   html: "<p>
+  #     Vous pouvez consulter les disponibilités et nous envoyer une demande de réservation directement
+  #     <strong><a href='https://www.residence-lestang.com/rooms/la-maison'>ici pour la maison</a></strong> et
+  #     <strong><a href='https://www.residence-lestang.com/rooms/les-chambres'>ici pour les chambres</a></strong>.
+  #     Nous vous répondrons dans les meilleurs délais avec le contrat de location.</p>
+  #     <br />
+  #     <p>Pour toute question avant votre demande de réservation, vous pouvez nous contacter via le formulaire de contact.</p>
+  #   "
+  # )
+
+  Content.create(
+    name: "contact_form_title",
+    html: "Formulaire de contact"
+  )
+
+  Content.create(
+    name: "contact_form_description",
+    html: "<p class='fst-italic m-0'>
+    En renseignant vos informations, vous acceptez le fait d'envoyer un e-mail à notre adresse <span class='text-blue text-decoration-underline'>etrebil.ee30@gmail.com</span> avec les informations remplies.
+    </p>
+    "
+  )
+
 # puts "#{Content.count} contents created!"
 
 # Room.first.update(description: "En séjournant dans notre maison, vous pourrez profiter d'un cadre de vie chaleureux et convivial, avec une décoration soignée qui reflète notre personnalité et notre style de vie. Notre maison est équipée de tout ce dont vous aurez besoin pour passer un séjour confortable, notamment une cuisine entièrement équipée, une salle de bains moderne et des chambres confortables.")

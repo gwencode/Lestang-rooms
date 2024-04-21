@@ -4,23 +4,25 @@
 
 <main class="container">
   <section id="before-booking" class="text-center mt-3 py-3">
-    <h2 class="text-blue text-center">Avant de réserver</h2>
-    <div class="separator"></div>
-    <p>
-      Vous pouvez consulter les disponibilités et nous envoyer une demande de réservation directement
-      <%= link_to "ici pour la maison", room_path(Room.first), class: "fw-bold" %> et
-      <%= link_to "ici pour les chambres", room_path(Room.last), class: "fw-bold" %>.
-    Nous vous répondrons dans les meilleurs délais avec le contrat de location.</p>
+    <div class="d-flex justify-content-center">
+      <h2 class="h2-blue-no-margin px-4"><%= @before_booking_title_content.html %></h2>
+      <%= render "admin/contents/edit_content_icon", content: @before_booking_title_content %>
+    </div>
 
-    <p>Pour toute question avant votre demande de réservation, vous pouvez nous contacter via le formulaire de contact.</p>
+    <div class="separator"></div>
+    <%= @before_booking_description_content.html %>
+    <%= render "admin/contents/edit_content_icon", content: @before_booking_description_content %>
   </section>
 
   <section id="contact-form">
-    <h2 class="text-blue text-center">Formulaire de contact</h2>
+    <div class="d-flex justify-content-center">
+      <h2 class="h2-blue-no-margin px-4"><%= @contact_form_title_content.html %></h2>
+      <%= render "admin/contents/edit_content_icon", content: @contact_form_title_content %>
+    </div>
     <div class="separator"></div>
     <div class="row">
       <div class="col-12 col-lg-6 p-2 mx-auto">
-        <%= render "contact_form", user: @user, rooms: @rooms %>
+        <%= render "contact_form", user: @user, rooms: @rooms, contact_form_description_content: @contact_form_description_content %>
       </div>
     </div>
 </section>

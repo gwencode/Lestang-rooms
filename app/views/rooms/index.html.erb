@@ -3,8 +3,10 @@
 <main>
   <section id="introduction" class="container">
     <div class="text-center py-4">
-      <h2 class="h2-blue-no-margin px-4"><%= @home_title_content.html %></h2>
-      <%= render "admin/contents/edit_content_icon", content: @home_title_content %>
+      <div class="d-flex justify-content-center">
+        <h2 class="h2-blue-no-margin px-4"><%= @home_title_content.html %></h2>
+        <%= render "admin/contents/edit_content_icon", content: @home_title_content %>
+      </div>
       <div class="separator"></div>
       <p>
         <%= @introduction_description_content.html %>

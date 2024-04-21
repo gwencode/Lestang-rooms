@@ -16,6 +16,10 @@ class PagesController < ApplicationController
   end
 
   def contact
+    @before_booking_title_content = Content.find_by(name: "before_booking_title")
+    @before_booking_description_content = Content.find_by(name: "before_booking_description")
+    @contact_form_title_content = Content.find_by(name: "contact_form_title")
+    @contact_form_description_content = Content.find_by(name: "contact_form_description")
     @user = current_user || User.new
     @rooms = Room.all
 

@@ -33,9 +33,11 @@
       <%= text_area_tag :message, nil, class: "form-control" %>
     </div>
 
-    <p class="fst-italic m-0">
-      En renseignant vos informations, vous acceptez le fait d'envoyer un e-mail à notre adresse <span class="text-blue text-decoration-underline">etrebil.ee30@gmail.com</span> avec les informations remplies.
-    </p>
+    <%= contact_form_description_content.html %>
+    <div class="text-center">
+      <%= render "admin/contents/edit_content_icon", content: @contact_form_description_content %>
+    </div>
+
   </div>
 
   <%= turbo_frame_tag 'recaptchas' do %>
