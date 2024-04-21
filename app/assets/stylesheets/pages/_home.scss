@@ -12,7 +12,9 @@
 }
 
 .home-rooms-description {
-  padding: 1rem;
+  .trix-content {
+    padding: 1rem;
+  }
 }
 
 #introduction {
@@ -37,7 +39,9 @@
   }
 
   .home-rooms-description {
-    padding: 0.5rem;
+    .trix-content {
+      padding: 0.5rem;
+    }
   }
 
   .separator {
