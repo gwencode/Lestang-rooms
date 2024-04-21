@@ -15,7 +15,7 @@ class RoomPolicy < ApplicationPolicy
     user&.admin
   end
 
-  def edit_descriptions?
+  def edit_room_contents?
     update_descriptions?
   end
 

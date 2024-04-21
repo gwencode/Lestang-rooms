@@ -1,5 +1,5 @@
 class Admin::RoomsController < ApplicationController
-  before_action :set_room, only: %i[show edit update edit_descriptions update_descriptions]
+  before_action :set_room, only: %i[show edit update edit_room_contents update_descriptions]
   before_action :authorize_admin, only: %i[index show]
 
   def index
@@ -45,14 +45,14 @@ class Admin::RoomsController < ApplicationController
     end
   end
 
-  def edit_descriptions
+  def edit_room_contents
   end
 
   def update_descriptions
     if @room.update(room_params)
       redirect_to room_path(@room), notice: "Logement modifié"
     else
-      render :edit_descriptions, status: :unprocessable_entity
+      render :edit_room_contents, status: :unprocessable_entity
     end
   end
 
@@ -84,7 +84,8 @@ class Admin::RoomsController < ApplicationController
                                  :caution,
                                  :description_title,
                                  :detailed_short_description,
-                                 :detailed_long_description
+                                 :detailed_long_description,
+                                 :the_plus
                                 )
   end
 end

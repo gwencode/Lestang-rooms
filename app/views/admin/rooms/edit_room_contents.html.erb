@@ -3,7 +3,7 @@
 </div>
 
 <header class="p-5 header-blue">
-  <h1> Modifier les descriptions de <%= @room.name %></h1>
+  <h1><%= @room.name %> :  Modifier les contenus</h1>
 </header>
 
 <main class="container py-3" style="min-height: 60vh">
@@ -14,11 +14,15 @@
     </div>
     <div class="mb-3">
       <h3 class="fw-bold">Description courte</h3>
-      <%= f.rich_text_area :detailed_short_description, label: "Description courte" %>
+      <%= f.rich_text_area :detailed_short_description %>
     </div>
     <div class="mb-3">
       <h3 class="fw-bold">Description détaillée</h3>
-      <%= f.rich_text_area :detailed_long_description, label: "Description longue" %>
+      <%= f.rich_text_area :detailed_long_description %>
+    </div>
+    <div class="mb-3">
+      <h3 class="fw-bold">Les vrais +</h3>
+      <%= f.rich_text_area :the_plus %>
     </div>
     <div class="py-3 d-flex justify-content-center">
       <%= f.submit "Modifier", class: "button-blue" %>

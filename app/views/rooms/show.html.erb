@@ -24,7 +24,7 @@
     <section class="room-description col-12 col-lg-7 py-3">
       <div class="d-flex justify-content-between">
         <h3 class="text-dark-blue"><%= @room.description_title %></h3>
-        <%= render "admin/rooms/edit_descriptions_icon", room: @room %>
+        <%= render "admin/rooms/edit_room_contents_icon", room: @room %>
       </div>
       <%= @room.detailed_short_description %>
       <br/>
@@ -97,11 +97,7 @@
 
     <section id="the-plus" class="p-3 col-12 col-lg-4">
       <h3 class="text-blue">Les vrais +</h3>
-      <% if @room == Room.first %>
-        <%= render "rooms/the_plus/the_plus_maison" %>
-      <% elsif @room == Room.last %>
-        <%= render "rooms/the_plus/the_plus_chambre" %>
-      <% end %>
+      <%= @room.the_plus %>
     </section>
 
   </div>

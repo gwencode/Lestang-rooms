@@ -5,6 +5,7 @@ class Room < ApplicationRecord
   has_rich_text :description_title
   has_rich_text :detailed_short_description
   has_rich_text :detailed_long_description
+  has_rich_text :the_plus
 
   has_many :bookings
   has_many :users, through: :bookings

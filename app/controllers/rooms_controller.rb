@@ -23,11 +23,12 @@ class RoomsController < ApplicationController
   def show
     authorize @room
 
-    gallery_files = Dir.glob(Rails.root.join('app', 'assets', 'images', @room.name.to_s, 'gallery', '*.{jpg,JPG,jpeg,png,PNG,gif}'))
+    gallery_files = Dir.glob(Rails.root.join('app', 'assets', 'images', @room.name.to_s, 'gallery', '*.{jpg,jpeg,png,gif}'))
     @gallery_images = gallery_files.map { |image_path| "#{@room.name}/gallery/#{File.basename(image_path)}" }
 
-    sleep_files = Dir.glob(Rails.root.join('app', 'assets', 'images', @room.name.to_s, 'sleep', '*.{jpg,JPG,jpeg,png,PNG,gif}'))
+    sleep_files = Dir.glob(Rails.root.join('app', 'assets', 'images', @room.name.to_s, 'sleep', '*.{jpg,jpeg,png,gif}'))
     @sleep_images = sleep_files.map { |image_path| "#{@room.name}/sleep/#{File.basename(image_path)}" }
+    # Security in case there are more images than expected in the folder
     @sleep_images = @room == Room.first ? @sleep_images.first(4) : @sleep_images.first(2)
     @booking = Booking.new(room: @room)
 

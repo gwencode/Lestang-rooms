@@ -104,6 +104,28 @@
 #   "
 # )
 
+# Room.first.update(
+#   the_plus: "<p class='with-comment fw-bold'>Parfait pour l'été</p>
+#     <p class='comment'>Jardin, terrasse, climatisation et barbecue</p>
+#     <br />
+#     <p class='with-comment fw-bold'>Espace de travail dédié</p>
+#     <p class='comment'>Un espace commun avec wifi, bien aménagé pour travailler</p>
+#     <br />
+#     <p class='with-comment fw-bold'>Annulation gratuite pendant 48 heures</p>
+#     <p class='comment m-0'>Hors frais bancaires et sauf si réservation dans les 48 heures avant la location</p>
+#   ")
+
+# Room.last.update(
+#   the_plus: "<p class='with-comment fw-bold'>Idéal pour le télétravail</p>
+#     <p class='comment'>Une connexion wifi rapide à 68 Mbit/s, plus un espace de travail dans un espace commun.</p>
+#     <br />
+#     <p class='with-comment fw-bold'>Parfait pour l'été</p>
+#     <p class='comment'>Jardin, terrasse et climatisation</p>
+#     <br />
+#     <p class='with-comment fw-bold'>Arrivée autonome</p>
+#     <p class='comment m-0'>Vous pouvez entrer dans les lieux avec une serrure à digicode.</p>
+#   ")
+
 # Room.last.update(description_title: "Deux chambres privées dans notre logement")
 # Room.last.update(detailed_short_description:
 #   "<p>Bienvenue chez nous !
