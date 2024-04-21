@@ -5,8 +5,10 @@
 <main class="container py-3">
   <section id="localisation-infos">
     <h3 class="text-blue">Saint-Jean, Occitanie, France</h3>
-    <p>A proximité immédiate du <a href="https://www.domainedepreissac.fr/" class="text-blue text-decoration-none" target="_blank">Domaine de Preissac</a> (moins de 2km en voiture et environ 15-20min à pied).</p>
-    <p>Quartier résidentiel à proximité immédiate du <a href="https://www.visorando.com/randonnee-lac-de-la-tuilerie-saint-jean.html" class="text-blue text-decoration-none" target="_blank">Lac de la Tuilerie</a>.</p>
+      <p>
+        <%= @localisation_infos_content.html %>
+        <%= render "admin/contents/edit_content_icon", content: @localisation_infos_content %>
+      </p>
 
     <div class="py-3">
       <div id ="map"
@@ -22,16 +24,8 @@
     <article id="moving-around" class="col-12 col-lg-7">
       <h3 class="text-blue">Se déplacer</h3>
       <p>
-        Pour rejoindre le centre ville de Toulouse, vous pouvez utiliser :
-        <br><strong>- le bus :</strong> terminus de la ligne 73 (de 6h à 21h) se situant à 100m de la maison et vous conduisant au terminus de la ligne de métro B « Borderouge ».
-        <br>
-        <span class="collapse" id="collapseText">
-          <strong>- votre voiture :</strong> possibilité de la garer dans un des innombrables parking en centre ville ou dans un des parking relais d'une station de métro. L'accès parking est inclus dans le ticket de métro, il faut juste penser à le garder avec soi quand on quitte le parking. <strong>Attention,</strong> Tisseo n'accepte pas que l'on laisse sa voiture toute la nuit sur un de leurs parkings et facture la prestation.
-        </span>
-        <a class="text-black fw-bold" data-bs-toggle="collapse" href="#collapseText" role="button" aria-expanded="false" aria-controls="collapseText"
-           data-controller="collapse" data-action="click->collapse#hide" >
-          Lire la suite
-        </a>
+        <%= @moving_around_content.html %>
+        <%= render "admin/contents/edit_content_icon", content: @moving_around_content %>
       </p>
     </article>
 

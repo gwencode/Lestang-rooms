@@ -34,6 +34,8 @@ Rails.application.routes.draw do
   namespace :admin do
     root to: "admin#dashboard"
 
+    resources :contents, only: %i[edit update]
+
     resources :bookings, only: %i[index edit update destroy]
     resources :bookings, only: %i[show] do
       member do
@@ -47,6 +49,8 @@ Rails.application.routes.draw do
     get "/messages", to: "admin#messages"
 
     resources :rooms, only: %i[index show edit update]
+    get "/rooms/:id/edit_room_contents", to: "rooms#edit_room_contents", as: "edit_room_contents"
+    patch "/rooms/:id/update_descriptions", to: "rooms#update_descriptions", as: "update_descriptions"
     resources :rooms, only: %i[show] do
       resources :seasons, except: %i[show]
       resources :slots

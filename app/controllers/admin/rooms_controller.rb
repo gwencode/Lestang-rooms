@@ -1,5 +1,5 @@
 class Admin::RoomsController < ApplicationController
-  before_action :set_room, only: %i[show edit update]
+  before_action :set_room, only: %i[show edit update edit_room_contents update_descriptions]
   before_action :authorize_admin, only: %i[index show]
 
   def index
@@ -9,15 +9,12 @@ class Admin::RoomsController < ApplicationController
   end
 
   def show
-    authorize @room
   end
 
   def edit
-    authorize @room
   end
 
   def update
-    authorize @room
     if @room.room_price.update(
         night_price: params[:night_price],
         medium_guests: params[:medium_guests],
@@ -48,6 +45,17 @@ class Admin::RoomsController < ApplicationController
     end
   end
 
+  def edit_room_contents
+  end
+
+  def update_descriptions
+    if @room.update(room_params)
+      redirect_to room_path(@room), notice: "Logement modifié"
+    else
+      render :edit_room_contents, status: :unprocessable_entity
+    end
+  end
+
   private
 
   def authorize_admin
@@ -56,11 +64,12 @@ class Admin::RoomsController < ApplicationController
 
   def set_room
     @room = Room.friendly.find(params[:id])
+    authorize @room
   end
 
   def room_params
-    params.require(:room).permit(:name,
-                                 :description,
+    params.require(:room).permit(:description,
+                                #  :name,
                                  :max_guests,
                                  :arrival_hour,
                                  :departure_hour,
@@ -72,6 +81,11 @@ class Admin::RoomsController < ApplicationController
                                  :available_days,
                                  :default_available_slots,
                                  :bank_fees,
-                                 :caution)
+                                 :caution,
+                                 :description_title,
+                                 :detailed_short_description,
+                                 :detailed_long_description,
+                                 :the_plus
+                                )
   end
 end

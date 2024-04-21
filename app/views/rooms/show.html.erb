@@ -1,5 +1,5 @@
 <% content_for :meta_title, "#{@room.name}" %>
-<% content_for :meta_description, @room.description %>
+<% content_for :meta_description, @room.description.body.to_plain_text %>
 <% content_for :meta_image, "#{@room.name}.png" %>
 
 <header class="p-3 header-blue">
@@ -22,11 +22,12 @@
   <div class="row">
 
     <section class="room-description col-12 col-lg-7 py-3">
-      <% if @room == Room.first %>
-        <%= render "rooms/descriptions/short_description_maison" %>
-      <% elsif @room == Room.last %>
-        <%= render "rooms/descriptions/short_description_chambre" %>
-      <% end %>
+      <div class="d-flex justify-content-between">
+        <h3 class="text-dark-blue"><%= @room.description_title %></h3>
+        <%= render "admin/rooms/edit_room_contents_icon", room: @room %>
+      </div>
+      <%= @room.detailed_short_description %>
+      <br/>
       <a href="" class="fw-bold text-black" data-bs-toggle="modal" data-bs-target="#descriptionModal">En savoir plus</a>
 
       <!-- Modal -->
@@ -37,16 +38,12 @@
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-              <% if @room == Room.first %>
-                <%= render "rooms/descriptions/description_maison" %>
-              <% elsif @room == Room.last %>
-                <%= render "rooms/descriptions/description_chambre" %>
-              <% end %>
+              <h3 class="text-dark-blue"><%= @room.description_title %></h3>
+              <%= @room.detailed_long_description %>
             </div>
           </div>
         </div>
       </div>
-
 
     </section>
 
@@ -100,11 +97,7 @@
 
     <section id="the-plus" class="p-3 col-12 col-lg-4">
       <h3 class="text-blue">Les vrais +</h3>
-      <% if @room == Room.first %>
-        <%= render "rooms/the_plus/the_plus_maison" %>
-      <% elsif @room == Room.last %>
-        <%= render "rooms/the_plus/the_plus_chambre" %>
-      <% end %>
+      <%= @room.the_plus %>
     </section>
 
   </div>

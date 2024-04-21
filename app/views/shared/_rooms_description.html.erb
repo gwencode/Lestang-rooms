@@ -3,8 +3,10 @@
   <div class="text-center col-12 col-lg-6 order-lg-1">
     <h2 class="h2-blue-no-margin"><%= maison.name %></h2>
     <div class="separator"></div>
-    <p class="home-rooms-description"><%= maison.description%></p>
+    <%= render "admin/rooms/edit_room_home_description_icon", room: maison %>
+    <span class="home-rooms-description"><%= maison.description %></span>
     <%= link_to "VOIR #{Room.first.name.upcase}", path_maison, class: "button-blue" %>
+
   </div>
 </article>
 
@@ -13,7 +15,8 @@
   <div class="text-center col-12 col-lg-6">
     <h2 class="h2-blue-no-margin"><%= chambre.name %></h2>
     <div class="separator"></div>
-    <p class="home-rooms-description"><%= chambre.description %></p>
+    <%= render "admin/rooms/edit_room_home_description_icon", room: chambre %>
+    <span class="home-rooms-description"><%= chambre.description %></span>
     <%= link_to "VOIR #{Room.last.name.upcase}", path_chambre, class: "button-blue" %>
   </div>
 </article>

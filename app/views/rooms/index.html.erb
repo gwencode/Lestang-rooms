@@ -3,11 +3,14 @@
 <main>
   <section id="introduction" class="container">
     <div class="text-center py-4">
-      <h2 class="h2-blue-no-margin px-4">Hébergements proches de Toulouse</h2>
+      <div class="d-flex justify-content-center">
+        <h2 class="h2-blue-no-margin px-4"><%= @home_title_content.html %></h2>
+        <%= render "admin/contents/edit_content_icon", content: @home_title_content %>
+      </div>
       <div class="separator"></div>
       <p>
-        Vous cherchez un hébergement <strong>confortable et convivial</strong> à Toulouse ?
-        Découvrez notre <%= link_to "maison complète", room_path(@maison), class: "link-black-bold" %> ou notre <%= link_to "chambre chez l'habitant", room_path(@chambre), class: "link-black-bold" %>, situées à proximité immédiate de cette ville historique.
+        <%= @introduction_description_content.html %>
+        <%= render "admin/contents/edit_content_icon", content: @introduction_description_content %>
       </p>
     </div>
 
@@ -28,10 +31,13 @@
   <section id="website-description" class="container">
     <div class="text-center py-3">
       <div>
-        <h5 class="text-blue" id="subtitle-home">Que vous soyez en ville pour un voyage d'affaires, une escapade romantique ou simplement pour explorer la région, voici ce que nous proposons :</h5>
+        <h5 class="text-blue" id="subtitle-home"><%= @subtitle_home_title_content.html %></h5>
+        <%= render "admin/contents/edit_content_icon", content: @subtitle_home_title_content %>
         <div class="separator"></div>
-        <p>- Soit, la <%= link_to "maison entière", room_path(@maison), class: "link-black-bold" %> privative située dans un quartier calme et verdoyant, avec jusque 8 couchages</p>
-        <p>- Soit, la <%= link_to "chambre", room_path(@chambre), class: "link-black-bold" %> privative située dans ce logement partagé avec les propriétaires, avec 2 couchages</p>
+        <p>
+          <%= @subtitle_home_description_content.html %>
+          <%= render "admin/contents/edit_content_icon", content: @subtitle_home_description_content %>
+        </p>
       </div>
     </div>
   </section>

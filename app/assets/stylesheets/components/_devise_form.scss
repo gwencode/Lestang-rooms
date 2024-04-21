@@ -66,3 +66,13 @@
   justify-content: center;
   gap: 8px;
 }
+
+#admin-room-infos-description {
+  trix-toolbar {
+    background-color: white;
+  }
+  trix-editor {
+    background-color: white;
+    color: black;
+  }
+}
