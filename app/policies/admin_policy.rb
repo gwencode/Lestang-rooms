@@ -15,6 +15,10 @@ class AdminPolicy < ApplicationPolicy
     dashboard?
   end
 
+  def pictures?
+    dashboard?
+  end
+
   class Scope < Scope
     # NOTE: Be explicit about which records you allow access to!
     def resolve
