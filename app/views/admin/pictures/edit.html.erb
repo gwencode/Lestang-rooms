@@ -1,7 +1,18 @@
-<%= cl_image_tag @picture.photos.first.key, height: 300, width: 400, crop: :fill %>
+<main class="container py-3">
+  <div class="row row-cols-auto gap-3">
+    <% @picture.photos.each do |photo| %>
+    <div class="col">
+      <%= cl_image_tag photo.key, height: 200 %>
+    </div>
+    <% end %>
+  </div>
 
-<%= simple_form_for @picture, url: admin_picture_path(@picture) do |f| %>
-  <%= f.input :name, label: "Nom" %>
-  <%= f.input :photos, as: :file, input_html: { multiple: true } %>
-  <%= f.submit "Modifier" %>
-<% end %>
+  <div class="py-3 row justify-content-center">
+    <%= simple_form_for @picture, url: admin_picture_path(@picture), html: { class: "col-4" } do |f| %>
+      <%= f.input :description, label: "Description" %>
+      <%= f.input :photos, as: :file, input_html: { multiple: true } %>
+      <%= f.submit "Modifier" %>
+    <% end %>
+  </div>
+
+</main>

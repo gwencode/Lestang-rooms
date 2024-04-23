@@ -16,7 +16,7 @@ class Admin::PicturesController < ApplicationController
 
   def index
     @pictures = policy_scope(Picture)
-    @header_picture = Picture.find_by(name: "header")
+    @pictures = @pictures.order(description: :asc)
   end
 
   def edit
@@ -37,6 +37,6 @@ class Admin::PicturesController < ApplicationController
   private
 
   def picture_params
-    params.require(:picture).permit(:name, photos: [])
+    params.require(:picture).permit(:description, photos: [])
   end
 end

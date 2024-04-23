@@ -6,15 +6,17 @@
   <h1>Photos</h1>
 </header>
 
-<main class="container py-3 row align-items-center dashboard">
+<main class="container py-3 row align-items-center">
 
-  <div class="col-12 col-md-6 py-3 mx-auto">
-    <%= link_to edit_admin_picture_path(@header_picture), class: "text-decoration-none" do %>
-      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path @header_picture.photos.first.key %>')">
-        Header
-      </div>
-    <% end %>
-  </div>
+  <% @pictures.each do |picture| %>
+    <div class="col-6 col-md-4 col-lg-3 py-3 mx-auto">
+      <%= link_to edit_admin_picture_path(picture), class: "text-decoration-none text-center" do %>
+        <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path picture.photos.first.key %>')">
+          <%= picture.description %>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
 
 </main>
 

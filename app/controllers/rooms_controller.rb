@@ -12,12 +12,17 @@ class RoomsController < ApplicationController
     @reviews = Review.all
 
     @header_picture = Picture.find_by(name: "header")
-    image_files = Dir.glob(Rails.root.join('app', 'assets', 'images', "home", '*.{jpg,jpeg,png,gif}'))
-    @home_images = image_files.map { |image_path| "home/#{File.basename(image_path)}" }
-    @first_two_home_images = @home_images.first(2)
-    last_home_images = @home_images.drop(2)
-    @last_two_home_images = last_home_images.each_slice(2).to_a
 
+    # image_files = Dir.glob(Rails.root.join('app', 'assets', 'images', "home", '*.{jpg,jpeg,png,gif}'))
+    # @home_images = image_files.map { |image_path| "home/#{File.basename(image_path)}" }
+    # @first_two_home_images = @home_images.first(2)
+    # last_home_images = @home_images.drop(2)
+    # @last_two_home_images = last_home_images.each_slice(2).to_a
+    @home_images = Picture.find_by(name: "home")
+    @first_two_home_images = @home_images.photos.first(2)
+    last_home_images = @home_images.photos.last(@home_images.photos.count - 2)
+    @last_two_home_images = last_home_images.each_slice(2).to_a
+    # raise
     gallery_files = Dir.glob(Rails.root.join('app', 'assets', 'images', "home", 'gallery', '*.{jpg,jpeg,png,PNG,gif}'))
     @gallery_images = gallery_files.map { |image_path| "home/gallery/#{File.basename(image_path)}" }
   end
