@@ -10,6 +10,8 @@ class RoomsController < ApplicationController
     @maison = Room.first
     @chambre = Room.last
     @reviews = Review.all
+
+    @header_picture = Picture.find_by(name: "header")
     image_files = Dir.glob(Rails.root.join('app', 'assets', 'images', "home", '*.{jpg,jpeg,png,gif}'))
     @home_images = image_files.map { |image_path| "home/#{File.basename(image_path)}" }
     @first_two_home_images = @home_images.first(2)

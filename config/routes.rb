@@ -47,7 +47,6 @@ Rails.application.routes.draw do
     get "/slots", to: "admin#slots"
     get "/seasons", to: "admin#seasons"
     get "/messages", to: "admin#messages"
-    get "/pictures", to: "admin#pictures"
 
     resources :rooms, only: %i[index show edit update]
     get "/rooms/:id/edit_room_contents", to: "rooms#edit_room_contents", as: "edit_room_contents"
@@ -59,7 +58,7 @@ Rails.application.routes.draw do
 
     resources :users, only: %i[index show edit update destroy]
     resources :reviews, only: %i[index create edit update destroy]
-    resources :pictures, only: %i[new create]
+    resources :pictures, only: %i[index new create edit update]
   end
 
   match "/404", to: "errors#not_found", via: :all

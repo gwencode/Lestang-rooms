@@ -1,0 +1,21 @@
+<div class="container-fluid container background-back-link">
+  <%= link_to raw("<i class='fa-solid fa-circle-arrow-left'></i>"), admin_root_path, class: "back-link" %>
+</div>
+
+<header class="p-5 header-blue">
+  <h1>Photos</h1>
+</header>
+
+<main class="container py-3 row align-items-center dashboard">
+
+  <div class="col-12 col-md-6 py-3 mx-auto">
+    <%= link_to edit_admin_picture_path(@header_picture), class: "text-decoration-none" do %>
+      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path @header_picture.photos.first.key %>')">
+        Header
+      </div>
+    <% end %>
+  </div>
+
+</main>
+
+<%= link_to "New picture", new_admin_picture_path, class: "text-decoration-none" %>

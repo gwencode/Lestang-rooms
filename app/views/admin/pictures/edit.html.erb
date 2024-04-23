@@ -1,0 +1,7 @@
+<%= cl_image_tag @picture.photos.first.key, height: 300, width: 400, crop: :fill %>
+
+<%= simple_form_for @picture, url: admin_picture_path(@picture) do |f| %>
+  <%= f.input :name, label: "Nom" %>
+  <%= f.input :photos, as: :file, input_html: { multiple: true } %>
+  <%= f.submit "Modifier" %>
+<% end %>
