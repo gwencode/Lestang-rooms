@@ -17,6 +17,7 @@ class Admin::PicturesController < ApplicationController
   def index
     @pictures = policy_scope(Picture)
     @pictures = @pictures.order(description: :asc)
+    @url_pictures = policy_scope(UrlPicture)
   end
 
   def edit
