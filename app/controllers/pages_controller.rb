@@ -11,6 +11,7 @@ class PagesController < ApplicationController
         marker_html: render_to_string(partial: "marker")
         }
       ]
+    @url_pictures = UrlPicture.where(page: "localisation")
 
     add_breadcrumb "Localisation", :localisation_path
   end
