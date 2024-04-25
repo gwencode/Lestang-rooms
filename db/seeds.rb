@@ -36,30 +36,52 @@
 
 puts "Addind pictures to rooms..."
 
-main_photo_path = Rails.root.join('app', 'assets', 'images', 'La Maison.jpeg')
-main_photo = File.open(main_photo_path)
-Room.first.main_photo.attach(io: main_photo, filename: "La Maison.jpeg", content_type: "image/png")
-sleep_images_path = Dir.glob(Rails.root.join('app', 'assets', 'images', "La Maison", 'sleep', '*.{jpg,jpeg,png,gif}'))
-sleep_images = sleep_images_path.map { |image_path| "La Maison/sleep/#{File.basename(image_path)}" }
-sleep_images.each do |image|
+# main_photo_path = Rails.root.join('app', 'assets', 'images', 'La Maison.jpeg')
+# main_photo = File.open(main_photo_path)
+# Room.first.main_photo.attach(io: main_photo, filename: "La Maison.jpeg", content_type: "image/png")
+
+# sleep_images_path = Dir.glob(Rails.root.join('app', 'assets', 'images', "La Maison", 'sleep', '*.{jpg,jpeg,png,gif}'))
+# sleep_images = sleep_images_path.map { |image_path| "La Maison/sleep/#{File.basename(image_path)}" }
+# sleep_images.each do |image|
+#   file_path = Rails.root.join('app', 'assets', 'images', image)
+#   file = File.open(file_path)
+#   cleaned_path = image.gsub('La Maison/sleep/', '')
+#   Room.first.sleep_photos.attach(io: file, filename: cleaned_path, content_type: "image/png")
+# end
+
+gallery_images_path = Dir.glob(Rails.root.join('app', 'assets', 'images', "La Maison", 'gallery', '*.{jpg,jpeg,png,gif}'))
+gallery_images = gallery_images_path.map { |image_path| "La Maison/gallery/#{File.basename(image_path)}" }
+gallery_images.each do |image|
   file_path = Rails.root.join('app', 'assets', 'images', image)
   file = File.open(file_path)
-  cleaned_path = image.gsub('La Maison/sleep/', '')
-  Room.first.sleep_photos.attach(io: file, filename: cleaned_path, content_type: "image/png")
+  cleaned_path = image.gsub('La Maison/gallery/', '')
+  Room.first.gallery_photos.attach(io: file, filename: cleaned_path, content_type: "image/png")
 end
+
 Room.first.save
 
-main_photo_path = Rails.root.join('app', 'assets', 'images', 'Les Chambres.jpeg')
-main_photo = File.open(main_photo_path)
-Room.last.main_photo.attach(io: main_photo, filename: "Les Chambres.jpeg", content_type: "image/png")
-sleep_images_path = Dir.glob(Rails.root.join('app', 'assets', 'images', "Les Chambres", 'sleep', '*.{jpg,jpeg,png,gif}'))
-sleep_images = sleep_images_path.map { |image_path| "Les Chambres/sleep/#{File.basename(image_path)}" }
-sleep_images.each do |image|
+# main_photo_path = Rails.root.join('app', 'assets', 'images', 'Les Chambres.jpeg')
+# main_photo = File.open(main_photo_path)
+# Room.last.main_photo.attach(io: main_photo, filename: "Les Chambres.jpeg", content_type: "image/png")
+
+# sleep_images_path = Dir.glob(Rails.root.join('app', 'assets', 'images', "Les Chambres", 'sleep', '*.{jpg,jpeg,png,gif}'))
+# sleep_images = sleep_images_path.map { |image_path| "Les Chambres/sleep/#{File.basename(image_path)}" }
+# sleep_images.each do |image|
+#   file_path = Rails.root.join('app', 'assets', 'images', image)
+#   file = File.open(file_path)
+#   cleaned_path = image.gsub('Les Chambres/sleep/', '')
+#   Room.last.sleep_photos.attach(io: file, filename: cleaned_path, content_type: "image/png")
+# end
+
+gallery_images_path = Dir.glob(Rails.root.join('app', 'assets', 'images', "Les Chambres", 'gallery', '*.{jpg,jpeg,png,gif}'))
+gallery_images = gallery_images_path.map { |image_path| "Les Chambres/gallery/#{File.basename(image_path)}" }
+gallery_images.each do |image|
   file_path = Rails.root.join('app', 'assets', 'images', image)
   file = File.open(file_path)
-  cleaned_path = image.gsub('Les Chambres/sleep/', '')
-  Room.last.sleep_photos.attach(io: file, filename: cleaned_path, content_type: "image/png")
+  cleaned_path = image.gsub('Les Chambres/gallery/', '')
+  Room.last.gallery_photos.attach(io: file, filename: cleaned_path, content_type: "image/png")
 end
+
 Room.last.save
 
 puts "Pictures added to rooms!"

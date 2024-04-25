@@ -8,7 +8,7 @@ class Room < ApplicationRecord
   has_rich_text :the_plus
   has_one_attached :main_photo
   has_many_attached :sleep_photos
-  has_many_attached :all_photos
+  has_many_attached :gallery_photos
 
   has_many :bookings
   has_many :users, through: :bookings
