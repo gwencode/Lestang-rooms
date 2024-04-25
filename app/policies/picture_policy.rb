@@ -1,6 +1,6 @@
 class PicturePolicy < ApplicationPolicy
   def new?
-    user.admin
+    user&.admin
   end
 
   def create?
@@ -8,7 +8,7 @@ class PicturePolicy < ApplicationPolicy
   end
 
   def edit?
-    user.admin
+    user&.admin
   end
 
   def update?
@@ -18,7 +18,7 @@ class PicturePolicy < ApplicationPolicy
   class Scope < Scope
     # NOTE: Be explicit about which records you allow access to!
     def resolve
-      scope.all if user.admin
+      scope.all if user&.admin
     end
   end
 end

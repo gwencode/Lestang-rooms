@@ -1,0 +1,5 @@
+<% if policy(picture).edit? %>
+  <%= link_to edit_admin_picture_path(picture), class: "" do %>
+    <i class="fa-solid fa-pen-to-square fs-6 ms-2"></i>
+  <% end %>
+<% end %>
