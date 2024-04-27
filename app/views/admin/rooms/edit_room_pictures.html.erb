@@ -1,0 +1,63 @@
+<div class="container-fluid container background-back-link">
+  <%= link_to raw("<i class='fa-solid fa-circle-arrow-left'></i>"), :back, class: "back-link" %>
+</div>
+
+<header class="p-5 header-blue">
+  <h1><%= @room.name %> : Photos</h1>
+</header>
+
+<main>
+  <div class="container py-3">
+    <h3 class='text-blue'>Photo principale</h3>
+    <%= cl_image_tag @room.main_photo.key, height: 200 %>
+    <div class="py-3 row justify-content-center">
+      <%= simple_form_for @room, url: admin_update_room_pictures_path(@room), html: { class: "col-4" } do |f| %>
+        <%= f.input :main_photo, as: :file, label: false %>
+        <div class="text-center">
+          <%= f.submit "Modifier", class: "button-blue" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="bg-light">
+    <div class="container py-3">
+      <h3 class='text-blue'>Où vous dormirez</h3>
+      <div class="row row-cols-auto gap-3">
+        <% @room.sleep_photos.each do |photo| %>
+        <div class="col">
+          <%= cl_image_tag photo.key, height: 200 %>
+        </div>
+        <% end %>
+      </div>
+      <div class="py-3 row justify-content-center">
+        <%= simple_form_for @room, url: admin_update_room_pictures_path(@room), html: { class: "col-4" } do |f| %>
+          <%= f.input :sleep_photos, as: :file, label: false, input_html: { multiple: true } %>
+          <div class="text-center">
+            <%= f.submit "Modifier", class: "button-blue" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div class="container py-3">
+    <h3 class='text-blue'>Gallerie</h3>
+    <div class="row row-cols-auto gap-3">
+      <% @room.gallery_photos.each do |photo| %>
+      <div class="col">
+        <%= cl_image_tag photo.key, height: 200 %>
+      </div>
+      <% end %>
+    </div>
+    <div class="py-3 row justify-content-center">
+      <%= simple_form_for @room, url: admin_update_room_pictures_path(@room), html: { class: "col-4" } do |f| %>
+        <%= f.input :gallery_photos, as: :file, label: false, input_html: { multiple: true } %>
+        <div class="text-center">
+          <%= f.submit "Modifier", class: "button-blue" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+</main>

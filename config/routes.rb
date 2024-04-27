@@ -50,7 +50,10 @@ Rails.application.routes.draw do
 
     resources :rooms, only: %i[index show edit update]
     get "/rooms/:id/edit_room_contents", to: "rooms#edit_room_contents", as: "edit_room_contents"
-    patch "/rooms/:id/update_descriptions", to: "rooms#update_descriptions", as: "update_descriptions"
+    patch "/rooms/:id/update_contents", to: "rooms#update_room_contents", as: "update_room_contents"
+    get "/rooms/:id/edit_room_pictures", to: "rooms#edit_room_pictures", as: "edit_room_pictures"
+    patch "/rooms/:id/update_room_pictures", to: "rooms#update_room_pictures", as: "update_room_pictures"
+
     resources :rooms, only: %i[show] do
       resources :seasons, except: %i[show]
       resources :slots

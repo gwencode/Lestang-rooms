@@ -18,6 +18,7 @@ class Admin::PicturesController < ApplicationController
     @pictures = policy_scope(Picture)
     @pictures = @pictures.order(description: :asc)
     @url_pictures = policy_scope(UrlPicture)
+    @rooms = policy_scope(Room)
   end
 
   def edit

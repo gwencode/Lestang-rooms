@@ -19,6 +19,15 @@
         <% end %>
       </div>
     <% end %>
+    <% @rooms.each do |room| %>
+      <div class="col-6 col-md-4 col-lg-3 py-3">
+        <%= link_to admin_edit_room_pictures_path(room), class: "text-decoration-none text-center" do %>
+          <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path room.main_photo.key %>')">
+            <%= room.name %>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
   </section>
 
   <section class="container p-4 row align-items-center text-center mx-auto">

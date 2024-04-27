@@ -1,5 +1,9 @@
 class Admin::RoomsController < ApplicationController
-  before_action :set_room, only: %i[show edit update edit_room_contents update_descriptions]
+  before_action :set_room, only: %i[
+    show edit update
+    edit_room_contents update_room_contents
+    edit_room_pictures update_room_pictures
+  ]
   before_action :authorize_admin, only: %i[index show]
 
   def index
@@ -48,11 +52,22 @@ class Admin::RoomsController < ApplicationController
   def edit_room_contents
   end
 
-  def update_descriptions
+  def update_room_contents
     if @room.update(room_params)
       redirect_to room_path(@room), notice: "Logement modifié"
     else
       render :edit_room_contents, status: :unprocessable_entity
+    end
+  end
+
+  def edit_room_pictures
+  end
+
+  def update_room_pictures
+    if @room.update(room_params)
+      redirect_to room_path(@room), notice: "Logement modifié"
+    else
+      render :edit_room_pictures, status: :unprocessable_entity
     end
   end
 
@@ -68,24 +83,16 @@ class Admin::RoomsController < ApplicationController
   end
 
   def room_params
-    params.require(:room).permit(:description,
-                                #  :name,
-                                 :max_guests,
-                                 :arrival_hour,
-                                 :departure_hour,
-                                 :bedrooms,
-                                 :beds,
-                                 :bathrooms,
-                                 :min_nights,
-                                 :max_nights,
-                                 :available_days,
-                                 :default_available_slots,
-                                 :bank_fees,
-                                 :caution,
-                                 :description_title,
-                                 :detailed_short_description,
-                                 :detailed_long_description,
-                                 :the_plus
-                                )
+    params.require(:room).permit(
+      :description, :max_guests,
+      :arrival_hour, :departure_hour,
+      :bedrooms, :beds, :bathrooms,
+      :min_nights, :max_nights, :available_days, :default_available_slots,
+      :bank_fees, :caution,
+      :description_title, :detailed_short_description, :detailed_long_description, :the_plus,
+      :main_photo,
+      sleep_photos: [],
+      gallery_photos: []
+    )
   end
 end

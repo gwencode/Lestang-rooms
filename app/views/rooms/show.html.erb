@@ -18,7 +18,9 @@
 <main class="container">
 
   <%= render "rooms/carousels/carousel_pictures", room: @room %>
-
+  <div class="text-center">
+    <%= render "admin/rooms/edit_room_pictures_icon", room: @room %>
+  </div>
   <div class="row">
 
     <section class="room-description col-12 col-lg-7 py-3">
@@ -58,10 +60,11 @@
   </div>
 
   <section id="where-you-sleep" class="py-3">
-    <h3 class="text-blue">Où vous dormirez</h3>
+    <h3 class="text-blue">Où vous dormirez <%= render "admin/rooms/edit_room_pictures_icon", room: @room %></h3>
     <div class="row sleep">
       <%= render "sleep", room: @room %>
     </div>
+
   </section>
 
   <div class="row">
