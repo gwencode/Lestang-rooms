@@ -1,18 +1,5 @@
 class Admin::PicturesController < ApplicationController
-  def new
-    @picture = Picture.new
-    authorize @picture
-  end
-
-  def create
-    @picture = Picture.new(picture_params)
-    authorize @picture
-    if @picture.save
-      redirect_to admin_pictures_path
-    else
-      render :new, status: :unprocessable_entity
-    end
-  end
+  before_action :set_picture, only: %i[edit update]
 
   def index
     @pictures = policy_scope(Picture)
@@ -22,13 +9,9 @@ class Admin::PicturesController < ApplicationController
   end
 
   def edit
-    @picture = Picture.find(params[:id])
-    authorize @picture
   end
 
   def update
-    @picture = Picture.find(params[:id])
-    authorize @picture
     if @picture.update(picture_params)
       redirect_to admin_pictures_path
     else
@@ -40,5 +23,10 @@ class Admin::PicturesController < ApplicationController
 
   def picture_params
     params.require(:picture).permit(:description, photos: [])
+  end
+
+  def set_picture
+    @picture = Picture.find(params[:id])
+    authorize @picture
   end
 end

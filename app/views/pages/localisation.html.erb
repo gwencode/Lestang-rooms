@@ -65,6 +65,14 @@
     <%= link_to "réservez maintenant".upcase, contact_path, class: "button-blue" %>
   </div>
 
+  <% if current_user&.admin %>
+    <div class="text-center">
+      <%= link_to admin_pictures_path, class: "" do %>
+        <i class="fa-solid fa-image fs-6 ms-2"></i>
+      <% end %>
+    </div>
+  <% end %>
+
   <section id="nearby-gallery" class="row justify-content-center">
 
     <% path = "localisation/Hébergements-Toulouse-localisation-" %>

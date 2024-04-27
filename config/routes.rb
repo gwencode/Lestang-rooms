@@ -61,7 +61,8 @@ Rails.application.routes.draw do
 
     resources :users, only: %i[index show edit update destroy]
     resources :reviews, only: %i[index create edit update destroy]
-    resources :pictures, only: %i[index new create edit update]
+    resources :pictures, only: %i[index edit update]
+    resources :url_pictures, only: %i[edit update]
   end
 
   match "/404", to: "errors#not_found", via: :all
