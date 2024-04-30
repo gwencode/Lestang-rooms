@@ -4,7 +4,7 @@ class Admin::PicturesController < ApplicationController
   def index
     @pictures = policy_scope(Picture)
     @pictures = @pictures.order(description: :asc)
-    @url_pictures = policy_scope(UrlPicture)
+    @url_pictures = policy_scope(UrlPicture).sort_by(&:description)
     @rooms = policy_scope(Room)
   end
 

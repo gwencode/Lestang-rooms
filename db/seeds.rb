@@ -1,40 +1,47 @@
 ### Add to next production
 
-# puts "Cleaning database..."
-# Picture.destroy_all
+puts "Cleaning database..."
+Picture.destroy_all
+UrlPicture.destroy_all
+Room.first.update(main_photo: nil)
+Room.first.update(sleep_photos: nil)
+Room.first.update(gallery_photos: nil)
+Room.last.update(main_photo: nil)
+Room.last.update(sleep_photos: nil)
+Room.last.update(gallery_photos: nil)
 
-# puts "Creating pictures..."
+puts "Creating pictures..."
 
 puts "Creating Pictures for homepage..."
 
-# header = Picture.new(
-#   name: "header",
-#   description: "1. Bannière d'accueil",
-#   page: "homepage"
-# )
-# file_path = Rails.root.join('app', 'assets', 'images', 'header.jpg')
-# file = File.open(file_path)
-# header.photos.attach(io: file, filename: "Hébergements-Toulouse-Header.jpg", content_type: "image/png")
-# header.save
+header = Picture.new(
+  name: "header",
+  description: "Bannière d'accueil",
+  page: "homepage"
+)
+file_path = Rails.root.join('app', 'assets', 'images', 'header.jpg')
+file = File.open(file_path)
+header.photos.attach(io: file, filename: "Hébergements-Toulouse-Header.jpg", content_type: "image/png")
+header.save
 
-# home = Picture.new(
-#   name: "home",
-#   description: "2. Images d'accueil",
-#   page: "homepage"
-# )
-# image_files = Dir.glob(Rails.root.join('app', 'assets', 'images', "home", '*.{jpg,jpeg,png,gif}'))
-# home_images = image_files.map { |image_path| "home/#{File.basename(image_path)}" }
-# home_images.each do |image|
-#   file_path = Rails.root.join('app', 'assets', 'images', image)
-#   file = File.open(file_path)
-#   cleaned_path = image.gsub('home/', '')
-#   home.photos.attach(io: file, filename: cleaned_path, content_type: "image/png")
-# end
-# home.save
+home = Picture.new(
+  name: "home",
+  description: "Carrousel d'accueil",
+  page: "homepage"
+)
+image_files = Dir.glob(Rails.root.join('app', 'assets', 'images', "home", '*.{jpg,jpeg,png,gif}'))
+home_images = image_files.map { |image_path| "home/#{File.basename(image_path)}" }
+home_images.each do |image|
+  file_path = Rails.root.join('app', 'assets', 'images', image)
+  file = File.open(file_path)
+  cleaned_path = image.gsub('home/', '')
+  home.photos.attach(io: file, filename: cleaned_path, content_type: "image/png")
+end
+home.save
 
 home_gallery = Picture.new(
   name: "home-gallery",
-  description: "3. Toutes les photos",
+  description: "Toutes les photos",
   page: "homepage"
 )
 gallery_images_path = Dir.glob(Rails.root.join('app', 'assets', 'images', "home", 'gallery', '*.{jpg,jpeg,png,gif}'))
@@ -48,140 +55,142 @@ end
 
 home_gallery.save
 
+puts "Adding pictures to rooms..."
+
+main_photo_path = Rails.root.join('app', 'assets', 'images', 'La Maison.jpeg')
+main_photo = File.open(main_photo_path)
+Room.first.main_photo.attach(io: main_photo, filename: "La Maison.jpeg", content_type: "image/png")
+Room.first.save
+
+sleep_images_path = Dir.glob(Rails.root.join('app', 'assets', 'images', "La Maison", 'sleep', '*.{jpg,jpeg,png,gif}'))
+sleep_images = sleep_images_path.map { |image_path| "La Maison/sleep/#{File.basename(image_path)}" }
+sleep_images.each do |image|
+  file_path = Rails.root.join('app', 'assets', 'images', image)
+  file = File.open(file_path)
+  cleaned_path = image.gsub('La Maison/sleep/', '')
+  Room.first.sleep_photos.attach(io: file, filename: cleaned_path, content_type: "image/png")
+end
+Room.first.save
+
+gallery_images_path = Dir.glob(Rails.root.join('app', 'assets', 'images', "La Maison", 'gallery', '*.{jpg,jpeg,png,gif}'))
+gallery_images = gallery_images_path.map { |image_path| "La Maison/gallery/#{File.basename(image_path)}" }
+gallery_images.each do |image|
+  file_path = Rails.root.join('app', 'assets', 'images', image)
+  file = File.open(file_path)
+  cleaned_path = image.gsub('La Maison/gallery/', '')
+  Room.first.gallery_photos.attach(io: file, filename: cleaned_path, content_type: "image/png")
+end
+
+Room.first.save
+
+main_photo_path = Rails.root.join('app', 'assets', 'images', 'Les Chambres.jpeg')
+main_photo = File.open(main_photo_path)
+Room.last.main_photo.attach(io: main_photo, filename: "Les Chambres.jpeg", content_type: "image/png")
+Room.last.save
+
+sleep_images_path = Dir.glob(Rails.root.join('app', 'assets', 'images', "Les Chambres", 'sleep', '*.{jpg,jpeg,png,gif}'))
+sleep_images = sleep_images_path.map { |image_path| "Les Chambres/sleep/#{File.basename(image_path)}" }
+sleep_images.each do |image|
+  file_path = Rails.root.join('app', 'assets', 'images', image)
+  file = File.open(file_path)
+  cleaned_path = image.gsub('Les Chambres/sleep/', '')
+  Room.last.sleep_photos.attach(io: file, filename: cleaned_path, content_type: "image/png")
+end
+Room.last.save
+
+gallery_images_path = Dir.glob(Rails.root.join('app', 'assets', 'images', "Les Chambres", 'gallery', '*.{jpg,jpeg,png,gif}'))
+gallery_images = gallery_images_path.map { |image_path| "Les Chambres/gallery/#{File.basename(image_path)}" }
+gallery_images.each do |image|
+  file_path = Rails.root.join('app', 'assets', 'images', image)
+  file = File.open(file_path)
+  cleaned_path = image.gsub('Les Chambres/gallery/', '')
+  Room.last.gallery_photos.attach(io: file, filename: cleaned_path, content_type: "image/png")
+end
+Room.last.save
+
+puts "Pictures added to rooms!"
+
+puts "Creating Url Pictures..."
+
+lac = UrlPicture.new(
+  name: "lac-tuilerie",
+  description: "1. Lac de la Tuilerie",
+  page: "localisation",
+  url: "https://www.visorando.com/randonnee-lac-de-la-tuilerie-saint-jean.html"
+)
+file_path = Rails.root.join('app', 'assets', 'images', 'localisation', 'Hébergements-Toulouse-localisation-01-Lac-Tuilerie.jpeg')
+file = File.open(file_path)
+lac.photo.attach(io: file, filename: "Hébergements-Toulouse-localisation-01-Lac-Tuilerie.jpeg", content_type: "image/png")
+lac.save
+
+capitole = UrlPicture.new(
+  name: "capitole",
+  description: "2. Capitole",
+  page: "localisation",
+  url: "https://fr.wikipedia.org/wiki/Capitole_de_Toulouse"
+)
+file_path = Rails.root.join('app', 'assets', 'images', 'localisation', 'Hébergements-Toulouse-localisation-02-Capitole.jpeg')
+file = File.open(file_path)
+capitole.photo.attach(io: file, filename: "Hébergements-Toulouse-localisation-02-Capitole.jpeg", content_type: "image/png")
+capitole.save
+
+stade = UrlPicture.new(
+  name: "stade",
+  description: "3. Stade Ernest Wallon",
+  page: "localisation",
+  url: "https://www.stadetoulousain.fr/ernest-wallon"
+)
+file_path = Rails.root.join('app', 'assets', 'images', 'localisation', 'Hébergements-Toulouse-localisation-03-Stade-Ernest-Wallon.jpeg')
+file = File.open(file_path)
+stade.photo.attach(io: file, filename: "Hébergements-Toulouse-localisation-03-Stade-Ernest-Wallon.jpeg", content_type: "image/png")
+stade.save
+
+cite = UrlPicture.new(
+  name: "cite-espace",
+  description: "4. Cité de l'Espace",
+  page: "localisation",
+  url: "https://www.cite-espace.com/"
+)
+file_path = Rails.root.join('app', 'assets', 'images', 'localisation', 'Hébergements-Toulouse-localisation-04-Cité-Espace.jpeg')
+file = File.open(file_path)
+cite.photo.attach(io: file, filename: "Hébergements-Toulouse-localisation-04-Cité-Espace.jpeg", content_type: "image/png")
+cite.save
+
+preissac = UrlPicture.new(
+  name: "preissac",
+  description: "5. Domaine de Preissac",
+  page: "localisation",
+  url: "https://www.domainedepreissac.fr/"
+)
+file_path = Rails.root.join('app', 'assets', 'images', 'localisation', 'Hébergements-Toulouse-localisation-05-Domaine-Preissac.jpeg')
+file = File.open(file_path)
+preissac.photo.attach(io: file, filename: "Hébergements-Toulouse-localisation-05-Domaine-Preissac.jpeg", content_type: "image/png")
+preissac.save
+
+transport = UrlPicture.new(
+  name: "transport",
+  description: "6. Aéroport & Gare",
+  page: "localisation",
+  url: "https://www.tisseo.fr/"
+)
+file_path = Rails.root.join('app', 'assets', 'images', 'localisation', 'Hébergements-Toulouse-localisation-06-Aéroport-Gare.jpeg')
+file = File.open(file_path)
+transport.photo.attach(io: file, filename: "Hébergements-Toulouse-localisation-06-Aéroport-Gare.jpeg", content_type: "image/png")
+transport.save
+
+expo = UrlPicture.new(
+  name: "expo",
+  description: "7. Parc des Expositions",
+  page: "localisation",
+  url: "https://meett.fr/"
+)
+file_path = Rails.root.join('app', 'assets', 'images', 'localisation', 'Hébergements-Toulouse-localisation-07-Parc-Expositions.jpeg')
+file = File.open(file_path)
+expo.photo.attach(io: file, filename: "Hébergements-Toulouse-localisation-07-Parc-Expositions.jpeg", content_type: "image/png")
+expo.save
+
 puts "#{Picture.count} pictures created!"
-
-# puts "Adding pictures to rooms..."
-
-# main_photo_path = Rails.root.join('app', 'assets', 'images', 'La Maison.jpeg')
-# main_photo = File.open(main_photo_path)
-# Room.first.main_photo.attach(io: main_photo, filename: "La Maison.jpeg", content_type: "image/png")
-
-# sleep_images_path = Dir.glob(Rails.root.join('app', 'assets', 'images', "La Maison", 'sleep', '*.{jpg,jpeg,png,gif}'))
-# sleep_images = sleep_images_path.map { |image_path| "La Maison/sleep/#{File.basename(image_path)}" }
-# sleep_images.each do |image|
-#   file_path = Rails.root.join('app', 'assets', 'images', image)
-#   file = File.open(file_path)
-#   cleaned_path = image.gsub('La Maison/sleep/', '')
-#   Room.first.sleep_photos.attach(io: file, filename: cleaned_path, content_type: "image/png")
-# end
-
-# gallery_images_path = Dir.glob(Rails.root.join('app', 'assets', 'images', "La Maison", 'gallery', '*.{jpg,jpeg,png,gif}'))
-# gallery_images = gallery_images_path.map { |image_path| "La Maison/gallery/#{File.basename(image_path)}" }
-# gallery_images.each do |image|
-#   file_path = Rails.root.join('app', 'assets', 'images', image)
-#   file = File.open(file_path)
-#   cleaned_path = image.gsub('La Maison/gallery/', '')
-#   Room.first.gallery_photos.attach(io: file, filename: cleaned_path, content_type: "image/png")
-# end
-
-# Room.first.save
-
-# main_photo_path = Rails.root.join('app', 'assets', 'images', 'Les Chambres.jpeg')
-# main_photo = File.open(main_photo_path)
-# Room.last.main_photo.attach(io: main_photo, filename: "Les Chambres.jpeg", content_type: "image/png")
-
-# sleep_images_path = Dir.glob(Rails.root.join('app', 'assets', 'images', "Les Chambres", 'sleep', '*.{jpg,jpeg,png,gif}'))
-# sleep_images = sleep_images_path.map { |image_path| "Les Chambres/sleep/#{File.basename(image_path)}" }
-# sleep_images.each do |image|
-#   file_path = Rails.root.join('app', 'assets', 'images', image)
-#   file = File.open(file_path)
-#   cleaned_path = image.gsub('Les Chambres/sleep/', '')
-#   Room.last.sleep_photos.attach(io: file, filename: cleaned_path, content_type: "image/png")
-# end
-
-# gallery_images_path = Dir.glob(Rails.root.join('app', 'assets', 'images', "Les Chambres", 'gallery', '*.{jpg,jpeg,png,gif}'))
-# gallery_images = gallery_images_path.map { |image_path| "Les Chambres/gallery/#{File.basename(image_path)}" }
-# gallery_images.each do |image|
-#   file_path = Rails.root.join('app', 'assets', 'images', image)
-#   file = File.open(file_path)
-#   cleaned_path = image.gsub('Les Chambres/gallery/', '')
-#   Room.last.gallery_photos.attach(io: file, filename: cleaned_path, content_type: "image/png")
-# end
-
-# Room.last.save
-
-# puts "Pictures added to rooms!"
-
-# puts "Creating Url Pictures..."
-
-# lac = UrlPicture.new(
-#   name: "lac-tuilerie",
-#   description: "1. Lac de la Tuilerie",
-#   page: "localisation",
-#   url: "https://www.visorando.com/randonnee-lac-de-la-tuilerie-saint-jean.html"
-# )
-# file_path = Rails.root.join('app', 'assets', 'images', 'localisation', 'Hébergements-Toulouse-localisation-01-Lac-Tuilerie.jpeg')
-# file = File.open(file_path)
-# lac.photo.attach(io: file, filename: "Hébergements-Toulouse-localisation-01-Lac-Tuilerie.jpeg", content_type: "image/png")
-# lac.save
-
-# capitole = UrlPicture.new(
-#   name: "capitole",
-#   description: "2. Capitole",
-#   page: "localisation",
-#   url: "https://fr.wikipedia.org/wiki/Capitole_de_Toulouse"
-# )
-# file_path = Rails.root.join('app', 'assets', 'images', 'localisation', 'Hébergements-Toulouse-localisation-02-Capitole.jpeg')
-# file = File.open(file_path)
-# capitole.photo.attach(io: file, filename: "Hébergements-Toulouse-localisation-02-Capitole.jpeg", content_type: "image/png")
-# capitole.save
-
-# stade = UrlPicture.new(
-#   name: "stade",
-#   description: "3. Stade Ernest Wallon",
-#   page: "localisation",
-#   url: "https://www.stadetoulousain.fr/ernest-wallon"
-# )
-# file_path = Rails.root.join('app', 'assets', 'images', 'localisation', 'Hébergements-Toulouse-localisation-03-Stade-Ernest-Wallon.jpeg')
-# file = File.open(file_path)
-# stade.photo.attach(io: file, filename: "Hébergements-Toulouse-localisation-03-Stade-Ernest-Wallon.jpeg", content_type: "image/png")
-# stade.save
-
-# cite = UrlPicture.new(
-#   name: "cite-espace",
-#   description: "4. Cité de l'Espace",
-#   page: "localisation",
-#   url: "https://www.cite-espace.com/"
-# )
-# file_path = Rails.root.join('app', 'assets', 'images', 'localisation', 'Hébergements-Toulouse-localisation-04-Cité-Espace.jpeg')
-# file = File.open(file_path)
-# cite.photo.attach(io: file, filename: "Hébergements-Toulouse-localisation-04-Cité-Espace.jpeg", content_type: "image/png")
-# cite.save
-
-# preissac = UrlPicture.new(
-#   name: "preissac",
-#   description: "5. Domaine de Preissac",
-#   page: "localisation",
-#   url: "https://www.domainedepreissac.fr/"
-# )
-# file_path = Rails.root.join('app', 'assets', 'images', 'localisation', 'Hébergements-Toulouse-localisation-05-Domaine-Preissac.jpeg')
-# file = File.open(file_path)
-# preissac.photo.attach(io: file, filename: "Hébergements-Toulouse-localisation-05-Domaine-Preissac.jpeg", content_type: "image/png")
-# preissac.save
-
-# transport = UrlPicture.new(
-#   name: "transport",
-#   description: "6. Aéroport & Gare",
-#   page: "localisation",
-#   url: "https://www.tisseo.fr/"
-# )
-# file_path = Rails.root.join('app', 'assets', 'images', 'localisation', 'Hébergements-Toulouse-localisation-06-Aéroport-Gare.jpeg')
-# file = File.open(file_path)
-# transport.photo.attach(io: file, filename: "Hébergements-Toulouse-localisation-06-Aéroport-Gare.jpeg", content_type: "image/png")
-# transport.save
-
-# expo = UrlPicture.new(
-#   name: "expo",
-#   description: "7. Parc des Expositions",
-#   page: "localisation",
-#   url: "https://meett.fr/"
-# )
-# file_path = Rails.root.join('app', 'assets', 'images', 'localisation', 'Hébergements-Toulouse-localisation-07-Parc-Expositions.jpeg')
-# file = File.open(file_path)
-# expo.photo.attach(io: file, filename: "Hébergements-Toulouse-localisation-07-Parc-Expositions.jpeg", content_type: "image/png")
-# expo.save
-
-# puts "#{UrlPicture.count} UrlPictures created!"
+puts "#{UrlPicture.count} UrlPictures created!"
 
 ### End of next production
 # puts "Creating contents..."

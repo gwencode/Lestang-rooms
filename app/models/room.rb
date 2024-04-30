@@ -20,7 +20,6 @@ class Room < ApplicationRecord
   validates :bedrooms, :beds, :bathrooms, presence: true
   validates :arrival_hour, :departure_hour, presence: true
   validates :min_nights, :max_nights, :available_days, presence: true
-  validates :main_photo, :sleep_photos, :gallery_photos, presence: true
 
   def slots_enabled
     array = slots.where(available: true).map do |slot|
