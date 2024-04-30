@@ -1,4 +1,4 @@
 meta_name: "Résidence Lestang"
 meta_title: "Résidence Lestang"
 meta_description: "Vous cherchez un hébergement confortable et convivial à Toulouse ? Découvrez notre maison complète ou notre chambre chez l'habitant, situées à proximité immédiate de cette ville historique."
-meta_image: "header.jpg" # should exist in `app/assets/images/`
+meta_image: "header" # should exist in `app/assets/images/`
