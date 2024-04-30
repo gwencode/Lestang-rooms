@@ -79,7 +79,7 @@
     <% @url_pictures.each do |url_picture| %>
       <div class="col-12 col-md-6 col-lg-4 p-2">
           <a href=<%= url_picture.url %> target="_blank">
-          <%= image_tag url_picture.photo, alt: "", loading: "lazy", class:"w-100" %>
+          <%= cl_image_tag url_picture.photo.key, alt: "", loading: "lazy", class:"w-100" %>
         </a>
       </div>
     <% end %>
