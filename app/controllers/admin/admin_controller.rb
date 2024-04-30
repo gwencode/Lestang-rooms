@@ -5,35 +5,35 @@ class Admin::AdminController < ApplicationController
     @dashboard_sections = {
       "Mes logements" => {
         url: "admin_rooms",
-        asset: "admin/housing"
+        asset: "admin/housing.jpg"
       },
       "Réservations" => {
         url: "admin_bookings",
-        asset: "admin/reserved"
+        asset: "admin/reserved.jpg"
       },
       "Créneaux disponibles" => {
         url: "admin_slots",
-        asset: "admin/calendar"
+        asset: "admin/calendar.jpg"
       },
       "Conditions saisonnières" => {
         url: "admin_seasons",
-        asset: "admin/seasons"
+        asset: "admin/seasons.jpg"
       },
       "Messages" => {
         url: "admin_messages",
-        asset: "admin/letters"
+        asset: "admin/letters.jpg"
       },
       "Utilisateurs" => {
         url: "admin_users",
-        asset: "admin/people"
+        asset: "admin/people.jpg"
       },
       "Avis" => {
         url: "admin_reviews",
-        asset: "admin/reviews"
+        asset: "admin/reviews.jpg"
       },
       "Photos" => {
         url: "admin_pictures",
-        asset: "admin/pictures"
+        asset: "admin/pictures.jpg"
       }
     }
   end
