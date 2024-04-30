@@ -1,12 +1,11 @@
 class Admin::AdminController < ApplicationController
+  before_action :authorize_admin
 
   def dashboard
-    # @user = current_user
-    authorize :admin
     @dashboard_sections = {
       "Mes logements" => {
         url: "admin_rooms",
-        asset: "Les Chambres.png"
+        asset: "Les Chambres.jpeg"
       },
       "Réservations" => {
         url: "admin_bookings",
@@ -31,24 +30,33 @@ class Admin::AdminController < ApplicationController
       "Avis" => {
         url: "admin_reviews",
         asset: "admin/reviews.jpg"
+      },
+      "Photos" => {
+        url: "admin_pictures",
+        asset: "admin/pictures.jpg"
       }
     }
   end
 
   def slots
-    authorize :admin
   end
 
   def seasons
-    authorize :admin
   end
 
   def messages
-    authorize :admin
-
     chatrooms_with_messages = policy_scope(Chatroom).joins(:messages).order('messages.created_at DESC').uniq
     chatrooms_without_messages = policy_scope(Chatroom).left_outer_joins(:messages).where(messages: { id: nil }).order(created_at: :desc)
 
     @chatrooms = chatrooms_with_messages.union(chatrooms_without_messages)
+  end
+
+  def pictures
+  end
+
+  private
+
+  def authorize_admin
+    authorize :admin
   end
 end

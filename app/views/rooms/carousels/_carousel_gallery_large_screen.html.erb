@@ -1,11 +1,22 @@
+<% gallery = @gallery_images.photos %>
 <div id="carousel-gallery-large-screen" class="carousel carousel-dark slide my-3" data-bs-ride="true">
   <div class="carousel-inner text-center">
     <div class="carousel-item active">
-      <%= image_tag "#{@gallery_images.first}", alt: "Hébergements Toulouse - Résidence Lestang - Maison et Chambre", class: "img-room-carousel img-thumbnail gallery-image", loading: "lazy", data: { image_gallery_target: "image", action: "click->image-gallery#expandImage" } %>
+      <%= cl_image_tag gallery.first.key,
+        alt: "Hébergements Toulouse - Résidence Lestang - Maison et Chambres",
+        class: "img-room-carousel img-thumbnail gallery-image",
+        loading: "lazy",
+        data: { image_gallery_target: "image", action: "click->image-gallery#expandImage" }
+      %>
     </div>
-    <% @gallery_images.drop(1).each do |image_path| %>
+    <% gallery.last(gallery.count - 1).each do |image| %>
       <div class="carousel-item text-center">
-        <%= image_tag "#{image_path}", alt: "Hébergements Toulouse - Résidence Lestang - Maison et Chambre", class: "img-room-carousel img-thumbnail gallery-image", loading: "lazy", data: { image_gallery_target: "image", action: "click->image-gallery#expandImage" } %>
+        <%= cl_image_tag image.key,
+          alt: "Hébergements Toulouse - Résidence Lestang - Maison et Chambres",
+          class: "img-room-carousel img-thumbnail gallery-image",
+          loading: "lazy",
+          data: { image_gallery_target: "image", action: "click->image-gallery#expandImage" }
+        %>
       </div>
     <% end %>
   </div>

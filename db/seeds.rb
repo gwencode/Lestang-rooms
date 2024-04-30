@@ -1,223 +1,413 @@
 ### Add to next production
 
-puts "Creating contents..."
+puts "Cleaning database..."
+Picture.destroy_all
+UrlPicture.destroy_all
+Room.first.update(main_photo: nil)
+Room.first.update(sleep_photos: nil)
+Room.first.update(gallery_photos: nil)
+Room.last.update(main_photo: nil)
+Room.last.update(sleep_photos: nil)
+Room.last.update(gallery_photos: nil)
 
-Content.create(
-  name: "home_title",
-  html: "Hébergements proches de Toulouse"
+puts "Creating pictures..."
+
+puts "Creating Pictures for homepage..."
+
+header = Picture.new(
+  name: "header",
+  description: "Bannière d'accueil",
+  page: "homepage"
 )
+file_path = Rails.root.join('app', 'assets', 'images', 'header.jpg')
+file = File.open(file_path)
+header.photos.attach(io: file, filename: "Hébergements-Toulouse-Header.jpg", content_type: "image/png")
+header.save
 
-Content.create(
-  name: "introduction_description",
-  html: "Vous cherchez un hébergement <strong>confortable et convivial</strong> à Toulouse ?
-  Découvrez notre maison complète ou nos chambres chez l'habitant situées à proximité immédiate de cette ville historique."
+home = Picture.new(
+  name: "home",
+  description: "Carrousel d'accueil",
+  page: "homepage"
 )
+image_files = Dir.glob(Rails.root.join('app', 'assets', 'images', "home", '*.{jpg,jpeg,png,gif}'))
+home_images = image_files.map { |image_path| "home/#{File.basename(image_path)}" }
+home_images.each do |image|
+  file_path = Rails.root.join('app', 'assets', 'images', image)
+  file = File.open(file_path)
+  cleaned_path = image.gsub('home/', '')
+  home.photos.attach(io: file, filename: cleaned_path, content_type: "image/png")
+end
+home.save
 
-Content.create(
-  name: "subtitle_home_title",
-  html: "Que vous soyez en ville pour un voyage d'affaires, une escapade romantique ou simplement pour explorer la région, voici ce que nous proposons :"
+home_gallery = Picture.new(
+  name: "home-gallery",
+  description: "Toutes les photos",
+  page: "homepage"
 )
+gallery_images_path = Dir.glob(Rails.root.join('app', 'assets', 'images', "home", 'gallery', '*.{jpg,jpeg,png,gif}'))
+gallery_images = gallery_images_path.map { |image_path| "home/gallery/#{File.basename(image_path)}" }
+gallery_images.each do |image|
+  file_path = Rails.root.join('app', 'assets', 'images', image)
+  file = File.open(file_path)
+  cleaned_path = image.gsub('homes/gallery/', '')
+  home_gallery.photos.attach(io: file, filename: cleaned_path, content_type: "image/png")
+end
 
-Content.create(
-  name: "subtitle_home_description",
-  html:
-    "- Soit, la maison entière privative située dans un quartier calme et verdoyant, avec jusque 8 couchages
-    - Soit, les 2 chambres privatives situées dans ce logement partagé avec les propriétaires, avec 2 couchages chacune"
+home_gallery.save
+
+puts "Adding pictures to rooms..."
+
+main_photo_path = Rails.root.join('app', 'assets', 'images', 'La Maison.jpeg')
+main_photo = File.open(main_photo_path)
+Room.first.main_photo.attach(io: main_photo, filename: "La Maison.jpeg", content_type: "image/png")
+Room.first.save
+
+sleep_images_path = Dir.glob(Rails.root.join('app', 'assets', 'images', "La Maison", 'sleep', '*.{jpg,jpeg,png,gif}'))
+sleep_images = sleep_images_path.map { |image_path| "La Maison/sleep/#{File.basename(image_path)}" }
+sleep_images.each do |image|
+  file_path = Rails.root.join('app', 'assets', 'images', image)
+  file = File.open(file_path)
+  cleaned_path = image.gsub('La Maison/sleep/', '')
+  Room.first.sleep_photos.attach(io: file, filename: cleaned_path, content_type: "image/png")
+end
+Room.first.save
+
+gallery_images_path = Dir.glob(Rails.root.join('app', 'assets', 'images', "La Maison", 'gallery', '*.{jpg,jpeg,png,gif}'))
+gallery_images = gallery_images_path.map { |image_path| "La Maison/gallery/#{File.basename(image_path)}" }
+gallery_images.each do |image|
+  file_path = Rails.root.join('app', 'assets', 'images', image)
+  file = File.open(file_path)
+  cleaned_path = image.gsub('La Maison/gallery/', '')
+  Room.first.gallery_photos.attach(io: file, filename: cleaned_path, content_type: "image/png")
+end
+
+Room.first.save
+
+main_photo_path = Rails.root.join('app', 'assets', 'images', 'Les Chambres.jpeg')
+main_photo = File.open(main_photo_path)
+Room.last.main_photo.attach(io: main_photo, filename: "Les Chambres.jpeg", content_type: "image/png")
+Room.last.save
+
+sleep_images_path = Dir.glob(Rails.root.join('app', 'assets', 'images', "Les Chambres", 'sleep', '*.{jpg,jpeg,png,gif}'))
+sleep_images = sleep_images_path.map { |image_path| "Les Chambres/sleep/#{File.basename(image_path)}" }
+sleep_images.each do |image|
+  file_path = Rails.root.join('app', 'assets', 'images', image)
+  file = File.open(file_path)
+  cleaned_path = image.gsub('Les Chambres/sleep/', '')
+  Room.last.sleep_photos.attach(io: file, filename: cleaned_path, content_type: "image/png")
+end
+Room.last.save
+
+gallery_images_path = Dir.glob(Rails.root.join('app', 'assets', 'images', "Les Chambres", 'gallery', '*.{jpg,jpeg,png,gif}'))
+gallery_images = gallery_images_path.map { |image_path| "Les Chambres/gallery/#{File.basename(image_path)}" }
+gallery_images.each do |image|
+  file_path = Rails.root.join('app', 'assets', 'images', image)
+  file = File.open(file_path)
+  cleaned_path = image.gsub('Les Chambres/gallery/', '')
+  Room.last.gallery_photos.attach(io: file, filename: cleaned_path, content_type: "image/png")
+end
+Room.last.save
+
+puts "Pictures added to rooms!"
+
+puts "Creating Url Pictures..."
+
+lac = UrlPicture.new(
+  name: "lac-tuilerie",
+  description: "1. Lac de la Tuilerie",
+  page: "localisation",
+  url: "https://www.visorando.com/randonnee-lac-de-la-tuilerie-saint-jean.html"
 )
+file_path = Rails.root.join('app', 'assets', 'images', 'localisation', 'Hébergements-Toulouse-localisation-01-Lac-Tuilerie.jpeg')
+file = File.open(file_path)
+lac.photo.attach(io: file, filename: "Hébergements-Toulouse-localisation-01-Lac-Tuilerie.jpeg", content_type: "image/png")
+lac.save
 
-Content.create(
-  name: "localisation_infos",
-  html: "A proximité immédiate du <a href='https://www.domainedepreissac.fr/' class='text-blue text-decoration-none' target='_blank'>Domaine de Preissac</a> (moins de 2km en voiture et environ 15-20min à pied).
-  <br></br><br></br>Quartier résidentiel à proximité immédiate du <a href='https://www.visorando.com/randonnee-lac-de-la-tuilerie-saint-jean.html' class='text-blue text-decoration-none' target='_blank'>Lac de la Tuilerie</a>."
+capitole = UrlPicture.new(
+  name: "capitole",
+  description: "2. Capitole",
+  page: "localisation",
+  url: "https://fr.wikipedia.org/wiki/Capitole_de_Toulouse"
 )
+file_path = Rails.root.join('app', 'assets', 'images', 'localisation', 'Hébergements-Toulouse-localisation-02-Capitole.jpeg')
+file = File.open(file_path)
+capitole.photo.attach(io: file, filename: "Hébergements-Toulouse-localisation-02-Capitole.jpeg", content_type: "image/png")
+capitole.save
 
-Content.create(
-  name: "moving_around",
-  html: "Pour rejoindre le centre ville de Toulouse, vous pouvez utiliser :
-  <strong>- le bus :</strong> terminus de la ligne 73 (de 6h à 21h) se situant à 100m de la maison et vous conduisant au terminus de la ligne de métro B « Borderouge ».
-  <strong>- votre voiture :</strong> possibilité de la garer dans un des innombrables parking en centre ville ou dans un des parking relais d'une station de métro. L'accès parking est inclus dans le ticket de métro, il faut juste penser à le garder avec soi quand on quitte le parking. <strong>Attention,</strong> Tisseo n'accepte pas que l'on laisse sa voiture toute la nuit sur un de leurs parkings et facture la prestation."
+stade = UrlPicture.new(
+  name: "stade",
+  description: "3. Stade Ernest Wallon",
+  page: "localisation",
+  url: "https://www.stadetoulousain.fr/ernest-wallon"
 )
+file_path = Rails.root.join('app', 'assets', 'images', 'localisation', 'Hébergements-Toulouse-localisation-03-Stade-Ernest-Wallon.jpeg')
+file = File.open(file_path)
+stade.photo.attach(io: file, filename: "Hébergements-Toulouse-localisation-03-Stade-Ernest-Wallon.jpeg", content_type: "image/png")
+stade.save
 
-Content.create(
-  name: "before_booking_title",
-  html: "Avant de réserver"
+cite = UrlPicture.new(
+  name: "cite-espace",
+  description: "4. Cité de l'Espace",
+  page: "localisation",
+  url: "https://www.cite-espace.com/"
 )
+file_path = Rails.root.join('app', 'assets', 'images', 'localisation', 'Hébergements-Toulouse-localisation-04-Cité-Espace.jpeg')
+file = File.open(file_path)
+cite.photo.attach(io: file, filename: "Hébergements-Toulouse-localisation-04-Cité-Espace.jpeg", content_type: "image/png")
+cite.save
 
-Content.create(
-  name: "before_booking_description",
-  html: "<p>Vous pouvez consulter les disponibilités et nous envoyer une demande de réservation directement
-    <strong><a href='https://www.residence-lestang.com/rooms/la-maison'>ici pour la maison</a></strong> et
-    <strong><a href='https://www.residence-lestang.com/rooms/les-chambres'>ici pour les chambres</a></strong>.
-    Nous vous répondrons dans les meilleurs délais avec le contrat de location.</p>
-    <br />
-    <p>Pour toute question avant votre demande de réservation, vous pouvez nous contacter via le formulaire de contact.</p>
-  "
+preissac = UrlPicture.new(
+  name: "preissac",
+  description: "5. Domaine de Preissac",
+  page: "localisation",
+  url: "https://www.domainedepreissac.fr/"
 )
+file_path = Rails.root.join('app', 'assets', 'images', 'localisation', 'Hébergements-Toulouse-localisation-05-Domaine-Preissac.jpeg')
+file = File.open(file_path)
+preissac.photo.attach(io: file, filename: "Hébergements-Toulouse-localisation-05-Domaine-Preissac.jpeg", content_type: "image/png")
+preissac.save
 
-  Content.create(
-    name: "contact_form_title",
-    html: "Formulaire de contact"
-  )
-
-  Content.create(
-    name: "contact_form_description",
-    html: "<p class='fst-italic m-0'>
-    En renseignant vos informations, vous acceptez le fait d'envoyer un e-mail à notre adresse <span class='text-blue text-decoration-underline'>etrebil.ee30@gmail.com</span> avec les informations remplies.
-    </p>
-    "
-  )
-
-  puts "#{Content.count} contents created!"
-
-  Room.first.update(description: "En séjournant dans notre maison, vous pourrez profiter d'un cadre de vie chaleureux et convivial, avec une décoration soignée qui reflète notre personnalité et notre style de vie. Notre maison est équipée de tout ce dont vous aurez besoin pour passer un séjour confortable, notamment une cuisine entièrement équipée, une salle de bains moderne et des chambres confortables.")
-  Room.last.update(description: "Nous proposons deux chambres confortables, lumineuses et climatisées, équipées d'un lit Queen size et d'un dressing pour ranger vos effets personnels. Vous aurez également accès à une salle de bain privative ainsi qu'au reste des parties communes partagées avec nous.")
-
-  Room.last.update(slug: "les-chambres")
-
-  Room.first.update(description_title: "Un logement tranquille avec jardin et terrasse")
-  Room.first.update(detailed_short_description:
-    "<p>
-      Bienvenue dans notre charmante maison située dans un <strong>quartier calme et verdoyant.</strong>
-      <br>Cette maison est notre résidence principale, mais lorsque nous sommes en déplacement, nous aimons la partager avec des voyageurs en quête de confort et de tranquillité.
-      <br>En séjournant dans notre maison, vous pourrez profiter d'un <strong>cadre de vie chaleureux et convivial,</strong> avec une décoration soignée qui reflète notre personnalité et notre style de vie.
-    </p>
-    <p class='text-blue fw-bold'>A noter</p>
-    <ul>
-      <li>Personnes non prévues dans la réservation interdites</li>
-      <li>Fêtes interdites</li>
-      <li>Animaux interdits</li>
-    </ul>
-    "
-  )
-  Room.first.update(detailed_long_description:
-    "
-    <p>
-    Bienvenue dans notre charmante maison située dans un <strong>quartier calme et verdoyant.</strong>
-    <br>Cette maison est notre résidence principale, mais lorsque nous sommes en déplacement, nous aimons la partager avec des voyageurs en quête de confort et de tranquillité.
-    <br>En séjournant dans notre maison, vous pourrez profiter d'un <strong>cadre de vie chaleureux et convivial,</strong> avec une décoration soignée qui reflète notre personnalité et notre style de vie.
-  </p>
-  <br/>
-  <p class='text-blue fw-bold'>Le logement</p>
-  <br/>
-  <ul>
-    <li><strong>Maison entière</strong> située dans un quartier calme et verdoyant</li>
-    <li><strong>Arrivée autonome</strong></li>
-    <li><strong>Climatisation</strong> pour se sentir au frais même quand il fait chaud</li>
-    <li><strong>8 couchages</strong> : 3 chambres avec lits Queen size et 1 canapé lit double convertible dans le séjour</li>
-    <li><strong>Parking sécurisé</strong></li>
-    <li><strong>Wifi internet haut débit / fibre</strong></li>
-    <li><strong>Ordinateur et vidéoprojecteur</strong> équipé d'un <strong>chromecast</strong> pour se divertir</li>
-    <li><strong>Imprimante</strong> pour scanner, copier et imprimer vos documents</li>
-    <li><strong>Kit de repassage</strong> pour éviter les robes ou chemises froissés</li>
-    <li><strong>Cuisiné équipée</strong> pour jouer les chefs étoilés et savourer la gastronomie Toulousaine</li>
-    <li><strong>Machine à laver & étendoir</strong> (intérieur et extérieur) pour avoir des vêtements propres en toutes circonstances</li>
-    <li><strong>Machine à café, thé</strong> sont présents afin de se sentir comme à la maison</li>
-    <li><strong>Jardin et terrasse</strong> pour profiter des journées ensoleillées</li>
-  </ul>
-  <br/>
-  <p class='text-blue fw-bold'>Accès des voyageurs</p>
-  <br/>
-  <p>Notre maison est équipée de tout ce dont vous aurez besoin pour passer un séjour confortable, notamment une cuisine entièrement équipée, une salle de bains moderne et des chambres confortables.
-    <br>La maison dispose également d'un jardin paisible, parfait pour se détendre et profiter du soleil pendant les jours chauds d'été. Vous pourrez également explorer les environs et découvrir les nombreux restaurants, bars et attractions touristiques à proximité.
-  </p>
-  <br/>
-  <p class='text-blue fw-bold'>Autres remarques</p>
-  <br/>
-  <ul>
-    <li>Personnes non prévues dans la réservation interdites</li>
-    <li>Fêtes interdites</li>
-    <li>Animaux interdits</li>
-  </ul>
-    "
-  )
-
-  Room.first.update(
-      the_plus: "<p class='with-comment fw-bold'>Parfait pour l'été</p>
-    <p class='comment'>Jardin, terrasse, climatisation et barbecue</p>
-    <br />
-    <p class='with-comment fw-bold'>Espace de travail dédié</p>
-    <p class='comment'>Un espace commun avec wifi, bien aménagé pour travailler</p>
-    <br />
-    <p class='with-comment fw-bold'>Annulation gratuite pendant 48 heures</p>
-    <p class='comment m-0'>Hors frais bancaires et sauf si réservation dans les 48 heures avant la location</p>
-  ")
-
-Room.last.update(
-    the_plus: "<p class='with-comment fw-bold'>Idéal pour le télétravail</p>
-      <p class='comment'>Une connexion wifi rapide à 68 Mbit/s, plus un espace de travail dans un espace commun.</p>
-      <br />
-      <p class='with-comment fw-bold'>Parfait pour l'été</p>
-      <p class='comment'>Jardin, terrasse et climatisation</p>
-      <br />
-      <p class='with-comment fw-bold'>Arrivée autonome</p>
-      <p class='comment m-0'>Vous pouvez entrer dans les lieux avec une serrure à digicode.</p>
-    ")
-
-  Room.last.update(description_title: "Deux chambres privées dans notre logement")
-  Room.last.update(detailed_short_description:
-    "<p>Bienvenue chez nous !
-    <br>Nous sommes un couple chaleureux et accueillant, et nous sommes ravis de vous accueillir chez nous.
-    <br>Notre maison est située dans un quartier paisible, à proximité des transports en commun et des commodités.
-    <br>Nous proposons deux chambres confortables et lumineuses, équipée chacune d'un lit Queensize.
-    <br>Vous aurez également accès à une salle de bain moderne, ainsi qu'à notre cuisine et salon où vous pourrez préparer vos repas et partager des moments de convivialité avec nous.
-  </p>
-    "
-  )
-
-Room.last.update(detailed_long_description:
-  "<p>Bienvenue chez nous !
-    <br>Nous sommes un couple chaleureux et accueillant, et nous sommes ravis de vous accueillir chez nous.
-    <br>Notre maison est située dans un quartier paisible, à proximité des transports en commun et des commodités.
-    <br>Nous proposons deux chambres confortables et lumineuses, équipée chacune d'un lit Queensize.
-    <br>Vous aurez également accès à une salle de bain moderne, ainsi qu'à notre cuisine et salon où vous pourrez préparer vos repas et partager des moments de convivialité avec nous.
-  </p>
-  <br/>
-  <p class='text-blue fw-bold'>Le logement</p>
-  <br/>
-  <ul>
-    <li><strong>2 chambres</strong> situées dans un quartier calme et verdoyant</li>
-    <li><strong>4 couchages</strong> avec 2 lits Queen Size</li>
-    <li><strong>1 salle de bain</strong> privative</li>
-    <li><strong>Climatisation</strong> pour se sentir au frais même quand il fait chaud</li>
-  </ul>
-  <br/>
-  <p class='text-blue fw-bold'>Partagés avec les hôtes</p>
-  <br/>
-  <ul>
-    <li><strong>Arrivée autonome</strong></li>
-    <li><strong>Place de stationnement</strong> juste devant la maison avec possibilité de se garer sur le <strong>parking sécurisé</strong> si besoin</li>
-    <li><strong>Wifi internet haut débit / fibre</strong></li>
-    <li><strong>Ordinateur et vidéoprojecteur</strong> équipé d'un <strong>chromecast</strong> pour se divertir</li>
-    <li><strong>Imprimante</strong> pour scanner, copier et imprimer vos documents</li>
-    <li><strong>Salle de yoga</strong> pour vous détendre (musique et diffuseur d'huile essentielle)</li>
-    <li><strong>Kit de repassage</strong> pour éviter les robes ou chemises froissés</li>
-    <li><strong>Cuisiné équipée</strong> pour jouer les chefs étoilés et savourer la gastronomie Toulousaine</li>
-    <li><strong>Machine à laver & étendoir</strong> (intérieur et extérieur) pour avoir des vêtements propres en toutes circonstances</li>
-    <li><strong>Machine à café, thé</strong> sont présents afin de se sentir comme à la maison</li>
-    <li><strong>Jardin et terrasse</strong> pour profiter des journées ensoleillées</li>
-  </ul>
-  <br/>
-  <p class='text-blue fw-bold'>Accès des voyageurs</p>
-  <br/>
-  <ul>
-    <li>Chambres privatives à l'étage avec salle de bain attenante.</li>
-    <li>Parties communes en RdC (salon, cuisine, terrasse, jardin).</li>
-  </ul>
-  <br/>
-  <p class='text-blue fw-bold'>Autres remarques</p>
-  <br/>
-  <ul>
-    <li>Situé à 100m de la ligne 73 se rendant à une station de métro pour ne pas s'encombrer d'une voiture en ville (fonctionne de 6h à 21h)</li>
-    <li>Situé à 400m du lac de la Tuilerie</li>
-    <li>Situé à 500m d'un maître Artisan Boulanger d'exception</li>
-    <li>Situé à 15 min de la cité de l'Espace</li>
-    <li>Situé à 20 min du Capitole</li>
-  </ul>
-  "
+transport = UrlPicture.new(
+  name: "transport",
+  description: "6. Aéroport & Gare",
+  page: "localisation",
+  url: "https://www.tisseo.fr/"
 )
+file_path = Rails.root.join('app', 'assets', 'images', 'localisation', 'Hébergements-Toulouse-localisation-06-Aéroport-Gare.jpeg')
+file = File.open(file_path)
+transport.photo.attach(io: file, filename: "Hébergements-Toulouse-localisation-06-Aéroport-Gare.jpeg", content_type: "image/png")
+transport.save
+
+expo = UrlPicture.new(
+  name: "expo",
+  description: "7. Parc des Expositions",
+  page: "localisation",
+  url: "https://meett.fr/"
+)
+file_path = Rails.root.join('app', 'assets', 'images', 'localisation', 'Hébergements-Toulouse-localisation-07-Parc-Expositions.jpeg')
+file = File.open(file_path)
+expo.photo.attach(io: file, filename: "Hébergements-Toulouse-localisation-07-Parc-Expositions.jpeg", content_type: "image/png")
+expo.save
+
+puts "#{Picture.count} pictures created!"
+puts "#{UrlPicture.count} UrlPictures created!"
 
 ### End of next production
+# puts "Creating contents..."
 
+# Content.create(
+#   name: "home_title",
+#   html: "Hébergements proches de Toulouse"
+# )
+
+# Content.create(
+#   name: "introduction_description",
+#   html: "Vous cherchez un hébergement <strong>confortable et convivial</strong> à Toulouse ?
+#   Découvrez notre maison complète ou nos chambres chez l'habitant situées à proximité immédiate de cette ville historique."
+# )
+
+# Content.create(
+#   name: "subtitle_home_title",
+#   html: "Que vous soyez en ville pour un voyage d'affaires, une escapade romantique ou simplement pour explorer la région, voici ce que nous proposons :"
+# )
+
+# Content.create(
+#   name: "subtitle_home_description",
+#   html:
+#     "- Soit, la maison entière privative située dans un quartier calme et verdoyant, avec jusque 8 couchages
+#     - Soit, les 2 chambres privatives situées dans ce logement partagé avec les propriétaires, avec 2 couchages chacune"
+# )
+
+# Content.create(
+#   name: "localisation_infos",
+#   html: "A proximité immédiate du <a href='https://www.domainedepreissac.fr/' class='text-blue text-decoration-none' target='_blank'>Domaine de Preissac</a> (moins de 2km en voiture et environ 15-20min à pied).
+#   <br></br><br></br>Quartier résidentiel à proximité immédiate du <a href='https://www.visorando.com/randonnee-lac-de-la-tuilerie-saint-jean.html' class='text-blue text-decoration-none' target='_blank'>Lac de la Tuilerie</a>."
+# )
+
+# Content.create(
+#   name: "moving_around",
+#   html: "Pour rejoindre le centre ville de Toulouse, vous pouvez utiliser :
+#   <strong>- le bus :</strong> terminus de la ligne 73 (de 6h à 21h) se situant à 100m de la maison et vous conduisant au terminus de la ligne de métro B « Borderouge ».
+#   <strong>- votre voiture :</strong> possibilité de la garer dans un des innombrables parking en centre ville ou dans un des parking relais d'une station de métro. L'accès parking est inclus dans le ticket de métro, il faut juste penser à le garder avec soi quand on quitte le parking. <strong>Attention,</strong> Tisseo n'accepte pas que l'on laisse sa voiture toute la nuit sur un de leurs parkings et facture la prestation."
+# )
+
+# Content.create(
+#   name: "before_booking_title",
+#   html: "Avant de réserver"
+# )
+
+# Content.create(
+#   name: "before_booking_description",
+#   html: "<p>Vous pouvez consulter les disponibilités et nous envoyer une demande de réservation directement
+#     <strong><a href='https://www.residence-lestang.com/rooms/la-maison'>ici pour la maison</a></strong> et
+#     <strong><a href='https://www.residence-lestang.com/rooms/les-chambres'>ici pour les chambres</a></strong>.
+#     Nous vous répondrons dans les meilleurs délais avec le contrat de location.</p>
+#     <br />
+#     <p>Pour toute question avant votre demande de réservation, vous pouvez nous contacter via le formulaire de contact.</p>
+#   "
+# )
+
+# Content.create(
+#   name: "contact_form_title",
+#   html: "Formulaire de contact"
+# )
+
+# Content.create(
+#   name: "contact_form_description",
+#   html: "<p class='fst-italic m-0'>
+#   En renseignant vos informations, vous acceptez le fait d'envoyer un e-mail à notre adresse <span class='text-blue text-decoration-underline'>etrebil.ee30@gmail.com</span> avec les informations remplies.
+#   </p>
+#   "
+# )
+
+# puts "#{Content.count} contents created!"
+
+# Room.first.update(description: "En séjournant dans notre maison, vous pourrez profiter d'un cadre de vie chaleureux et convivial, avec une décoration soignée qui reflète notre personnalité et notre style de vie. Notre maison est équipée de tout ce dont vous aurez besoin pour passer un séjour confortable, notamment une cuisine entièrement équipée, une salle de bains moderne et des chambres confortables.")
+# Room.last.update(description: "Nous proposons deux chambres confortables, lumineuses et climatisées, équipées d'un lit Queen size et d'un dressing pour ranger vos effets personnels. Vous aurez également accès à une salle de bain privative ainsi qu'au reste des parties communes partagées avec nous.")
+
+# Room.last.update(slug: "les-chambres")
+
+# Room.first.update(description_title: "Un logement tranquille avec jardin et terrasse")
+# Room.first.update(detailed_short_description:
+#   "<p>
+#     Bienvenue dans notre charmante maison située dans un <strong>quartier calme et verdoyant.</strong>
+#     <br>Cette maison est notre résidence principale, mais lorsque nous sommes en déplacement, nous aimons la partager avec des voyageurs en quête de confort et de tranquillité.
+#     <br>En séjournant dans notre maison, vous pourrez profiter d'un <strong>cadre de vie chaleureux et convivial,</strong> avec une décoration soignée qui reflète notre personnalité et notre style de vie.
+#   </p>
+#   <p class='text-blue fw-bold'>A noter</p>
+#   <ul>
+#     <li>Personnes non prévues dans la réservation interdites</li>
+#     <li>Fêtes interdites</li>
+#     <li>Animaux interdits</li>
+#   </ul>
+#   "
+# )
+# Room.first.update(detailed_long_description:
+#   "
+#   <p>
+#   Bienvenue dans notre charmante maison située dans un <strong>quartier calme et verdoyant.</strong>
+#   <br>Cette maison est notre résidence principale, mais lorsque nous sommes en déplacement, nous aimons la partager avec des voyageurs en quête de confort et de tranquillité.
+#   <br>En séjournant dans notre maison, vous pourrez profiter d'un <strong>cadre de vie chaleureux et convivial,</strong> avec une décoration soignée qui reflète notre personnalité et notre style de vie.
+# </p>
+# <br/>
+# <p class='text-blue fw-bold'>Le logement</p>
+# <br/>
+# <ul>
+#   <li><strong>Maison entière</strong> située dans un quartier calme et verdoyant</li>
+#   <li><strong>Arrivée autonome</strong></li>
+#   <li><strong>Climatisation</strong> pour se sentir au frais même quand il fait chaud</li>
+#   <li><strong>8 couchages</strong> : 3 chambres avec lits Queen size et 1 canapé lit double convertible dans le séjour</li>
+#   <li><strong>Parking sécurisé</strong></li>
+#   <li><strong>Wifi internet haut débit / fibre</strong></li>
+#   <li><strong>Ordinateur et vidéoprojecteur</strong> équipé d'un <strong>chromecast</strong> pour se divertir</li>
+#   <li><strong>Imprimante</strong> pour scanner, copier et imprimer vos documents</li>
+#   <li><strong>Kit de repassage</strong> pour éviter les robes ou chemises froissés</li>
+#   <li><strong>Cuisiné équipée</strong> pour jouer les chefs étoilés et savourer la gastronomie Toulousaine</li>
+#   <li><strong>Machine à laver & étendoir</strong> (intérieur et extérieur) pour avoir des vêtements propres en toutes circonstances</li>
+#   <li><strong>Machine à café, thé</strong> sont présents afin de se sentir comme à la maison</li>
+#   <li><strong>Jardin et terrasse</strong> pour profiter des journées ensoleillées</li>
+# </ul>
+# <br/>
+# <p class='text-blue fw-bold'>Accès des voyageurs</p>
+# <br/>
+# <p>Notre maison est équipée de tout ce dont vous aurez besoin pour passer un séjour confortable, notamment une cuisine entièrement équipée, une salle de bains moderne et des chambres confortables.
+#   <br>La maison dispose également d'un jardin paisible, parfait pour se détendre et profiter du soleil pendant les jours chauds d'été. Vous pourrez également explorer les environs et découvrir les nombreux restaurants, bars et attractions touristiques à proximité.
+# </p>
+# <br/>
+# <p class='text-blue fw-bold'>Autres remarques</p>
+# <br/>
+# <ul>
+#   <li>Personnes non prévues dans la réservation interdites</li>
+#   <li>Fêtes interdites</li>
+#   <li>Animaux interdits</li>
+# </ul>
+#   "
+# )
+
+# Room.first.update(
+#     the_plus: "<p class='with-comment fw-bold'>Parfait pour l'été</p>
+#   <p class='comment'>Jardin, terrasse, climatisation et barbecue</p>
+#   <br />
+#   <p class='with-comment fw-bold'>Espace de travail dédié</p>
+#   <p class='comment'>Un espace commun avec wifi, bien aménagé pour travailler</p>
+#   <br />
+#   <p class='with-comment fw-bold'>Annulation gratuite pendant 48 heures</p>
+#   <p class='comment m-0'>Hors frais bancaires et sauf si réservation dans les 48 heures avant la location</p>
+# ")
+
+# Room.last.update(
+#   the_plus: "<p class='with-comment fw-bold'>Idéal pour le télétravail</p>
+#     <p class='comment'>Une connexion wifi rapide à 68 Mbit/s, plus un espace de travail dans un espace commun.</p>
+#     <br />
+#     <p class='with-comment fw-bold'>Parfait pour l'été</p>
+#     <p class='comment'>Jardin, terrasse et climatisation</p>
+#     <br />
+#     <p class='with-comment fw-bold'>Arrivée autonome</p>
+#     <p class='comment m-0'>Vous pouvez entrer dans les lieux avec une serrure à digicode.</p>
+#   ")
+
+# Room.last.update(description_title: "Deux chambres privées dans notre logement")
+# Room.last.update(detailed_short_description:
+#   "<p>Bienvenue chez nous !
+#   <br>Nous sommes un couple chaleureux et accueillant, et nous sommes ravis de vous accueillir chez nous.
+#   <br>Notre maison est située dans un quartier paisible, à proximité des transports en commun et des commodités.
+#   <br>Nous proposons deux chambres confortables et lumineuses, équipée chacune d'un lit Queensize.
+#   <br>Vous aurez également accès à une salle de bain moderne, ainsi qu'à notre cuisine et salon où vous pourrez préparer vos repas et partager des moments de convivialité avec nous.
+# </p>
+#   "
+# )
+
+# Room.last.update(detailed_long_description:
+#   "<p>Bienvenue chez nous !
+#     <br>Nous sommes un couple chaleureux et accueillant, et nous sommes ravis de vous accueillir chez nous.
+#     <br>Notre maison est située dans un quartier paisible, à proximité des transports en commun et des commodités.
+#     <br>Nous proposons deux chambres confortables et lumineuses, équipée chacune d'un lit Queensize.
+#     <br>Vous aurez également accès à une salle de bain moderne, ainsi qu'à notre cuisine et salon où vous pourrez préparer vos repas et partager des moments de convivialité avec nous.
+#   </p>
+#   <br/>
+#   <p class='text-blue fw-bold'>Le logement</p>
+#   <br/>
+#   <ul>
+#     <li><strong>2 chambres</strong> situées dans un quartier calme et verdoyant</li>
+#     <li><strong>4 couchages</strong> avec 2 lits Queen Size</li>
+#     <li><strong>1 salle de bain</strong> privative</li>
+#     <li><strong>Climatisation</strong> pour se sentir au frais même quand il fait chaud</li>
+#   </ul>
+#   <br/>
+#   <p class='text-blue fw-bold'>Partagés avec les hôtes</p>
+#   <br/>
+#   <ul>
+#     <li><strong>Arrivée autonome</strong></li>
+#     <li><strong>Place de stationnement</strong> juste devant la maison avec possibilité de se garer sur le <strong>parking sécurisé</strong> si besoin</li>
+#     <li><strong>Wifi internet haut débit / fibre</strong></li>
+#     <li><strong>Ordinateur et vidéoprojecteur</strong> équipé d'un <strong>chromecast</strong> pour se divertir</li>
+#     <li><strong>Imprimante</strong> pour scanner, copier et imprimer vos documents</li>
+#     <li><strong>Salle de yoga</strong> pour vous détendre (musique et diffuseur d'huile essentielle)</li>
+#     <li><strong>Kit de repassage</strong> pour éviter les robes ou chemises froissés</li>
+#     <li><strong>Cuisiné équipée</strong> pour jouer les chefs étoilés et savourer la gastronomie Toulousaine</li>
+#     <li><strong>Machine à laver & étendoir</strong> (intérieur et extérieur) pour avoir des vêtements propres en toutes circonstances</li>
+#     <li><strong>Machine à café, thé</strong> sont présents afin de se sentir comme à la maison</li>
+#     <li><strong>Jardin et terrasse</strong> pour profiter des journées ensoleillées</li>
+#   </ul>
+#   <br/>
+#   <p class='text-blue fw-bold'>Accès des voyageurs</p>
+#   <br/>
+#   <ul>
+#     <li>Chambres privatives à l'étage avec salle de bain attenante.</li>
+#     <li>Parties communes en RdC (salon, cuisine, terrasse, jardin).</li>
+#   </ul>
+#   <br/>
+#   <p class='text-blue fw-bold'>Autres remarques</p>
+#   <br/>
+#   <ul>
+#     <li>Situé à 100m de la ligne 73 se rendant à une station de métro pour ne pas s'encombrer d'une voiture en ville (fonctionne de 6h à 21h)</li>
+#     <li>Situé à 400m du lac de la Tuilerie</li>
+#     <li>Situé à 500m d'un maître Artisan Boulanger d'exception</li>
+#     <li>Situé à 15 min de la cité de l'Espace</li>
+#     <li>Situé à 20 min du Capitole</li>
+#   </ul>
+#   "
+# )
 
 # puts "Cleaning database..."
 # Content.destroy_all

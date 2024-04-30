@@ -1,0 +1,28 @@
+<div class="container-fluid container background-back-link">
+  <%= link_to raw("<i class='fa-solid fa-circle-arrow-left'></i>"), :back, class: "back-link" %>
+</div>
+
+<header class="p-5 header-blue">
+  <h1><%= @picture.description %></h1>
+</header>
+
+<main class="container py-3">
+  <div class="row row-cols-auto gap-3">
+    <% @picture.photos.each do |photo| %>
+    <div class="col">
+      <%= cl_image_tag photo.key, height: 200 %>
+    </div>
+    <% end %>
+  </div>
+
+  <div class="py-3 row justify-content-center">
+    <%= simple_form_for @picture, url: admin_picture_path(@picture), html: { class: "col-4" } do |f| %>
+      <%= f.input :description, label: "Description" %>
+      <%= f.input :photos, as: :file, input_html: { multiple: true } %>
+      <div class="text-center">
+        <%= f.submit "Modifier", class: "button-blue" %>
+      </div>
+    <% end %>
+  </div>
+
+</main>

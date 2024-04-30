@@ -1,0 +1,5 @@
+<%= simple_form_for @picture, url: admin_pictures_path do |f| %>
+  <%= f.input :name, label: "Nom" %>
+  <%= f.input :photos, as: :file, input_html: { multiple: true } %>
+  <%= f.submit "Créer" %>
+<% end %>

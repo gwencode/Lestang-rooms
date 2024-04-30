@@ -65,42 +65,24 @@
     <%= link_to "réservez maintenant".upcase, contact_path, class: "button-blue" %>
   </div>
 
+  <% if current_user&.admin %>
+    <div class="text-center">
+      <%= link_to admin_pictures_path, class: "" do %>
+        <i class="fa-solid fa-image fs-6 ms-2"></i>
+      <% end %>
+    </div>
+  <% end %>
+
   <section id="nearby-gallery" class="row justify-content-center">
 
     <% path = "localisation/Hébergements-Toulouse-localisation-" %>
-    <div class="col-12 col-md-6 col-lg-4 p-2">
-      <a href="https://www.visorando.com/randonnee-lac-de-la-tuilerie-saint-jean.html" target="_blank">
-        <%= image_tag "#{path}01-Lac-Tuilerie.png", alt: "Hébergements Toulouse - Résidence Lestang - Lac Tuilerie", loading: "lazy", class:"w-100" %>
-      </a>
-    </div>
-    <div class="col-12 col-md-6 col-lg-4 p-2">
-      <a href="https://fr.wikipedia.org/wiki/Capitole_de_Toulouse" target="_blank">
-        <%= image_tag "#{path}02-Capitole.png", alt: "Hébergements Toulouse - Résidence Lestang - Capitole", loading: "lazy", class:"w-100" %>
-      </a>
-    </div>
-    <div class="col-12 col-md-6 col-lg-4 p-2">
-      <a href="https://www.stadetoulousain.fr/ernest-wallon" target="_blank">
-        <%= image_tag "#{path}03-Stade-Ernest-Wallon.png", alt: "Hébergements Toulouse - Résidence Lestang - Stade-Ernest-Wallon", loading: "lazy", class:"w-100" %>
-      </a>
-    </div>
-    <div class="col-12 col-md-6 col-lg-4 p-2">
-      <a href="https://www.cite-espace.com/" target="_blank">
-        <%= image_tag "#{path}04-Cité-Espace.png", alt: "Hébergements Toulouse - Résidence Lestang - Cité Espace", loading: "lazy", class:"w-100" %>
-      </a>
-    </div>
-    <div class="col-12 col-md-6 col-lg-4 p-2">
-      <a href="https://www.domainedepreissac.fr/" target="_blank">
-        <%= image_tag "#{path}05-Domaine-Preissac.png", alt: "Hébergements Toulouse - Résidence Lestang - Domaine Preissac", loading: "lazy", class:"w-100" %>
-      </a>
-    </div>
-    <div class="col-12 col-md-6 col-lg-4 p-2">
-      <%= image_tag "#{path}06-Aéroport-Gare.png", alt: "Hébergements Toulouse - Résidence Lestang - Aéroport et Gare", loading: "lazy", class:"w-100" %>
-    </div>
-    <div class="col-12 col-md-6 col-lg-4 p-2">
-      <a href="https://meett.fr/" target="_blank">
-        <%= image_tag "#{path}07-Parc-Expositions.png", alt: "Hébergements Toulouse - Résidence Lestang - Parc Expositions", loading: "lazy", class:"w-100" %>
-      </a>
-    </div>
+    <% @url_pictures.each do |url_picture| %>
+      <div class="col-12 col-md-6 col-lg-4 p-2">
+          <a href=<%= url_picture.url %> target="_blank">
+          <%= image_tag url_picture.photo, alt: "", loading: "lazy", class:"w-100" %>
+        </a>
+      </div>
+    <% end %>
 
   </section>
 

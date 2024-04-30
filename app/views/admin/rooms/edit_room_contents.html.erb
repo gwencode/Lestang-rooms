@@ -7,7 +7,7 @@
 </header>
 
 <main class="container py-3" style="min-height: 60vh">
-  <%= simple_form_for @room, url: admin_update_descriptions_path(@room) do |f| %>
+  <%= simple_form_for @room, url: admin_update_room_contents_path(@room) do |f| %>
     <div class="mb-3">
       <h3 class="fw-bold">Titre</h3>
       <%= f.rich_text_area :description_title %>

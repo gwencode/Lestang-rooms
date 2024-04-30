@@ -1,4 +1,6 @@
-<header class="header">
+<header class="header"
+  style="background-image: url('<%= cl_image_path picture.photos.first.key %>')"
+>
   <div class="header-text">
     <p class="my-2">Quartier calme</p>
     <h3 class="my-1">Maison spacieuse & climatisée</h3>
@@ -6,4 +8,5 @@
     <h3 class="my-2">Jardin - Terrasse</h3>
     <p class="my-1 comment">Arrivée autonome</p>
   </div>
+    <%= render "admin/pictures/edit_picture_icon", picture: picture %>
 </header>

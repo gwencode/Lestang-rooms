@@ -1,7 +1,7 @@
-<% sleep_images.each_with_index do |image_path, index| %>
+<% room.sleep_photos.each_with_index do |photo, index| %>
   <div class="card-sleep col-12 col-md-6 col-lg-4 col-xl-3 p-0">
     <i class="fa-solid fa-expand" id="expand" data-bs-toggle="modal" data-bs-target=<%= "#sleepImageModal-#{index}" %>></i>
-    <%= image_tag "#{image_path}", alt: "Hébergements Toulouse - Résidence Lestang - chambres", loading: "lazy" %>
+    <%= cl_image_tag photo.key, alt: "Hébergements Toulouse - Résidence Lestang - chambres", loading: "lazy" %>
     <div class="card-sleep-infos">
       <% if index + 1 <= 3 %>
         <h6>Chambre <%= index + 1 %></h6>
@@ -22,7 +22,8 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body text-center">
-          <%= image_tag "#{image_path}", alt: "Hébergements Toulouse - Résidence Lestang - chambres", style: "max-width: 100%", loading: "lazy"%>
+          <%= cl_image_tag photo.key, alt: "Hébergements Toulouse - Résidence Lestang - chambres", style: "max-width: 100%", loading: "lazy" %>
+
         </div>
       </div>
     </div>

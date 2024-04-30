@@ -11,12 +11,20 @@ class RoomPolicy < ApplicationPolicy
     user&.admin
   end
 
-  def update_descriptions?
+  def edit_room_contents?
     user&.admin
   end
 
-  def edit_room_contents?
-    update_descriptions?
+  def update_room_contents?
+    edit_room_contents?
+  end
+
+  def edit_room_pictures?
+    user&.admin
+  end
+
+  def update_room_pictures?
+    edit_room_pictures?
   end
 
   class Scope < Scope

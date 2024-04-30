@@ -1,5 +1,10 @@
 <article id="house-description" class="d-flex align-items-center py-3 my-3 row">
-  <%= image_tag "#{maison.name}.png", alt: "Hébergements Toulouse - Résidence Lestang - Maison", class: "col-12 col-lg-6 order-lg-2 images-room-little-screen", loading: "lazy" %>
+  <%# <%= image_tag "#{maison.name}.png", alt: "Hébergements Toulouse - Résidence Lestang - Maison", class: "col-12 col-lg-6 order-lg-2 images-room-little-screen", loading: "lazy" %>
+  <%= cl_image_tag maison.main_photo.key,
+    alt: "Hébergements Toulouse - Résidence Lestang - #{maison.name}",
+    class: "col-12 col-lg-6 order-lg-2 images-room-little-screen",
+    loading: "lazy"
+  %>
   <div class="text-center col-12 col-lg-6 order-lg-1">
     <h2 class="h2-blue-no-margin"><%= maison.name %></h2>
     <div class="separator"></div>
@@ -11,7 +16,11 @@
 </article>
 
 <article id="bedroom-description" class="d-flex align-items-center py-3 my-3 row">
-  <%= image_tag "Les Chambres.png", alt: "Hébergements Toulouse - Résidence Lestang - Chambre", class: "col-12 col-lg-6 images-room-little-screen", loading: "lazy" %>
+  <%= cl_image_tag chambre.main_photo.key,
+    alt: "Hébergements Toulouse - Résidence Lestang - #{chambre.name}",
+    class: "col-12 col-lg-6 images-room-little-screen",
+    loading: "lazy"
+  %>
   <div class="text-center col-12 col-lg-6">
     <h2 class="h2-blue-no-margin"><%= chambre.name %></h2>
     <div class="separator"></div>
