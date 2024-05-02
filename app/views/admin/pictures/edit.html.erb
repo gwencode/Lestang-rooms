@@ -16,7 +16,7 @@
   </div>
 
   <div class="py-3 row justify-content-center">
-    <%= simple_form_for @picture, url: admin_picture_path(@picture), html: { class: "col-4" } do |f| %>
+    <%= simple_form_for @picture, url: admin_picture_path(@picture), html: { class: "col-lg-4 col-12" } do |f| %>
       <%= f.input :description, label: "Description" %>
       <%= f.input :photos, as: :file, input_html: { multiple: true } %>
       <div class="text-center">
